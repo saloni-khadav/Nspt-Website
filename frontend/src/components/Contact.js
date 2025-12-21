@@ -49,7 +49,6 @@ const Contact = () => {
                   <h4 className="text-lg font-semibold text-white mb-6">Follow Us</h4>
                   <div className="flex space-x-4">
                     <a href="#" className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 hover:shadow-lg transition-all text-white font-bold">f</a>
-                    <a href="#" className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 hover:shadow-lg transition-all text-white">📷</a>
                     <a href="#" className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 hover:shadow-lg transition-all text-white font-bold">X</a>
                     <a href="#" className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 hover:shadow-lg transition-all text-white font-bold">in</a>
                     <a href="#" className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 hover:shadow-lg transition-all text-white">▶</a>

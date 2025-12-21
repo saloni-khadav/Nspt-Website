@@ -14,7 +14,6 @@ const Footer = () => {
             <p className="text-gray-400 mb-8 leading-relaxed">Empowering businesses with intelligent automation and AI solutions for the future.</p>
             <div className="flex space-x-4">
               <a href="#" className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-500 transition-colors text-white font-bold text-sm">f</a>
-              <a href="#" className="w-10 h-10 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full flex items-center justify-center hover:opacity-80 transition-opacity text-white text-sm">📷</a>
               <a href="#" className="w-10 h-10 bg-black border border-gray-600 rounded-full flex items-center justify-center hover:bg-gray-800 transition-colors text-white font-bold text-sm">X</a>
               <a href="#" className="w-10 h-10 bg-blue-700 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors text-white font-bold text-sm">in</a>
               <a href="#" className="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center hover:bg-red-500 transition-colors text-white text-sm">▶</a>
