@@ -9,6 +9,8 @@ import Services from './components/Services';
 import OurProjects from './components/OurProjects';
 import Contact from './components/Contact';
 import Careers from './components/Careers';
+import AdminLogin from './components/AdminLogin';
+import AdminDashboard from './components/AdminDashboard';
 
 const AppRouter = () => {
   return (
@@ -20,6 +22,8 @@ const AppRouter = () => {
         <Route path="/projects" element={<OurProjects />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/careers" element={<Careers />} />
+        <Route path="/admin-login" element={<AdminLogin />} />
+        <Route path="/admin" element={<AdminDashboard />} />
       </Routes>
     </Router>
   );

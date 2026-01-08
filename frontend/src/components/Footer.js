@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -15,7 +16,7 @@ const Footer = () => {
             <div className="flex space-x-4">
               <a href="#" className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-500 transition-colors text-white font-bold text-sm">f</a>
               <a href="#" className="w-10 h-10 bg-black border border-gray-600 rounded-full flex items-center justify-center hover:bg-gray-800 transition-colors text-white font-bold text-sm">X</a>
-              <a href="#" className="w-10 h-10 bg-blue-700 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors text-white font-bold text-sm">in</a>
+              <a href="https://www.linkedin.com/company/nsptai/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-blue-700 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors text-white font-bold text-sm">in</a>
               <a href="#" className="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center hover:bg-red-500 transition-colors text-white text-sm">▶</a>
             </div>
           </div>
@@ -23,12 +24,12 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold mb-6 text-cyan-400">Quick Links</h4>
             <ul className="space-y-3 text-gray-400">
-              <li><a href="#" className="hover:text-white transition-colors">Home</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">About</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Services</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Projects</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Contact</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Careers</a></li>
+              <li><Link to="/" className="hover:text-white transition-colors">Home</Link></li>
+              <li><Link to="/about" className="hover:text-white transition-colors">About</Link></li>
+              <li><Link to="/services" className="hover:text-white transition-colors">Services</Link></li>
+              <li><Link to="/projects" className="hover:text-white transition-colors">Projects</Link></li>
+              <li><Link to="/contact" className="hover:text-white transition-colors">Contact</Link></li>
+              <li><Link to="/careers" className="hover:text-white transition-colors">Careers</Link></li>
             </ul>
           </div>
           

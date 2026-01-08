@@ -35,6 +35,100 @@ body {
   animation: float 3s ease-in-out infinite;
 }
 
+/* Auto scroll animation */
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-scroll {
+  animation: scroll 20s linear infinite;
+}
+
+/* Animated border effect */
+@keyframes borderMove {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes borderMoveVertical {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+.animated-border {
+  position: relative;
+  overflow: hidden;
+}
+
+.animated-border::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, #06b6d4, transparent);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+.animated-border::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, #06b6d4, transparent);
+  transform: translateY(-100%);
+  transition: transform 0.3s ease;
+}
+
+.animated-border:hover::after {
+  animation: borderMove 1.5s ease-in-out infinite;
+}
+
+.animated-border:hover::before {
+  animation: borderMoveVertical 1.5s ease-in-out infinite;
+}
+
+/* Blue border */
+.animated-border-blue::after {
+  background: linear-gradient(90deg, transparent, #3b82f6, transparent);
+}
+
+.animated-border-blue::before {
+  background: linear-gradient(180deg, transparent, #3b82f6, transparent);
+}
+
+/* Green border */
+.animated-border-green::after {
+  background: linear-gradient(90deg, transparent, #10b981, transparent);
+}
+
+.animated-border-green::before {
+  background: linear-gradient(180deg, transparent, #10b981, transparent);
+}
+
+/* Purple border */
+.animated-border-purple::after {
+  background: linear-gradient(90deg, transparent, #8b5cf6, transparent);
+}
+
+.animated-border-purple::before {
+  background: linear-gradient(180deg, transparent, #8b5cf6, transparent);
+}
+
+/* Orange border */
+.animated-border-orange::after {
+  background: linear-gradient(90deg, transparent, #f97316, transparent);
+}
+
+.animated-border-orange::before {
+  background: linear-gradient(180deg, transparent, #f97316, transparent);
+}
+
 /* Custom scrollbar */
 .scrollbar-hide {
   -ms-overflow-style: none;
