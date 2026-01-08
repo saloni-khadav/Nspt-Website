@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Layout from './Layout';
 
 const Home = () => {
@@ -54,32 +55,26 @@ const Home = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center pt-20">
-        <div className="text-center max-w-5xl mx-auto px-6">
-          <h1 className="mb-8">
-            <div className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4 leading-tight">
-              Empowering Businesses with
-            </div>
-            <div className="text-5xl md:text-6xl lg:text-7xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent leading-tight">
-              Intelligent Automation
-            </div>
-          </h1>
-          
-          <div className="mb-8">
-            <div className="text-xl text-emerald-400 mb-2">Next Sphere Product and Technology</div>
-            <div className="text-2xl font-semibold text-cyan-400">From Human to AI</div>
-          </div>
-          
+      <section className="min-h-screen flex items-end justify-center pb-10 relative overflow-hidden">
+        {/* Background Image */}
+        <img 
+          src="/nspt.jpg" 
+          alt="NSPT Background"
+          className="absolute top-20 left-0 right-0 bottom-0 w-full h-[calc(100%-5rem)] object-cover object-center opacity-40"
+        />
+        
+
+        <div className="text-center max-w-5xl mx-auto px-6 relative z-10 ">
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <button className="bg-gradient-to-r from-blue-600 to-emerald-600 px-8 py-4 rounded-full text-lg font-semibold hover:shadow-lg hover:shadow-blue-500/25 transition-all">
+            <Link to="/services" className="bg-gradient-to-r from-blue-600 to-emerald-600 px-8 py-4 rounded-full text-lg font-semibold hover:shadow-lg hover:shadow-blue-500/25 transition-all text-center">
               Explore Our Solutions
-            </button>
+            </Link>
             <button className="border-2 border-emerald-400 text-emerald-400 px-8 py-4 rounded-full text-lg font-semibold hover:bg-emerald-400/10 backdrop-blur-md transition-all">
               Request a Demo
             </button>
           </div>
           
-          <p className="text-lg text-gray-300 max-w-4xl mx-auto mb-16 leading-relaxed">
+          <p className="text-lg text-gray-300 max-w-4xl mx-auto mb-0 leading-relaxed">
             We are a next-generation technology company building integrated solutions in AI and ML — helping organizations automate operations, boost efficiency, and scale smartly.
           </p>
           
@@ -98,21 +93,37 @@ const Home = () => {
           <div className="max-w-7xl mx-auto">
             <h2 className="text-4xl font-bold text-center mb-16 text-cyan-400 ">Quick Stats</h2>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-              <div className="backdrop-blur-md bg-white/5 border border-white/20 rounded-xl p-8 text-center hover:bg-white/10 hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 group">
-                <div className="text-5xl font-bold text-cyan-400 mb-3 group-hover:scale-110 transition-transform">10+</div>
-                <div className="text-gray-300 text-lg">Clients</div>
+              <div className="relative backdrop-blur-md bg-gradient-to-br from-cyan-500/10 to-blue-600/10 border border-cyan-400/30 rounded-2xl p-8 text-center hover:bg-gradient-to-br hover:from-cyan-500/20 hover:to-blue-600/20 hover:shadow-2xl hover:shadow-cyan-500/20 transition-all duration-500 group overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="relative z-10">
+                  <div className="text-6xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent mb-4 group-hover:scale-110 transition-transform duration-300">10+</div>
+                  <div className="text-gray-300 text-lg font-medium">Clients</div>
+                  <div className="w-12 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto mt-3 rounded-full"></div>
+                </div>
               </div>
-              <div className="backdrop-blur-md bg-white/5 border border-white/20 rounded-xl p-8 text-center hover:bg-white/10 hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 group">
-                <div className="text-5xl font-bold text-cyan-400 mb-3 group-hover:scale-110 transition-transform">7+</div>
-                <div className="text-gray-300 text-lg">Farmers Network</div>
+              <div className="relative backdrop-blur-md bg-gradient-to-br from-cyan-500/10 to-blue-600/10 border border-cyan-400/30 rounded-2xl p-8 text-center hover:bg-gradient-to-br hover:from-cyan-500/20 hover:to-blue-600/20 hover:shadow-2xl hover:shadow-cyan-500/20 transition-all duration-500 group overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="relative z-10">
+                  <div className="text-6xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent mb-4 group-hover:scale-110 transition-transform duration-300">7+</div>
+                  <div className="text-gray-300 text-lg font-medium">Farmers Network</div>
+                  <div className="w-12 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto mt-3 rounded-full"></div>
+                </div>
               </div>
-              <div className="backdrop-blur-md bg-white/5 border border-white/20 rounded-xl p-8 text-center hover:bg-white/10 hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 group">
-                <div className="text-5xl font-bold text-cyan-400 mb-3 group-hover:scale-110 transition-transform">15+</div>
-                <div className="text-gray-300 text-lg">Business Teams</div>
+              <div className="relative backdrop-blur-md bg-gradient-to-br from-cyan-500/10 to-blue-600/10 border border-cyan-400/30 rounded-2xl p-8 text-center hover:bg-gradient-to-br hover:from-cyan-500/20 hover:to-blue-600/20 hover:shadow-2xl hover:shadow-cyan-500/20 transition-all duration-500 group overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="relative z-10">
+                  <div className="text-6xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent mb-4 group-hover:scale-110 transition-transform duration-300">15+</div>
+                  <div className="text-gray-300 text-lg font-medium">Business Teams</div>
+                  <div className="w-12 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto mt-3 rounded-full"></div>
+                </div>
               </div>
-              <div className="backdrop-blur-md bg-white/5 border border-white/20 rounded-xl p-8 text-center hover:bg-white/10 hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 group">
-                <div className="text-5xl font-bold text-cyan-400 mb-3 group-hover:scale-110 transition-transform">3</div>
-                <div className="text-gray-300 text-lg">Smart Platforms</div>
+              <div className="relative backdrop-blur-md bg-gradient-to-br from-cyan-500/10 to-blue-600/10 border border-cyan-400/30 rounded-2xl p-8 text-center hover:bg-gradient-to-br hover:from-cyan-500/20 hover:to-blue-600/20 hover:shadow-2xl hover:shadow-cyan-500/20 transition-all duration-500 group overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="relative z-10">
+                  <div className="text-6xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent mb-4 group-hover:scale-110 transition-transform duration-300">3</div>
+                  <div className="text-gray-300 text-lg font-medium">Smart Platforms</div>
+                  <div className="w-12 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto mt-3 rounded-full"></div>
+                </div>
               </div>
             </div>
           </div>
@@ -123,30 +134,90 @@ const Home = () => {
           <div className="max-w-7xl mx-auto">
             <h2 className="text-4xl font-bold text-center mb-16 text-cyan-400">Key Features & Highlights</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div className="backdrop-blur-md bg-white/5 border border-white/20 rounded-xl p-8 text-center hover:bg-white/10 hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 group">
-                <div className="text-5xl mb-6 group-hover:scale-110 transition-transform">👥</div>
-                <h3 className="text-xl font-semibold mb-4 text-cyan-400">Smart HR</h3>
-                <p className="text-gray-300 leading-relaxed">AI-powered HR Automation Platform</p>
+              <div className="backdrop-blur-md bg-white/5 border border-white/20 rounded-xl overflow-hidden hover:bg-white/10 hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 group">
+                <div className="p-4">
+                  <div className="w-full h-40 overflow-hidden rounded-lg group-hover:scale-105 transition-transform duration-300">
+                    <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=300&fit=crop&crop=center" alt="Smart HR" className="w-full h-full object-cover" />
+                  </div>
+                </div>
+                <div className="p-6 text-center">
+                  <h3 className="text-xl font-semibold mb-4 text-cyan-400">Smart HR</h3>
+                  <p className="text-gray-300 leading-relaxed mb-4">AI-powered HR Automation Platform with attendance tracking, payroll processing, and performance analytics</p>
+                  <div className="flex flex-wrap gap-2 justify-center mb-4">
+                    <span className="bg-cyan-500/20 text-cyan-300 px-3 py-1 rounded-full text-xs">Attendance</span>
+                    <span className="bg-cyan-500/20 text-cyan-300 px-3 py-1 rounded-full text-xs">Payroll</span>
+                    <span className="bg-cyan-500/20 text-cyan-300 px-3 py-1 rounded-full text-xs">Analytics</span>
+                  </div>
+                  <button className="text-cyan-400 hover:text-cyan-300 text-sm font-semibold transition-colors">Learn More →</button>
+                </div>
               </div>
-              <div className="backdrop-blur-md bg-white/5 border border-white/20 rounded-xl p-8 text-center hover:bg-white/10 hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 group">
-                <div className="text-5xl mb-6 group-hover:scale-110 transition-transform">📊</div>
-                <h3 className="text-xl font-semibold mb-4 text-cyan-400">NextBook</h3>
-                <p className="text-gray-300 leading-relaxed">Intelligent Accounting Solution</p>
+              <div className="backdrop-blur-md bg-white/5 border border-white/20 rounded-xl overflow-hidden hover:bg-white/10 hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 group">
+                <div className="p-4">
+                  <div className="w-full h-40 overflow-hidden rounded-lg group-hover:scale-105 transition-transform duration-300">
+                    <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=300&fit=crop&crop=center" alt="NextBook" className="w-full h-full object-cover" />
+                  </div>
+                </div>
+                <div className="p-6 text-center">
+                  <h3 className="text-xl font-semibold mb-4 text-cyan-400">NextBook</h3>
+                  <p className="text-gray-300 leading-relaxed mb-4">Intelligent Accounting Solution with automated bookkeeping, GST filing, and financial reporting</p>
+                  <div className="flex flex-wrap gap-2 justify-center mb-4">
+                    <span className="bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full text-xs">GST Filing</span>
+                    <span className="bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full text-xs">Auto Books</span>
+                    <span className="bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full text-xs">Reports</span>
+                  </div>
+                  <button className="text-cyan-400 hover:text-cyan-300 text-sm font-semibold transition-colors">View Demo →</button>
+                </div>
               </div>
-              <div className="backdrop-blur-md bg-white/5 border border-white/20 rounded-xl p-8 text-center hover:bg-white/10 hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 group">
-                <div className="text-5xl mb-6 group-hover:scale-110 transition-transform">🧠</div>
-                <h3 className="text-xl font-semibold mb-4 text-cyan-400">AI & Analytics Solutions</h3>
-                <p className="text-gray-300 leading-relaxed">Smart Decision-Making with AI Insights</p>
+              <div className="backdrop-blur-md bg-white/5 border border-white/20 rounded-xl overflow-hidden hover:bg-white/10 hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 group">
+                <div className="p-4">
+                  <div className="w-full h-40 overflow-hidden rounded-lg group-hover:scale-105 transition-transform duration-300">
+                    <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=300&fit=crop&crop=center" alt="AI Analytics" className="w-full h-full object-cover" />
+                  </div>
+                </div>
+                <div className="p-6 text-center">
+                  <h3 className="text-xl font-semibold mb-4 text-cyan-400">AI & Analytics Solutions</h3>
+                  <p className="text-gray-300 leading-relaxed mb-4">Smart Decision-Making with predictive analytics, chatbot automation, and sentiment analysis</p>
+                  <div className="flex flex-wrap gap-2 justify-center mb-4">
+                    <span className="bg-purple-500/20 text-purple-300 px-3 py-1 rounded-full text-xs">Predictive AI</span>
+                    <span className="bg-purple-500/20 text-purple-300 px-3 py-1 rounded-full text-xs">Chatbots</span>
+                    <span className="bg-purple-500/20 text-purple-300 px-3 py-1 rounded-full text-xs">Analytics</span>
+                  </div>
+                  <button className="text-cyan-400 hover:text-cyan-300 text-sm font-semibold transition-colors">Explore AI →</button>
+                </div>
               </div>
-              <div className="backdrop-blur-md bg-white/5 border border-white/20 rounded-xl p-8 text-center hover:bg-white/10 hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 group">
-                <div className="text-5xl mb-6 group-hover:scale-110 transition-transform">🚁</div>
-                <h3 className="text-xl font-semibold mb-4 text-cyan-400">Agritech Drone Innovation</h3>
-                <p className="text-gray-300 leading-relaxed">Empowering Farmers with Smart Agritech</p>
+              <div className="backdrop-blur-md bg-white/5 border border-white/20 rounded-xl overflow-hidden hover:bg-white/10 hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 group">
+                <div className="p-4">
+                  <div className="w-full h-40 overflow-hidden rounded-lg group-hover:scale-105 transition-transform duration-300">
+                    <img src="https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=400&h=300&fit=crop&crop=center" alt="Agritech Drone" className="w-full h-full object-cover" />
+                  </div>
+                </div>
+                <div className="p-6 text-center">
+                  <h3 className="text-xl font-semibold mb-4 text-cyan-400">Agritech Drone Innovation</h3>
+                  <p className="text-gray-300 leading-relaxed mb-4">Empowering Farmers with drone mapping, soil analysis, crop tracking, and smart irrigation systems</p>
+                  <div className="flex flex-wrap gap-2 justify-center mb-4">
+                    <span className="bg-green-500/20 text-green-300 px-3 py-1 rounded-full text-xs">Drone Mapping</span>
+                    <span className="bg-green-500/20 text-green-300 px-3 py-1 rounded-full text-xs">Soil Analysis</span>
+                    <span className="bg-green-500/20 text-green-300 px-3 py-1 rounded-full text-xs">Smart Irrigation</span>
+                  </div>
+                  <button className="text-cyan-400 hover:text-cyan-300 text-sm font-semibold transition-colors">View Projects →</button>
+                </div>
               </div>
-              <div className="backdrop-blur-md bg-white/5 border border-white/20 rounded-xl p-8 text-center hover:bg-white/10 hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 group">
-                <div className="text-5xl mb-6 group-hover:scale-110 transition-transform">🔒</div>
-                <h3 className="text-xl font-semibold mb-4 text-cyan-400">Data Security & Compliance</h3>
-                <p className="text-gray-300 leading-relaxed">Enterprise-grade Protection</p>
+              <div className="backdrop-blur-md bg-white/5 border border-white/20 rounded-xl overflow-hidden hover:bg-white/10 hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 group">
+                <div className="p-4">
+                  <div className="w-full h-40 overflow-hidden rounded-lg group-hover:scale-105 transition-transform duration-300">
+                    <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=400&h=300&fit=crop&crop=center" alt="Data Security" className="w-full h-full object-cover" />
+                  </div>
+                </div>
+                <div className="p-6 text-center">
+                  <h3 className="text-xl font-semibold mb-4 text-cyan-400">Data Security & Compliance</h3>
+                  <p className="text-gray-300 leading-relaxed mb-4">Enterprise-grade Protection with end-to-end encryption, secure cloud storage, and compliance management</p>
+                  <div className="flex flex-wrap gap-2 justify-center mb-4">
+                    <span className="bg-red-500/20 text-red-300 px-3 py-1 rounded-full text-xs">Encryption</span>
+                    <span className="bg-red-500/20 text-red-300 px-3 py-1 rounded-full text-xs">Cloud Security</span>
+                    <span className="bg-red-500/20 text-red-300 px-3 py-1 rounded-full text-xs">Compliance</span>
+                  </div>
+                  <button className="text-cyan-400 hover:text-cyan-300 text-sm font-semibold transition-colors">Security Details →</button>
+                </div>
               </div>
             </div>
           </div>
@@ -156,47 +227,80 @@ const Home = () => {
         <section className="py-20 px-6">
           <div className="max-w-7xl mx-auto">
             <h2 className="text-4xl font-bold text-center mb-16 text-cyan-400">Trusted By / Partner Companies</h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-              <div className="backdrop-blur-md bg-white/5 border border-white/20 rounded-xl p-6 text-center hover:bg-white/10 hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 group">
-                <div className="w-16 h-16 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-xl mx-auto mb-4 flex items-center justify-center text-2xl font-bold text-white group-hover:scale-110 transition-transform">A</div>
-                <div className="text-sm text-gray-300 font-medium">Agritech Solutions</div>
-              </div>
-              <div className="backdrop-blur-md bg-white/5 border border-white/20 rounded-xl p-6 text-center hover:bg-white/10 hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 group">
-                <div className="w-16 h-16 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-xl mx-auto mb-4 flex items-center justify-center text-2xl font-bold text-white group-hover:scale-110 transition-transform">D</div>
-                <div className="text-sm text-gray-300 font-medium">DataFlow Systems</div>
-              </div>
-              <div className="backdrop-blur-md bg-white/5 border border-white/20 rounded-xl p-6 text-center hover:bg-white/10 hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 group">
-                <div className="w-16 h-16 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-xl mx-auto mb-4 flex items-center justify-center text-2xl font-bold text-white group-hover:scale-110 transition-transform">C</div>
-                <div className="text-sm text-gray-300 font-medium">CloudSync</div>
-              </div>
-              <div className="backdrop-blur-md bg-white/5 border border-white/20 rounded-xl p-6 text-center hover:bg-white/10 hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 group">
-                <div className="w-16 h-16 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-xl mx-auto mb-4 flex items-center justify-center text-2xl font-bold text-white group-hover:scale-110 transition-transform">A</div>
-                <div className="text-sm text-gray-300 font-medium">AI Dynamics</div>
-              </div>
-              <div className="backdrop-blur-md bg-white/5 border border-white/20 rounded-xl p-6 text-center hover:bg-white/10 hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 group">
-                <div className="w-16 h-16 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-xl mx-auto mb-4 flex items-center justify-center text-2xl font-bold text-white group-hover:scale-110 transition-transform">T</div>
-                <div className="text-sm text-gray-300 font-medium">TechCrop</div>
-              </div>
-              <div className="backdrop-blur-md bg-white/5 border border-white/20 rounded-xl p-6 text-center hover:bg-white/10 hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 group">
-                <div className="w-16 h-16 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-xl mx-auto mb-4 flex items-center justify-center text-2xl font-bold text-white group-hover:scale-110 transition-transform">I</div>
-                <div className="text-sm text-gray-300 font-medium">InnovateLab</div>
+            <div className="overflow-hidden">
+              <div className="flex animate-scroll space-x-12">
+                <div className="backdrop-blur-md bg-white/5 border border-white/20 rounded-xl p-6 text-center hover:bg-white/10 hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 group flex-shrink-0">
+                  <div className="w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-500 rounded-xl mx-auto mb-4 flex items-center justify-center group-hover:scale-110 transition-transform overflow-hidden">
+                    <img src="/agri.png" alt="Agritech Solutions" className="w-full h-full object-contain" />
+                  </div>
+                  <div className="text-sm text-gray-300 font-medium">Agritech Solutions</div>
+                </div>
+                <div className="backdrop-blur-md bg-white/5 border border-white/20 rounded-xl p-6 text-center hover:bg-white/10 hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 group flex-shrink-0">
+                  <div className="w-16 h-16 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-xl mx-auto mb-4 flex items-center justify-center group-hover:scale-110 transition-transform overflow-hidden">
+                    <img src="/circular.png" alt="DataFlow Systems" className="w-full h-full object-contain" />
+                  </div>
+                  <div className="text-sm text-gray-300 font-medium">DataFlow Systems</div>
+                </div>
+                <div className="backdrop-blur-md bg-white/5 border border-white/20 rounded-xl p-6 text-center hover:bg-white/10 hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 group flex-shrink-0">
+                  <div className="w-16 h-16 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-xl mx-auto mb-4 flex items-center justify-center group-hover:scale-110 transition-transform overflow-hidden">
+                    <img src="/cloud sync.png" alt="CloudSync" className="w-full h-full object-contain" />
+                  </div>
+                  <div className="text-sm text-gray-300 font-medium">CloudSync</div>
+                </div>
+                <div className="backdrop-blur-md bg-white/5 border border-white/20 rounded-xl p-6 text-center hover:bg-white/10 hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 group flex-shrink-0">
+                  <div className="w-16 h-16 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-xl mx-auto mb-4 flex items-center justify-center group-hover:scale-110 transition-transform overflow-hidden">
+                    <img src="/Ai-dynamics.png" alt="AI Dynamics" className="w-full h-full object-contain" />
+                  </div>
+                  <div className="text-sm text-gray-300 font-medium">AI Dynamics</div>
+                </div>
+                <div className="backdrop-blur-md bg-white/5 border border-white/20 rounded-xl p-6 text-center hover:bg-white/10 hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 group flex-shrink-0">
+                  <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-teal-500 rounded-xl mx-auto mb-4 flex items-center justify-center group-hover:scale-110 transition-transform overflow-hidden">
+                    <img src="/tech crop.png" alt="TechCrop" className="w-full h-full object-contain" />
+                  </div>
+                  <div className="text-sm text-gray-300 font-medium">TechCrop</div>
+                </div>
+                <div className="backdrop-blur-md bg-white/5 border border-white/20 rounded-xl p-6 text-center hover:bg-white/10 hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 group flex-shrink-0">
+                  <div className="w-16 h-16 bg-gradient-to-br from-purple-400 to-indigo-500 rounded-xl mx-auto mb-4 flex items-center justify-center group-hover:scale-110 transition-transform overflow-hidden">
+                    <img src="/innovation lab.png" alt="InnovateLab" className="w-full h-full object-contain" />
+                  </div>
+                  <div className="text-sm text-gray-300 font-medium">InnovateLab</div>
+                </div>
+                {/* Duplicate for seamless loop */}
+                <div className="backdrop-blur-md bg-white/5 border border-white/20 rounded-xl p-6 text-center hover:bg-white/10 hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 group flex-shrink-0">
+                  <div className="w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-500 rounded-xl mx-auto mb-4 flex items-center justify-center group-hover:scale-110 transition-transform overflow-hidden">
+                    <img src="/agri.png" alt="Agritech Solutions" className="w-full h-full object-contain" />
+                  </div>
+                  <div className="text-sm text-gray-300 font-medium">Agritech Solutions</div>
+                </div>
+                <div className="backdrop-blur-md bg-white/5 border border-white/20 rounded-xl p-6 text-center hover:bg-white/10 hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 group flex-shrink-0">
+                  <div className="w-16 h-16 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-xl mx-auto mb-4 flex items-center justify-center group-hover:scale-110 transition-transform overflow-hidden">
+                    <img src="/circular.png" alt="DataFlow Systems" className="w-full h-full object-contain" />
+                  </div>
+                  <div className="text-sm text-gray-300 font-medium">DataFlow Systems</div>
+                </div>
+                <div className="backdrop-blur-md bg-white/5 border border-white/20 rounded-xl p-6 text-center hover:bg-white/10 hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 group flex-shrink-0">
+                  <div className="w-16 h-16 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-xl mx-auto mb-4 flex items-center justify-center group-hover:scale-110 transition-transform overflow-hidden">
+                    <img src="/cloud sync.png" alt="CloudSync" className="w-full h-full object-contain" />
+                  </div>
+                  <div className="text-sm text-gray-300 font-medium">CloudSync</div>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
         {/* Founder's Message */}
-        <section className="py-20 px-6">
-          <div className="max-w-5xl mx-auto">
-            <h2 className="text-4xl font-bold text-center mb-16 text-cyan-400">Founder's Message</h2>
-            <div className="backdrop-blur-md bg-white/5 border border-white/20 rounded-2xl p-12 text-center hover:bg-white/10 transition-all duration-300">
-              <div className="text-8xl text-cyan-400 mb-8 font-serif">"</div>
-              <p className="text-xl text-gray-300 mb-12 leading-relaxed max-w-4xl mx-auto">
+        <section className="py-12 px-6">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-4xl font-bold text-center mb-12 text-cyan-400">Founder's Message</h2>
+            <div className="backdrop-blur-md bg-white/5 border border-white/20 rounded-2xl p-8 text-center hover:bg-white/10 transition-all duration-300">
+              <div className="text-6xl text-cyan-400 mb-6 font-serif">"</div>
+              <p className="text-lg text-gray-300 mb-8 leading-relaxed max-w-3xl mx-auto">
                 At Next Sphere, we believe technology should be a catalyst for positive change. Our journey began with a simple vision: to create intelligent automation solutions that not only meet today's challenges but anticipate tomorrow's opportunities. Every AI model we build, every automation we design, is crafted with our client's success in mind.
               </p>
-              <div className="text-right max-w-4xl mx-auto">
-                <div className="text-xl font-semibold text-cyan-400 mb-2">— Tushar Rout</div>
-                <div className="text-gray-400 text-lg">CEO & Founder</div>
+              <div className="text-right max-w-3xl mx-auto">
+                <div className="text-lg font-semibold text-cyan-400 mb-1">— Tushar Rout</div>
+                <div className="text-gray-400">CEO & Founder</div>
               </div>
             </div>
           </div>

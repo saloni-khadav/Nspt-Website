@@ -34,9 +34,9 @@ const Header = () => {
             <span className="text-gray-500">|</span>
             <Link to="/careers" className={`px-4 py-2 transition-colors ${activePage === 'Careers' ? 'text-cyan-400 font-semibold' : 'text-white hover:text-cyan-400'}`}>Careers</Link>
           </div>
-          <button className="bg-gradient-to-r from-blue-600 to-emerald-600 px-6 py-2 rounded-full text-sm font-semibold hover:shadow-lg hover:shadow-blue-500/25 transition-all">
-            Get Started
-          </button>
+          <Link to="/admin-login" className="bg-gradient-to-r from-blue-600 to-emerald-600 px-6 py-2 rounded-full text-sm font-semibold hover:shadow-lg hover:shadow-blue-500/25 transition-all">
+            Admin
+          </Link>
         </div>
       </div>
     </nav>

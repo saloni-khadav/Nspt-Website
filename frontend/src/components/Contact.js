@@ -1,9 +1,54 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import Layout from './Layout';
+import emailjs from '@emailjs/browser';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Contact = () => {
+  const form = useRef();
+  const [isSent, setIsSent] = useState(false);
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        'service_wq7xe09',
+        'template_amgk0xx',
+        form.current,
+        'Bd3E-GfasLhf9Y4uo'
+      )
+      .then(
+        () => {
+          setIsSent(true);
+          form.current.reset();
+          toast.success('Message sent successfully! ✅', {
+            position: 'top-right',
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            theme: 'dark',
+          });
+        },
+        (error) => {
+          console.error('Error sending message:', error);
+          toast.error('Failed to send message. Please try again.', {
+            position: 'top-right',
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            theme: 'dark',
+          });
+        }
+      );
+  };
   return (
     <Layout>
+      <ToastContainer />
       <section className="pt-32 pb-16 px-6">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-5xl md:text-6xl font-bold text-cyan-400 mb-6">Get In Touch</h1>
@@ -50,24 +95,27 @@ const Contact = () => {
                   <div className="flex space-x-4">
                     <a href="#" className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 hover:shadow-lg transition-all text-white font-bold">f</a>
                     <a href="#" className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 hover:shadow-lg transition-all text-white font-bold">X</a>
-                    <a href="#" className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 hover:shadow-lg transition-all text-white font-bold">in</a>
+                    <a href="https://www.linkedin.com/company/nsptai/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 hover:shadow-lg transition-all text-white font-bold">in</a>
                     <a href="#" className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 hover:shadow-lg transition-all text-white">▶</a>
                   </div>
                 </div>
               </div>
 
-              <div className="space-y-6">
+              <form ref={form} onSubmit={sendEmail} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <input 
                       type="text" 
+                      name="user_name"
                       placeholder="Enter Your First Name"
+                      required
                       className="w-full bg-transparent border-b-2 border-gray-600 focus:border-cyan-400 outline-none py-3 text-white placeholder-gray-400 transition-colors"
                     />
                   </div>
                   <div>
                     <input 
                       type="text" 
+                      name="last_name"
                       placeholder="Enter Your Last Name"
                       className="w-full bg-transparent border-b-2 border-gray-600 focus:border-cyan-400 outline-none py-3 text-white placeholder-gray-400 transition-colors"
                     />
@@ -76,8 +124,19 @@ const Contact = () => {
                 
                 <div>
                   <input 
+                    type="text" 
+                    name="company"
+                    placeholder="Enter Your Company Name"
+                    className="w-full bg-transparent border-b-2 border-gray-600 focus:border-cyan-400 outline-none py-3 text-white placeholder-gray-400 transition-colors"
+                  />
+                </div>
+                
+                <div>
+                  <input 
                     type="email" 
+                    name="user_email"
                     placeholder="Enter Your Email"
+                    required
                     className="w-full bg-transparent border-b-2 border-gray-600 focus:border-cyan-400 outline-none py-3 text-white placeholder-gray-400 transition-colors"
                   />
                 </div>
@@ -85,6 +144,7 @@ const Contact = () => {
                 <div>
                   <input 
                     type="tel" 
+                    name="phone"
                     placeholder="Enter Your Phone Number"
                     className="w-full bg-transparent border-b-2 border-gray-600 focus:border-cyan-400 outline-none py-3 text-white placeholder-gray-400 transition-colors"
                   />
@@ -92,16 +152,21 @@ const Contact = () => {
                 
                 <div>
                   <textarea 
+                    name="message"
                     placeholder="Write your message..."
                     rows="5"
+                    required
                     className="w-full bg-transparent border-b-2 border-gray-600 focus:border-cyan-400 outline-none py-3 text-white placeholder-gray-400 transition-colors resize-none"
                   ></textarea>
                 </div>
                 
-                <button className="w-full bg-gradient-to-r from-blue-500 to-green-500 px-8 py-4 rounded-lg text-lg font-semibold hover:shadow-lg hover:shadow-blue-500/25 transition-all mt-8">
+                <button 
+                  type="submit"
+                  className="w-full bg-gradient-to-r from-blue-500 to-green-500 px-8 py-4 rounded-lg text-lg font-semibold hover:shadow-lg hover:shadow-blue-500/25 transition-all mt-8"
+                >
                   Send Message
                 </button>
-              </div>
+              </form>
             </div>
           </div>
         </div>
