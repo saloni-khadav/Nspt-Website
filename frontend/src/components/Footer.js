@@ -63,7 +63,7 @@ const Footer = () => {
         </div>
         
         <div className="border-t border-white/20 mt-12 pt-8 text-center text-gray-400">
-          © 2025 Next Sphere Product & Technology. All rights reserved.
+          © 2026 Next Sphere Product & Technology. All rights reserved.
         </div>
       </div>
     </footer>

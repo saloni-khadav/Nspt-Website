@@ -87,11 +87,25 @@ const AdminDashboard = () => {
       );
     }
 
-    // Experience filter
+    // Experience filter - range based
     if (filters.experience) {
-      filtered = filtered.filter(app => 
-        app.experience.toLowerCase().includes(filters.experience.toLowerCase())
-      );
+      const expValue = filters.experience.toLowerCase();
+      filtered = filtered.filter(app => {
+        const appExp = app.experience.toLowerCase();
+        const expNum = parseInt(appExp.match(/\d+/)?.[0] || '0');
+        const filterNum = parseInt(expValue.match(/\d+/)?.[0] || '0');
+        
+        // If filter contains range like "2-4" or "2 to 4"
+        const rangeMatch = expValue.match(/(\d+)\s*[-to]\s*(\d+)/);
+        if (rangeMatch) {
+          const minExp = parseInt(rangeMatch[1]);
+          const maxExp = parseInt(rangeMatch[2]);
+          return expNum >= minExp && expNum <= maxExp;
+        }
+        
+        // If filter is just a number, match exactly that number
+        return expNum === filterNum;
+      });
     }
 
     // Qualification filter
@@ -225,7 +239,7 @@ const AdminDashboard = () => {
                     <label className="block text-gray-300 text-sm mb-2">Experience</label>
                     <input
                       type="text"
-                      placeholder="e.g. 2 years"
+                      placeholder="e.g. 2-4 (range), 2 to 5 (range), or 3 (exact)"
                       value={filters.experience}
                       onChange={(e) => setFilters({...filters, experience: e.target.value})}
                       className="w-full bg-gray-800 border border-gray-600 rounded px-3 py-2 text-white"

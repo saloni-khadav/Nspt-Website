@@ -133,8 +133,13 @@ const Home = () => {
         <section className="py-20 px-6">
           <div className="max-w-7xl mx-auto">
             <h2 className="text-4xl font-bold text-center mb-16 text-cyan-400">Key Features & Highlights</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div className="backdrop-blur-md bg-white/5 border border-white/20 rounded-xl overflow-hidden hover:bg-white/10 hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 group">
+            <div className="flex gap-6 overflow-x-auto pb-4" style={{scrollbarWidth: 'none', msOverflowStyle: 'none'}}>
+              <style jsx>{`
+                div::-webkit-scrollbar {
+                  display: none;
+                }
+              `}</style>
+              <div className="backdrop-blur-md bg-white/5 border border-white/20 rounded-xl overflow-hidden hover:bg-white/10 hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 group flex-shrink-0" style={{width: 'calc(33.333% - 16px)', minWidth: '300px'}}>
                 <div className="p-4">
                   <div className="w-full h-40 overflow-hidden rounded-lg group-hover:scale-105 transition-transform duration-300">
                     <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=300&fit=crop&crop=center" alt="Smart HR" className="w-full h-full object-cover" />
@@ -151,7 +156,7 @@ const Home = () => {
                   <button className="text-cyan-400 hover:text-cyan-300 text-sm font-semibold transition-colors">Learn More →</button>
                 </div>
               </div>
-              <div className="backdrop-blur-md bg-white/5 border border-white/20 rounded-xl overflow-hidden hover:bg-white/10 hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 group">
+              <div className="backdrop-blur-md bg-white/5 border border-white/20 rounded-xl overflow-hidden hover:bg-white/10 hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 group flex-shrink-0" style={{width: 'calc(33.333% - 16px)', minWidth: '300px'}}>
                 <div className="p-4">
                   <div className="w-full h-40 overflow-hidden rounded-lg group-hover:scale-105 transition-transform duration-300">
                     <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=300&fit=crop&crop=center" alt="NextBook" className="w-full h-full object-cover" />
@@ -168,7 +173,7 @@ const Home = () => {
                   <button className="text-cyan-400 hover:text-cyan-300 text-sm font-semibold transition-colors">View Demo →</button>
                 </div>
               </div>
-              <div className="backdrop-blur-md bg-white/5 border border-white/20 rounded-xl overflow-hidden hover:bg-white/10 hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 group">
+              <div className="backdrop-blur-md bg-white/5 border border-white/20 rounded-xl overflow-hidden hover:bg-white/10 hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 group flex-shrink-0" style={{width: 'calc(33.333% - 16px)', minWidth: '300px'}}>
                 <div className="p-4">
                   <div className="w-full h-40 overflow-hidden rounded-lg group-hover:scale-105 transition-transform duration-300">
                     <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=300&fit=crop&crop=center" alt="AI Analytics" className="w-full h-full object-cover" />
@@ -185,7 +190,7 @@ const Home = () => {
                   <button className="text-cyan-400 hover:text-cyan-300 text-sm font-semibold transition-colors">Explore AI →</button>
                 </div>
               </div>
-              <div className="backdrop-blur-md bg-white/5 border border-white/20 rounded-xl overflow-hidden hover:bg-white/10 hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 group">
+              <div className="backdrop-blur-md bg-white/5 border border-white/20 rounded-xl overflow-hidden hover:bg-white/10 hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 group flex-shrink-0" style={{width: 'calc(33.333% - 16px)', minWidth: '300px'}}>
                 <div className="p-4">
                   <div className="w-full h-40 overflow-hidden rounded-lg group-hover:scale-105 transition-transform duration-300">
                     <img src="https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=400&h=300&fit=crop&crop=center" alt="Agritech Drone" className="w-full h-full object-cover" />
@@ -202,7 +207,7 @@ const Home = () => {
                   <button className="text-cyan-400 hover:text-cyan-300 text-sm font-semibold transition-colors">View Projects →</button>
                 </div>
               </div>
-              <div className="backdrop-blur-md bg-white/5 border border-white/20 rounded-xl overflow-hidden hover:bg-white/10 hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 group">
+              <div className="backdrop-blur-md bg-white/5 border border-white/20 rounded-xl overflow-hidden hover:bg-white/10 hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 group flex-shrink-0" style={{width: 'calc(33.333% - 16px)', minWidth: '300px'}}>
                 <div className="p-4">
                   <div className="w-full h-40 overflow-hidden rounded-lg group-hover:scale-105 transition-transform duration-300">
                     <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=400&h=300&fit=crop&crop=center" alt="Data Security" className="w-full h-full object-cover" />
@@ -219,6 +224,9 @@ const Home = () => {
                   <button className="text-cyan-400 hover:text-cyan-300 text-sm font-semibold transition-colors">Security Details →</button>
                 </div>
               </div>
+            </div>
+            <div className="text-center mt-6">
+              <p className="text-gray-400 text-sm">← Scroll horizontally to view more features →</p>
             </div>
           </div>
         </section>
