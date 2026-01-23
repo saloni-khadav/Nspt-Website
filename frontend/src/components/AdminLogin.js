@@ -5,6 +5,7 @@ import Layout from './Layout';
 const AdminLogin = () => {
   const [credentials, setCredentials] = useState({ username: '', password: '' });
   const [error, setError] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleLogin = (e) => {
@@ -37,15 +38,22 @@ const AdminLogin = () => {
               />
             </div>
             
-            <div>
+            <div className="relative">
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 placeholder="Password"
                 value={credentials.password}
                 onChange={(e) => setCredentials({...credentials, password: e.target.value})}
-                className="w-full bg-transparent border-b-2 border-gray-600 focus:border-cyan-400 outline-none py-3 text-white placeholder-gray-400 transition-colors"
+                className="w-full bg-transparent border-b-2 border-gray-600 focus:border-cyan-400 outline-none py-3 text-white placeholder-gray-400 transition-colors pr-10"
                 required
               />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-0 top-3 text-gray-400 hover:text-cyan-400 transition-colors"
+              >
+                {showPassword ? '🙈' : '👁️'}
+              </button>
             </div>
             
             {error && (
