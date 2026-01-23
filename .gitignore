@@ -15,9 +15,6 @@ dist/
 .env.test.local
 .env.production.local
 
-# Service Account Keys (IMPORTANT)
-backend/config/service-account-key.json
-
 # Logs
 logs
 *.log

@@ -3,12 +3,6 @@ const multer = require('multer');
 const path = require('path');
 const router = express.Router();
 const CareerApplication = require('../models/CareerApplication');
-const GoogleDriveService = require('../services/googleDriveService');
-
-const driveService = new GoogleDriveService();
-
-// Test Google Drive connection on startup
-driveService.testConnection();
 
 // Configure multer for file uploads
 const storage = multer.diskStorage({
@@ -48,20 +42,6 @@ router.post('/apply', upload.single('resume'), async (req, res) => {
     await application.save();
     
     console.log('Application saved successfully:', application._id);
-    
-    // Try to create Google Sheet (ignore errors)
-    try {
-      console.log('Google Sheets integration disabled due to storage quota');
-      // const resumeLocalPath = req.file ? `http://localhost:5000/${req.file.path.replace(/\\/g, '/')}` : 'N/A';
-      // const sheetLink = await driveService.createApplicationSheet({
-      //   ...applicationData,
-      //   resumeLink: resumeLocalPath,
-      //   submittedAt: application.submittedAt
-      // });
-      // console.log('Google Sheet created:', sheetLink);
-    } catch (sheetError) {
-      console.log('Could not create Google Sheet:', sheetError.message);
-    }
     
     res.status(201).json({ 
       message: 'Application submitted successfully',
