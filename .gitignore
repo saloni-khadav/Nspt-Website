@@ -1,19 +1,40 @@
 # Dependencies
 node_modules/
+<<<<<<< HEAD
+=======
+*/node_modules/
+>>>>>>> saloni_dev
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+<<<<<<< HEAD
 # Production builds
 build/
 dist/
 
+=======
+>>>>>>> saloni_dev
 # Environment variables
 .env
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
+<<<<<<< HEAD
+=======
+*/.env
+
+# Uploads folder
+uploads/
+*/uploads/
+
+# Build directories
+build/
+dist/
+*/build/
+*/dist/
+>>>>>>> saloni_dev
 
 # Logs
 logs
@@ -25,6 +46,7 @@ pids
 *.seed
 *.pid.lock
 
+<<<<<<< HEAD
 # Coverage directory used by tools like istanbul
 coverage/
 
@@ -33,6 +55,11 @@ coverage/
 .idea/
 *.swp
 *.swo
+=======
+# Coverage directory
+coverage/
+*/coverage/
+>>>>>>> saloni_dev
 
 # OS generated files
 .DS_Store
@@ -41,4 +68,14 @@ coverage/
 .Spotlight-V100
 .Trashes
 ehthumbs.db
+<<<<<<< HEAD
 Thumbs.db
+=======
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+>>>>>>> saloni_dev
