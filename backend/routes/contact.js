@@ -32,4 +32,18 @@ router.get('/messages', async (req, res) => {
   }
 });
 
+// DELETE - Delete multiple contacts
+router.delete('/delete-multiple', async (req, res) => {
+  try {
+    const { ids } = req.body;
+    await Contact.deleteMany({ _id: { $in: ids } });
+    res.json({ message: 'Contacts deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ 
+      message: 'Error deleting contacts',
+      error: error.message 
+    });
+  }
+});
+
 module.exports = router;
