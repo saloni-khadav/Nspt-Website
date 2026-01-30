@@ -8,14 +8,14 @@ const contactSchema = new mongoose.Schema({
   lastName: {
     type: String
   },
-  company: {
-    type: String
-  },
   email: {
     type: String,
     required: true
   },
   phone: {
+    type: String
+  },
+  helpType: {
     type: String
   },
   message: {
