@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 * {
-  font-family: 'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Georgia, Times, 'Times New Roman', serif';
 }
 
 html {
