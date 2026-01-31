@@ -2,13 +2,20 @@ const express = require('express');
 const multer = require('multer');
 const path = require('path');
 const nodemailer = require('nodemailer');
+const fs = require('fs');
 const router = express.Router();
 const CareerApplication = require('../models/CareerApplication');
+
+// Ensure uploads directory exists
+const uploadsDir = path.join(__dirname, '../uploads/resumes');
+if (!fs.existsSync(uploadsDir)) {
+  fs.mkdirSync(uploadsDir, { recursive: true });
+}
 
 // Configure multer for file uploads
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'uploads/resumes/')
+    cb(null, uploadsDir)
   },
   filename: function (req, file, cb) {
     cb(null, Date.now() + '-' + file.originalname)
