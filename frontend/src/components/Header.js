@@ -208,7 +208,7 @@ const Header = () => {
               )}
             </div>
             <Link to="/about" className="text-gray-700 hover:text-blue-600">About</Link>
-            <Link to="/blog" className="text-gray-700 hover:text-blue-600">Blog</Link>
+            <Link to="/services" className="text-gray-700 hover:text-blue-600">Services</Link>
             <Link to="/careers" className="text-gray-700 hover:text-blue-600">Careers</Link>
             <div className="relative" ref={dropdownRef}>
               <div 
@@ -284,7 +284,7 @@ const Header = () => {
               )}
             </div>
             <Link to="/about" className="block text-gray-700 hover:text-blue-600 py-2">About</Link>
-            <Link to="/blog" className="block text-gray-700 hover:text-blue-600 py-2">Blog</Link>
+            <Link to="/services" className="block text-gray-700 hover:text-blue-600 py-2">Services</Link>
             <Link to="/careers" className="block text-gray-700 hover:text-blue-600 py-2">Careers</Link>
             <div>
               <button 

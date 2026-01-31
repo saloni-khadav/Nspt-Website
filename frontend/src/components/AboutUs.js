@@ -47,7 +47,7 @@ const AboutUs = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageSet((prev) => (prev + 1) % imageSets.length);
-    }, 3000);
+    }, 5000);
     return () => clearInterval(interval);
   }, []);
 
@@ -78,7 +78,7 @@ const AboutUs = () => {
     },
     {
       company: ' ECHOES',
-      image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80',
+      image: '/girl-img.png',
       testimonial: 'From planning to delivery, the team demonstrated professionalism and strong industry insight. We recommend NextSphere for technology-driven projects.',
       author: 'Jamie Brooks',
       position: 'Finance Systems Manager',
@@ -336,7 +336,7 @@ const AboutUs = () => {
             <div className="text-center">
               <div className="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden">
                 <img 
-                  src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" 
+                  src="girl-img.png" 
                   alt="Sydney Rao" 
                   className="w-full h-full object-cover"
                 />
@@ -542,29 +542,8 @@ const AboutUs = () => {
         </div>
       </section>
 
-       {/* Footer Section */}
-      <div className="relative z-10 bg-black">
-        <div className="max-w-7xl mx-auto px-6 py-16">
-          <div className="text-left mb-12">
-            <h2 className="text-4xl lg:text-6xl font-bold text-white mb-8 leading-tight">
-              Innovate. Build.<br />
-              Transform. Together.
-            </h2>
-          </div>
-          
-          <div className="flex flex-col lg:flex-row justify-between items-center pt-8 border-t border-gray-800">
-            <div>
-              <p className="text-gray-400">hello@nextsphere.co.in</p>
-            </div>
-            
-            <div className="flex space-x-6 mt-4 lg:mt-0">
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">Dribbble</a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">Instagram</a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">LinkedIn</a>
-            </div>
-          </div>
-        </div>
-      </div>
+     
+     
     </Layout>
   );
 };
