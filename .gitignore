@@ -1,65 +1,59 @@
 # Dependencies
 node_modules/
-<<<<<<< HEAD
-=======
 */node_modules/
->>>>>>> saloni_dev
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+package-lock.json
+*/package-lock.json
 
-<<<<<<< HEAD
-# Production builds
-build/
-dist/
-
-=======
->>>>>>> saloni_dev
 # Environment variables
 .env
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
-<<<<<<< HEAD
-=======
 */.env
+backend/.env
+frontend/.env
 
-# Uploads folder
-uploads/
-*/uploads/
-
-# Build directories
+# Production builds
 build/
 dist/
 */build/
 */dist/
->>>>>>> saloni_dev
+frontend/build/
+backend/dist/
+
+# Uploads and user generated content
+uploads/
+*/uploads/
+backend/uploads/
 
 # Logs
-logs
+logs/
 *.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 # Runtime data
-pids
+pids/
 *.pid
 *.seed
 *.pid.lock
 
-<<<<<<< HEAD
-# Coverage directory used by tools like istanbul
+# Coverage directory
 coverage/
+*/coverage/
 
 # IDE files
 .vscode/
 .idea/
 *.swp
 *.swo
-=======
-# Coverage directory
-coverage/
-*/coverage/
->>>>>>> saloni_dev
+*.sublime-project
+*.sublime-workspace
 
 # OS generated files
 .DS_Store
@@ -68,14 +62,59 @@ coverage/
 .Spotlight-V100
 .Trashes
 ehthumbs.db
-<<<<<<< HEAD
-Thumbs.db
-=======
 Thumbs.db
 
-# IDE files
-.vscode/
-.idea/
-*.swp
-*.swo
->>>>>>> saloni_dev
+# Service account keys and credentials
+config/service-account-key.json
+*.pem
+*.key
+!public.key
+
+# Database
+*.sqlite
+*.db
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+
+# Cache
+.cache/
+.parcel-cache/
+.next/
+.nuxt/
+
+# ESLint cache
+.eslintcache
+
+# Optional npm cache directory
+.npm
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# dotenv environment variables file
+.env.test
+
+# Stores VSCode versions used for testing VSCode extensions
+.vscode-test
+
+# Serverless directories
+.serverless/
+
+# FuseBox cache
+.fusebox/
+
+# DynamoDB Local files
+.dynamodb/
+
+# TernJS port file
+.tern-port
