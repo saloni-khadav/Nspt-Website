@@ -21,6 +21,8 @@ const AdminDashboard = () => {
   });
   const [selectedApplications, setSelectedApplications] = useState([]);
   const [selectAll, setSelectAll] = useState(false);
+  const [showRejectModal, setShowRejectModal] = useState(false);
+  const [rejectMessage, setRejectMessage] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -194,6 +196,40 @@ const AdminDashboard = () => {
     }
   };
 
+  const sendRejectionEmails = async () => {
+    if (selectedApplications.length === 0) {
+      alert('Please select applications to send rejection emails');
+      return;
+    }
+    
+    try {
+      const response = await fetch('http://localhost:5000/api/careers/send-rejection', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ 
+          ids: selectedApplications,
+          message: rejectMessage.trim() || undefined
+        }),
+      });
+      
+      if (response.ok) {
+        const result = await response.json();
+        alert(`Rejection emails sent to ${result.count} candidates`);
+        setShowRejectModal(false);
+        setRejectMessage('');
+        setSelectedApplications([]);
+        setSelectAll(false);
+      } else {
+        alert('Error sending rejection emails');
+      }
+    } catch (error) {
+      console.error('Error sending rejection emails:', error);
+      alert('Error sending rejection emails');
+    }
+  };
+
   const deleteSelectedApplications = async () => {
     if (selectedApplications.length === 0) {
       alert('Please select applications to delete');
@@ -325,12 +361,20 @@ const AdminDashboard = () => {
                     Clear Filters
                   </button>
                   {selectedApplications.length > 0 && (
-                    <button
-                      onClick={deleteSelectedApplications}
-                      className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded transition-colors"
-                    >
-                      Delete Selected ({selectedApplications.length})
-                    </button>
+                    <>
+                      <button
+                        onClick={() => setShowRejectModal(true)}
+                        className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded transition-colors"
+                      >
+                        Send Rejection Email ({selectedApplications.length})
+                      </button>
+                      <button
+                        onClick={deleteSelectedApplications}
+                        className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded transition-colors"
+                      >
+                        Delete Selected ({selectedApplications.length})
+                      </button>
+                    </>
                   )}
                 </div>
               </div>
@@ -525,6 +569,56 @@ const AdminDashboard = () => {
                     <p className="text-gray-500 text-sm">Customer inquiries will appear here when submitted</p>
                   </div>
                 )}
+              </div>
+            </div>
+          </div>
+        )}
+        
+        {/* Rejection Email Modal */}
+        {showRejectModal && (
+          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-[70] p-4">
+            <div className="bg-white border border-gray-200 rounded-2xl max-w-2xl w-full shadow-xl">
+              <div className="p-8">
+                <div className="flex justify-between items-center mb-6">
+                  <h2 className="text-2xl font-bold text-gray-900">Send Rejection Email</h2>
+                  <button 
+                    onClick={() => setShowRejectModal(false)}
+                    className="text-gray-400 hover:text-gray-600 text-2xl font-bold"
+                  >
+                    ×
+                  </button>
+                </div>
+                
+                <p className="text-gray-600 mb-4">
+                  Sending rejection email to {selectedApplications.length} selected candidate(s)
+                </p>
+                
+                <div className="mb-6">
+                  <label className="block text-gray-700 text-sm font-medium mb-2">
+                    Custom Message (Optional - Leave blank for default message)
+                  </label>
+                  <textarea
+                    value={rejectMessage}
+                    onChange={(e) => setRejectMessage(e.target.value)}
+                    placeholder="Enter custom rejection message or leave blank for default message..."
+                    className="w-full bg-white border border-gray-300 rounded px-3 py-2 text-gray-900 focus:border-blue-600 outline-none h-32 resize-none"
+                  />
+                </div>
+                
+                <div className="flex gap-4 justify-end">
+                  <button
+                    onClick={() => setShowRejectModal(false)}
+                    className="bg-gray-600 hover:bg-gray-700 text-white px-6 py-2 rounded transition-colors"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    onClick={sendRejectionEmails}
+                    className="bg-orange-600 hover:bg-orange-700 text-white px-6 py-2 rounded transition-colors"
+                  >
+                    Send Emails
+                  </button>
+                </div>
               </div>
             </div>
           </div>
