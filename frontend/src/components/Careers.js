@@ -6,6 +6,8 @@ import { toast } from 'react-toastify';
 const Careers = () => {
   const [selectedJob, setSelectedJob] = useState(null);
   const [showApplicationForm, setShowApplicationForm] = useState(false);
+  const [selectedDepartment, setSelectedDepartment] = useState('All');
+  const [selectedLocation, setSelectedLocation] = useState('All');
   const [applicationData, setApplicationData] = useState({
     fullName: '',
     email: '',
@@ -52,7 +54,16 @@ const Careers = () => {
       method: 'POST',
       body: formData
     })
-    .then(response => response.json())
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const contentType = response.headers.get('content-type');
+      if (!contentType || !contentType.includes('application/json')) {
+        throw new Error('Server returned non-JSON response. Backend server may not be running.');
+      }
+      return response.json();
+    })
     .then(data => {
       if (data.message) {
         toast.success('Application submitted and saved to database! ✅', {
@@ -76,11 +87,19 @@ const Careers = () => {
     })
     .catch(error => {
       console.error('Error:', error);
-      toast.error('Failed to submit application. Please try again.', {
-        position: 'top-right',
-        autoClose: 3000,
-        theme: 'dark',
-      });
+      if (error.message.includes('Backend server may not be running')) {
+        toast.error('Backend server is not running. Please start the server first.', {
+          position: 'top-right',
+          autoClose: 5000,
+          theme: 'dark',
+        });
+      } else {
+        toast.error('Failed to submit application. Please try again.', {
+          position: 'top-right',
+          autoClose: 3000,
+          theme: 'dark',
+        });
+      }
     });
   };
 
@@ -90,55 +109,141 @@ const Careers = () => {
   };
 
   const jobDetails = {
-    tech: {
-      title: "Software Engineer",
-      type: "Full-time",
+   
+    
+    devops: {
+      title: "DevOps Engineer",
+      type: "Intern",
       location: "Remote",
-      date: "16th Nov 2025",
-      description: "Looking for an experienced Software Engineer to develop cutting-edge AI solutions, build scalable applications, and drive innovation through modern technology stack.",
+      department: "Technology",
+      date: "2 feb 2026",
+      description: "Looking for a skilled DevOps Engineer to streamline development processes, automate deployments, and maintain robust CI/CD pipelines.",
       requirements: [
-        "Strong programming skills in Python, JavaScript, or Java",
-        "Experience with AI/ML frameworks and cloud platforms",
-        "Knowledge of modern web technologies and databases",
-        "Ability to work in agile development environments"
-      ],
-      benefits: [
-        "Competitive salary and equity options",
-        "Health and dental insurance coverage",
-        "Flexible working hours & remote options",
-        "Professional development opportunities",
-        "Latest technology and equipment",
-        "Innovation time for personal projects"
-      ],
-      color: "blue"
-    },
-    hr: {
-      title: "HR Specialist",
-      type: "Full-time",
-      location: "Hybrid",
-      date: "16th Nov 2025",
-      description: "Looking for an experienced HR Specialist to manage talent acquisition, employee relations, and drive organizational growth through effective people management.",
-      requirements: [
-        "Strong communication and interpersonal skills",
-        "Experience in recruitment and talent management",
-        "Knowledge of HR policies and employment law",
-        "Ability to handle confidential information"
+         "AWS knowledge required",
+         
+         "Recent passout or last semester students welcome",
+        "Experience with CI/CD tools (Jenkins, GitLab, GitHub Actions)",
+        
+        "Proficiency in scripting languages (Bash, Python)",
+        "Experience with monitoring and logging tools"
+       
+       
       ],
       benefits: [
         "Competitive salary and performance bonuses",
         "Comprehensive health insurance",
-        "Flexible timing & work culture",
-        "Professional HR certifications support",
-        "Team building and wellness programs",
-        "Career advancement opportunities"
+        "Flexible timing & modern work environment",
+        "DevOps certifications support",
+        "Latest automation tools access",
+        "Career growth opportunities"
       ],
-      color: "emerald"
+      color: "green"
+    },
+    softwareEngineer: {
+      title: "Software Engineer",
+      type: "Full-time",
+      location: "Remote",
+      department: "Technology",
+      date: "2 feb 2026",
+      description: "Looking for a passionate Software Engineer to build innovative applications, work with modern frameworks, and contribute to cutting-edge projects.",
+      requirements: [
+        "2-3 years of experience required",
+        "Strong programming skills in multiple languages",
+        "Experience with modern frameworks and libraries",
+        "Knowledge of software design patterns",
+        "Ability to work in collaborative team environment"
+      ],
+      benefits: [
+        "Competitive salary and equity options",
+        "Health and accidental insurance",
+        "Flexible timing & innovative culture",
+        "Technical training programs",
+        "Modern development tools",
+        "Fast-track career advancement"
+      ],
+      color: "blue"
+    },
+   
+    frontendIntern: {
+      title: "Frontend Developer",
+      type: "Intern",
+      location: "Remote",
+      department: "Technology",
+      date: "2 feb 2026",
+      description: "Looking for an enthusiastic Frontend Intern to work on user interfaces, learn modern web technologies, and contribute to exciting projects.",
+      requirements: [
+        "Basic knowledge of HTML, CSS, JavaScript",
+        "Familiarity with React or similar frameworks",
+        "Understanding of responsive design principles",
+        "Eagerness to learn and adapt quickly"
+      ],
+      benefits: [
+        "Competitive internship stipend",
+        "Remote work flexibility",
+        "Mentorship from experienced developers",
+        "Real project experience",
+        "Potential for full-time offer",
+        "Latest development tools access"
+      ],
+      color: "cyan"
+    },
+    seo: {
+      title: "SEO Specialist",
+      type: "Full-time",
+      location: "Remote",
+      department: "Marketing",
+      date: "2 feb 2026",
+      description: "Looking for an experienced SEO Specialist to optimize website visibility, improve search rankings, and drive organic traffic growth.",
+      requirements: [
+        "2 years of experience in SEO required",
+        "Strong knowledge of SEO tools and techniques",
+        "Experience with Google Analytics and Search Console",
+        "Understanding of content marketing strategies",
+        "Knowledge of technical SEO and website optimization",
+        "Expertise in keyword research and analysis",
+        "Experience with voice search optimization",
+        "Knowledge of Google algorithm updates and ranking factors"
+      ],
+      benefits: [
+        "Competitive salary and performance incentives",
+        "Health and wellness benefits",
+        "Flexible working arrangements",
+        "SEO certifications support",
+        "Access to premium SEO tools",
+        "Growth-oriented career path"
+      ],
+      color: "indigo"
+    },
+    salesExecutive: {
+      title: "Sales Executive",
+      type: "Full-time",
+      location: "Remote",
+      department: "Sales",
+      date: "2 feb 2026",
+      description: "Looking for a dynamic Sales Executive to drive business growth, build client relationships, and achieve sales targets in the technology sector.",
+      requirements: [
+        "2 years of experience in tech fields required",
+        "Strong communication and negotiation skills",
+        "Experience in B2B sales or client management",
+        "Understanding of technology products/services",
+        "Ability to meet targets and work under pressure"
+      ],
+      benefits: [
+        "Competitive salary and commission structure",
+        "Health and travel insurance",
+        "Performance-based bonuses",
+        "Sales training and development",
+        "Travel allowance and incentives",
+        "Leadership development opportunities"
+      ],
+      color: "red"
     },
     accounts: {
       title: "Financial Analyst",
-      type: "Full-time",
-      location: "On-site",
-      date: "16th Nov 2025",
+      type: "Intern",
+      location: "Remote",
+      department: "Finance",
+      date: "2 feb 2026",
       description: "Looking for a detail-oriented Financial Analyst to manage financial planning, analysis, and reporting to support strategic business decisions.",
       requirements: [
         "Strong analytical and mathematical skills",
@@ -160,7 +265,8 @@ const Careers = () => {
       title: "Operations Manager",
       type: "Full-time",
       location: "Hybrid",
-      date: "16th Nov 2025",
+      department: "Operations",
+      date: "2 feb 2026",
       description: "Looking for an experienced Operations Manager to streamline processes, manage teams, and ensure efficient business operations across all departments.",
       requirements: [
         "Strong leadership and management skills",
@@ -177,30 +283,15 @@ const Careers = () => {
         "Fast-track promotion opportunities"
       ],
       color: "orange"
-    },
-    agri: {
-      title: "Agricultural Research Scientist",
-      type: "Full-time",
-      location: "Field + Remote",
-      date: "16th Nov 2025",
-      description: "Looking for a passionate Agricultural Research Scientist to conduct field research, develop innovative farming solutions, and advance sustainable agriculture practices.",
-      requirements: [
-        "Strong research and analytical skills",
-        "Experience in agricultural science and field work",
-        "Knowledge of modern farming techniques",
-        "Ability to work in outdoor field conditions"
-      ],
-      benefits: [
-        "Competitive salary and research incentives",
-        "Health and field insurance coverage",
-        "Flexible field timing & research culture",
-        "Research publications support",
-        "Travel allowance for field roles",
-        "Innovation-driven career growth"
-      ],
-      color: "green"
     }
   };
+
+  // Filter jobs based on selected filters
+  const filteredJobs = Object.entries(jobDetails).filter(([key, job]) => {
+    const departmentMatch = selectedDepartment === 'All' || job.department === selectedDepartment;
+    const locationMatch = selectedLocation === 'All' || job.location === selectedLocation;
+    return departmentMatch && locationMatch;
+  });
 
   const openModal = (jobKey) => {
     setSelectedJob(jobDetails[jobKey]);
@@ -217,7 +308,7 @@ const Careers = () => {
           {/* Hero Section */}
           <div className="max-w-5xl mx-auto text-center mb-16">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-              We're building the future — Join us!
+              Join us. Build the future
             </h1>
             <div className="w-24 h-1 bg-blue-600 mx-auto mb-8 rounded-full"></div>
             <p className="text-base sm:text-lg text-gray-600 leading-relaxed max-w-4xl mx-auto">
@@ -230,79 +321,76 @@ const Careers = () => {
             <div className="bg-purple-50 border border-gray-200 rounded-2xl p-6 sm:p-12">
               <div className="text-center mb-8 sm:mb-12">
                 <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Current Openings</h2>
-                <p className="text-gray-600 text-base sm:text-lg">Join our dynamic team and shape the future of AI technology</p>
+                <p className="text-gray-600 text-base sm:text-lg mb-6">Join our dynamic team and shape the future of AI technology</p>
+                
+                {/* Filters */}
+                <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
+                  <div className="flex items-center gap-2">
+                    <label className="text-sm font-medium text-gray-700">Department:</label>
+                    <select 
+                      value={selectedDepartment} 
+                      onChange={(e) => setSelectedDepartment(e.target.value)}
+                      className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-gray-900"
+                    >
+                      <option value="All">All Departments</option>
+                      <option value="Technology">Technology</option>
+                      <option value="Marketing">Marketing</option>
+                      <option value="Sales">Sales</option>
+                      <option value="Finance">Finance</option>
+                      <option value="Operations">Operations</option>
+                    </select>
+                  </div>
+                  
+                  <div className="flex items-center gap-2">
+                    <label className="text-sm font-medium text-gray-700">Location:</label>
+                    <select 
+                      value={selectedLocation} 
+                      onChange={(e) => setSelectedLocation(e.target.value)}
+                      className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-gray-900"
+                    >
+                      <option value="All">All Locations</option>
+                      <option value="Remote">Remote</option>
+                      <option value="On-site">On-site</option>
+                      <option value="Hybrid">Hybrid</option>
+                    </select>
+                  </div>
+                </div>
               </div>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-                <div className="group bg-white border border-gray-200 rounded-2xl p-8 shadow-md hover:shadow-lg transition-all duration-300 relative overflow-hidden animated-border">
-                  <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:bg-blue-200 transition-colors duration-300 overflow-hidden">
-                    <img src="/circular.png" alt="Tech" className="w-full h-full object-contain" />
+                {filteredJobs.map(([key, job]) => (
+                  <div key={key} className="group bg-white border border-gray-200 rounded-2xl p-8 shadow-md hover:shadow-lg transition-all duration-300 relative overflow-hidden animated-border">
+                    <div className={`w-16 h-16 rounded-2xl flex items-center justify-center text-3xl mb-6 transition-colors duration-300 overflow-hidden ${
+                      job.color === 'green' ? 'bg-green-100 group-hover:bg-green-200' :
+                      job.color === 'blue' ? 'bg-blue-100 group-hover:bg-blue-200' :
+                      job.color === 'cyan' ? 'bg-cyan-100 group-hover:bg-cyan-200' :
+                      job.color === 'indigo' ? 'bg-indigo-100 group-hover:bg-indigo-200' :
+                      job.color === 'red' ? 'bg-red-100 group-hover:bg-red-200' :
+                      job.color === 'purple' ? 'bg-purple-100 group-hover:bg-purple-200' :
+                      job.color === 'orange' ? 'bg-orange-100 group-hover:bg-orange-200' :
+                      'bg-gray-100 group-hover:bg-gray-200'
+                    }`}>
+                      <img src={key === 'devops' ? '/setting.png' : key === 'accounts' || key === 'accountsIntern' ? '/account.png' : key === 'operations' ? '/operation.png' : '/circular.png'} alt={job.title} className="w-full h-full object-contain" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-gray-900 mb-3">{job.title}</h3>
+                    <p className="text-gray-600 text-sm mb-6 leading-relaxed">
+                      {key === 'devops' ? 'CI/CD Pipelines, Automation, Infrastructure Management' :
+                       key === 'softwareEngineer' ? 'Full Stack Development, Modern Frameworks, API Design' :
+                       key === 'frontendIntern' ? 'React Development, UI/UX Design, Modern Web Technologies' :
+                       key === 'seo' ? 'Search Optimization, Content Strategy, Analytics' :
+                       key === 'salesExecutive' ? 'Business Development, Client Relations, Target Achievement' :
+                       key === 'accounts' ? 'Financial Analysts, Accountants, Finance Managers' :
+                       key === 'operations' ? 'Operations Managers, Process Analysts, Quality Assurance' :
+                       'Technology Solutions and Innovation'}
+                    </p>
+                    <button onClick={() => openModal(key)} className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300">
+                      View Details 
+                      <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </button>
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-3">Tech</h3>
-                  <p className="text-gray-600 text-sm mb-6 leading-relaxed">Software Engineers, AI/ML Engineers, DevOps, Full Stack Developers</p>
-                  <button onClick={() => openModal('tech')} className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300">
-                    View Details 
-                    <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </button>
-                </div>
-                
-                <div className="group bg-white border border-gray-200 rounded-2xl p-8 shadow-md hover:shadow-lg transition-all duration-300 relative overflow-hidden animated-border">
-                  <div className="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:bg-green-200 transition-colors duration-300 overflow-hidden">
-                    <img src="/hr.png" alt="HR" className="w-10 h-10 object-contain" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-3">HR</h3>
-                  <p className="text-gray-600 text-sm mb-6 leading-relaxed">HR Specialists, Talent Acquisition, Employee Relations</p>
-                  <button onClick={() => openModal('hr')} className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300">
-                    View Details 
-                    <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </button>
-                </div>
-                
-                <div className="group bg-white border border-gray-200 rounded-2xl p-8 shadow-md hover:shadow-lg transition-all duration-300 relative overflow-hidden animated-border">
-                  <div className="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:bg-purple-200 transition-colors duration-300 overflow-hidden">
-                    <img src="/account.png" alt="Accounts" className="w-full h-full object-contain" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-3">Accounts</h3>
-                  <p className="text-gray-600 text-sm mb-6 leading-relaxed">Financial Analysts, Accountants, Finance Managers</p>
-                  <button onClick={() => openModal('accounts')} className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300">
-                    View Details 
-                    <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </button>
-                </div>
-                
-                <div className="group bg-white border border-gray-200 rounded-2xl p-8 shadow-md hover:shadow-lg transition-all duration-300 relative overflow-hidden animated-border">
-                  <div className="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:bg-orange-200 transition-colors duration-300 overflow-hidden">
-                    <img src="/operation.png" alt="Operations" className="w-full h-full object-contain" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-3">Operations</h3>
-                  <p className="text-gray-600 text-sm mb-6 leading-relaxed">Operations Managers, Process Analysts, Quality Assurance</p>
-                  <button onClick={() => openModal('operations')} className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300">
-                    View Details 
-                    <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </button>
-                </div>
-                
-                <div className="group bg-white border border-gray-200 rounded-2xl p-8 shadow-md hover:shadow-lg transition-all duration-300 relative overflow-hidden animated-border">
-                  <div className="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:bg-green-200 transition-colors duration-300 overflow-hidden">
-                    <img src="/agri.png" alt="Agri Research" className="w-full h-full object-contain" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-3">Agri Research</h3>
-                  <p className="text-gray-600 text-sm mb-6 leading-relaxed">Agricultural Scientists, Research Analysts, Field Specialists</p>
-                  <button onClick={() => openModal('agri')} className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300">
-                    View Details 
-                    <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </button>
-                </div>
+                ))}
               </div>
             </div>
           </div>

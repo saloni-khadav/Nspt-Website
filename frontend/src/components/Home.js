@@ -36,19 +36,19 @@ const Home = () => {
                 
                 {/* Trusted by Card */}
                 <div className="bg-purple-50 rounded-lg p-4 sm:p-8 shadow-md border border-gray-200 h-full flex flex-col justify-between">
-                  <p className="text-gray-500 text-sm mb-4">Trusted by top enterprises</p>
+                  <p className="text-gray-500 text-sm mb-4 font-bold">Trusted by top enterprises</p>
                   <div className="flex items-center space-x-2 sm:space-x-4">
                     <div className="flex items-center space-x-1 sm:space-x-2">
-                      <div className="w-6 h-6 bg-gray-200 rounded-full flex items-center justify-center">
-                        <span className="text-xs font-semibold">©</span>
+                      <div className="w-6 h-6 bg-gray-900 rounded-full flex items-center justify-center">
+                        <span className="text-lg font-bold text-white">L</span>
                       </div>
-                      <span className="text-xs sm:text-sm font-medium text-gray-700">LOGO</span>
+                      <span className="text-lg font-bold text-gray-900">LOGO</span>
                     </div>
                     <div className="flex items-center space-x-1 sm:space-x-2">
                       <div className="w-6 h-6 bg-gray-900 rounded-full flex items-center justify-center">
-                        <span className="text-xs font-semibold text-white">E</span>
+                        <span className="text-lg font-bold text-white">E</span>
                       </div>
-                      <span className="text-xs sm:text-sm font-medium text-gray-700">EGGS</span>
+                      <span className="text-lg font-bold text-gray-900">EGGS</span>
                     </div>
                   </div>
                 </div>
@@ -91,36 +91,50 @@ const Home = () => {
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 lg:mr-20">
               <div className="bg-white border border-gray-200 rounded-xl p-4 sm:p-10 text-center shadow-md hover:shadow-lg transition-shadow">
                 <div className="flex items-center justify-center space-x-1 sm:space-x-2">
-                  <div className="w-4 h-4 sm:w-6 sm:h-6 bg-gray-200 rounded-full"></div>
-                  <span className="text-xs sm:text-sm font-medium text-gray-700">LOGO</span>
+                  <div className="w-4 h-4 sm:w-6 sm:h-6 bg-gray-900 rounded-full flex items-center justify-center">
+                    <span className="text-lg font-bold text-white">L</span>
+                  </div>
+                  <span className="text-lg font-bold text-gray-900">LOGO</span>
                 </div>
               </div>
               <div className="bg-white border border-gray-200 rounded-xl p-4 sm:p-10 text-center shadow-md hover:shadow-lg transition-shadow">
                 <div className="flex items-center justify-center space-x-1 sm:space-x-2">
-                  <div className="w-4 h-4 sm:w-6 sm:h-6 bg-gray-900 rounded-full"></div>
-                  <span className="text-xs sm:text-sm font-medium text-gray-700">EGGS</span>
-                </div>
-              </div>
-              <div className="bg-white border border-gray-200 rounded-xl p-4 sm:p-10 text-center shadow-md hover:shadow-lg transition-shadow">
-                <div className="flex items-center justify-center">
-                  <span className="text-xs sm:text-sm font-medium text-gray-700">THE PAAK</span>
-                </div>
-              </div>
-              <div className="bg-white border border-gray-200 rounded-xl p-4 sm:p-10 text-center shadow-md hover:shadow-lg transition-shadow">
-                <div className="flex items-center justify-center space-x-1 sm:space-x-2">
-                  <div className="w-4 h-4 sm:w-6 sm:h-6 bg-gray-200 rounded"></div>
-                  <span className="text-xs sm:text-sm font-medium text-gray-700">IDEA</span>
+                  <div className="w-4 h-4 sm:w-6 sm:h-6 bg-gray-900 rounded-full flex items-center justify-center">
+                    <span className="text-lg font-bold text-white">E</span>
+                  </div>
+                  <span className="text-lg font-bold text-gray-900">EGGS</span>
                 </div>
               </div>
               <div className="bg-white border border-gray-200 rounded-xl p-4 sm:p-10 text-center shadow-md hover:shadow-lg transition-shadow">
                 <div className="flex items-center justify-center space-x-1 sm:space-x-2">
-                  <div className="w-4 h-4 sm:w-6 sm:h-6 bg-gray-200 rounded"></div>
-                  <span className="text-xs sm:text-sm font-medium text-gray-700">IDEA</span>
+                  <div className="w-4 h-4 sm:w-6 sm:h-6 bg-gray-900 rounded-full flex items-center justify-center">
+                    <span className="text-lg font-bold text-white">P</span>
+                  </div>
+                  <span className="text-lg font-bold text-gray-900">THE PAAK</span>
                 </div>
               </div>
               <div className="bg-white border border-gray-200 rounded-xl p-4 sm:p-10 text-center shadow-md hover:shadow-lg transition-shadow">
-                <div className="flex items-center justify-center">
-                  <span className="text-xs sm:text-sm font-medium text-gray-700">$ ECHOES</span>
+                <div className="flex items-center justify-center space-x-1 sm:space-x-2">
+                  <div className="w-4 h-4 sm:w-6 sm:h-6 bg-gray-900 rounded-full flex items-center justify-center">
+                    <span className="text-lg font-bold text-white">I</span>
+                  </div>
+                  <span className="text-lg font-bold text-gray-900">IDEA</span>
+                </div>
+              </div>
+              <div className="bg-white border border-gray-200 rounded-xl p-4 sm:p-10 text-center shadow-md hover:shadow-lg transition-shadow">
+                <div className="flex items-center justify-center space-x-1 sm:space-x-2">
+                  <div className="w-4 h-4 sm:w-6 sm:h-6 bg-gray-900 rounded-full flex items-center justify-center">
+                    <span className="text-lg font-bold text-white">T</span>
+                  </div>
+                  <span className="text-lg font-bold text-gray-900">TECHNO</span>
+                </div>
+              </div>
+              <div className="bg-white border border-gray-200 rounded-xl p-4 sm:p-10 text-center shadow-md hover:shadow-lg transition-shadow">
+                <div className="flex items-center justify-center space-x-1 sm:space-x-2">
+                  <div className="w-4 h-4 sm:w-6 sm:h-6 bg-gray-900 rounded-full flex items-center justify-center">
+                    <span className="text-lg font-bold text-white">E</span>
+                  </div>
+                  <span className="text-lg font-bold text-gray-900">ECHOES</span>
                 </div>
               </div>
             </div>
@@ -130,7 +144,7 @@ const Home = () => {
 
       {/* Technology Section - Dark */}
       <section className="bg-black text-white py-12 sm:py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 relative">
           <div className="text-center mb-8 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 leading-relaxed">
               Powering business<br/>
@@ -141,189 +155,219 @@ const Home = () => {
             </p>
           </div>
           
-          <div className="flex gap-4 sm:gap-8 overflow-x-auto pb-4" style={{scrollbarWidth: 'none', msOverflowStyle: 'none'}}>
-            <style jsx>{`
-              div::-webkit-scrollbar {
-                display: none;
-              }
-            `}</style>
-            {/* Website Design */}
-            <div className="bg-black rounded-none overflow-hidden flex-shrink-0 w-64 sm:w-80 flex flex-col">
-              <div className="h-64 sm:h-64 overflow-hidden">
-                <img 
-                  src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=300&fit=crop&crop=center" 
-                  alt="Website Design" 
-                  className="w-full h-full object-cover"
-                />
+          {/* Left Arrow */}
+          <button 
+            onClick={() => {
+              const container = document.getElementById('tech-cards-container');
+              container.scrollBy({ left: -320, behavior: 'smooth' });
+            }}
+            className="absolute -left-16 top-1/2 -translate-y-1/2 z-10 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full backdrop-blur-sm transition-all duration-300"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          
+          {/* Right Arrow */}
+          <button 
+            onClick={() => {
+              const container = document.getElementById('tech-cards-container');
+              container.scrollBy({ left: 320, behavior: 'smooth' });
+            }}
+            className="absolute -right-16 top-1/2 -translate-y-1/2 z-10 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full backdrop-blur-sm transition-all duration-300"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+          
+          <div>
+            
+            <div id="tech-cards-container" className="flex gap-4 sm:gap-8 overflow-x-auto pb-4 scroll-smooth" style={{scrollbarWidth: 'none', msOverflowStyle: 'none'}}>
+              <style jsx>{`
+                div::-webkit-scrollbar {
+                  display: none;
+                }
+              `}</style>
+              
+              {/* Website & App Solutions */}
+              <div className="bg-black rounded-none overflow-hidden flex-shrink-0 w-64 sm:w-80 flex flex-col">
+                <div className="h-64 sm:h-64 overflow-hidden">
+                  <img 
+                    src="/websiteandapp.jpg" 
+                    alt="Website & App Solutions" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="p-4 sm:p-6 flex-1 flex flex-col">
+                  <h3 className="text-lg sm:text-xl font-semibold mb-3">Website & App Solutions</h3>
+                  <p className="text-gray-300 text-sm leading-relaxed flex-1">
+                    Build custom websites and applications for seamless user experiences and reliable performance.
+                  </p>
+                  <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm mt-4 sm:mt-6 self-start">
+                    View
+                  </button>
+                </div>
               </div>
-              <div className="p-4 sm:p-6 flex-1 flex flex-col">
-                <h3 className="text-lg sm:text-xl font-semibold mb-3">Website Design</h3>
-                <p className="text-gray-300 text-sm leading-relaxed flex-1">
-                  Custom websites for your business needs.
-                </p>
-                <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm mt-4 sm:mt-6 self-start">
-                  Learn More
-                </button>
-              </div>
-            </div>
 
-            {/* App Development */}
-            <div className="bg-black rounded-none overflow-hidden flex-shrink-0 w-80 flex flex-col">
-              <div className="h-64 overflow-hidden">
-                <img 
-                  src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&h=300&fit=crop&crop=center" 
-                  alt="App Development" 
-                  className="w-full h-full object-cover"
-                />
+              {/* AI & Automation Tools */}
+              <div className="bg-black rounded-none overflow-hidden flex-shrink-0 w-80 flex flex-col">
+                <div className="h-64 overflow-hidden">
+                  <img 
+                    src="/Ai&automation.jpg" 
+                    alt="AI & Automation Tools" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="p-6 flex-1 flex flex-col">
+                  <h3 className="text-xl font-semibold mb-3">AI & Automation Tools</h3>
+                  <p className="text-gray-300 text-sm leading-relaxed flex-1">
+                    Enhance workflows and decision-making with intelligent automation and data-driven insights.
+                  </p>
+                  <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm mt-6 self-start">
+                    See More
+                  </button>
+                </div>
               </div>
-              <div className="p-6 flex-1 flex flex-col">
-                <h3 className="text-xl font-semibold mb-3">App Development</h3>
-                <p className="text-gray-300 text-sm leading-relaxed flex-1">
-                  Build scalable mobile and web apps.
-                </p>
-                <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm mt-6 self-start">
-                  Learn More
-                </button>
-              </div>
-            </div>
 
-            {/* AI Integration */}
-            <div className="bg-black rounded-none overflow-hidden flex-shrink-0 w-80 flex flex-col">
-              <div className="h-64 overflow-hidden">
-                <img 
-                  src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop&crop=center" 
-                  alt="AI Integration" 
-                  className="w-full h-full object-cover"
-                />
+              {/* Business Management Systems */}
+              <div className="bg-black rounded-none overflow-hidden flex-shrink-0 w-80 flex flex-col">
+                <div className="h-64 overflow-hidden">
+                  <img 
+                    src="/businessmanagement.jpg" 
+                    alt="Business Management Systems" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="p-6 flex-1 flex flex-col">
+                  <h3 className="text-xl font-semibold mb-3">Business Management Systems</h3>
+                  <p className="text-gray-300 text-sm leading-relaxed flex-1">
+                    Simplify operations with integrated ERP, HR, and accounting platforms for better accuracy and growth.
+                  </p>
+                  <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm mt-6 self-start">
+                    Details
+                  </button>
+                </div>
               </div>
-              <div className="p-6 flex-1 flex flex-col">
-                <h3 className="text-xl font-semibold mb-3">AI Integration</h3>
-                <p className="text-gray-300 text-sm leading-relaxed flex-1">
-                  Enhance workflows with smart automation.
-                </p>
-                <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm mt-6 self-start">
-                  Explore
-                </button>
-              </div>
-            </div>
 
-            {/* ERP Solutions */}
-            <div className="bg-black rounded-none overflow-hidden flex-shrink-0 w-80 flex flex-col">
-              <div className="h-64 overflow-hidden">
-                <img 
-                  src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=300&fit=crop&crop=center" 
-                  alt="ERP Solutions" 
-                  className="w-full h-full object-cover"
-                />
+              {/* ERP Solutions */}
+              <div className="bg-black rounded-none overflow-hidden flex-shrink-0 w-80 flex flex-col">
+                <div className="h-64 overflow-hidden">
+                  <img 
+                    src="/service-4-ERP-accou.png" 
+                    alt="ERP Solutions" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="p-6 flex-1 flex flex-col">
+                  <h3 className="text-xl font-semibold mb-3">ERP Solutions</h3>
+                  <p className="text-gray-300 text-sm leading-relaxed flex-1">
+                    Streamline your business operations with comprehensive enterprise resource planning systems for enhanced productivity and control.
+                  </p>
+                  <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm mt-6 self-start">
+                    Learn More
+                  </button>
+                </div>
               </div>
-              <div className="p-6 flex-1 flex flex-col">
-                <h3 className="text-xl font-semibold mb-3">ERP Solutions</h3>
-                <p className="text-gray-300 text-sm leading-relaxed flex-1">
-                  Streamline accounting and operations.
-                </p>
-                <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm mt-6 self-start">
-                  Learn More
-                </button>
-              </div>
-            </div>
 
-            {/* HR Applications */}
-            <div className="bg-black rounded-none overflow-hidden flex-shrink-0 w-80 flex flex-col">
-              <div className="h-64 overflow-hidden">
-                <img 
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop&crop=center" 
-                  alt="HR Applications" 
-                  className="w-full h-full object-cover"
-                />
+              {/* HR Applications */}
+              <div className="bg-black rounded-none overflow-hidden flex-shrink-0 w-80 flex flex-col">
+                <div className="h-64 overflow-hidden">
+                  <img 
+                    src="/hr-application-img.jfif" 
+                    alt="HR Applications" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="p-6 flex-1 flex flex-col">
+                  <h3 className="text-xl font-semibold mb-3">HR Applications</h3>
+                  <p className="text-gray-300 text-sm leading-relaxed flex-1">
+                    Manage your workforce efficiently with advanced HR tools for recruitment, payroll, performance tracking, and employee engagement.
+                  </p>
+                  <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm mt-6 self-start">
+                    Learn More
+                  </button>
+                </div>
               </div>
-              <div className="p-6 flex-1 flex flex-col">
-                <h3 className="text-xl font-semibold mb-3">HR Applications</h3>
-                <p className="text-gray-300 text-sm leading-relaxed flex-1">
-                  Manage teams and processes easily.
-                </p>
-                <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm mt-6 self-start">
-                  Learn More
-                </button>
-              </div>
-            </div>
 
-            {/* Consulting */}
-            <div className="bg-black rounded-none overflow-hidden flex-shrink-0 w-80 flex flex-col">
-              <div className="h-64 overflow-hidden">
-                <img 
-                  src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=400&h=300&fit=crop&crop=center" 
-                  alt="Consulting" 
-                  className="w-full h-full object-cover"
-                />
+              {/* Consulting */}
+              <div className="bg-black rounded-none overflow-hidden flex-shrink-0 w-80 flex flex-col">
+                <div className="h-64 overflow-hidden">
+                  <img 
+                    src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=400&h=300&fit=crop&crop=center" 
+                    alt="Consulting" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="p-6 flex-1 flex flex-col">
+                  <h3 className="text-xl font-semibold mb-3">Technology Consulting</h3>
+                  <p className="text-gray-300 text-sm leading-relaxed flex-1">
+                    Get expert guidance on digital transformation strategies, technology adoption, and business process optimization for sustainable growth.
+                  </p>
+                  <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm mt-6 self-start">
+                    Learn More
+                  </button>
+                </div>
               </div>
-              <div className="p-6 flex-1 flex flex-col">
-                <h3 className="text-xl font-semibold mb-3">Consulting</h3>
-                <p className="text-gray-300 text-sm leading-relaxed flex-1">
-                  Expert advice for digital growth.
-                </p>
-                <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm mt-6 self-start">
-                  Learn More
-                </button>
-              </div>
-            </div>
 
-            {/* R&D Services */}
-            <div className="bg-black rounded-none overflow-hidden flex-shrink-0 w-80 flex flex-col">
-              <div className="h-64 overflow-hidden">
-                <img 
-                  src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=300&fit=crop&crop=center" 
-                  alt="R&D Services" 
-                  className="w-full h-full object-cover"
-                />
+              {/* R&D Services */}
+              <div className="bg-black rounded-none overflow-hidden flex-shrink-0 w-80 flex flex-col">
+                <div className="h-64 overflow-hidden">
+                  <img 
+                    src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=300&fit=crop&crop=center" 
+                    alt="R&D Services" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="p-6 flex-1 flex flex-col">
+                  <h3 className="text-xl font-semibold mb-3">R&D Services</h3>
+                  <p className="text-gray-300 text-sm leading-relaxed flex-1">
+                    Drive innovation with cutting-edge research and development services, exploring emerging technologies and creating future-ready solutions.
+                  </p>
+                  <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm mt-6 self-start">
+                    Explore
+                  </button>
+                </div>
               </div>
-              <div className="p-6 flex-1 flex flex-col">
-                <h3 className="text-xl font-semibold mb-3">R&D Services</h3>
-                <p className="text-gray-300 text-sm leading-relaxed flex-1">
-                  Drive progress with new technologies.
-                </p>
-                <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm mt-6 self-start">
-                  Explore
-                </button>
-              </div>
-            </div>
 
-            {/* Cloud Services */}
-            <div className="bg-black rounded-none overflow-hidden flex-shrink-0 w-80 flex flex-col">
-              <div className="h-64 overflow-hidden">
-                <img 
-                  src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=300&fit=crop&crop=center" 
-                  alt="Cloud Services" 
-                  className="w-full h-full object-cover"
-                />
+              {/* Cloud Services */}
+              <div className="bg-black rounded-none overflow-hidden flex-shrink-0 w-80 flex flex-col">
+                <div className="h-64 overflow-hidden">
+                  <img 
+                    src="/cloud-services.jfif" 
+                    alt="Cloud Services" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="p-6 flex-1 flex flex-col">
+                  <h3 className="text-xl font-semibold mb-3">Cloud Services</h3>
+                  <p className="text-gray-300 text-sm leading-relaxed flex-1">
+                    Leverage secure, scalable cloud infrastructure and services for improved flexibility, cost efficiency, and seamless remote collaboration.
+                  </p>
+                  <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm mt-6 self-start">
+                    Learn More
+                  </button>
+                </div>
               </div>
-              <div className="p-6 flex-1 flex flex-col">
-                <h3 className="text-xl font-semibold mb-3">Cloud Services</h3>
-                <p className="text-gray-300 text-sm leading-relaxed flex-1">
-                  Secure, scalable cloud solutions.
-                </p>
-                <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm mt-6 self-start">
-                  Learn More
-                </button>
-              </div>
-            </div>
 
-            {/* Support */}
-            <div className="bg-black rounded-none overflow-hidden flex-shrink-0 w-80 flex flex-col">
-              <div className="h-64 overflow-hidden">
-                <img 
-                  src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=300&fit=crop&crop=center" 
-                  alt="Support" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="p-6 flex-1 flex flex-col">
-                <h3 className="text-xl font-semibold mb-3">Support</h3>
-                <p className="text-gray-300 text-sm leading-relaxed flex-1">
-                  Ongoing help for your projects.
-                </p>
-                <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm mt-6 self-start">
-                  Get Help
-                </button>
+              {/* Support */}
+              <div className="bg-black rounded-none overflow-hidden flex-shrink-0 w-80 flex flex-col">
+                <div className="h-64 overflow-hidden">
+                  <img 
+                    src="/support-img.jfif" 
+                    alt="Support" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="p-6 flex-1 flex flex-col">
+                  <h3 className="text-xl font-semibold mb-3">Technical Support</h3>
+                  <p className="text-gray-300 text-sm leading-relaxed flex-1">
+                    Receive comprehensive technical support and maintenance services to ensure optimal performance and minimize downtime for your systems.
+                  </p>
+                  <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm mt-6 self-start">
+                    Get Help
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -412,13 +456,13 @@ const Home = () => {
               {/* Right - Content */}
               <div className="w-2/3 space-y-6 p-8 mt-0">
                 <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 bg-gray-200 rounded flex items-center justify-center">
-                    <span className="text-xs font-semibold">IDEA</span>
+                  <div className="w-8 h-8 bg-gray-900 rounded-full flex items-center justify-center">
+                    <span className="text-lg font-bold text-white">I</span>
                   </div>
-                  <span className="text-xl font-bold text-gray-900">IDEA</span>
+                  <span className="text-lg font-bold text-gray-900">IDEA</span>
                 </div>
                 
-                <p className="text-gray-700 text-lg leading-relaxed font-bold">
+                <p className="text-gray-700 text-lg leading-relaxed font-bold" style={{fontFamily: 'Georgia, serif'}}>
                   Delivered a robust platform on schedule. The process was efficient and the team's expertise ensured a smooth launch.
                 </p>
                 
