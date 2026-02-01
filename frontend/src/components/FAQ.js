@@ -47,8 +47,7 @@ const FAQ = () => {
                 onClick={() => toggleFAQ(index)}
                 className="w-full text-left py-6 flex justify-between items-center hover:text-gray-300 transition-colors"
               >
-                <div className="h-px bg-gray-700 flex-1"></div>
-                <span className="text-white text-2xl ml-4">
+                <span className="text-white text-2xl ml-auto">
                   {openIndex === index ? '−' : '+'}
                 </span>
               </button>
