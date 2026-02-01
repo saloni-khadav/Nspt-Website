@@ -43,7 +43,9 @@ const Header = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <img src="/logo1.png" alt="NextSphere" className="w-25 h-12" />
+            <Link to="/">
+              <img src="/logo1.png" alt="NextSphere" className="w-25 h-12 cursor-pointer" />
+            </Link>
           </div>
           
           {/* Navigation */}

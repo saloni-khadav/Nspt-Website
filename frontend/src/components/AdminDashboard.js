@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Layout from './Layout';
+import AdminLayout from './AdminLayout';
+import ContactInquiries from './ContactInquiries';
 
 const AdminDashboard = () => {
   const [applications, setApplications] = useState([]);
   const [filteredApplications, setFilteredApplications] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [showInquiries, setShowInquiries] = useState(false);
+  const [activeSection, setActiveSection] = useState('careers'); // New state for sidebar navigation
   const [inquiries, setInquiries] = useState([]);
   const [filteredInquiries, setFilteredInquiries] = useState([]);
   const [inquiryFilters, setInquiryFilters] = useState({
@@ -21,6 +22,8 @@ const AdminDashboard = () => {
   });
   const [selectedApplications, setSelectedApplications] = useState([]);
   const [selectAll, setSelectAll] = useState(false);
+  const [showRejectModal, setShowRejectModal] = useState(false);
+  const [rejectMessage, setRejectMessage] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -31,7 +34,10 @@ const AdminDashboard = () => {
       return;
     }
     fetchApplications();
-  }, [navigate]);
+    if (activeSection === 'inquiries') {
+      fetchInquiries();
+    }
+  }, [navigate, activeSection]);
 
   const handleLogout = () => {
     localStorage.removeItem('isAdmin');
@@ -118,7 +124,7 @@ const AdminDashboard = () => {
   };
 
   const handleViewInquiries = () => {
-    navigate('/contact-inquiries');
+    setActiveSection('inquiries');
   };
 
   const applyFilters = () => {
@@ -194,6 +200,40 @@ const AdminDashboard = () => {
     }
   };
 
+  const sendRejectionEmails = async () => {
+    if (selectedApplications.length === 0) {
+      alert('Please select applications to send rejection emails');
+      return;
+    }
+    
+    try {
+      const response = await fetch('http://localhost:5000/api/careers/send-rejection', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ 
+          ids: selectedApplications,
+          message: rejectMessage.trim() || undefined
+        }),
+      });
+      
+      if (response.ok) {
+        const result = await response.json();
+        alert(`Rejection emails sent to ${result.count} candidates`);
+        setShowRejectModal(false);
+        setRejectMessage('');
+        setSelectedApplications([]);
+        setSelectAll(false);
+      } else {
+        alert('Error sending rejection emails');
+      }
+    } catch (error) {
+      console.error('Error sending rejection emails:', error);
+      alert('Error sending rejection emails');
+    }
+  };
+
   const deleteSelectedApplications = async () => {
     if (selectedApplications.length === 0) {
       alert('Please select applications to delete');
@@ -228,309 +268,259 @@ const AdminDashboard = () => {
 
   if (loading) {
     return (
-      <Layout>
-        <div className="min-h-screen bg-white flex items-center justify-center">
+      <AdminLayout activeSection={activeSection} setActiveSection={setActiveSection}>
+        <div className="flex items-center justify-center h-64">
           <div className="text-gray-900 text-xl">Loading applications...</div>
         </div>
-      </Layout>
+      </AdminLayout>
     );
   }
 
   return (
-    <Layout>
-      <div className="min-h-screen bg-white pt-32 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex justify-between items-center mb-8">
-            <h1 className="text-4xl font-bold text-gray-900">Career Applications Dashboard</h1>
-            <div className="flex gap-4">
-              <button 
-                onClick={handleViewInquiries}
-                className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-lg transition-colors"
-              >
-                View Inquiry
-              </button>
-              <button 
-                onClick={exportToExcel}
-                className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg transition-colors"
-              >
-                Export to Excel
-              </button>
-              <button 
-                onClick={handleLogout}
-                className="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-lg transition-colors"
-              >
-                Logout
-              </button>
+    <AdminLayout activeSection={activeSection} setActiveSection={setActiveSection}>
+      {activeSection === 'careers' && (
+        <div className="space-y-6 min-w-[800px] sm:min-w-0">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+            <div>
+              <h3 className="text-lg font-semibold text-gray-900">Total Applications: {filteredApplications.length}</h3>
             </div>
+            <button 
+              onClick={exportToExcel}
+              className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition-colors w-full sm:w-auto"
+            >
+              Export to Excel
+            </button>
           </div>
           
-          <div className="bg-purple-50 border border-gray-200 rounded-2xl p-8 shadow-lg">
-            <div className="mb-6">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">Total Applications: {filteredApplications.length}</h2>
-              
-              {/* Filter Section */}
-              <div className="bg-white border border-gray-200 rounded-xl p-6 mb-6 shadow-md">
-                <h3 className="text-lg font-semibold text-blue-600 mb-4">Filters</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                  <div>
-                    <label className="block text-gray-700 text-sm mb-2">From Date</label>
-                    <input
-                      type="date"
-                      value={filters.dateFrom}
-                      onChange={(e) => setFilters({...filters, dateFrom: e.target.value})}
-                      className="w-full bg-white border border-gray-300 rounded px-3 py-2 text-gray-900 focus:border-blue-600 outline-none"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-gray-700 text-sm mb-2">To Date</label>
-                    <input
-                      type="date"
-                      value={filters.dateTo}
-                      onChange={(e) => setFilters({...filters, dateTo: e.target.value})}
-                      className="w-full bg-white border border-gray-300 rounded px-3 py-2 text-gray-900 focus:border-blue-600 outline-none"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-gray-700 text-sm mb-2">Experience</label>
-                    <input
-                      type="text"
-                      placeholder="e.g. 2-4 (range), 2 to 5 (range), or 3 (exact)"
-                      value={filters.experience}
-                      onChange={(e) => setFilters({...filters, experience: e.target.value})}
-                      className="w-full bg-white border border-gray-300 rounded px-3 py-2 text-gray-900 focus:border-blue-600 outline-none"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-gray-700 text-sm mb-2">Qualification</label>
-                    <input
-                      type="text"
-                      placeholder="e.g. B.Tech"
-                      value={filters.qualification}
-                      onChange={(e) => setFilters({...filters, qualification: e.target.value})}
-                      className="w-full bg-white border border-gray-300 rounded px-3 py-2 text-gray-900 focus:border-blue-600 outline-none"
-                    />
-                  </div>
-                </div>
-                <div className="flex gap-4 mt-4">
-                  <button
-                    onClick={applyFilters}
-                    className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition-colors"
-                  >
-                    Apply Filters
-                  </button>
-                  <button
-                    onClick={clearFilters}
-                    className="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded transition-colors"
-                  >
-                    Clear Filters
-                  </button>
-                  {selectedApplications.length > 0 && (
-                    <button
-                      onClick={deleteSelectedApplications}
-                      className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded transition-colors"
-                    >
-                      Delete Selected ({selectedApplications.length})
-                    </button>
-                  )}
-                </div>
+          {/* Filter Section */}
+          <div className="bg-white border border-gray-200 rounded-xl p-4 md:p-6 shadow-sm">
+            <h3 className="text-lg font-semibold text-blue-600 mb-4">Filters</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div>
+                <label className="block text-gray-700 text-sm mb-2">From Date</label>
+                <input
+                  type="date"
+                  value={filters.dateFrom}
+                  onChange={(e) => setFilters({...filters, dateFrom: e.target.value})}
+                  className="w-full bg-white border border-gray-300 rounded px-3 py-2 text-gray-900 focus:border-blue-600 outline-none text-sm"
+                />
+              </div>
+              <div>
+                <label className="block text-gray-700 text-sm mb-2">To Date</label>
+                <input
+                  type="date"
+                  value={filters.dateTo}
+                  onChange={(e) => setFilters({...filters, dateTo: e.target.value})}
+                  className="w-full bg-white border border-gray-300 rounded px-3 py-2 text-gray-900 focus:border-blue-600 outline-none text-sm"
+                />
+              </div>
+              <div>
+                <label className="block text-gray-700 text-sm mb-2">Experience</label>
+                <input
+                  type="text"
+                  placeholder="e.g. 2-4 years"
+                  value={filters.experience}
+                  onChange={(e) => setFilters({...filters, experience: e.target.value})}
+                  className="w-full bg-white border border-gray-300 rounded px-3 py-2 text-gray-900 focus:border-blue-600 outline-none text-sm"
+                />
+              </div>
+              <div>
+                <label className="block text-gray-700 text-sm mb-2">Qualification</label>
+                <input
+                  type="text"
+                  placeholder="e.g. B.Tech"
+                  value={filters.qualification}
+                  onChange={(e) => setFilters({...filters, qualification: e.target.value})}
+                  className="w-full bg-white border border-gray-300 rounded px-3 py-2 text-gray-900 focus:border-blue-600 outline-none text-sm"
+                />
               </div>
             </div>
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 mt-4">
+              <button
+                onClick={applyFilters}
+                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition-colors text-sm"
+              >
+                Apply Filters
+              </button>
+              <button
+                onClick={clearFilters}
+                className="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded transition-colors text-sm"
+              >
+                Clear Filters
+              </button>
+              {selectedApplications.length > 0 && (
+                <>
+                  <button
+                    onClick={() => setShowRejectModal(true)}
+                    className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded transition-colors text-sm"
+                  >
+                    <span className="hidden sm:inline">Send Rejection Email</span>
+                    <span className="sm:hidden">Reject</span> ({selectedApplications.length})
+                  </button>
+                  <button
+                    onClick={deleteSelectedApplications}
+                    className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded transition-colors text-sm"
+                  >
+                    <span className="hidden sm:inline">Delete Selected</span>
+                    <span className="sm:hidden">Delete</span> ({selectedApplications.length})
+                  </button>
+                </>
+              )}
+            </div>
+          </div>
 
-            <div className="overflow-x-auto">
-              <table className="w-full text-left bg-white rounded-lg shadow-md">
-                <thead>
-                  <tr className="border-b border-gray-200 bg-gray-50">
-                    <th className="text-black font-bold py-3 px-4">
-                      <input
-                        type="checkbox"
-                        checked={selectAll}
-                        onChange={handleSelectAll}
-                        className="mr-2"
-                      />
-                      Select All
-                    </th>
-                    <th className="text-black font-bold py-3 px-4">Name</th>
-                    <th className="text-black font-bold py-3 px-4">Email</th>
-                    <th className="text-black font-bold py-3 px-4">Position</th>
-                    <th className="text-black font-bold py-3 px-4">Experience</th>
-                    <th className="text-black font-bold py-3 px-4">Qualification</th>
-                    <th className="text-black font-bold py-3 px-4">Resume</th>
-                    <th className="text-black font-bold py-3 px-4">Date</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {filteredApplications.map((app, index) => (
-                    <tr key={app._id} className="border-b border-gray-200 hover:bg-gray-50">
-                      <td className="text-gray-700 py-4 px-4">
+          <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+            <div className="overflow-x-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
+              <div className="max-h-[400px] sm:max-h-[500px] lg:max-h-[600px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
+                <table className="w-full text-left min-w-[700px]">
+                  <thead className="sticky top-0 bg-gray-50 z-10">
+                    <tr className="border-b border-gray-200">
+                      <th className="text-black font-bold py-2 sm:py-3 px-2 sm:px-4 text-xs sm:text-sm">
                         <input
                           type="checkbox"
-                          checked={selectedApplications.includes(app._id)}
-                          onChange={() => handleSelectApplication(app._id)}
+                          checked={selectAll}
+                          onChange={handleSelectAll}
+                          className="mr-1 sm:mr-2"
                         />
-                      </td>
-                      <td className="text-gray-700 py-4 px-4">{app.fullName}</td>
-                      <td className="text-gray-700 py-4 px-4">{app.email}</td>
-                      <td className="text-gray-700 py-4 px-4">{app.position}</td>
-                      <td className="text-gray-700 py-4 px-4">{app.experience}</td>
-                      <td className="text-gray-700 py-4 px-4">{app.qualification}</td>
-                      <td className="text-gray-700 py-4 px-4">
-                        <a 
-                          href={`http://localhost:5000/${app.resumePath}`}
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          className="text-blue-600 hover:text-blue-700 underline"
-                        >
-                          View Resume
-                        </a>
-                      </td>
-                      <td className="text-gray-700 py-4 px-4">
-                        {new Date(app.submittedAt).toLocaleDateString()}
-                      </td>
+                        <span className="hidden sm:inline">Select All</span>
+                        <span className="sm:hidden">All</span>
+                      </th>
+                      <th className="text-black font-bold py-2 sm:py-3 px-2 sm:px-4 text-xs sm:text-sm">Name</th>
+                      <th className="text-black font-bold py-2 sm:py-3 px-2 sm:px-4 text-xs sm:text-sm">Email</th>
+                      <th className="text-black font-bold py-2 sm:py-3 px-2 sm:px-4 text-xs sm:text-sm">Position</th>
+                      <th className="text-black font-bold py-2 sm:py-3 px-2 sm:px-4 text-xs sm:text-sm">Experience</th>
+                      <th className="text-black font-bold py-2 sm:py-3 px-2 sm:px-4 text-xs sm:text-sm">Qualification</th>
+                      <th className="text-black font-bold py-2 sm:py-3 px-2 sm:px-4 text-xs sm:text-sm">Resume</th>
+                      <th className="text-black font-bold py-2 sm:py-3 px-2 sm:px-4 text-xs sm:text-sm">Date</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-
-            {filteredApplications.length === 0 && (
-              <div className="text-center py-8">
-                <p className="text-gray-600 text-lg">No applications found matching the filters.</p>
-              </div>
-            )}
-          </div>
-        </div>
-
-        {/* Inquiries Modal */}
-        {showInquiries && (
-          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-[60] p-4 pt-20">
-            <div className="bg-white border border-gray-200 rounded-2xl max-w-6xl w-full max-h-[90vh] overflow-y-auto shadow-xl">
-              <div className="p-8">
-                {/* Header */}
-                <div className="flex justify-between items-center mb-8 pb-4 border-b border-gray-200">
-                  <div>
-                    <h2 className="text-4xl font-bold text-gray-900 mb-2">Contact Inquiries</h2>
-                    <p className="text-gray-600">Manage customer inquiries and support requests</p>
-                  </div>
-                  <button 
-                    onClick={() => setShowInquiries(false)}
-                    className="text-gray-400 hover:text-gray-600 text-3xl font-bold transition-colors bg-gray-100 hover:bg-gray-200 rounded-full w-12 h-12 flex items-center justify-center"
-                  >
-                    ×
-                  </button>
-                </div>
-
-                {/* Stats */}
-                <div className="bg-purple-50 rounded-xl p-6 mb-6">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <h3 className="text-lg font-semibold text-gray-900">Total Inquiries</h3>
-                      <p className="text-3xl font-bold text-blue-600">{filteredInquiries.length}</p>
-                    </div>
-                    <div className="bg-blue-100 rounded-full p-4">
-                      <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Inquiry Filters */}
-                <div className="bg-white border border-gray-200 rounded-xl p-6 mb-6 shadow-sm">
-                  <h3 className="text-lg font-semibold text-blue-600 mb-4">Inquiry Filters</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-gray-700 text-sm mb-2">Date</label>
-                      <input
-                        type="date"
-                        value={inquiryFilters.date}
-                        onChange={(e) => setInquiryFilters({...inquiryFilters, date: e.target.value})}
-                        className="w-full bg-white border border-gray-300 rounded px-3 py-2 text-gray-900 focus:border-blue-600 outline-none"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-gray-700 text-sm mb-2">Help Type</label>
-                      <input
-                        type="text"
-                        placeholder="e.g. business, technical"
-                        value={inquiryFilters.helpType}
-                        onChange={(e) => setInquiryFilters({...inquiryFilters, helpType: e.target.value})}
-                        className="w-full bg-white border border-gray-300 rounded px-3 py-2 text-gray-900 focus:border-blue-600 outline-none"
-                      />
-                    </div>
-                  </div>
-                  <div className="flex gap-4 mt-4">
-                    <button
-                      onClick={applyInquiryFilters}
-                      className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition-colors"
-                    >
-                      Apply Filters
-                    </button>
-                    <button
-                      onClick={clearInquiryFilters}
-                      className="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded transition-colors"
-                    >
-                      Clear Filters
-                    </button>
-                  </div>
-                </div>
-
-                {/* Table */}
-                <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm">
-                  <div className="overflow-x-auto">
-                    <table className="w-full text-left">
-                      <thead>
-                        <tr className="bg-gray-50 border-b border-gray-200">
-                          <th className="text-black font-bold py-4 px-6">Name</th>
-                          <th className="text-black font-bold py-4 px-6">Email</th>
-                          <th className="text-black font-bold py-4 px-6">Phone</th>
-                          <th className="text-black font-bold py-4 px-6">Help Type</th>
-                          <th className="text-black font-bold py-4 px-6">Message</th>
-                          <th className="text-black font-bold py-4 px-6">Date</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {filteredInquiries.map((inquiry, index) => (
-                          <tr key={inquiry._id || index} className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
-                            <td className="text-gray-700 py-4 px-6 font-medium">{`${inquiry.firstName || ''} ${inquiry.lastName || ''}`.trim()}</td>
-                            <td className="text-gray-700 py-4 px-6">{inquiry.email}</td>
-                            <td className="text-gray-700 py-4 px-6">{inquiry.phone}</td>
-                            <td className="text-gray-700 py-4 px-6">
-                              <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
-                                {inquiry.helpType}
-                              </span>
-                            </td>
-                            <td className="text-gray-700 py-4 px-6 max-w-xs">
-                              <div className="truncate" title={inquiry.message}>
-                                {inquiry.message}
-                              </div>
-                            </td>
-                            <td className="text-gray-700 py-4 px-6 text-sm">
-                              {inquiry.submittedAt ? new Date(inquiry.submittedAt).toLocaleDateString() : 'N/A'}
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-
-                {filteredInquiries.length === 0 && (
-                  <div className="text-center py-12">
-                    <div className="bg-gray-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                      <svg className="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2M4 13h2m13-8l-4 4-4-4m0 0l-4 4-4-4" />
-                      </svg>
-                    </div>
-                    <p className="text-gray-600 text-lg font-medium">No inquiries found</p>
-                    <p className="text-gray-500 text-sm">Customer inquiries will appear here when submitted</p>
+                  </thead>
+                  <tbody>
+                    {filteredApplications.map((app, index) => (
+                      <tr key={app._id} className="border-b border-gray-200 hover:bg-gray-50">
+                        <td className="text-gray-700 py-2 sm:py-4 px-2 sm:px-4">
+                          <input
+                            type="checkbox"
+                            checked={selectedApplications.includes(app._id)}
+                            onChange={() => handleSelectApplication(app._id)}
+                          />
+                        </td>
+                        <td className="text-gray-700 py-2 sm:py-4 px-2 sm:px-4 text-xs sm:text-sm">
+                          <div className="max-w-[100px] sm:max-w-none truncate" title={app.fullName}>
+                            {app.fullName}
+                          </div>
+                        </td>
+                        <td className="text-gray-700 py-2 sm:py-4 px-2 sm:px-4 text-xs sm:text-sm">
+                          <div className="max-w-[120px] sm:max-w-none truncate" title={app.email}>
+                            {app.email}
+                          </div>
+                        </td>
+                        <td className="text-gray-700 py-2 sm:py-4 px-2 sm:px-4 text-xs sm:text-sm">
+                          <div className="max-w-[80px] sm:max-w-none truncate" title={app.position}>
+                            {app.position}
+                          </div>
+                        </td>
+                        <td className="text-gray-700 py-2 sm:py-4 px-2 sm:px-4 text-xs sm:text-sm">{app.experience}</td>
+                        <td className="text-gray-700 py-2 sm:py-4 px-2 sm:px-4 text-xs sm:text-sm">
+                          <div className="max-w-[80px] sm:max-w-none truncate" title={app.qualification}>
+                            {app.qualification}
+                          </div>
+                        </td>
+                        <td className="text-gray-700 py-2 sm:py-4 px-2 sm:px-4">
+                          {app.resumePath ? (
+                            <a 
+                              href={`http://localhost:5000/api/careers/resume/${app.resumePath}`}
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              className="text-blue-600 hover:text-blue-700 underline text-xs sm:text-sm"
+                            >
+                              View
+                            </a>
+                          ) : (
+                            <span className="text-gray-400 text-xs sm:text-sm">No file</span>
+                          )}
+                        </td>
+                        <td className="text-gray-700 py-2 sm:py-4 px-2 sm:px-4 text-xs sm:text-sm">
+                          <div className="whitespace-nowrap">
+                            {new Date(app.submittedAt).toLocaleDateString('en-US', {
+                              month: 'short',
+                              day: 'numeric',
+                              year: window.innerWidth < 640 ? '2-digit' : 'numeric'
+                            })}
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+                {filteredApplications.length === 0 && (
+                  <div className="text-center py-8">
+                    <p className="text-gray-600 text-sm sm:text-lg">No applications found matching the filters.</p>
                   </div>
                 )}
               </div>
             </div>
           </div>
+        </div>
+      )}
+
+      {activeSection === 'inquiries' && (
+        <div>
+          <ContactInquiries />
+        </div>
+      )}
+
+
+        
+        {/* Rejection Email Modal */}
+        {showRejectModal && (
+          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-[70] p-4">
+            <div className="bg-white border border-gray-200 rounded-2xl max-w-2xl w-full shadow-xl">
+              <div className="p-8">
+                <div className="flex justify-between items-center mb-6">
+                  <h2 className="text-2xl font-bold text-gray-900">Send Rejection Email</h2>
+                  <button 
+                    onClick={() => setShowRejectModal(false)}
+                    className="text-gray-400 hover:text-gray-600 text-2xl font-bold"
+                  >
+                    ×
+                  </button>
+                </div>
+                
+                <p className="text-gray-600 mb-4">
+                  Sending rejection email to {selectedApplications.length} selected candidate(s)
+                </p>
+                
+                <div className="mb-6">
+                  <label className="block text-gray-700 text-sm font-medium mb-2">
+                    Custom Message (Optional - Leave blank for default message)
+                  </label>
+                  <textarea
+                    value={rejectMessage}
+                    onChange={(e) => setRejectMessage(e.target.value)}
+                    placeholder="Enter custom rejection message or leave blank for default message..."
+                    className="w-full bg-white border border-gray-300 rounded px-3 py-2 text-gray-900 focus:border-blue-600 outline-none h-32 resize-none"
+                  />
+                </div>
+                
+                <div className="flex gap-4 justify-end">
+                  <button
+                    onClick={() => setShowRejectModal(false)}
+                    className="bg-gray-600 hover:bg-gray-700 text-white px-6 py-2 rounded transition-colors"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    onClick={sendRejectionEmails}
+                    className="bg-orange-600 hover:bg-orange-700 text-white px-6 py-2 rounded transition-colors"
+                  >
+                    Send Emails
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         )}
-      </div>
-    </Layout>
+    </AdminLayout>
   );
 };
 

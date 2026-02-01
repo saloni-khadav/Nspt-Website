@@ -66,10 +66,10 @@ const Careers = () => {
     })
     .then(data => {
       if (data.message) {
-        toast.success('Application submitted and saved to database! ✅', {
+        toast.success('Application submitted successfully! ✅', {
           position: 'top-right',
           autoClose: 3000,
-          theme: 'dark',
+          theme: 'colored',
         });
         setShowApplicationForm(false);
         setApplicationData({
@@ -308,7 +308,7 @@ const Careers = () => {
           {/* Hero Section */}
           <div className="max-w-5xl mx-auto text-center mb-16">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-              We're building the future — Join us!
+              Join us. Build the future
             </h1>
             <div className="w-24 h-1 bg-blue-600 mx-auto mb-8 rounded-full"></div>
             <p className="text-base sm:text-lg text-gray-600 leading-relaxed max-w-4xl mx-auto">
