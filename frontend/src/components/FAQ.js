@@ -66,7 +66,10 @@ const FAQ = () => {
           <p className="text-white text-lg mb-6">
             Have more questions? Contact our team for help.
           </p>
-          <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-md font-medium transition-colors duration-200">
+          <button 
+            onClick={() => window.location.href = '/contact'}
+            className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-md font-medium transition-colors duration-200"
+          >
             Get in touch
           </button>
         </div>

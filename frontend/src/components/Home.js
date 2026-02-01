@@ -29,7 +29,10 @@ const Home = () => {
                   <p className="text-gray-600 text-sm leading-relaxed mb-4">
                     Comprehensive digital solutions for seamless growth, efficiency, and innovation across every industry.
                   </p>
-                  <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm">
+                  <button 
+                    onClick={() => window.location.href = '/contact'}
+                    className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm"
+                  >
                     Contact us
                   </button>
                 </div>
@@ -190,185 +193,121 @@ const Home = () => {
                 }
               `}</style>
               
-              {/* Website & App Solutions */}
-              <div className="bg-black rounded-none overflow-hidden flex-shrink-0 w-64 sm:w-80 flex flex-col">
-                <div className="h-64 sm:h-64 overflow-hidden">
-                  <img 
-                    src="/websiteandapp.jpg" 
-                    alt="Website & App Solutions" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-4 sm:p-6 flex-1 flex flex-col">
-                  <h3 className="text-lg sm:text-xl font-semibold mb-3">Website & App Solutions</h3>
-                  <p className="text-gray-300 text-sm leading-relaxed flex-1">
-                    Build custom websites and applications for seamless user experiences and reliable performance.
-                  </p>
-                  <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm mt-4 sm:mt-6 self-start">
-                    View
-                  </button>
-                </div>
-              </div>
-
-              {/* AI & Automation Tools */}
-              <div className="bg-black rounded-none overflow-hidden flex-shrink-0 w-80 flex flex-col">
-                <div className="h-64 overflow-hidden">
-                  <img 
-                    src="/Ai&automation.jpg" 
-                    alt="AI & Automation Tools" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-6 flex-1 flex flex-col">
-                  <h3 className="text-xl font-semibold mb-3">AI & Automation Tools</h3>
-                  <p className="text-gray-300 text-sm leading-relaxed flex-1">
-                    Enhance workflows and decision-making with intelligent automation and data-driven insights.
-                  </p>
-                  <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm mt-6 self-start">
-                    See More
-                  </button>
-                </div>
-              </div>
-
-              {/* Business Management Systems */}
-              <div className="bg-black rounded-none overflow-hidden flex-shrink-0 w-80 flex flex-col">
-                <div className="h-64 overflow-hidden">
-                  <img 
-                    src="/businessmanagement.jpg" 
-                    alt="Business Management Systems" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-6 flex-1 flex flex-col">
-                  <h3 className="text-xl font-semibold mb-3">Business Management Systems</h3>
-                  <p className="text-gray-300 text-sm leading-relaxed flex-1">
-                    Simplify operations with integrated ERP, HR, and accounting platforms for better accuracy and growth.
-                  </p>
-                  <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm mt-6 self-start">
-                    Details
-                  </button>
-                </div>
-              </div>
-
-              {/* ERP Solutions */}
-              <div className="bg-black rounded-none overflow-hidden flex-shrink-0 w-80 flex flex-col">
-                <div className="h-64 overflow-hidden">
-                  <img 
-                    src="/service-4-ERP-accou.png" 
-                    alt="ERP Solutions" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-6 flex-1 flex flex-col">
-                  <h3 className="text-xl font-semibold mb-3">ERP Solutions</h3>
-                  <p className="text-gray-300 text-sm leading-relaxed flex-1">
-                    Streamline your business operations with comprehensive enterprise resource planning systems for enhanced productivity and control.
-                  </p>
-                  <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm mt-6 self-start">
-                    Learn More
-                  </button>
-                </div>
-              </div>
-
-              {/* HR Applications */}
-              <div className="bg-black rounded-none overflow-hidden flex-shrink-0 w-80 flex flex-col">
-                <div className="h-64 overflow-hidden">
-                  <img 
-                    src="/hr-application-img.jfif" 
-                    alt="HR Applications" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-6 flex-1 flex flex-col">
-                  <h3 className="text-xl font-semibold mb-3">HR Applications</h3>
-                  <p className="text-gray-300 text-sm leading-relaxed flex-1">
-                    Manage your workforce efficiently with advanced HR tools for recruitment, payroll, performance tracking, and employee engagement.
-                  </p>
-                  <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm mt-6 self-start">
-                    Learn More
-                  </button>
-                </div>
-              </div>
-
-              {/* Consulting */}
-              <div className="bg-black rounded-none overflow-hidden flex-shrink-0 w-80 flex flex-col">
-                <div className="h-64 overflow-hidden">
-                  <img 
-                    src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=400&h=300&fit=crop&crop=center" 
-                    alt="Consulting" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-6 flex-1 flex flex-col">
-                  <h3 className="text-xl font-semibold mb-3">Technology Consulting</h3>
-                  <p className="text-gray-300 text-sm leading-relaxed flex-1">
-                    Get expert guidance on digital transformation strategies, technology adoption, and business process optimization for sustainable growth.
-                  </p>
-                  <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm mt-6 self-start">
-                    Learn More
-                  </button>
-                </div>
-              </div>
-
-              {/* R&D Services */}
-              <div className="bg-black rounded-none overflow-hidden flex-shrink-0 w-80 flex flex-col">
-                <div className="h-64 overflow-hidden">
-                  <img 
-                    src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=300&fit=crop&crop=center" 
-                    alt="R&D Services" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-6 flex-1 flex flex-col">
-                  <h3 className="text-xl font-semibold mb-3">R&D Services</h3>
-                  <p className="text-gray-300 text-sm leading-relaxed flex-1">
-                    Drive innovation with cutting-edge research and development services, exploring emerging technologies and creating future-ready solutions.
-                  </p>
-                  <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm mt-6 self-start">
-                    Explore
-                  </button>
-                </div>
-              </div>
-
-              {/* Cloud Services */}
-              <div className="bg-black rounded-none overflow-hidden flex-shrink-0 w-80 flex flex-col">
-                <div className="h-64 overflow-hidden">
-                  <img 
-                    src="/cloud-services.jfif" 
-                    alt="Cloud Services" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-6 flex-1 flex flex-col">
-                  <h3 className="text-xl font-semibold mb-3">Cloud Services</h3>
-                  <p className="text-gray-300 text-sm leading-relaxed flex-1">
-                    Leverage secure, scalable cloud infrastructure and services for improved flexibility, cost efficiency, and seamless remote collaboration.
-                  </p>
-                  <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm mt-6 self-start">
-                    Learn More
-                  </button>
-                </div>
-              </div>
-
-              {/* Support */}
-              <div className="bg-black rounded-none overflow-hidden flex-shrink-0 w-80 flex flex-col">
-                <div className="h-64 overflow-hidden">
-                  <img 
-                    src="/support-img.jfif" 
-                    alt="Support" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-6 flex-1 flex flex-col">
-                  <h3 className="text-xl font-semibold mb-3">Technical Support</h3>
-                  <p className="text-gray-300 text-sm leading-relaxed flex-1">
-                    Receive comprehensive technical support and maintenance services to ensure optimal performance and minimize downtime for your systems.
-                  </p>
-                  <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm mt-6 self-start">
-                    Get Help
-                  </button>
-                </div>
-              </div>
+              {(() => {
+                const cards = [
+                  {
+                    img: "/websiteandapp.jpg",
+                    title: "Website & App Solutions",
+                    desc: "Build custom websites and applications for seamless user experiences and reliable performance.",
+                    btn: "View",
+                    width: "w-64 sm:w-80",
+                    padding: "p-4 sm:p-6",
+                    titleSize: "text-lg sm:text-xl",
+                    margin: "mt-4 sm:mt-6"
+                  },
+                  {
+                    img: "/Ai&automation.jpg",
+                    title: "AI & Automation Tools",
+                    desc: "Enhance workflows and decision-making with intelligent automation and data-driven insights.",
+                    btn: "See More",
+                    width: "w-80",
+                    padding: "p-6",
+                    titleSize: "text-xl",
+                    margin: "mt-6"
+                  },
+                  {
+                    img: "/businessmanagement.jpg",
+                    title: "Business Management Systems",
+                    desc: "Simplify operations with integrated ERP, HR, and accounting platforms for better accuracy and growth.",
+                    btn: "Details",
+                    width: "w-80",
+                    padding: "p-6",
+                    titleSize: "text-xl",
+                    margin: "mt-6"
+                  },
+                  {
+                    img: "/service-4-ERP-accou.png",
+                    title: "ERP Solutions",
+                    desc: "Streamline your business operations with comprehensive enterprise resource planning systems for enhanced productivity and control.",
+                    btn: "Learn More",
+                    width: "w-80",
+                    padding: "p-6",
+                    titleSize: "text-xl",
+                    margin: "mt-6"
+                  },
+                  {
+                    img: "/hr-application-img.png",
+                    title: "HR Applications",
+                    desc: "Manage your workforce efficiently with advanced HR tools for recruitment, payroll, performance tracking, and employee engagement.",
+                    btn: "Learn More",
+                    width: "w-80",
+                    padding: "p-6",
+                    titleSize: "text-xl",
+                    margin: "mt-6"
+                  },
+                  {
+                    img: "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=400&h=300&fit=crop&crop=center",
+                    title: "Technology Consulting",
+                    desc: "Get expert guidance on digital transformation strategies, technology adoption, and business process optimization for sustainable growth.",
+                    btn: "Learn More",
+                    width: "w-80",
+                    padding: "p-6",
+                    titleSize: "text-xl",
+                    margin: "mt-6"
+                  },
+                  {
+                    img: "/R-and-D.png",
+                    title: "R&D Services",
+                    desc: "Drive innovation with cutting-edge research and development services, exploring emerging technologies and creating future-ready solutions.",
+                    btn: "Explore",
+                    width: "w-80",
+                    padding: "p-6",
+                    titleSize: "text-xl",
+                    margin: "mt-6"
+                  },
+                  {
+                    img: "/service-cloud-service.jpg",
+                    title: "Cloud Services",
+                    desc: "Leverage secure, scalable cloud infrastructure and services for improved flexibility, cost efficiency, and seamless remote collaboration.",
+                    btn: "Learn More",
+                    width: "w-80",
+                    padding: "p-6",
+                    titleSize: "text-xl",
+                    margin: "mt-6"
+                  },
+                  {
+                    img: "/support.png",
+                    title: "Technical Support",
+                    desc: "Receive comprehensive technical support and maintenance services to ensure optimal performance and minimize downtime for your systems.",
+                    btn: "Get Help",
+                    width: "w-80",
+                    padding: "p-6",
+                    titleSize: "text-xl",
+                    margin: "mt-6"
+                  }
+                ];
+                
+                return [...cards, ...cards, ...cards, ...cards].map((card, index) => (
+                  <div key={index} className={`bg-black rounded-none overflow-hidden flex-shrink-0 ${card.width} flex flex-col`}>
+                    <div className="h-64 overflow-hidden">
+                      <img 
+                        src={card.img}
+                        alt={card.title}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className={`${card.padding} flex-1 flex flex-col`}>
+                      <h3 className={`${card.titleSize} font-semibold mb-3`}>{card.title}</h3>
+                      <p className="text-gray-300 text-sm leading-relaxed flex-1">
+                        {card.desc}
+                      </p>
+                      <button className={`bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm ${card.margin} self-start`}>
+                        {card.btn}
+                      </button>
+                    </div>
+                  </div>
+                ));
+              })()}
             </div>
           </div>
         </div>
@@ -489,7 +428,7 @@ const Home = () => {
             
             <div className="flex items-center space-x-3 bg-white p-6 rounded-lg shadow-md min-w-[250px]">
               <img 
-                src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=60&h=60&fit=crop&crop=center" 
+                src="/boy.png" 
                 alt="Taylor Brooks" 
                 className="w-12 h-12 rounded-full object-cover"
               />
