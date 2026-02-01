@@ -426,14 +426,18 @@ const AdminDashboard = () => {
                           </div>
                         </td>
                         <td className="text-gray-700 py-2 sm:py-4 px-2 sm:px-4">
-                          <a 
-                            href={`http://localhost:5000/${app.resumePath}`}
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            className="text-blue-600 hover:text-blue-700 underline text-xs sm:text-sm"
-                          >
-                            View
-                          </a>
+                          {app.resumePath ? (
+                            <a 
+                              href={`http://localhost:5000/api/careers/resume/${app.resumePath}`}
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              className="text-blue-600 hover:text-blue-700 underline text-xs sm:text-sm"
+                            >
+                              View
+                            </a>
+                          ) : (
+                            <span className="text-gray-400 text-xs sm:text-sm">No file</span>
+                          )}
                         </td>
                         <td className="text-gray-700 py-2 sm:py-4 px-2 sm:px-4 text-xs sm:text-sm">
                           <div className="whitespace-nowrap">

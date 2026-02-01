@@ -66,10 +66,10 @@ const Careers = () => {
     })
     .then(data => {
       if (data.message) {
-        toast.success('Application submitted and saved to database! ✅', {
+        toast.success('Application submitted successfully! ✅', {
           position: 'top-right',
           autoClose: 3000,
-          theme: 'dark',
+          theme: 'colored',
         });
         setShowApplicationForm(false);
         setApplicationData({

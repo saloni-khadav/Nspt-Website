@@ -40,9 +40,9 @@ const upload = multer({
 // POST - Submit career application
 router.post('/apply', upload.single('resume'), async (req, res) => {
   try {
-    const applicationData = {
+  const applicationData = {
       ...req.body,
-      resumePath: req.file ? req.file.path : null
+      resumePath: req.file ? req.file.filename : null
     };
     
     // Save to database
@@ -61,6 +61,34 @@ router.post('/apply', upload.single('resume'), async (req, res) => {
       message: 'Error submitting application',
       error: error.message 
     });
+  }
+});
+
+// GET - Download resume file
+router.get('/resume/:filename', (req, res) => {
+  try {
+    const filename = req.params.filename;
+    const filePath = path.join(__dirname, '../uploads/resumes', filename);
+    
+    console.log('Requested filename:', filename);
+    console.log('Full file path:', filePath);
+    console.log('File exists:', fs.existsSync(filePath));
+    
+    // Check if file exists
+    if (!fs.existsSync(filePath)) {
+      // Try to find the file in the uploads directory
+      const uploadsPath = path.join(__dirname, '../uploads/resumes');
+      const files = fs.readdirSync(uploadsPath);
+      console.log('Available files:', files);
+      
+      return res.status(404).json({ message: 'Resume file not found', availableFiles: files });
+    }
+    
+    // Send file directly
+    res.sendFile(path.resolve(filePath));
+  } catch (error) {
+    console.error('Error serving resume file:', error);
+    res.status(500).json({ message: 'Error accessing resume file' });
   }
 });
 
