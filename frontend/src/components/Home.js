@@ -29,7 +29,10 @@ const Home = () => {
                   <p className="text-gray-600 text-sm leading-relaxed mb-4">
                     Comprehensive digital solutions for seamless growth, efficiency, and innovation across every industry.
                   </p>
-                  <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm">
+                  <button 
+                    onClick={() => window.location.href = '/contact'}
+                    className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm"
+                  >
                     Contact us
                   </button>
                 </div>

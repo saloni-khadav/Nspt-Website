@@ -12,7 +12,7 @@ const Footer = () => {
               Transform. Together.
             </h2>
             <p className="text-gray-400 text-base sm:text-lg mt-4 sm:mt-6">
-              hello@nextsphere.co.in<br/>
+              info@nextsphere.co.in<br/>
               +91 9078027948
             </p>
           </div>
