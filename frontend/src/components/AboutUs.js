@@ -55,7 +55,7 @@ const AboutUs = () => {
     {
       company: '⊙ 360LAB',
       image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80',
-      testimonial: 'NextSphere provided a robust solution that streamlined our operations. Their technical knowledge and reliable support ensured a smooth transition for our team.',
+      testimonial: 'NextSphere streamlined our operations with robust solutions and reliable support.',
       author: 'Riley Bennett',
       position: 'Director of Operations Lead',
       backgroundImage: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
@@ -63,7 +63,7 @@ const AboutUs = () => {
     {
       company: ' EGGS',
       image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80',
-      testimonial: 'The consultancy team guided our application launch with clarity and efficiency. Communication was prompt and the process was well managed from start to finish.',
+      testimonial: 'Clear guidance and efficient management from start to finish.',
       author: 'Morgan Patel',
       position: 'IT Project Manager',
       backgroundImage: 'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
@@ -71,7 +71,7 @@ const AboutUs = () => {
     {
       company: 'THE PAAK',
       image: 'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80',
-      testimonial: 'Their expertise in HR technology helped us deliver a user-friendly platform on schedule. We valued their attention to detail and proactive communication.',
+      testimonial: 'Expert HR technology delivery with attention to detail and proactive communication.',
       author: 'Casey Jordan',
       position: 'People Systems Director',
       backgroundImage: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
@@ -79,7 +79,7 @@ const AboutUs = () => {
     {
       company: ' ECHOES',
       image: '/girl-img.png',
-      testimonial: 'From planning to delivery, the team demonstrated professionalism and strong industry insight. We recommend NextSphere for technology-driven projects.',
+      testimonial: 'Professional delivery with strong industry insight. Highly recommended.',
       author: 'Jamie Brooks',
       position: 'Finance Systems Manager',
       backgroundImage: 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
@@ -88,62 +88,98 @@ const AboutUs = () => {
   return (
     <Layout>
       {/* Image Grid Section with Center Text */}
-      <section className="pt-20 pb-20 px-6 bg-gray-50 relative overflow-hidden" style={{minHeight: 'calc(100vh + 20rem)'}}>
-        <div className="max-w-7xl mx-auto relative" style={{minHeight: 'calc(100vh + 20rem)'}}>
-          {/* Left Images */}
-          <div className="left-images absolute -left-16 top-8 w-[32rem] space-y-6 transition-all duration-1000 ease-in-out z-20">
-            {imageSets[currentImageSet].left.map((src, index) => (
-              <div key={index} className={`rounded-lg overflow-hidden shadow-lg transition-transform duration-700 ease-in-out ${
-                index === 1 ? 'middle-left-image' : ''
-              }`}>
-                <img 
-                  src={src}
-                  alt={`Team image ${index + 1}`}
-                  className="w-full h-80 object-cover"
-                />
+      <section className="pt-20 pb-20 px-6 bg-gray-50 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto relative">
+          {/* Desktop Layout - Images positioned absolutely */}
+          <div className="hidden lg:block" style={{minHeight: 'calc(100vh + 20rem)'}}>
+            {/* Left Images */}
+            <div className="left-images absolute -left-16 top-8 w-[32rem] space-y-6 transition-all duration-1000 ease-in-out z-20">
+              {imageSets[currentImageSet].left.map((src, index) => (
+                <div key={index} className={`rounded-lg overflow-hidden shadow-lg transition-transform duration-700 ease-in-out ${
+                  index === 1 ? 'middle-left-image' : ''
+                }`}>
+                  <img 
+                    src={src}
+                    alt={`Team image ${index + 1}`}
+                    className="w-full h-80 object-cover"
+                  />
+                </div>
+              ))}
+            </div>
+
+            {/* Right Images */}
+            <div className="right-images absolute -right-16 top-8 w-[32rem] space-y-6 transition-all duration-1000 ease-in-out z-20">
+              {imageSets[currentImageSet].right.map((src, index) => (
+                <div key={index} className={`rounded-lg overflow-hidden shadow-lg transition-transform duration-700 ease-in-out ${
+                  index === 1 ? 'middle-right-image' : ''
+                }`}>
+                  <img 
+                    src={src}
+                    alt={`Team image ${index + 4}`}
+                    className="w-full h-80 object-cover"
+                  />
+                </div>
+              ))}
+            </div>
+
+            {/* Desktop Center Text Content */}
+            <div className="absolute left-0 right-0 z-10 flex items-center justify-center" style={{top: 'calc(2rem + 20rem + 1.5rem + 10rem)', transform: 'translateY(-50%)'}}>
+              <div className="text-center px-8 hover:cursor-pointer bg-white/90 backdrop-blur-sm rounded-lg p-8" 
+                   onMouseEnter={() => {
+                     document.querySelector('.middle-left-image')?.style.setProperty('transform', 'translateX(-12rem)');
+                     document.querySelector('.middle-right-image')?.style.setProperty('transform', 'translateX(12rem)');
+                   }}
+                   onMouseLeave={() => {
+                     document.querySelector('.middle-left-image')?.style.setProperty('transform', 'translateX(0)');
+                     document.querySelector('.middle-right-image')?.style.setProperty('transform', 'translateX(0)');
+                   }}>
+                <p className="text-xs text-gray-500 uppercase tracking-wide mb-3">OUR STORY AND MISSION</p>
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">
+                  Technology that drives
+                  <br />
+                  business forward
+                </h2>
+                <p className="text-base text-gray-600 max-w-xl mx-auto mb-6 leading-relaxed">
+                  We help organizations adapt & excel with tailored technology solutions. Our expertise spans 
+                  development, AI, ERP, HR applications, and R&D—delivering practical results for real business needs.
+                </p>
+                <button className="bg-blue-100 text-blue-600 px-6 py-2 rounded-lg hover:bg-blue-200 transition-colors font-medium text-sm">
+                  Learn more
+                </button>
               </div>
-            ))}
+            </div>
           </div>
 
-          {/* Right Images */}
-          <div className="right-images absolute -right-16 top-8 w-[32rem] space-y-6 transition-all duration-1000 ease-in-out z-20">
-            {imageSets[currentImageSet].right.map((src, index) => (
-              <div key={index} className={`rounded-lg overflow-hidden shadow-lg transition-transform duration-700 ease-in-out ${
-                index === 1 ? 'middle-right-image' : ''
-              }`}>
-                <img 
-                  src={src}
-                  alt={`Team image ${index + 4}`}
-                  className="w-full h-80 object-cover"
-                />
-              </div>
-            ))}
-          </div>
-
-          {/* Center Text Content */}
-          <div className="relative z-10 text-center py-32 px-8 group flex items-center justify-center" style={{minHeight: 'calc(100vh + 20rem)'}}>
-            <div className="hover:cursor-pointer bg-white/90 backdrop-blur-sm rounded-lg p-8 " 
-                 onMouseEnter={() => {
-                   document.querySelector('.middle-left-image').style.transform = 'translateX(-12rem)';
-                   document.querySelector('.middle-right-image').style.transform = 'translateX(12rem)';
-                 }}
-                 onMouseLeave={() => {
-                   document.querySelector('.middle-left-image').style.transform = 'translateX(0)';
-                   document.querySelector('.middle-right-image').style.transform = 'translateX(0)';
-                 }}>
+          {/* Mobile Layout - Stacked vertically */}
+          <div className="lg:hidden space-y-8">
+            {/* Mobile Text Content - Top */}
+            <div className="text-center px-4 py-8">
               <p className="text-xs text-gray-500 uppercase tracking-wide mb-3">OUR STORY AND MISSION</p>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">
+              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 leading-tight">
                 Technology that drives
                 <br />
                 business forward
               </h2>
-              <p className="text-base text-gray-600 max-w-xl mx-auto mb-6 leading-relaxed">
+              <p className="text-sm sm:text-base text-gray-600 max-w-xl mx-auto mb-6 leading-relaxed">
                 We help organizations adapt and excel with tailored technology solutions. Our expertise spans 
                 development, AI, ERP, HR applications, and R&D—delivering practical results for real business needs.
               </p>
               <button className="bg-blue-100 text-blue-600 px-6 py-2 rounded-lg hover:bg-blue-200 transition-colors font-medium text-sm">
                 Learn more
               </button>
+            </div>
+
+            {/* Mobile Images - Bottom */}
+            <div className="grid grid-cols-2 gap-3 px-4">
+              {imageSets[currentImageSet].left.concat(imageSets[currentImageSet].right).map((src, index) => (
+                <div key={index} className="rounded-lg overflow-hidden shadow-lg">
+                  <img 
+                    src={src}
+                    alt={`Team image ${index + 1}`}
+                    className="w-full h-40 sm:h-48 object-cover"
+                  />
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -493,13 +529,13 @@ const AboutUs = () => {
             />
             <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-between">
               <div className="p-8 text-white mt-2">
-                <p className="text-3xl mb-6 leading-snug max-w-3xl font-semibold" style={{fontFamily: 'Georgia, serif'}}>
+                <p className="text-3xl mb-4 leading-snug max-w-3xl font-semibold" style={{fontFamily: 'Georgia, serif'}}>
                   {testimonials[selectedTestimonial].testimonial}
                 </p>
-              </div>
-              <div className="p-8 text-white">
-                <h4 className="font-semibold text-lg">{testimonials[selectedTestimonial].author}</h4>
-                <p className="text-gray-300 text-sm">{testimonials[selectedTestimonial].position}</p>
+                <div className="mt-4">
+                  <h4 className="font-semibold text-lg">{testimonials[selectedTestimonial].author}</h4>
+                  <p className="text-gray-300 text-sm">{testimonials[selectedTestimonial].position}</p>
+                </div>
               </div>
             </div>
           </div>
