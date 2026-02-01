@@ -89,7 +89,7 @@ const Home = () => {
             
             {/* Right Logos Grid */}
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 lg:mr-20">
-              <div className="bg-white border border-gray-200 rounded-xl p-4 sm:p-10 text-center shadow-md hover:shadow-lg transition-shadow">
+              <div className="bg-white border border-gray-200 rounded-xl p-6 sm:p-8 text-center shadow-md hover:shadow-lg transition-shadow h-20 sm:h-24 flex items-center justify-center">
                 <div className="flex items-center justify-center space-x-1 sm:space-x-2">
                   <div className="w-4 h-4 sm:w-6 sm:h-6 bg-gray-900 rounded-full flex items-center justify-center">
                     <span className="text-lg font-bold text-white">L</span>
@@ -97,7 +97,7 @@ const Home = () => {
                   <span className="text-lg font-bold text-gray-900">LOGO</span>
                 </div>
               </div>
-              <div className="bg-white border border-gray-200 rounded-xl p-4 sm:p-10 text-center shadow-md hover:shadow-lg transition-shadow">
+              <div className="bg-white border border-gray-200 rounded-xl p-6 sm:p-8 text-center shadow-md hover:shadow-lg transition-shadow h-20 sm:h-24 flex items-center justify-center">
                 <div className="flex items-center justify-center space-x-1 sm:space-x-2">
                   <div className="w-4 h-4 sm:w-6 sm:h-6 bg-gray-900 rounded-full flex items-center justify-center">
                     <span className="text-lg font-bold text-white">E</span>
@@ -105,7 +105,7 @@ const Home = () => {
                   <span className="text-lg font-bold text-gray-900">EGGS</span>
                 </div>
               </div>
-              <div className="bg-white border border-gray-200 rounded-xl p-4 sm:p-10 text-center shadow-md hover:shadow-lg transition-shadow">
+              <div className="bg-white border border-gray-200 rounded-xl p-6 sm:p-8 text-center shadow-md hover:shadow-lg transition-shadow h-20 sm:h-24 flex items-center justify-center">
                 <div className="flex items-center justify-center space-x-1 sm:space-x-2">
                   <div className="w-4 h-4 sm:w-6 sm:h-6 bg-gray-900 rounded-full flex items-center justify-center">
                     <span className="text-lg font-bold text-white">P</span>
@@ -113,7 +113,7 @@ const Home = () => {
                   <span className="text-lg font-bold text-gray-900">THE PAAK</span>
                 </div>
               </div>
-              <div className="bg-white border border-gray-200 rounded-xl p-4 sm:p-10 text-center shadow-md hover:shadow-lg transition-shadow">
+              <div className="bg-white border border-gray-200 rounded-xl p-6 sm:p-8 text-center shadow-md hover:shadow-lg transition-shadow h-20 sm:h-24 flex items-center justify-center">
                 <div className="flex items-center justify-center space-x-1 sm:space-x-2">
                   <div className="w-4 h-4 sm:w-6 sm:h-6 bg-gray-900 rounded-full flex items-center justify-center">
                     <span className="text-lg font-bold text-white">I</span>
@@ -121,7 +121,7 @@ const Home = () => {
                   <span className="text-lg font-bold text-gray-900">IDEA</span>
                 </div>
               </div>
-              <div className="bg-white border border-gray-200 rounded-xl p-4 sm:p-10 text-center shadow-md hover:shadow-lg transition-shadow">
+              <div className="bg-white border border-gray-200 rounded-xl p-6 sm:p-8 text-center shadow-md hover:shadow-lg transition-shadow h-20 sm:h-24 flex items-center justify-center">
                 <div className="flex items-center justify-center space-x-1 sm:space-x-2">
                   <div className="w-4 h-4 sm:w-6 sm:h-6 bg-gray-900 rounded-full flex items-center justify-center">
                     <span className="text-lg font-bold text-white">T</span>
@@ -129,7 +129,7 @@ const Home = () => {
                   <span className="text-lg font-bold text-gray-900">TECHNO</span>
                 </div>
               </div>
-              <div className="bg-white border border-gray-200 rounded-xl p-4 sm:p-10 text-center shadow-md hover:shadow-lg transition-shadow">
+              <div className="bg-white border border-gray-200 rounded-xl p-6 sm:p-8 text-center shadow-md hover:shadow-lg transition-shadow h-20 sm:h-24 flex items-center justify-center">
                 <div className="flex items-center justify-center space-x-1 sm:space-x-2">
                   <div className="w-4 h-4 sm:w-6 sm:h-6 bg-gray-900 rounded-full flex items-center justify-center">
                     <span className="text-lg font-bold text-white">E</span>
