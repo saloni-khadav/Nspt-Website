@@ -88,62 +88,98 @@ const AboutUs = () => {
   return (
     <Layout>
       {/* Image Grid Section with Center Text */}
-      <section className="pt-20 pb-20 px-6 bg-gray-50 relative overflow-hidden" style={{minHeight: 'calc(100vh + 20rem)'}}>
-        <div className="max-w-7xl mx-auto relative" style={{minHeight: 'calc(100vh + 20rem)'}}>
-          {/* Left Images */}
-          <div className="left-images absolute -left-16 top-8 w-[32rem] space-y-6 transition-all duration-1000 ease-in-out z-20">
-            {imageSets[currentImageSet].left.map((src, index) => (
-              <div key={index} className={`rounded-lg overflow-hidden shadow-lg transition-transform duration-700 ease-in-out ${
-                index === 1 ? 'middle-left-image' : ''
-              }`}>
-                <img 
-                  src={src}
-                  alt={`Team image ${index + 1}`}
-                  className="w-full h-80 object-cover"
-                />
+      <section className="pt-20 pb-20 px-6 bg-gray-50 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto relative">
+          {/* Desktop Layout - Images positioned absolutely */}
+          <div className="hidden lg:block" style={{minHeight: 'calc(100vh + 20rem)'}}>
+            {/* Left Images */}
+            <div className="left-images absolute -left-16 top-8 w-[32rem] space-y-6 transition-all duration-1000 ease-in-out z-20">
+              {imageSets[currentImageSet].left.map((src, index) => (
+                <div key={index} className={`rounded-lg overflow-hidden shadow-lg transition-transform duration-700 ease-in-out ${
+                  index === 1 ? 'middle-left-image' : ''
+                }`}>
+                  <img 
+                    src={src}
+                    alt={`Team image ${index + 1}`}
+                    className="w-full h-80 object-cover"
+                  />
+                </div>
+              ))}
+            </div>
+
+            {/* Right Images */}
+            <div className="right-images absolute -right-16 top-8 w-[32rem] space-y-6 transition-all duration-1000 ease-in-out z-20">
+              {imageSets[currentImageSet].right.map((src, index) => (
+                <div key={index} className={`rounded-lg overflow-hidden shadow-lg transition-transform duration-700 ease-in-out ${
+                  index === 1 ? 'middle-right-image' : ''
+                }`}>
+                  <img 
+                    src={src}
+                    alt={`Team image ${index + 4}`}
+                    className="w-full h-80 object-cover"
+                  />
+                </div>
+              ))}
+            </div>
+
+            {/* Desktop Center Text Content */}
+            <div className="absolute left-0 right-0 z-10 flex items-center justify-center" style={{top: 'calc(2rem + 20rem + 1.5rem + 10rem)', transform: 'translateY(-50%)'}}>
+              <div className="text-center px-8 hover:cursor-pointer bg-white/90 backdrop-blur-sm rounded-lg p-8" 
+                   onMouseEnter={() => {
+                     document.querySelector('.middle-left-image')?.style.setProperty('transform', 'translateX(-12rem)');
+                     document.querySelector('.middle-right-image')?.style.setProperty('transform', 'translateX(12rem)');
+                   }}
+                   onMouseLeave={() => {
+                     document.querySelector('.middle-left-image')?.style.setProperty('transform', 'translateX(0)');
+                     document.querySelector('.middle-right-image')?.style.setProperty('transform', 'translateX(0)');
+                   }}>
+                <p className="text-xs text-gray-500 uppercase tracking-wide mb-3">OUR STORY AND MISSION</p>
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">
+                  Technology that drives
+                  <br />
+                  business forward
+                </h2>
+                <p className="text-base text-gray-600 max-w-xl mx-auto mb-6 leading-relaxed">
+                  We help organizations adapt & excel with tailored technology solutions. Our expertise spans 
+                  development, AI, ERP, HR applications, and R&D—delivering practical results for real business needs.
+                </p>
+                <button className="bg-blue-100 text-blue-600 px-6 py-2 rounded-lg hover:bg-blue-200 transition-colors font-medium text-sm">
+                  Learn more
+                </button>
               </div>
-            ))}
+            </div>
           </div>
 
-          {/* Right Images */}
-          <div className="right-images absolute -right-16 top-8 w-[32rem] space-y-6 transition-all duration-1000 ease-in-out z-20">
-            {imageSets[currentImageSet].right.map((src, index) => (
-              <div key={index} className={`rounded-lg overflow-hidden shadow-lg transition-transform duration-700 ease-in-out ${
-                index === 1 ? 'middle-right-image' : ''
-              }`}>
-                <img 
-                  src={src}
-                  alt={`Team image ${index + 4}`}
-                  className="w-full h-80 object-cover"
-                />
-              </div>
-            ))}
-          </div>
-
-          {/* Center Text Content */}
-          <div className="absolute left-0 right-0 z-10 flex items-center justify-center" style={{top: 'calc(2rem + 20rem + 1.5rem + 10rem)', transform: 'translateY(-50%)'}}>
-            <div className="text-center px-8 hover:cursor-pointer bg-white/90 backdrop-blur-sm rounded-lg p-8" 
-                 onMouseEnter={() => {
-                   document.querySelector('.middle-left-image')?.style.setProperty('transform', 'translateX(-12rem)');
-                   document.querySelector('.middle-right-image')?.style.setProperty('transform', 'translateX(12rem)');
-                 }}
-                 onMouseLeave={() => {
-                   document.querySelector('.middle-left-image')?.style.setProperty('transform', 'translateX(0)');
-                   document.querySelector('.middle-right-image')?.style.setProperty('transform', 'translateX(0)');
-                 }}>
+          {/* Mobile Layout - Stacked vertically */}
+          <div className="lg:hidden space-y-8">
+            {/* Mobile Text Content - Top */}
+            <div className="text-center px-4 py-8">
               <p className="text-xs text-gray-500 uppercase tracking-wide mb-3">OUR STORY AND MISSION</p>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">
+              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 leading-tight">
                 Technology that drives
                 <br />
                 business forward
               </h2>
-              <p className="text-base text-gray-600 max-w-xl mx-auto mb-6 leading-relaxed">
+              <p className="text-sm sm:text-base text-gray-600 max-w-xl mx-auto mb-6 leading-relaxed">
                 We help organizations adapt and excel with tailored technology solutions. Our expertise spans 
                 development, AI, ERP, HR applications, and R&D—delivering practical results for real business needs.
               </p>
               <button className="bg-blue-100 text-blue-600 px-6 py-2 rounded-lg hover:bg-blue-200 transition-colors font-medium text-sm">
                 Learn more
               </button>
+            </div>
+
+            {/* Mobile Images - Bottom */}
+            <div className="grid grid-cols-2 gap-3 px-4">
+              {imageSets[currentImageSet].left.concat(imageSets[currentImageSet].right).map((src, index) => (
+                <div key={index} className="rounded-lg overflow-hidden shadow-lg">
+                  <img 
+                    src={src}
+                    alt={`Team image ${index + 1}`}
+                    className="w-full h-40 sm:h-48 object-cover"
+                  />
+                </div>
+              ))}
             </div>
           </div>
         </div>
