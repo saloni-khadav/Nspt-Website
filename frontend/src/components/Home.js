@@ -83,10 +83,7 @@ const Home = () => {
                 solutions
               </h2>
               <p className="text-gray-600 text-base sm:text-lg leading-relaxed">
-                We deliver technology, AI, and<br className="hidden sm:block"/>
-                business applications for diverse<br className="hidden sm:block"/>
-                industries, trusted by companies<br className="hidden sm:block"/>
-                seeking reliable digital transformation.
+                Expert technology consulting and services for web, AI, ERP, and HR. We deliver scalable, efficient solutions to optimize your business and support growth.
               </p>
             </div>
             
@@ -413,52 +410,54 @@ const Home = () => {
           </div>
           
           {/* Client Avatars */}
-          <div className="flex justify-center items-center space-x-6">
-            <div className="flex items-center space-x-3 bg-white p-6 rounded-lg shadow-md min-w-[250px]">
-              <img 
-                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=60&h=60&fit=crop&crop=center" 
-                alt="Alex Rivera" 
-                className="w-12 h-12 rounded-full object-cover"
-              />
-              <div>
-                <div className="font-semibold text-gray-900">Alex Rivera</div>
-                <div className="text-sm text-gray-500">COO, FinEdge Solutions</div>
+          <div className="overflow-x-auto pb-4">
+            <div className="flex justify-center items-center space-x-6 min-w-max px-4">
+              <div className="flex items-center space-x-3 bg-white p-6 rounded-lg shadow-md min-w-[250px] flex-shrink-0">
+                <img 
+                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=60&h=60&fit=crop&crop=center" 
+                  alt="Alex Rivera" 
+                  className="w-12 h-12 rounded-full object-cover"
+                />
+                <div>
+                  <div className="font-semibold text-gray-900">Alex Rivera</div>
+                  <div className="text-sm text-gray-500">COO, FinEdge Solutions</div>
+                </div>
               </div>
-            </div>
-            
-            <div className="flex items-center space-x-3 bg-white p-6 rounded-lg shadow-md min-w-[250px]">
-              <img 
-                src="/boy.png" 
-                alt="Taylor Brooks" 
-                className="w-12 h-12 rounded-full object-cover"
-              />
-              <div>
-                <div className="font-semibold text-gray-900">Taylor Brooks</div>
-                <div className="text-sm text-gray-500">Head of Operations, BrightPath</div>
+              
+              <div className="flex items-center space-x-3 bg-white p-6 rounded-lg shadow-md min-w-[250px] flex-shrink-0">
+                <img 
+                  src="/boy.png" 
+                  alt="Taylor Brooks" 
+                  className="w-12 h-12 rounded-full object-cover"
+                />
+                <div>
+                  <div className="font-semibold text-gray-900">Taylor Brooks</div>
+                  <div className="text-sm text-gray-500">Head of Operations, BrightPath</div>
+                </div>
               </div>
-            </div>
-            
-            <div className="flex items-center space-x-3 bg-white p-6 rounded-lg shadow-md min-w-[250px]">
-              <img 
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=center" 
-                alt="Morgan Ellis" 
-                className="w-12 h-12 rounded-full object-cover"
-              />
-              <div>
-                <div className="font-semibold text-gray-900">Morgan Ellis</div>
-                <div className="text-sm text-gray-500">CTO, Vertex Analytics</div>
+              
+              <div className="flex items-center space-x-3 bg-white p-6 rounded-lg shadow-md min-w-[250px] flex-shrink-0">
+                <img 
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=center" 
+                  alt="Morgan Ellis" 
+                  className="w-12 h-12 rounded-full object-cover"
+                />
+                <div>
+                  <div className="font-semibold text-gray-900">Morgan Ellis</div>
+                  <div className="text-sm text-gray-500">CTO, Vertex Analytics</div>
+                </div>
               </div>
-            </div>
-            
-            <div className="flex items-center space-x-3 bg-white p-6 rounded-lg shadow-md min-w-[250px]">
-              <img 
-                src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=60&h=60&fit=crop&crop=center" 
-                alt="John Doe" 
-                className="w-12 h-12 rounded-full object-cover"
-              />
-              <div>
-                <div className="font-semibold text-gray-900">John Doe</div>
-                <div className="text-sm text-gray-500">CEO, TechCorp</div>
+              
+              <div className="flex items-center space-x-3 bg-white p-6 rounded-lg shadow-md min-w-[250px] flex-shrink-0">
+                <img 
+                  src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=60&h=60&fit=crop&crop=center" 
+                  alt="John Doe" 
+                  className="w-12 h-12 rounded-full object-cover"
+                />
+                <div>
+                  <div className="font-semibold text-gray-900">John Doe</div>
+                  <div className="text-sm text-gray-500">CEO, TechCorp</div>
+                </div>
               </div>
             </div>
           </div>
@@ -470,6 +469,8 @@ const Home = () => {
 
       {/* Contact Form Section */}
       <ContactForm />
+
+
     </Layout>
   );
 };

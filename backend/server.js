@@ -35,6 +35,10 @@ app.use('/api/careers', careerRoutes);
 const contactRoutes = require('./routes/contact');
 app.use('/api/contact', contactRoutes);
 
+// Promotion Routes
+const promotionRoutes = require('./routes/promotion');
+app.use('/api/promotion', promotionRoutes);
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

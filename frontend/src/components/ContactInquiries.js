@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 const ContactInquiries = () => {
   const [inquiries, setInquiries] = useState([]);
   const [filteredInquiries, setFilteredInquiries] = useState([]);
+  const [selectedMessage, setSelectedMessage] = useState(null);
   const [inquiryFilters, setInquiryFilters] = useState({
     date: '',
     helpType: ''
@@ -133,7 +134,7 @@ const ContactInquiries = () => {
   };
 
   return (
-    <div className="space-y-6 min-w-[700px] sm:min-w-0">
+    <div className="space-y-6">
       {/* Stats */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
@@ -203,60 +204,63 @@ const ContactInquiries = () => {
             <table className="w-full text-left min-w-[700px]">
               <thead className="sticky top-0 bg-gray-50 z-10">
                 <tr className="border-b border-gray-200">
-                  <th className="text-black font-bold py-2 sm:py-3 px-2 sm:px-4 text-xs sm:text-sm">
+                  <th className="text-black font-bold py-2 sm:py-3 px-0 sm:px-4 text-[10px] sm:text-sm">
                     <input
                       type="checkbox"
                       checked={selectAll}
                       onChange={handleSelectAll}
-                      className="mr-1 sm:mr-2"
+                      className="mr-0"
                     />
                     <span className="hidden sm:inline">Select All</span>
                     <span className="sm:hidden">All</span>
                   </th>
-                  <th className="text-black font-bold py-2 sm:py-3 px-2 sm:px-4 text-xs sm:text-sm">Name</th>
-                  <th className="text-black font-bold py-2 sm:py-3 px-2 sm:px-4 text-xs sm:text-sm">Email</th>
-                  <th className="text-black font-bold py-2 sm:py-3 px-2 sm:px-4 text-xs sm:text-sm">Phone</th>
-                  <th className="text-black font-bold py-2 sm:py-3 px-2 sm:px-4 text-xs sm:text-sm">Help Type</th>
-                  <th className="text-black font-bold py-2 sm:py-3 px-2 sm:px-4 text-xs sm:text-sm">Message</th>
-                  <th className="text-black font-bold py-2 sm:py-3 px-2 sm:px-4 text-xs sm:text-sm">Date</th>
+                  <th className="text-black font-bold py-2 sm:py-3 px-0 sm:px-4 text-[10px] sm:text-sm">Name</th>
+                  <th className="text-black font-bold py-2 sm:py-3 px-0 sm:px-4 text-[10px] sm:text-sm">Email</th>
+                  <th className="text-black font-bold py-2 sm:py-3 px-0 sm:px-4 text-[10px] sm:text-sm">Phone</th>
+                  <th className="text-black font-bold py-2 sm:py-3 px-0 sm:px-4 text-[10px] sm:text-sm">Inquiries</th>
+                  <th className="text-black font-bold py-2 sm:py-3 px-0 sm:px-4 text-[10px] sm:text-sm">Message</th>
+                  <th className="text-black font-bold py-2 sm:py-3 px-0 sm:px-4 text-[10px] sm:text-sm">Date</th>
                 </tr>
               </thead>
               <tbody>
                 {filteredInquiries.map((inquiry, index) => (
                   <tr key={inquiry._id || index} className="border-b border-gray-200 hover:bg-gray-50">
-                    <td className="text-gray-700 py-2 sm:py-4 px-2 sm:px-4">
+                    <td className="text-gray-700 py-2 sm:py-4 px-0 sm:px-4">
                       <input
                         type="checkbox"
                         checked={selectedInquiries.includes(inquiry._id)}
                         onChange={() => handleSelectInquiry(inquiry._id)}
                       />
                     </td>
-                    <td className="text-gray-700 py-2 sm:py-4 px-2 sm:px-4 text-xs sm:text-sm">
-                      <div className="max-w-[80px] sm:max-w-none truncate" title={`${inquiry.firstName || ''} ${inquiry.lastName || ''}`.trim()}>
+                    <td className="text-gray-700 py-2 sm:py-4 px-0 sm:px-4 text-[10px] sm:text-sm">
+                      <div className="max-w-[60px] sm:max-w-none truncate" title={`${inquiry.firstName || ''} ${inquiry.lastName || ''}`.trim()}>
                         {`${inquiry.firstName || ''} ${inquiry.lastName || ''}`.trim()}
                       </div>
                     </td>
-                    <td className="text-gray-700 py-2 sm:py-4 px-2 sm:px-4 text-xs sm:text-sm">
-                      <div className="max-w-[100px] sm:max-w-none truncate" title={inquiry.email}>
+                    <td className="text-gray-700 py-2 sm:py-4 px-0 sm:px-4 text-[10px] sm:text-sm">
+                      <div className="max-w-[80px] sm:max-w-none truncate" title={inquiry.email}>
                         {inquiry.email}
                       </div>
                     </td>
-                    <td className="text-gray-700 py-2 sm:py-4 px-2 sm:px-4 text-xs sm:text-sm">
-                      <div className="max-w-[80px] sm:max-w-none truncate" title={inquiry.phone}>
+                    <td className="text-gray-700 py-2 sm:py-4 px-0 sm:px-4 text-[10px] sm:text-sm">
+                      <div className="max-w-[60px] sm:max-w-none truncate" title={inquiry.phone}>
                         {inquiry.phone}
                       </div>
                     </td>
-                    <td className="text-gray-700 py-2 sm:py-4 px-2 sm:px-4 text-xs sm:text-sm">
-                      <div className="max-w-[70px] sm:max-w-none truncate" title={inquiry.helpType}>
+                    <td className="text-gray-700 py-2 sm:py-4 px-0 sm:px-4 text-[10px] sm:text-sm">
+                      <div className="max-w-[50px] sm:max-w-none truncate" title={inquiry.helpType}>
                         {inquiry.helpType}
                       </div>
                     </td>
-                    <td className="text-gray-700 py-2 sm:py-4 px-2 sm:px-4 text-xs sm:text-sm">
-                      <div className="max-w-[100px] sm:max-w-xs truncate" title={inquiry.message}>
-                        {inquiry.message}
-                      </div>
+                    <td className="text-gray-700 py-2 sm:py-4 px-0 sm:px-4 text-[10px] sm:text-sm">
+                      <button 
+                        onClick={() => setSelectedMessage(inquiry.message)}
+                        className="bg-blue-600 hover:bg-blue-700 text-white px-2 py-1 rounded text-xs"
+                      >
+                        View
+                      </button>
                     </td>
-                    <td className="text-gray-700 py-2 sm:py-4 px-2 sm:px-4 text-xs sm:text-sm">
+                    <td className="text-gray-700 py-2 sm:py-4 px-0 sm:px-4 text-[10px] sm:text-sm">
                       <div className="whitespace-nowrap">
                         {inquiry.submittedAt ? new Date(inquiry.submittedAt).toLocaleDateString('en-US', {
                           month: 'short',
@@ -277,6 +281,28 @@ const ContactInquiries = () => {
           </div>
         </div>
       </div>
+
+      {/* Message Modal */}
+      {selectedMessage && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-lg max-w-md w-full shadow-lg">
+            <div className="p-6">
+              <div className="flex justify-between items-start mb-4">
+                <h3 className="text-lg font-semibold text-gray-900">Message</h3>
+                <button 
+                  onClick={() => setSelectedMessage(null)}
+                  className="text-gray-400 hover:text-gray-600 text-xl font-bold"
+                >
+                  ×
+                </button>
+              </div>
+              <div className="max-h-60 overflow-y-auto">
+                <p className="text-gray-700 text-sm leading-relaxed">{selectedMessage}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

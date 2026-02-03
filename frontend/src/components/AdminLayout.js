@@ -43,11 +43,20 @@ const AdminLayout = ({ children, activeSection, setActiveSection }) => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
         </svg>
       )
+    },
+    {
+      id: 'promotions',
+      name: 'Promotions',
+      icon: (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+      )
     }
   ];
 
   return (
-    <div className="min-h-screen bg-gray-100 flex">
+    <div className="min-h-screen bg-white flex">
       {/* Sidebar - Fixed */}
       <div className={`bg-white shadow-lg transition-all duration-300 fixed left-0 top-0 h-full z-40 ${sidebarOpen ? 'w-64' : 'w-16'} ${sidebarOpen ? 'block' : 'hidden'} lg:block`}>
         <div className="flex flex-col h-full">
@@ -55,7 +64,7 @@ const AdminLayout = ({ children, activeSection, setActiveSection }) => {
           <div className="p-4 border-b border-gray-200">
             <div className="flex items-center justify-between">
               {sidebarOpen && (
-                <h1 className="text-xl font-bold text-gray-800">Admin Panel</h1>
+                <img src="/logo1.png" alt="NSPT" className="h-8" />
               )}
               <button
                 onClick={() => setSidebarOpen(!sidebarOpen)}
@@ -121,7 +130,7 @@ const AdminLayout = ({ children, activeSection, setActiveSection }) => {
               </h2>
             </div>
             <div className="flex items-center gap-2 md:gap-4">
-              <span className="text-xs md:text-sm text-gray-600 hidden sm:block">Welcome, Admin</span>
+              <span className="text-xs md:text-sm text-gray-600">Welcome, Admin</span>
               <button
                 onClick={handleLogout}
                 className="px-2 md:px-3 py-1 text-xs md:text-sm bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors"
@@ -133,7 +142,7 @@ const AdminLayout = ({ children, activeSection, setActiveSection }) => {
         </header>
 
         {/* Page Content - Scrollable */}
-        <main className="flex-1 p-4 md:p-6 pt-16 md:pt-20 overflow-x-auto overflow-y-auto h-screen scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
+        <main className="flex-1 p-4 md:p-6 pt-20 md:pt-24 overflow-x-auto overflow-y-auto h-screen scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
           <div className="min-w-[320px]">
             {children}
           </div>

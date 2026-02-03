@@ -322,7 +322,10 @@ const AboutUs = () => {
             <p className="text-lg text-gray-600 max-w-4xl mx-auto mb-8">
               Meet the specialists who deliver tailored technology solutions across web, AI, ERP, HR, and R&D for your business.
             </p>
-            <button className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium">
+            <button 
+              onClick={() => window.location.href = '/contact'}
+              className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium"
+            >
               Connect
             </button>
           </div>
@@ -557,19 +560,67 @@ const AboutUs = () => {
             
             {/* Right Form */}
             <div>
-              <p className="text-gray-600 mb-6 leading-relaxed">
+              <p className="text-black mb-6 leading-relaxed">
                 Get expert insights and updates. Subscribe for the latest in technology, business tools, and innovation.
               </p>
-              <div className="flex gap-4">
-                <input 
-                  type="email" 
-                  placeholder="Email" 
-                  className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                />
-                <button className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium">
-                  Submit
-                </button>
-              </div>
+              <form onSubmit={async (e) => {
+                e.preventDefault();
+                const email = e.target.email.value;
+                const submitButton = e.target.querySelector('button[type="submit"]');
+                const messageDiv = e.target.parentNode.querySelector('.submit-message');
+                
+                submitButton.disabled = true;
+                submitButton.textContent = 'Submitting...';
+                
+                try {
+                  const response = await fetch('http://localhost:5000/api/promotion/subscribe', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email })
+                  });
+                  const result = await response.json();
+                  if (response.ok) {
+                    alert('Successfully submitted!');
+                    e.target.reset();
+                    if (messageDiv) {
+                      messageDiv.textContent = 'Submitted successfully!';
+                      messageDiv.className = 'submit-message text-green-400 text-sm mt-2';
+                      setTimeout(() => messageDiv.textContent = '', 3000);
+                    }
+                  } else {
+                    alert(result.message);
+                    if (messageDiv) {
+                      messageDiv.textContent = result.message || 'Error occurred';
+                      messageDiv.className = 'submit-message text-red-400 text-sm mt-2';
+                      setTimeout(() => messageDiv.textContent = '', 3000);
+                    }
+                  }
+                } catch (error) {
+                  alert('Error subscribing. Please try again.');
+                  if (messageDiv) {
+                    messageDiv.textContent = 'Error occurred. Please try again.';
+                    messageDiv.className = 'submit-message text-red-400 text-sm mt-2';
+                    setTimeout(() => messageDiv.textContent = '', 3000);
+                  }
+                }
+                
+                submitButton.disabled = false;
+                submitButton.textContent = 'Submit';
+              }}>
+                <div className="flex gap-4">
+                  <input 
+                    type="email" 
+                    name="email"
+                    placeholder="Email" 
+                    required
+                    className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black"
+                  />
+                  <button type="submit" className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium">
+                    Submit
+                  </button>
+                </div>
+                <div className="submit-message"></div>
+              </form>
               <p className="text-gray-500 text-sm mt-4">
                 Questions? Visit our contact page for details.
               </p>
