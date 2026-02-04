@@ -336,14 +336,21 @@ const Home = () => {
         
         <style jsx>{`
           .animated-border-top, .animated-border-bottom {
-            background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899, #f59e0b);
-            background-size: 400% 100%;
-            animation: gradientShift 3s ease-in-out infinite;
+            background: #fbbf24;
+            animation: colorCycle 10s infinite;
           }
           
-          @keyframes gradientShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
+          @keyframes colorCycle {
+            0%, 10% { background: #fbbf24; }
+            10%, 20% { background: transparent; }
+            20%, 30% { background: #f97316; }
+            30%, 40% { background: transparent; }
+            40%, 50% { background: #3b82f6; }
+            50%, 60% { background: transparent; }
+            60%, 70% { background: #8b5cf6; }
+            70%, 80% { background: transparent; }
+            80%, 90% { background: #ec4899; }
+            90%, 100% { background: transparent; }
           }
         `}</style>
         

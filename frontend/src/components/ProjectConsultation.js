@@ -31,6 +31,8 @@ const ProjectConsultation = () => {
     agreeToContact: false
   });
 
+  const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -51,6 +53,52 @@ const ProjectConsultation = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    // Validation
+    if (!formData.fullName.trim()) {
+      alert('Please enter your full name');
+      return;
+    }
+    if (!formData.email.trim()) {
+      alert('Please enter your email address');
+      return;
+    }
+    if (!formData.phone.trim()) {
+      alert('Please enter your phone number');
+      return;
+    }
+    if (!formData.companyName.trim()) {
+      alert('Please enter your company name');
+      return;
+    }
+    if (!formData.companySize) {
+      alert('Please select company size');
+      return;
+    }
+    if (!formData.projectType) {
+      alert('Please select project type');
+      return;
+    }
+    if (!formData.projectDescription.trim()) {
+      alert('Please enter project description');
+      return;
+    }
+    if (!formData.expectedTimeline) {
+      alert('Please select expected timeline');
+      return;
+    }
+    if (!formData.estimatedBudget) {
+      alert('Please select estimated budget');
+      return;
+    }
+    if (!Object.values(formData.requiredServices).some(Boolean)) {
+      alert('Please select at least one required service');
+      return;
+    }
+    if (!formData.agreeToContact) {
+      alert('Please agree to be contacted');
+      return;
+    }
     
     try {
       const response = await fetch('http://localhost:5000/api/project-consultation/submit', {
@@ -104,23 +152,23 @@ const ProjectConsultation = () => {
 
   return (
     <Layout activePage="Project Consultation" hideFooter={true}>
-      <div className="min-h-screen bg-gray-50 py-12 pt-24">
+      <div className="min-h-screen bg-gray-50 py-8 pt-20">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {/* Left Form Section */}
-            <div className="lg:col-span-2 bg-white rounded-2xl p-8 shadow-sm">
-              <h1 className="text-4xl font-bold text-gray-900 mb-4">
+            <div className="lg:col-span-2 bg-white rounded-2xl p-6 shadow-sm">
+              <h1 className="text-3xl font-bold text-gray-900 mb-3">
                 Let's Talk About Your Project
               </h1>
-              <p className="text-gray-600 mb-8">
+              <p className="text-gray-600 mb-6">
                 Share your requirements and our team will connect with you shortly.
               </p>
 
-              <form onSubmit={handleSubmit} id="consultation-form" className="space-y-6">
+              <form onSubmit={handleSubmit} id="consultation-form" className="space-y-4">
                 {/* Name and Email Row */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-900 mb-2">
+                    <label className="block text-sm font-medium text-gray-900 mb-1">
                       Full Name <span className="text-red-500">*</span>
                     </label>
                     <input
@@ -129,12 +177,12 @@ const ProjectConsultation = () => {
                       value={formData.fullName}
                       onChange={handleInputChange}
                       placeholder="Enter your full name"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black"
                       required
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-900 mb-2">
+                    <label className="block text-sm font-medium text-gray-900 mb-1">
                       Email Address <span className="text-red-500">*</span>
                     </label>
                     <input
@@ -143,17 +191,17 @@ const ProjectConsultation = () => {
                       value={formData.email}
                       onChange={handleInputChange}
                       placeholder="name@company.com"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black"
                       required
                     />
                   </div>
                 </div>
 
                 {/* Phone and Company Row */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-900 mb-2">
-                      Phone Number
+                    <label className="block text-sm font-medium text-gray-900 mb-1">
+                      Phone Number <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="tel"
@@ -161,11 +209,11 @@ const ProjectConsultation = () => {
                       value={formData.phone}
                       onChange={handleInputChange}
                       placeholder="+91 XXXX XXXXX"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-900 mb-2">
+                    <label className="block text-sm font-medium text-gray-900 mb-1">
                       Company Name <span className="text-red-500">*</span>
                     </label>
                     <input
@@ -174,41 +222,62 @@ const ProjectConsultation = () => {
                       value={formData.companyName}
                       onChange={handleInputChange}
                       placeholder="Your company / organization"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900"
                       required
                     />
                   </div>
                 </div>
 
                 {/* Services and Company Size */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-900 mb-2">
+                    <label className="block text-sm font-medium text-gray-900 mb-1">
                       Required Services <span className="text-red-500">*</span>
                     </label>
-                    <div className="space-y-3 max-h-64 overflow-y-auto border border-gray-300 rounded-lg p-4">
-                      {Object.entries(formData.requiredServices).map(([service, checked]) => (
-                        <label key={service} className="flex items-center space-x-3 cursor-pointer">
-                          <input
-                            type="checkbox"
-                            checked={checked}
-                            onChange={() => handleServiceChange(service)}
-                            className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
-                          />
-                          <span className="text-sm text-gray-700">{service}</span>
-                        </label>
-                      ))}
+                    <div className="relative">
+                      <button
+                        type="button"
+                        onClick={() => setServicesDropdownOpen(!servicesDropdownOpen)}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-left flex items-center justify-between bg-white"
+                      >
+                        <span className="text-gray-700">
+                          {Object.values(formData.requiredServices).some(Boolean) 
+                            ? `${Object.entries(formData.requiredServices).filter(([_, checked]) => checked).length} service(s) selected`
+                            : 'Select services'
+                          }
+                        </span>
+                        <svg className={`w-4 h-4 text-gray-500 transition-transform ${servicesDropdownOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </button>
+                      {servicesDropdownOpen && (
+                        <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-300 rounded-lg shadow-lg z-10 max-h-48 overflow-y-auto">
+                          <div className="p-2">
+                            {Object.entries(formData.requiredServices).map(([service, checked]) => (
+                              <label key={service} className="flex items-center space-x-2 cursor-pointer p-1 hover:bg-gray-50 rounded text-sm">
+                                <input
+                                  type="checkbox"
+                                  checked={checked}
+                                  onChange={() => handleServiceChange(service)}
+                                  className="w-3 h-3 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                                />
+                                <span className="text-gray-700">{service}</span>
+                              </label>
+                            ))}
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-900 mb-2">
-                      Company Size
+                    <label className="block text-sm font-medium text-gray-900 mb-1">
+                      Company Size <span className="text-red-500">*</span>
                     </label>
                     <select
                       name="companySize"
                       value={formData.companySize}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900"
                     >
                       <option value="">Select company size</option>
                       <option value="1-10">1-10</option>
@@ -222,14 +291,14 @@ const ProjectConsultation = () => {
 
                 {/* Project Type */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-900 mb-2">
-                    Project Type
+                  <label className="block text-sm font-medium text-gray-900 mb-1">
+                    Project Type <span className="text-red-500">*</span>
                   </label>
                   <select
                     name="projectType"
                     value={formData.projectType}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900"
                   >
                     <option value="">Select project type</option>
                     <option value="New Project">New Project</option>
@@ -242,30 +311,30 @@ const ProjectConsultation = () => {
 
                 {/* Project Description */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-900 mb-2">
-                    Project Description
+                  <label className="block text-sm font-medium text-gray-900 mb-1">
+                    Project Description <span className="text-red-500">*</span>
                   </label>
                   <textarea
                     name="projectDescription"
                     value={formData.projectDescription}
                     onChange={handleInputChange}
                     placeholder="Briefly describe your requirements, goals, or challenges..."
-                    rows={4}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none text-gray-900"
+                    rows={3}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none text-gray-900"
                   />
                 </div>
 
                 {/* Timeline and Budget */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-900 mb-2">
-                      Expected Timeline
+                    <label className="block text-sm font-medium text-gray-900 mb-1">
+                      Expected Timeline <span className="text-red-500">*</span>
                     </label>
                     <select
                       name="expectedTimeline"
                       value={formData.expectedTimeline}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900"
                     >
                       <option value="">Select timeline</option>
                       <option value="Immediate">Immediate</option>
@@ -275,14 +344,14 @@ const ProjectConsultation = () => {
                     </select>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-900 mb-2">
-                      Estimated Budget
+                    <label className="block text-sm font-medium text-gray-900 mb-1">
+                      Estimated Budget <span className="text-red-500">*</span>
                     </label>
                     <select
                       name="estimatedBudget"
                       value={formData.estimatedBudget}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900"
                     >
                       <option value="">Select budget</option>
                       <option value="₹50K-₹1L">₹50K-₹1L</option>
@@ -304,22 +373,22 @@ const ProjectConsultation = () => {
                     className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 mt-1"
                   />
                   <label htmlFor="agreeToContact" className="text-sm text-gray-600">
-                    I agree to be contacted by Next Sphere Product & Technology regarding my inquiry.
+                    I agree to be contacted by Next Sphere Product & Technology regarding my inquiry. <span className="text-red-500">*</span>
                   </label>
                 </div>
               </form>
             </div>
 
             {/* Right CTA Section */}
-            <div className="bg-gray-900 text-white rounded-2xl p-8 h-fit">
-              <h2 className="text-3xl font-bold mb-4 leading-tight">
+            <div className="bg-gray-900 text-white rounded-2xl p-6 h-fit">
+              <h2 className="text-2xl font-bold mb-3 leading-tight">
                 Transform Your Business with Technology
               </h2>
-              <p className="text-gray-300 mb-8 leading-relaxed">
+              <p className="text-gray-300 mb-6 leading-relaxed text-sm">
                 Discover tailored digital solutions designed to scale, secure, and support your long-term growth.
               </p>
 
-              <div className="space-y-4 mb-8">
+              <div className="space-y-3 mb-6">
                 <div className="flex items-center space-x-3">
                   <div className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
                     <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">

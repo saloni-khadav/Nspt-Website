@@ -380,9 +380,9 @@ const Header = () => {
                 </svg>
               </button>
               {mobileSolutionsDropdown && (
-                <div className="pl-4 mt-2 space-y-3 max-h-64 overflow-y-auto">
+                <div className="pl-9 mt-2 space-y-3 max-h-64 overflow-y-auto">
                   <div>
-                    <div className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2">Web & Digital Solutions</div>
+                    <div className="text-xs font-bold text-black uppercase tracking-wider mb-2 pl-2">Web & Digital Solutions</div>
                     <div className="space-y-1 pl-2">
                       <div className="text-sm text-gray-600">Website Design & Development</div>
                       <div className="text-sm text-gray-600">UI/UX Design</div>
@@ -392,7 +392,7 @@ const Header = () => {
                     </div>
                   </div>
                   <div>
-                    <div className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2">AI, Data & Automation</div>
+                    <div className="text-xs font-bold text-black uppercase tracking-wider mb-2 pl-2">AI, Data & Automation</div>
                     <div className="space-y-1 pl-2">
                       <div className="text-sm text-gray-600">AI Integration</div>
                       <div className="text-sm text-gray-600">Data Analytics & Dashboards</div>
@@ -401,7 +401,7 @@ const Header = () => {
                     </div>
                   </div>
                   <div>
-                    <div className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2">Business & Enterprise Solutions</div>
+                    <div className="text-xs font-bold text-black uppercase tracking-wider mb-2 pl-2">Business & Enterprise Solutions</div>
                     <div className="space-y-1 pl-2">
                       <div className="text-sm text-gray-600">ERP Solutions</div>
                       <div className="text-sm text-gray-600">HR Applications</div>
@@ -410,7 +410,7 @@ const Header = () => {
                     </div>
                   </div>
                   <div>
-                    <div className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2">Cloud & Infrastructure</div>
+                    <div className="text-xs font-bold text-black uppercase tracking-wider mb-2 pl-2">Cloud & Infrastructure</div>
                     <div className="space-y-1 pl-2">
                       <div className="text-sm text-gray-600">Cloud Services</div>
                       <div className="text-sm text-gray-600">Cloud Migration & Optimization</div>
@@ -419,7 +419,7 @@ const Header = () => {
                     </div>
                   </div>
                   <div>
-                    <div className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2">Innovation & Engineering</div>
+                    <div className="text-xs font-bold text-black uppercase tracking-wider mb-2 pl-2">Innovation & Engineering</div>
                     <div className="space-y-1 pl-2">
                       <div className="text-sm text-gray-600">R&D Services</div>
                       <div className="text-sm text-gray-600">Product Engineering</div>
@@ -427,7 +427,7 @@ const Header = () => {
                     </div>
                   </div>
                   <div>
-                    <div className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2">Consulting & Support</div>
+                    <div className="text-xs font-bold text-black uppercase tracking-wider mb-2 pl-2">Consulting & Support</div>
                     <div className="space-y-1 pl-2">
                       <div className="text-sm text-gray-600">Technology Consulting</div>
                       <div className="text-sm text-gray-600">IT Consulting</div>

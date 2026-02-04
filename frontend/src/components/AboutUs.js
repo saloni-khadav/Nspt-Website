@@ -53,35 +53,35 @@ const AboutUs = () => {
 
   const testimonials = [
     {
-      company: '⊙ 360LAB',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80',
+      company: 'Sandeep Dutta',
+      image: '/Sandeep Dutta.png',
       testimonial: 'NextSphere streamlined our operations with robust solutions and reliable support.',
-      author: 'Riley Bennett',
-      position: 'Director of Operations Lead',
+      author: 'Sandeep Dutta',
+      position: 'Business Leader',
       backgroundImage: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
     },
     {
-      company: ' EGGS',
-      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80',
+      company: 'Akarsh Gupta',
+      image: '/akarsh-gupta.jpg',
       testimonial: 'Clear guidance and efficient management from start to finish.',
-      author: 'Morgan Patel',
-      position: 'IT Project Manager',
+      author: 'Akarsh Gupta',
+      position: 'Technology Consultant',
       backgroundImage: 'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
     },
     {
-      company: 'THE PAAK',
-      image: 'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80',
+      company: 'Sachin Chawla',
+      image: '/sachin-chawla.jpg',
       testimonial: 'Expert HR technology delivery with attention to detail and proactive communication.',
-      author: 'Casey Jordan',
-      position: 'People Systems Director',
+      author: 'Sachin Chawla',
+      position: 'HR Systems Director',
       backgroundImage: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
     },
     {
-      company: ' ECHOES',
-      image: '/girl-img.png',
+      company: 'Durga Charan Jena',
+      image: '/durga-charan-jena.jpg',
       testimonial: 'Professional delivery with strong industry insight. Highly recommended.',
-      author: 'Jamie Brooks',
-      position: 'Finance Systems Manager',
+      author: 'Durga Charan Jena',
+      position: 'Founder, Agritek India',
       backgroundImage: 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
     }
   ];
@@ -502,7 +502,7 @@ const AboutUs = () => {
                   }`}
                   onClick={() => setSelectedTestimonial(index)}
                 >
-                  <div className="w-16 h-16 mx-auto mb-3 rounded-full overflow-hidden">
+                  <div className="w-20 h-20 mx-auto mb-3 rounded-full overflow-hidden">
                     <img 
                       src={item.image}
                       alt={item.company}
@@ -510,11 +510,7 @@ const AboutUs = () => {
                     />
                   </div>
                   <div className="h-6 flex items-center justify-center">
-                    <p className={`text-sm font-semibold ${
-                      item.company === 'THE PAAK' 
-                        ? 'border border-white px-1 py-0.5 text-white' 
-                        : 'text-white'
-                    }`}>
+                    <p className="text-sm font-semibold text-white">
                       {item.company}
                     </p>
                   </div>
