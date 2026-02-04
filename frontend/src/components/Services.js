@@ -651,7 +651,7 @@ const Services = () => {
       {/* Services Popup Modal */}
       {showServicesPopup && (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-xl max-w-3xl w-full max-h-[70vh] overflow-y-auto">
+          <div className="bg-white rounded-xl max-w-6xl w-full max-h-[80vh] overflow-y-auto">
             {/* Header */}
             <div className="flex justify-between items-center p-4 border-b">
               <h2 className="text-xl font-bold text-gray-900">Our Services</h2>
@@ -665,16 +665,27 @@ const Services = () => {
             
             {/* Services Grid */}
             <div className="p-4">
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                {/* Web Development */}
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+                {/* Website Design & Development */}
                 <div className="bg-gray-50 rounded-lg p-3 hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
                   <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center mb-2 group-hover:bg-blue-100 transition-colors">
                     <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                     </svg>
                   </div>
-                  <h3 className="text-sm font-semibold text-gray-900 mb-1 group-hover:text-blue-600 transition-colors">Website Design</h3>
-                  <p className="text-gray-600 text-xs">Custom websites for your business needs.</p>
+                  <h3 className="text-sm font-semibold text-gray-900 mb-1 group-hover:text-blue-600 transition-colors">Website Design & Development</h3>
+                  <p className="text-gray-600 text-xs">Custom, responsive websites built for performance.</p>
+                </div>
+                
+                {/* UI/UX Design */}
+                <div className="bg-gray-50 rounded-lg p-3 hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
+                  <div className="w-8 h-8 bg-pink-100 rounded-lg flex items-center justify-center mb-2 group-hover:bg-pink-100 transition-colors">
+                    <svg className="w-4 h-4 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-sm font-semibold text-gray-900 mb-1 group-hover:text-blue-600 transition-colors">UI/UX Design</h3>
+                  <p className="text-gray-600 text-xs">User-centric interface and experience design.</p>
                 </div>
                 
                 {/* App Development */}
@@ -685,7 +696,29 @@ const Services = () => {
                     </svg>
                   </div>
                   <h3 className="text-sm font-semibold text-gray-900 mb-1 group-hover:text-blue-600 transition-colors">App Development</h3>
-                  <p className="text-gray-600 text-xs">Build scalable mobile and web apps.</p>
+                  <p className="text-gray-600 text-xs">Scalable mobile and web applications.</p>
+                </div>
+                
+                {/* SEO */}
+                <div className="bg-gray-50 rounded-lg p-3 hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
+                  <div className="w-8 h-8 bg-yellow-100 rounded-lg flex items-center justify-center mb-2 group-hover:bg-yellow-100 transition-colors">
+                    <svg className="w-4 h-4 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-sm font-semibold text-gray-900 mb-1 group-hover:text-blue-600 transition-colors">SEO</h3>
+                  <p className="text-gray-600 text-xs">Search engine optimization for better visibility.</p>
+                </div>
+                
+                {/* Digital Marketing */}
+                <div className="bg-gray-50 rounded-lg p-3 hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
+                  <div className="w-8 h-8 bg-red-100 rounded-lg flex items-center justify-center mb-2 group-hover:bg-red-100 transition-colors">
+                    <svg className="w-4 h-4 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m-9 0h10m-10 0a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V6a2 2 0 00-2-2" />
+                    </svg>
+                  </div>
+                  <h3 className="text-sm font-semibold text-gray-900 mb-1 group-hover:text-blue-600 transition-colors">Digital Marketing</h3>
+                  <p className="text-gray-600 text-xs">Data-driven marketing strategies and campaigns.</p>
                 </div>
                 
                 {/* AI Integration */}
@@ -696,7 +729,40 @@ const Services = () => {
                     </svg>
                   </div>
                   <h3 className="text-sm font-semibold text-gray-900 mb-1 group-hover:text-blue-600 transition-colors">AI Integration</h3>
-                  <p className="text-gray-600 text-xs">Enhance workflows with smart automation.</p>
+                  <p className="text-gray-600 text-xs">Intelligent automation and AI models.</p>
+                </div>
+                
+                {/* Data Analytics & Dashboards */}
+                <div className="bg-gray-50 rounded-lg p-3 hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
+                  <div className="w-8 h-8 bg-indigo-100 rounded-lg flex items-center justify-center mb-2 group-hover:bg-indigo-100 transition-colors">
+                    <svg className="w-4 h-4 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-sm font-semibold text-gray-900 mb-1 group-hover:text-blue-600 transition-colors">Data Analytics & Dashboards</h3>
+                  <p className="text-gray-600 text-xs">Business intelligence and analytics solutions.</p>
+                </div>
+                
+                {/* Process Automation */}
+                <div className="bg-gray-50 rounded-lg p-3 hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
+                  <div className="w-8 h-8 bg-teal-100 rounded-lg flex items-center justify-center mb-2 group-hover:bg-teal-100 transition-colors">
+                    <svg className="w-4 h-4 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                    </svg>
+                  </div>
+                  <h3 className="text-sm font-semibold text-gray-900 mb-1 group-hover:text-blue-600 transition-colors">Process Automation</h3>
+                  <p className="text-gray-600 text-xs">Automate repetitive tasks and workflows.</p>
+                </div>
+                
+                {/* Chatbots & Virtual Assistants */}
+                <div className="bg-gray-50 rounded-lg p-3 hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
+                  <div className="w-8 h-8 bg-cyan-100 rounded-lg flex items-center justify-center mb-2 group-hover:bg-cyan-100 transition-colors">
+                    <svg className="w-4 h-4 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-sm font-semibold text-gray-900 mb-1 group-hover:text-blue-600 transition-colors">Chatbots & Virtual Assistants</h3>
+                  <p className="text-gray-600 text-xs">AI-powered customer support solutions.</p>
                 </div>
                 
                 {/* ERP Solutions */}
@@ -707,18 +773,85 @@ const Services = () => {
                     </svg>
                   </div>
                   <h3 className="text-sm font-semibold text-gray-900 mb-1 group-hover:text-blue-600 transition-colors">ERP Solutions</h3>
-                  <p className="text-gray-600 text-xs">Streamline accounting and operations.</p>
+                  <p className="text-gray-600 text-xs">Integrated ERP systems for operations.</p>
                 </div>
                 
                 {/* HR Applications */}
                 <div className="bg-gray-50 rounded-lg p-3 hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
-                  <div className="w-8 h-8 bg-teal-100 rounded-lg flex items-center justify-center mb-2 group-hover:bg-teal-100 transition-colors">
-                    <svg className="w-4 h-4 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-8 h-8 bg-emerald-100 rounded-lg flex items-center justify-center mb-2 group-hover:bg-emerald-100 transition-colors">
+                    <svg className="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                     </svg>
                   </div>
                   <h3 className="text-sm font-semibold text-gray-900 mb-1 group-hover:text-blue-600 transition-colors">HR Applications</h3>
-                  <p className="text-gray-600 text-xs">Manage teams and processes easily.</p>
+                  <p className="text-gray-600 text-xs">Smart HR platforms for employee management.</p>
+                </div>
+                
+                {/* CRM Solutions */}
+                <div className="bg-gray-50 rounded-lg p-3 hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
+                  <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center mb-2 group-hover:bg-blue-100 transition-colors">
+                    <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-sm font-semibold text-gray-900 mb-1 group-hover:text-blue-600 transition-colors">CRM Solutions</h3>
+                  <p className="text-gray-600 text-xs">Customer relationship management systems.</p>
+                </div>
+                
+                {/* Accounting & Finance Systems */}
+                <div className="bg-gray-50 rounded-lg p-3 hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
+                  <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center mb-2 group-hover:bg-green-100 transition-colors">
+                    <svg className="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-sm font-semibold text-gray-900 mb-1 group-hover:text-blue-600 transition-colors">Accounting & Finance Systems</h3>
+                  <p className="text-gray-600 text-xs">Custom accounting and billing solutions.</p>
+                </div>
+                
+                {/* Cloud Services */}
+                <div className="bg-gray-50 rounded-lg p-3 hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
+                  <div className="w-8 h-8 bg-sky-100 rounded-lg flex items-center justify-center mb-2 group-hover:bg-sky-100 transition-colors">
+                    <svg className="w-4 h-4 text-sky-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10" />
+                    </svg>
+                  </div>
+                  <h3 className="text-sm font-semibold text-gray-900 mb-1 group-hover:text-blue-600 transition-colors">Cloud Services</h3>
+                  <p className="text-gray-600 text-xs">Secure and scalable cloud architecture.</p>
+                </div>
+                
+                {/* Cloud Migration & Optimization */}
+                <div className="bg-gray-50 rounded-lg p-3 hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
+                  <div className="w-8 h-8 bg-violet-100 rounded-lg flex items-center justify-center mb-2 group-hover:bg-violet-100 transition-colors">
+                    <svg className="w-4 h-4 text-violet-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                    </svg>
+                  </div>
+                  <h3 className="text-sm font-semibold text-gray-900 mb-1 group-hover:text-blue-600 transition-colors">Cloud Migration & Optimization</h3>
+                  <p className="text-gray-600 text-xs">Move to cloud with minimal risk.</p>
+                </div>
+                
+                {/* DevOps Services */}
+                <div className="bg-gray-50 rounded-lg p-3 hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
+                  <div className="w-8 h-8 bg-slate-100 rounded-lg flex items-center justify-center mb-2 group-hover:bg-slate-100 transition-colors">
+                    <svg className="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-sm font-semibold text-gray-900 mb-1 group-hover:text-blue-600 transition-colors">DevOps Services</h3>
+                  <p className="text-gray-600 text-xs">CI/CD pipelines and infrastructure automation.</p>
+                </div>
+                
+                {/* Cybersecurity Services */}
+                <div className="bg-gray-50 rounded-lg p-3 hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
+                  <div className="w-8 h-8 bg-red-100 rounded-lg flex items-center justify-center mb-2 group-hover:bg-red-100 transition-colors">
+                    <svg className="w-4 h-4 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-sm font-semibold text-gray-900 mb-1 group-hover:text-blue-600 transition-colors">Cybersecurity Services</h3>
+                  <p className="text-gray-600 text-xs">Application security and data protection.</p>
                 </div>
                 
                 {/* R&D Services */}
@@ -729,40 +862,62 @@ const Services = () => {
                     </svg>
                   </div>
                   <h3 className="text-sm font-semibold text-gray-900 mb-1 group-hover:text-blue-600 transition-colors">R&D Services</h3>
-                  <p className="text-gray-600 text-xs">Drive progress with new technologies.</p>
+                  <p className="text-gray-600 text-xs">Research and development of future-ready solutions.</p>
                 </div>
                 
-                {/* Cloud Services */}
+                {/* Product Engineering */}
                 <div className="bg-gray-50 rounded-lg p-3 hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
-                  <div className="w-8 h-8 bg-cyan-100 rounded-lg flex items-center justify-center mb-2 group-hover:bg-cyan-100 transition-colors">
-                    <svg className="w-4 h-4 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10" />
+                  <div className="w-8 h-8 bg-amber-100 rounded-lg flex items-center justify-center mb-2 group-hover:bg-amber-100 transition-colors">
+                    <svg className="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
                     </svg>
                   </div>
-                  <h3 className="text-sm font-semibold text-gray-900 mb-1 group-hover:text-blue-600 transition-colors">Cloud Services</h3>
-                  <p className="text-gray-600 text-xs">Secure, scalable cloud solutions.</p>
+                  <h3 className="text-sm font-semibold text-gray-900 mb-1 group-hover:text-blue-600 transition-colors">Product Engineering</h3>
+                  <p className="text-gray-600 text-xs">End-to-end product design and development.</p>
                 </div>
                 
-                {/* Consulting */}
+                {/* IoT Solutions */}
                 <div className="bg-gray-50 rounded-lg p-3 hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
-                  <div className="w-8 h-8 bg-red-100 rounded-lg flex items-center justify-center mb-2 group-hover:bg-red-100 transition-colors">
-                    <svg className="w-4 h-4 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-8 h-8 bg-teal-100 rounded-lg flex items-center justify-center mb-2 group-hover:bg-teal-100 transition-colors">
+                    <svg className="w-4 h-4 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0" />
+                    </svg>
+                  </div>
+                  <h3 className="text-sm font-semibold text-gray-900 mb-1 group-hover:text-blue-600 transition-colors">IoT Solutions</h3>
+                  <p className="text-gray-600 text-xs">Smart device integration and monitoring.</p>
+                </div>
+                
+                {/* Technology Consulting */}
+                <div className="bg-gray-50 rounded-lg p-3 hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
+                  <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center mb-2 group-hover:bg-blue-100 transition-colors">
+                    <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </div>
-                  <h3 className="text-sm font-semibold text-gray-900 mb-1 group-hover:text-blue-600 transition-colors">Consulting</h3>
-                  <p className="text-gray-600 text-xs">Expert advice for digital growth.</p>
+                  <h3 className="text-sm font-semibold text-gray-900 mb-1 group-hover:text-blue-600 transition-colors">Technology Consulting</h3>
+                  <p className="text-gray-600 text-xs">Strategic guidance on digital transformation.</p>
                 </div>
                 
-                {/* Support */}
+                {/* IT Consulting */}
+                <div className="bg-gray-50 rounded-lg p-3 hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
+                  <div className="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center mb-2 group-hover:bg-gray-100 transition-colors">
+                    <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-sm font-semibold text-gray-900 mb-1 group-hover:text-blue-600 transition-colors">IT Consulting</h3>
+                  <p className="text-gray-600 text-xs">Infrastructure planning and IT modernization.</p>
+                </div>
+                
+                {/* Technical Support & Maintenance */}
                 <div className="bg-gray-50 rounded-lg p-3 hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
                   <div className="w-8 h-8 bg-yellow-100 rounded-lg flex items-center justify-center mb-2 group-hover:bg-yellow-100 transition-colors">
                     <svg className="w-4 h-4 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M12 2.25a9.75 9.75 0 100 19.5 9.75 9.75 0 000-19.5z" />
                     </svg>
                   </div>
-                  <h3 className="text-sm font-semibold text-gray-900 mb-1 group-hover:text-blue-600 transition-colors">Support</h3>
-                  <p className="text-gray-600 text-xs">Ongoing help for your projects.</p>
+                  <h3 className="text-sm font-semibold text-gray-900 mb-1 group-hover:text-blue-600 transition-colors">Technical Support & Maintenance</h3>
+                  <p className="text-gray-600 text-xs">Ongoing support and system monitoring.</p>
                 </div>
               </div>
             </div>
