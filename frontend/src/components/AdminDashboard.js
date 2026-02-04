@@ -131,7 +131,7 @@ const AdminDashboard = () => {
 
     if (window.confirm(`Are you sure you want to delete ${selectedPromotions.length} promotion(s)?`)) {
       try {
-        const response = await fetch('http://localhost:5000/api/promotion/delete-multiple', {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/promotion/delete-multiple`, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',
@@ -166,7 +166,7 @@ const AdminDashboard = () => {
         `"${app.experience}"`,
         `"${app.qualification}"`,
         `"${new Date(app.submittedAt).toLocaleDateString()}"`,
-        `"http://localhost:5000/${app.resumePath}"`
+        `"${process.env.REACT_APP_API_URL}/${app.resumePath}"`
       ].join(','))
     ].join('\n');
 
@@ -184,7 +184,7 @@ const AdminDashboard = () => {
 
   const fetchPromotions = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/promotion/all');
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/promotion/all`);
       const data = await response.json();
       setPromotions(data);
       setFilteredPromotions(data);
@@ -195,7 +195,7 @@ const AdminDashboard = () => {
 
   const fetchApplications = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/careers/applications');
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/careers/applications`);
       const data = await response.json();
       setApplications(data);
       setFilteredApplications(data);
@@ -208,7 +208,7 @@ const AdminDashboard = () => {
 
   const fetchInquiries = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/contact/messages');
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/contact/messages`);
       const data = await response.json();
       setInquiries(data);
       setFilteredInquiries(data);
@@ -328,7 +328,7 @@ const AdminDashboard = () => {
     }
     
     try {
-      const response = await fetch('http://localhost:5000/api/careers/send-rejection', {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/careers/send-rejection`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -363,7 +363,7 @@ const AdminDashboard = () => {
 
     if (window.confirm(`Are you sure you want to delete ${selectedApplications.length} application(s)?`)) {
       try {
-        const response = await fetch('http://localhost:5000/api/careers/delete-multiple', {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/careers/delete-multiple`, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',
@@ -549,7 +549,7 @@ const AdminDashboard = () => {
                         <td className="text-gray-700 py-2 sm:py-4 px-0 sm:px-4">
                           {app.resumePath ? (
                             <a 
-                              href={`http://localhost:5000/api/careers/resume/${app.resumePath}`}
+                              href={`${process.env.REACT_APP_API_URL}/api/careers/resume/${app.resumePath}`}
                               target="_blank" 
                               rel="noopener noreferrer"
                               className="text-blue-600 hover:text-blue-700 underline text-[10px] sm:text-sm"

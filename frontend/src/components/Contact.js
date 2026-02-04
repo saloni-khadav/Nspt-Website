@@ -187,7 +187,7 @@ const Contact = () => {
               <p className="text-sm text-gray-600 mb-4">
                 Meet with our specialists during business hours at our office location.
               </p>
-              <p className="text-blue-600 font-medium text-sm sm:text-base">Gurgaon, Haryana</p>
+              <p className="text-blue-600 font-medium text-sm sm:text-base">Gurugram, Haryana</p>
             </div>
           </div>
         </div>

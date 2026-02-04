@@ -24,7 +24,7 @@ const ContactInquiries = () => {
 
   const fetchInquiries = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/contact/messages');
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/contact/messages`);
       const data = await response.json();
       setInquiries(data);
       setFilteredInquiries(data);
@@ -85,7 +85,7 @@ const ContactInquiries = () => {
 
     if (window.confirm(`Are you sure you want to delete ${selectedInquiries.length} inquiry(ies)?`)) {
       try {
-        const response = await fetch('http://localhost:5000/api/contact/delete-multiple', {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/contact/delete-multiple`, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',

@@ -47,7 +47,7 @@ const Careers = () => {
     const finalPosition = talentPoolData.position === 'Other' ? talentPoolData.customPosition : talentPoolData.position;
     
     try {
-      const response = await fetch('http://localhost:5000/api/promotion/subscribe', {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/promotion/subscribe`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -93,7 +93,7 @@ const Careers = () => {
     formData.append('coverLetter', applicationData.coverLetter);
     
     // Save application data to database
-    fetch('http://localhost:5000/api/careers/apply', {
+    fetch(`${process.env.REACT_APP_API_URL}/api/careers/apply`, {
       method: 'POST',
       body: formData
     })

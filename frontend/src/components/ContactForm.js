@@ -32,7 +32,7 @@ const ContactForm = () => {
     }
 
     try {
-      const response = await fetch('http://localhost:5000/api/contact/submit', {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/contact/submit`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
