@@ -1,9 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import './animated-border.css';
 
 const Header = () => {
   const [supportDropdown, setSupportDropdown] = useState(false);
   const [solutionsDropdown, setSolutionsDropdown] = useState(false);
+  const [mobileSolutionsDropdown, setMobileSolutionsDropdown] = useState(false);
+  const [mobileSupportDropdown, setMobileSupportDropdown] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const dropdownRef = useRef(null);
   const solutionsDropdownRef = useRef(null);
@@ -61,126 +64,226 @@ const Header = () => {
                 </svg>
               </div>
               {solutionsDropdown && (
-                <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-[900px] bg-white border border-gray-200 rounded-lg shadow-lg z-50">
-                  <div className="flex">
+                <div className="absolute top-full left-1/2 transform -translate-x-1/2 lg:ml-60 mt-2 w-[95vw] lg:w-[1400px] max-w-[1400px] bg-white border border-gray-200 rounded-lg shadow-lg z-50 max-h-[650px] overflow-auto custom-scrollbar">
+                  <style jsx>{`
+                    .custom-scrollbar::-webkit-scrollbar {
+                      width: 8px;
+                      height: 8px;
+                    }
+                    .custom-scrollbar::-webkit-scrollbar-track {
+                      background: #f1f1f1;
+                    }
+                    .custom-scrollbar::-webkit-scrollbar-thumb {
+                      background: #ffffff;
+                      border-radius: 4px;
+                      border: 1px solid #e5e5e5;
+                    }
+                    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+                      background: #f5f5f5;
+                    }
+                  `}</style>
+                  <div className="flex min-w-[800px] lg:min-w-[1200px]">
                     {/* Left side - Services Grid */}
-                    <div className="flex-1 p-6">
-                      <div className="grid grid-cols-3 gap-6">
-                        {/* WEB DEVELOPMENT */}
+                    <div className="flex-1 p-4 lg:p-6 overflow-y-auto max-h-[600px] custom-scrollbar">
+                      <div className="grid grid-cols-3 lg:grid-cols-6 gap-2 lg:gap-3 min-w-[700px] lg:min-w-[1000px]">
+                        {/* WEB & DIGITAL SOLUTIONS */}
                         <div>
-                          <h3 className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-4">WEB DEVELOPMENT</h3>
-                          <div className="space-y-4">
+                          <h3 className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-4">Web & Digital Solutions</h3>
+                          <div className="space-y-3">
                             <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
-                              <div className="w-5 h-5 bg-blue-50 rounded flex items-center justify-center mt-0.5 group-hover:bg-blue-100 transition-colors">
-                                <svg className="w-3 h-3 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                                </svg>
-                              </div>
+                              <div className="w-1 h-1 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
                               <div>
-                                <h4 className="font-medium text-gray-900 text-sm mb-1 group-hover:text-blue-600 transition-colors">Website Design</h4>
-                                <p className="text-xs text-gray-600">Custom websites for your business needs.</p>
+                                <h4 className="font-medium text-gray-900 text-xs mb-1 group-hover:text-blue-600 transition-colors">Website Design & Development</h4>
+                                <p className="text-xs text-gray-600">Custom, responsive websites built for performance, security, and scalability.</p>
                               </div>
                             </div>
                             <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
-                              <div className="w-5 h-5 bg-blue-50 rounded flex items-center justify-center mt-0.5 group-hover:bg-blue-100 transition-colors">
-                                <svg className="w-3 h-3 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                                </svg>
-                              </div>
+                              <div className="w-1 h-1 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
                               <div>
-                                <h4 className="font-medium text-gray-900 text-sm mb-1 group-hover:text-blue-600 transition-colors">App Development</h4>
-                                <p className="text-xs text-gray-600">Build scalable mobile and web apps.</p>
+                                <h4 className="font-medium text-gray-900 text-xs mb-1 group-hover:text-blue-600 transition-colors">UI/UX Design</h4>
+                                <p className="text-xs text-gray-600">User-centric interface and experience design that improves engagement and conversions.</p>
                               </div>
                             </div>
                             <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
-                              <div className="w-5 h-5 bg-blue-50 rounded flex items-center justify-center mt-0.5 group-hover:bg-blue-100 transition-colors">
-                                <svg className="w-3 h-3 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                                </svg>
-                              </div>
+                              <div className="w-1 h-1 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
                               <div>
-                                <h4 className="font-medium text-gray-900 text-sm mb-1 group-hover:text-blue-600 transition-colors">AI Integration</h4>
-                                <p className="text-xs text-gray-600">Enhance workflows with smart automation.</p>
+                                <h4 className="font-medium text-gray-900 text-xs mb-1 group-hover:text-blue-600 transition-colors">App Development</h4>
+                                <p className="text-xs text-gray-600">Scalable mobile and web applications for modern business needs.</p>
+                              </div>
+                            </div>
+                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
+                              <div className="w-1 h-1 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                              <div>
+                                <h4 className="font-medium text-gray-900 text-xs mb-1 group-hover:text-blue-600 transition-colors">SEO (Search Engine Optimization)</h4>
+                                <p className="text-xs text-gray-600">Technical and content SEO to improve visibility, rankings, and organic growth.</p>
+                              </div>
+                            </div>
+                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
+                              <div className="w-1 h-1 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                              <div>
+                                <h4 className="font-medium text-gray-900 text-xs mb-1 group-hover:text-blue-600 transition-colors">Digital Marketing</h4>
+                                <p className="text-xs text-gray-600">Data-driven marketing strategies including social media, paid ads, and content marketing.</p>
                               </div>
                             </div>
                           </div>
                         </div>
                         
-                        {/* BUSINESS TOOLS */}
+                        {/* AI, DATA & AUTOMATION */}
                         <div>
-                          <h3 className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-4">BUSINESS TOOLS</h3>
-                          <div className="space-y-4">
+                          <h3 className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-4">AI, Data & Automation</h3>
+                          <div className="space-y-3">
                             <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
-                              <div className="w-5 h-5 bg-blue-50 rounded flex items-center justify-center mt-0.5 group-hover:bg-blue-100 transition-colors">
-                                <svg className="w-3 h-3 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                                </svg>
-                              </div>
+                              <div className="w-1 h-1 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
                               <div>
-                                <h4 className="font-medium text-gray-900 text-sm mb-1 group-hover:text-blue-600 transition-colors">ERP Solutions</h4>
-                                <p className="text-xs text-gray-600">Streamline accounting and operations.</p>
+                                <h4 className="font-medium text-gray-900 text-xs mb-1 group-hover:text-blue-600 transition-colors">AI Integration</h4>
+                                <p className="text-xs text-gray-600">Intelligent automation, AI models, and smart workflows tailored to your business.</p>
                               </div>
                             </div>
                             <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
-                              <div className="w-5 h-5 bg-blue-50 rounded flex items-center justify-center mt-0.5 group-hover:bg-blue-100 transition-colors">
-                                <svg className="w-3 h-3 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                                </svg>
-                              </div>
+                              <div className="w-1 h-1 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
                               <div>
-                                <h4 className="font-medium text-gray-900 text-sm mb-1 group-hover:text-blue-600 transition-colors">HR Applications</h4>
-                                <p className="text-xs text-gray-600">Manage teams and processes easily.</p>
+                                <h4 className="font-medium text-gray-900 text-xs mb-1 group-hover:text-blue-600 transition-colors">Data Analytics & Dashboards</h4>
+                                <p className="text-xs text-gray-600">Business intelligence dashboards and analytics for informed decision-making.</p>
                               </div>
                             </div>
                             <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
-                              <div className="w-5 h-5 bg-blue-50 rounded flex items-center justify-center mt-0.5 group-hover:bg-blue-100 transition-colors">
-                                <svg className="w-3 h-3 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                                </svg>
-                              </div>
+                              <div className="w-1 h-1 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
                               <div>
-                                <h4 className="font-medium text-gray-900 text-sm mb-1 group-hover:text-blue-600 transition-colors">Consulting</h4>
-                                <p className="text-xs text-gray-600">Expert advice for digital growth.</p>
+                                <h4 className="font-medium text-gray-900 text-xs mb-1 group-hover:text-blue-600 transition-colors">Process Automation</h4>
+                                <p className="text-xs text-gray-600">Automate repetitive tasks using AI, RPA, and workflow tools.</p>
+                              </div>
+                            </div>
+                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
+                              <div className="w-1 h-1 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                              <div>
+                                <h4 className="font-medium text-gray-900 text-xs mb-1 group-hover:text-blue-600 transition-colors">Chatbots & Virtual Assistants</h4>
+                                <p className="text-xs text-gray-600">AI-powered customer support and internal assistance solutions.</p>
                               </div>
                             </div>
                           </div>
                         </div>
                         
-                        {/* INNOVATION */}
+                        {/* BUSINESS & ENTERPRISE SOLUTIONS */}
                         <div>
-                          <h3 className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-4">INNOVATION</h3>
-                          <div className="space-y-4">
+                          <h3 className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-4">Business & Enterprise Solutions</h3>
+                          <div className="space-y-3">
                             <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
-                              <div className="w-5 h-5 bg-blue-50 rounded flex items-center justify-center mt-0.5 group-hover:bg-blue-100 transition-colors">
-                                <svg className="w-3 h-3 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-                                </svg>
-                              </div>
+                              <div className="w-1 h-1 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
                               <div>
-                                <h4 className="font-medium text-gray-900 text-sm mb-1 group-hover:text-blue-600 transition-colors">R&D Services</h4>
-                                <p className="text-xs text-gray-600">Drive progress with new technologies.</p>
+                                <h4 className="font-medium text-gray-900 text-xs mb-1 group-hover:text-blue-600 transition-colors">ERP Solutions</h4>
+                                <p className="text-xs text-gray-600">Integrated ERP systems for finance, operations, inventory, and reporting.</p>
                               </div>
                             </div>
                             <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
-                              <div className="w-5 h-5 bg-blue-50 rounded flex items-center justify-center mt-0.5 group-hover:bg-blue-100 transition-colors">
-                                <svg className="w-3 h-3 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
-                                </svg>
-                              </div>
+                              <div className="w-1 h-1 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
                               <div>
-                                <h4 className="font-medium text-gray-900 text-sm mb-1 group-hover:text-blue-600 transition-colors">Cloud Services</h4>
-                                <p className="text-xs text-gray-600">Secure, scalable cloud solutions.</p>
+                                <h4 className="font-medium text-gray-900 text-xs mb-1 group-hover:text-blue-600 transition-colors">HR Applications</h4>
+                                <p className="text-xs text-gray-600">Smart HR platforms for recruitment, payroll, performance, and employee management.</p>
                               </div>
                             </div>
                             <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
-                              <div className="w-5 h-5 bg-blue-50 rounded flex items-center justify-center mt-0.5 group-hover:bg-blue-100 transition-colors">
-                                <svg className="w-3 h-3 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
-                                </svg>
-                              </div>
+                              <div className="w-1 h-1 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
                               <div>
-                                <h4 className="font-medium text-gray-900 text-sm mb-1 group-hover:text-blue-600 transition-colors">Support</h4>
-                                <p className="text-xs text-gray-600">Ongoing help for your projects.</p>
+                                <h4 className="font-medium text-gray-900 text-xs mb-1 group-hover:text-blue-600 transition-colors">CRM Solutions</h4>
+                                <p className="text-xs text-gray-600">Customer relationship management systems to improve sales and customer engagement.</p>
+                              </div>
+                            </div>
+                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
+                              <div className="w-1 h-1 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                              <div>
+                                <h4 className="font-medium text-gray-900 text-xs mb-1 group-hover:text-blue-600 transition-colors">Accounting & Finance Systems</h4>
+                                <p className="text-xs text-gray-600">Custom accounting, billing, invoicing, and compliance solutions.</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        {/* CLOUD & INFRASTRUCTURE */}
+                        <div>
+                          <h3 className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-4">Cloud & Infrastructure</h3>
+                          <div className="space-y-3">
+                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
+                              <div className="w-1 h-1 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                              <div>
+                                <h4 className="font-medium text-gray-900 text-xs mb-1 group-hover:text-blue-600 transition-colors">Cloud Services</h4>
+                                <p className="text-xs text-gray-600">Secure and scalable cloud architecture, migration, and management.</p>
+                              </div>
+                            </div>
+                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
+                              <div className="w-1 h-1 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                              <div>
+                                <h4 className="font-medium text-gray-900 text-xs mb-1 group-hover:text-blue-600 transition-colors">Cloud Migration & Optimization</h4>
+                                <p className="text-xs text-gray-600">Move to the cloud with minimal risk and maximum performance.</p>
+                              </div>
+                            </div>
+                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
+                              <div className="w-1 h-1 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                              <div>
+                                <h4 className="font-medium text-gray-900 text-xs mb-1 group-hover:text-blue-600 transition-colors">DevOps Services</h4>
+                                <p className="text-xs text-gray-600">CI/CD pipelines, infrastructure automation, and system monitoring.</p>
+                              </div>
+                            </div>
+                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
+                              <div className="w-1 h-1 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                              <div>
+                                <h4 className="font-medium text-gray-900 text-xs mb-1 group-hover:text-blue-600 transition-colors">Cybersecurity Services</h4>
+                                <p className="text-xs text-gray-600">Application security, data protection, and compliance solutions.</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        {/* INNOVATION & ENGINEERING */}
+                        <div>
+                          <h3 className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-4">Innovation & Engineering</h3>
+                          <div className="space-y-3">
+                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
+                              <div className="w-1 h-1 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                              <div>
+                                <h4 className="font-medium text-gray-900 text-xs mb-1 group-hover:text-blue-600 transition-colors">R&D Services</h4>
+                                <p className="text-xs text-gray-600">Research, prototyping, and development of future-ready technology solutions.</p>
+                              </div>
+                            </div>
+                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
+                              <div className="w-1 h-1 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                              <div>
+                                <h4 className="font-medium text-gray-900 text-xs mb-1 group-hover:text-blue-600 transition-colors">Product Engineering</h4>
+                                <p className="text-xs text-gray-600">End-to-end product design, development, and scaling.</p>
+                              </div>
+                            </div>
+                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
+                              <div className="w-1 h-1 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                              <div>
+                                <h4 className="font-medium text-gray-900 text-xs mb-1 group-hover:text-blue-600 transition-colors">IoT Solutions</h4>
+                                <p className="text-xs text-gray-600">Smart device integration and real-time monitoring systems.</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        {/* CONSULTING & SUPPORT */}
+                        <div>
+                          <h3 className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-4">Consulting & Support</h3>
+                          <div className="space-y-3">
+                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
+                              <div className="w-1 h-1 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                              <div>
+                                <h4 className="font-medium text-gray-900 text-xs mb-1 group-hover:text-blue-600 transition-colors">Technology Consulting</h4>
+                                <p className="text-xs text-gray-600">Strategic guidance on digital transformation, architecture, and technology adoption.</p>
+                              </div>
+                            </div>
+                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
+                              <div className="w-1 h-1 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                              <div>
+                                <h4 className="font-medium text-gray-900 text-xs mb-1 group-hover:text-blue-600 transition-colors">IT Consulting</h4>
+                                <p className="text-xs text-gray-600">Infrastructure planning, system audits, and IT modernization.</p>
+                              </div>
+                            </div>
+                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
+                              <div className="w-1 h-1 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                              <div>
+                                <h4 className="font-medium text-gray-900 text-xs mb-1 group-hover:text-blue-600 transition-colors">Technical Support & Maintenance</h4>
+                                <p className="text-xs text-gray-600">Ongoing support, monitoring, and maintenance to ensure optimal system performance.</p>
                               </div>
                             </div>
                           </div>
@@ -197,12 +300,12 @@ const Header = () => {
                         <p className="text-gray-300 mb-5 leading-relaxed text-sm">
                           Discover tailored solutions for digital success.
                         </p>
-                        <button className="bg-white text-gray-900 px-4 py-2 rounded-lg font-medium hover:bg-gray-100 transition-colors flex items-center justify-between group">
+                        <Link to="/project-consultation" className="bg-white text-gray-900 px-4 py-2 rounded-lg font-medium hover:bg-gray-100 transition-colors flex items-center justify-between group">
                           <span>Contact</span>
                           <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                           </svg>
-                        </button>
+                        </Link>
                       </div>
                     </div>
                   </div>
@@ -268,7 +371,7 @@ const Header = () => {
           <div className="px-6 py-4 space-y-4">
             <div>
               <button 
-                onClick={() => setSolutionsDropdown(!solutionsDropdown)}
+                onClick={() => setMobileSolutionsDropdown(!mobileSolutionsDropdown)}
                 className="flex items-center justify-between w-full text-gray-700 hover:text-blue-600 py-2"
               >
                 <span>Solutions</span>
@@ -276,12 +379,61 @@ const Header = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
-              {solutionsDropdown && (
-                <div className="pl-4 mt-2 space-y-2">
-                  <div className="text-sm text-gray-600">Website Design</div>
-                  <div className="text-sm text-gray-600">App Development</div>
-                  <div className="text-sm text-gray-600">AI Integration</div>
-                  <div className="text-sm text-gray-600">ERP Solutions</div>
+              {mobileSolutionsDropdown && (
+                <div className="pl-9 mt-2 space-y-3 max-h-64 overflow-y-auto">
+                  <div>
+                    <div className="text-xs font-bold text-black uppercase tracking-wider mb-2 pl-2">Web & Digital Solutions</div>
+                    <div className="space-y-1 pl-2">
+                      <div className="text-sm text-gray-600">Website Design & Development</div>
+                      <div className="text-sm text-gray-600">UI/UX Design</div>
+                      <div className="text-sm text-gray-600">App Development</div>
+                      <div className="text-sm text-gray-600">SEO (Search Engine Optimization)</div>
+                      <div className="text-sm text-gray-600">Digital Marketing</div>
+                    </div>
+                  </div>
+                  <div>
+                    <div className="text-xs font-bold text-black uppercase tracking-wider mb-2 pl-2">AI, Data & Automation</div>
+                    <div className="space-y-1 pl-2">
+                      <div className="text-sm text-gray-600">AI Integration</div>
+                      <div className="text-sm text-gray-600">Data Analytics & Dashboards</div>
+                      <div className="text-sm text-gray-600">Process Automation</div>
+                      <div className="text-sm text-gray-600">Chatbots & Virtual Assistants</div>
+                    </div>
+                  </div>
+                  <div>
+                    <div className="text-xs font-bold text-black uppercase tracking-wider mb-2 pl-2">Business & Enterprise Solutions</div>
+                    <div className="space-y-1 pl-2">
+                      <div className="text-sm text-gray-600">ERP Solutions</div>
+                      <div className="text-sm text-gray-600">HR Applications</div>
+                      <div className="text-sm text-gray-600">CRM Solutions</div>
+                      <div className="text-sm text-gray-600">Accounting & Finance Systems</div>
+                    </div>
+                  </div>
+                  <div>
+                    <div className="text-xs font-bold text-black uppercase tracking-wider mb-2 pl-2">Cloud & Infrastructure</div>
+                    <div className="space-y-1 pl-2">
+                      <div className="text-sm text-gray-600">Cloud Services</div>
+                      <div className="text-sm text-gray-600">Cloud Migration & Optimization</div>
+                      <div className="text-sm text-gray-600">DevOps Services</div>
+                      <div className="text-sm text-gray-600">Cybersecurity Services</div>
+                    </div>
+                  </div>
+                  <div>
+                    <div className="text-xs font-bold text-black uppercase tracking-wider mb-2 pl-2">Innovation & Engineering</div>
+                    <div className="space-y-1 pl-2">
+                      <div className="text-sm text-gray-600">R&D Services</div>
+                      <div className="text-sm text-gray-600">Product Engineering</div>
+                      <div className="text-sm text-gray-600">IoT Solutions</div>
+                    </div>
+                  </div>
+                  <div>
+                    <div className="text-xs font-bold text-black uppercase tracking-wider mb-2 pl-2">Consulting & Support</div>
+                    <div className="space-y-1 pl-2">
+                      <div className="text-sm text-gray-600">Technology Consulting</div>
+                      <div className="text-sm text-gray-600">IT Consulting</div>
+                      <div className="text-sm text-gray-600">Technical Support & Maintenance</div>
+                    </div>
+                  </div>
                 </div>
               )}
             </div>
@@ -290,7 +442,7 @@ const Header = () => {
             <Link to="/careers" className="block text-gray-700 hover:text-blue-600 py-2">Careers</Link>
             <div>
               <button 
-                onClick={() => setSupportDropdown(!supportDropdown)}
+                onClick={() => setMobileSupportDropdown(!mobileSupportDropdown)}
                 className="flex items-center justify-between w-full text-gray-700 hover:text-blue-600 py-2"
               >
                 <span>Support</span>
@@ -298,7 +450,7 @@ const Header = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
-              {supportDropdown && (
+              {mobileSupportDropdown && (
                 <div className="pl-4 mt-2 space-y-2">
                   <Link to="/help-center" className="block text-sm text-gray-600 hover:text-blue-600">Help Center</Link>
                   <Link to="/contact" className="block text-sm text-gray-600 hover:text-blue-600">Contact Us</Link>

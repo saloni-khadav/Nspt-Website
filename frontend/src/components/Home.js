@@ -99,8 +99,8 @@ const Home = () => {
             </div>
             
             {/* Right Logos Grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 lg:mr-20">
-              <div className="h-20 sm:h-24 perspective-1000" style={{animation: 'cardFlip 8s infinite'}}>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 lg:mr-20">
+              <div className="h-28 sm:h-32 perspective-1000" style={{animation: 'cardFlip 8s infinite'}}>
                 <div className="relative w-full h-full transition-transform duration-700 transform-style-preserve-3d flip-card">
                   <div className="absolute inset-0 w-full h-full backface-hidden bg-white border border-gray-200 rounded-xl p-2 text-center shadow-md hover:shadow-lg transition-shadow flex items-center justify-center">
                     <img src="/logo01.png" alt="Logo 1" className="w-full h-full object-cover rounded-lg" />
@@ -110,7 +110,7 @@ const Home = () => {
                   </div>
                 </div>
               </div>
-              <div className="h-20 sm:h-24 perspective-1000" style={{animation: 'cardFlip 8s infinite 1s'}}>
+              <div className="h-28 sm:h-32 perspective-1000" style={{animation: 'cardFlip 8s infinite 1s'}}>
                 <div className="relative w-full h-full transition-transform duration-700 transform-style-preserve-3d flip-card">
                   <div className="absolute inset-0 w-full h-full backface-hidden bg-white border border-gray-200 rounded-xl p-2 text-center shadow-md hover:shadow-lg transition-shadow flex items-center justify-center">
                     <img src="/logo2.png" alt="Logo 2" className="w-full h-full object-cover rounded-lg" />
@@ -120,7 +120,7 @@ const Home = () => {
                   </div>
                 </div>
               </div>
-              <div className="h-20 sm:h-24 perspective-1000" style={{animation: 'cardFlip 8s infinite 2s'}}>
+              <div className="h-28 sm:h-32 perspective-1000" style={{animation: 'cardFlip 8s infinite 2s'}}>
                 <div className="relative w-full h-full transition-transform duration-700 transform-style-preserve-3d flip-card">
                   <div className="absolute inset-0 w-full h-full backface-hidden bg-white border border-gray-200 rounded-xl p-2 text-center shadow-md hover:shadow-lg transition-shadow flex items-center justify-center">
                     <img src="/logo3.png" alt="Logo 3" className="w-full h-full object-cover rounded-lg" />
@@ -130,7 +130,7 @@ const Home = () => {
                   </div>
                 </div>
               </div>
-              <div className="h-20 sm:h-24 perspective-1000" style={{animation: 'cardFlip 8s infinite 3s'}}>
+              <div className="h-28 sm:h-32 perspective-1000" style={{animation: 'cardFlip 8s infinite 3s'}}>
                 <div className="relative w-full h-full transition-transform duration-700 transform-style-preserve-3d flip-card">
                   <div className="absolute inset-0 w-full h-full backface-hidden bg-white border border-gray-200 rounded-xl p-2 text-center shadow-md hover:shadow-lg transition-shadow flex items-center justify-center">
                     <img src="/logo4.png" alt="Logo 4" className="w-full h-full object-cover rounded-lg" />
@@ -140,7 +140,7 @@ const Home = () => {
                   </div>
                 </div>
               </div>
-              <div className="h-20 sm:h-24 perspective-1000" style={{animation: 'cardFlip 8s infinite 4s'}}>
+              <div className="h-28 sm:h-32 perspective-1000" style={{animation: 'cardFlip 8s infinite 4s'}}>
                 <div className="relative w-full h-full transition-transform duration-700 transform-style-preserve-3d flip-card">
                   <div className="absolute inset-0 w-full h-full backface-hidden bg-white border border-gray-200 rounded-xl p-2 text-center shadow-md hover:shadow-lg transition-shadow flex items-center justify-center">
                     <img src="/logo5.png" alt="Logo 5" className="w-full h-full object-cover rounded-lg" />
@@ -150,7 +150,7 @@ const Home = () => {
                   </div>
                 </div>
               </div>
-              <div className="h-20 sm:h-24 perspective-1000" style={{animation: 'cardFlip 8s infinite 5s'}}>
+              <div className="h-28 sm:h-32 perspective-1000" style={{animation: 'cardFlip 8s infinite 5s'}}>
                 <div className="relative w-full h-full transition-transform duration-700 transform-style-preserve-3d flip-card">
                   <div className="absolute inset-0 w-full h-full backface-hidden bg-white border border-gray-200 rounded-xl p-2 text-center shadow-md hover:shadow-lg transition-shadow flex items-center justify-center">
                     <img src="/logo6.png" alt="Logo 6" className="w-full h-full object-cover rounded-lg" />
@@ -336,14 +336,21 @@ const Home = () => {
         
         <style jsx>{`
           .animated-border-top, .animated-border-bottom {
-            background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899, #f59e0b);
-            background-size: 400% 100%;
-            animation: gradientShift 3s ease-in-out infinite;
+            background: #fbbf24;
+            animation: colorCycle 10s infinite;
           }
           
-          @keyframes gradientShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
+          @keyframes colorCycle {
+            0%, 10% { background: #fbbf24; }
+            10%, 20% { background: transparent; }
+            20%, 30% { background: #f97316; }
+            30%, 40% { background: transparent; }
+            40%, 50% { background: #3b82f6; }
+            50%, 60% { background: transparent; }
+            60%, 70% { background: #8b5cf6; }
+            70%, 80% { background: transparent; }
+            80%, 90% { background: #ec4899; }
+            90%, 100% { background: transparent; }
           }
         `}</style>
         
@@ -461,7 +468,7 @@ const Home = () => {
               
               <div className="flex items-center space-x-3 bg-white p-6 rounded-lg shadow-md min-w-[250px] flex-shrink-0">
                 <img 
-                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=60&h=60&fit=crop&crop=center" 
+                  src="/akarsh-gupta.jpg" 
                   alt="Akarsh Gupta" 
                   className="w-12 h-12 rounded-full object-cover"
                 />
@@ -485,7 +492,7 @@ const Home = () => {
               
               <div className="flex items-center space-x-3 bg-white p-6 rounded-lg shadow-md min-w-[250px] flex-shrink-0">
                 <img 
-                  src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=60&h=60&fit=crop&crop=center" 
+                  src="/durga-charan-jena.jpg" 
                   alt="Durga Charan Jena" 
                   className="w-12 h-12 rounded-full object-cover"
                 />

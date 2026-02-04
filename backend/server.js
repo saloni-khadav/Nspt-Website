@@ -39,6 +39,10 @@ app.use('/api/contact', contactRoutes);
 const promotionRoutes = require('./routes/promotion');
 app.use('/api/promotion', promotionRoutes);
 
+// Project Consultation Routes
+const projectConsultationRoutes = require('./routes/projectConsultation');
+app.use('/api/project-consultation', projectConsultationRoutes);
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

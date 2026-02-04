@@ -1,0 +1,30 @@
+@keyframes borderAnimation {
+  0% {
+    border-top: 4px solid #7c3aed;
+    border-right: 0;
+    border-bottom: 0;
+    border-left: 0;
+  }
+  25% {
+    border-top: 4px solid #7c3aed;
+    border-right: 4px solid #7c3aed;
+    border-bottom: 0;
+    border-left: 0;
+  }
+  50% {
+    border-top: 4px solid #7c3aed;
+    border-right: 4px solid #7c3aed;
+    border-bottom: 4px solid #7c3aed;
+    border-left: 0;
+  }
+  100% {
+    border-top: 4px solid #7c3aed;
+    border-right: 4px solid #7c3aed;
+    border-bottom: 4px solid #7c3aed;
+    border-left: 4px solid #7c3aed;
+  }
+}
+
+.animated-border-hover:hover {
+  animation: borderAnimation 0.6s ease-in-out forwards;
+}
