@@ -3,6 +3,7 @@ import Layout from './Layout';
 
 const Contact = () => {
   const [openFaq, setOpenFaq] = useState(null);
+  const [showChatbot, setShowChatbot] = useState(false);
 
   const faqs = [
     {
@@ -59,7 +60,16 @@ const Contact = () => {
               </div>
               <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2">Email</h3>
               <p className="text-gray-600 mb-2">Drop us a line anytime</p>
-              <p className="text-blue-600 font-medium text-sm sm:text-base">info@nextsphere.co.in</p>
+              <p className="text-blue-600 font-medium text-sm sm:text-base">
+                <a 
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=info@nextsphere.co.in" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-blue-700 transition-colors cursor-pointer"
+                >
+                  info@nextsphere.co.in
+                </a>
+              </p>
             </div>
 
             {/* Phone */}
@@ -71,7 +81,9 @@ const Contact = () => {
               </div>
               <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2">Phone</h3>
               <p className="text-gray-600 mb-2">Reach out by phone</p>
-              <p className="text-blue-600 font-medium text-sm sm:text-base">+91 9078027948</p>
+              <p className="text-blue-600 font-medium text-sm sm:text-base">
+                <a href="tel:+919078027948" className="hover:text-blue-700 transition-colors cursor-pointer">+91 9078027948</a>
+              </p>
             </div>
           </div>
         </div>
@@ -117,7 +129,10 @@ const Contact = () => {
 
           <div className="text-center mt-12">
             <p className="text-gray-600 mb-4 text-sm sm:text-base">Still have questions? Contact our support team.</p>
-            <button className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
+            <button 
+              onClick={() => setShowChatbot(true)}
+              className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
+            >
               Contact
             </button>
           </div>
@@ -143,7 +158,16 @@ const Contact = () => {
               <p className="text-sm text-gray-600 mb-4">
                 Get help from our team and submit a support request from our support portal.
               </p>
-              <p className="text-blue-600 font-medium text-sm sm:text-base">info@nextsphere.co.in</p>
+              <p className="text-blue-600 font-medium text-sm sm:text-base">
+                <a 
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=info@nextsphere.co.in" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-blue-700 transition-colors cursor-pointer"
+                >
+                  info@nextsphere.co.in
+                </a>
+              </p>
             </div>
 
             {/* Call for support */}
@@ -152,7 +176,9 @@ const Contact = () => {
               <p className="text-sm text-gray-600 mb-4">
                 Contact our support team for assistance or technical support.
               </p>
-              <p className="text-blue-600 font-medium text-sm sm:text-base">+91 9078027948</p>
+              <p className="text-blue-600 font-medium text-sm sm:text-base">
+                <a href="tel:+919078027948" className="hover:text-blue-700 transition-colors cursor-pointer">+91 9078027948</a>
+              </p>
             </div>
 
             {/* Visit our office */}
@@ -161,12 +187,68 @@ const Contact = () => {
               <p className="text-sm text-gray-600 mb-4">
                 Meet with our specialists during business hours at our office location.
               </p>
-              <p className="text-blue-600 font-medium text-sm sm:text-base">Gurgaon, Haryana</p>
+              <p className="text-blue-600 font-medium text-sm sm:text-base">Gurugram, Haryana</p>
             </div>
           </div>
         </div>
       </section>
 
+      {/* Chatbot Modal */}
+      {showChatbot && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-[60] p-4">
+          <div className="bg-white border border-gray-200 rounded-2xl max-w-md w-full h-96 shadow-lg flex flex-col">
+            {/* Header */}
+            <div className="flex justify-between items-center p-4 border-b border-gray-200">
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
+                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-gray-900">Chat Support</h3>
+                </div>
+              </div>
+              <button 
+                onClick={() => setShowChatbot(false)}
+                className="text-gray-400 hover:text-gray-600 text-xl font-bold"
+              >
+                ×
+              </button>
+            </div>
+            
+            {/* Chat Messages */}
+            <div className="flex-1 p-4 overflow-y-auto">
+              <div className="space-y-4">
+                <div className="flex items-start gap-2">
+                  <div className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+                    <span className="text-xs text-white font-bold">N</span>
+                  </div>
+                  <div className="bg-gray-100 rounded-lg p-3 max-w-xs">
+                    <p className="text-sm text-gray-800">Hi! I'm here to help. How can I assist you today?</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Input */}
+            <div className="p-4 border-t border-gray-200">
+              <div className="flex gap-2">
+                <input 
+                  type="text" 
+                  placeholder="Type your message..."
+                  className="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
+                />
+                <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
     </Layout>
   );

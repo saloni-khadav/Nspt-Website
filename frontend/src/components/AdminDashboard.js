@@ -10,6 +10,15 @@ const AdminDashboard = () => {
   const [activeSection, setActiveSection] = useState('careers'); // New state for sidebar navigation
   const [inquiries, setInquiries] = useState([]);
   const [filteredInquiries, setFilteredInquiries] = useState([]);
+  const [promotions, setPromotions] = useState([]);
+  const [filteredPromotions, setFilteredPromotions] = useState([]);
+  const [selectedPromotions, setSelectedPromotions] = useState([]);
+  const [selectAllPromotions, setSelectAllPromotions] = useState(false);
+  const [promotionFilters, setPromotionFilters] = useState({
+    dateFrom: '',
+    dateTo: '',
+    position: ''
+  });
   const [inquiryFilters, setInquiryFilters] = useState({
     date: '',
     helpType: ''
@@ -37,11 +46,112 @@ const AdminDashboard = () => {
     if (activeSection === 'inquiries') {
       fetchInquiries();
     }
+    if (activeSection === 'promotions') {
+      fetchPromotions();
+    }
   }, [navigate, activeSection]);
 
   const handleLogout = () => {
     localStorage.removeItem('isAdmin');
     navigate('/admin-login');
+  };
+
+  const exportPromotionsToExcel = () => {
+    const headers = ['Email', 'Position', 'Date'];
+    const csvContent = [
+      headers.join(','),
+      ...promotions.map(promo => [
+        `"${promo.email}"`,
+        `"${promo.position || 'N/A'}"`,
+        `"${new Date(promo.subscribedAt).toLocaleDateString()}"`
+      ].join(','))
+    ].join('\n');
+
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    const url = URL.createObjectURL(blob);
+    link.setAttribute('href', url);
+    link.setAttribute('download', `promotions_${new Date().toISOString().split('T')[0]}.csv`);
+    link.style.visibility = 'hidden';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  const applyPromotionFilters = () => {
+    let filtered = promotions;
+
+    if (promotionFilters.dateFrom) {
+      filtered = filtered.filter(promo => {
+        const promoDate = new Date(promo.subscribedAt).toDateString();
+        const filterDate = new Date(promotionFilters.dateFrom).toDateString();
+        return promoDate === filterDate;
+      });
+    }
+    if (promotionFilters.position) {
+      filtered = filtered.filter(promo => 
+        promo.position && promo.position.toLowerCase().includes(promotionFilters.position.toLowerCase())
+      );
+    }
+
+    setFilteredPromotions(filtered);
+  };
+
+  const clearPromotionFilters = () => {
+    setPromotionFilters({
+      dateFrom: '',
+      dateTo: '',
+      position: ''
+    });
+    setFilteredPromotions(promotions);
+  };
+
+  const handleSelectAllPromotions = () => {
+    if (selectAllPromotions) {
+      setSelectedPromotions([]);
+    } else {
+      setSelectedPromotions(filteredPromotions.map(promo => promo._id));
+    }
+    setSelectAllPromotions(!selectAllPromotions);
+  };
+
+  const handleSelectPromotion = (promoId) => {
+    if (selectedPromotions.includes(promoId)) {
+      setSelectedPromotions(selectedPromotions.filter(id => id !== promoId));
+    } else {
+      setSelectedPromotions([...selectedPromotions, promoId]);
+    }
+  };
+
+  const deleteSelectedPromotions = async () => {
+    if (selectedPromotions.length === 0) {
+      alert('Please select promotions to delete');
+      return;
+    }
+
+    if (window.confirm(`Are you sure you want to delete ${selectedPromotions.length} promotion(s)?`)) {
+      try {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/promotion/delete-multiple`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ ids: selectedPromotions }),
+        });
+
+        if (response.ok) {
+          fetchPromotions();
+          setSelectedPromotions([]);
+          setSelectAllPromotions(false);
+          alert('Promotions deleted successfully');
+        } else {
+          alert('Error deleting promotions');
+        }
+      } catch (error) {
+        console.error('Error deleting promotions:', error);
+        alert('Error deleting promotions');
+      }
+    }
   };
 
   const exportToExcel = () => {
@@ -56,7 +166,7 @@ const AdminDashboard = () => {
         `"${app.experience}"`,
         `"${app.qualification}"`,
         `"${new Date(app.submittedAt).toLocaleDateString()}"`,
-        `"http://localhost:5000/${app.resumePath}"`
+        `"${process.env.REACT_APP_API_URL}/${app.resumePath}"`
       ].join(','))
     ].join('\n');
 
@@ -72,9 +182,20 @@ const AdminDashboard = () => {
     document.body.removeChild(link);
   };
 
+  const fetchPromotions = async () => {
+    try {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/promotion/all`);
+      const data = await response.json();
+      setPromotions(data);
+      setFilteredPromotions(data);
+    } catch (error) {
+      console.error('Error fetching promotions:', error);
+    }
+  };
+
   const fetchApplications = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/careers/applications');
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/careers/applications`);
       const data = await response.json();
       setApplications(data);
       setFilteredApplications(data);
@@ -87,7 +208,7 @@ const AdminDashboard = () => {
 
   const fetchInquiries = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/contact/messages');
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/contact/messages`);
       const data = await response.json();
       setInquiries(data);
       setFilteredInquiries(data);
@@ -207,7 +328,7 @@ const AdminDashboard = () => {
     }
     
     try {
-      const response = await fetch('http://localhost:5000/api/careers/send-rejection', {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/careers/send-rejection`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -242,7 +363,7 @@ const AdminDashboard = () => {
 
     if (window.confirm(`Are you sure you want to delete ${selectedApplications.length} application(s)?`)) {
       try {
-        const response = await fetch('http://localhost:5000/api/careers/delete-multiple', {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/careers/delete-multiple`, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',
@@ -279,7 +400,7 @@ const AdminDashboard = () => {
   return (
     <AdminLayout activeSection={activeSection} setActiveSection={setActiveSection}>
       {activeSection === 'careers' && (
-        <div className="space-y-6 min-w-[800px] sm:min-w-0">
+        <div className="space-y-6">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
             <div>
               <h3 className="text-lg font-semibold text-gray-900">Total Applications: {filteredApplications.length}</h3>
@@ -375,23 +496,23 @@ const AdminDashboard = () => {
                 <table className="w-full text-left min-w-[700px]">
                   <thead className="sticky top-0 bg-gray-50 z-10">
                     <tr className="border-b border-gray-200">
-                      <th className="text-black font-bold py-2 sm:py-3 px-2 sm:px-4 text-xs sm:text-sm">
+                      <th className="text-black font-bold py-2 sm:py-3 px-0 sm:px-4 text-[10px] sm:text-sm">
                         <input
                           type="checkbox"
                           checked={selectAll}
                           onChange={handleSelectAll}
-                          className="mr-1 sm:mr-2"
+                          className="mr-0"
                         />
                         <span className="hidden sm:inline">Select All</span>
                         <span className="sm:hidden">All</span>
                       </th>
-                      <th className="text-black font-bold py-2 sm:py-3 px-2 sm:px-4 text-xs sm:text-sm">Name</th>
-                      <th className="text-black font-bold py-2 sm:py-3 px-2 sm:px-4 text-xs sm:text-sm">Email</th>
-                      <th className="text-black font-bold py-2 sm:py-3 px-2 sm:px-4 text-xs sm:text-sm">Position</th>
-                      <th className="text-black font-bold py-2 sm:py-3 px-2 sm:px-4 text-xs sm:text-sm">Experience</th>
-                      <th className="text-black font-bold py-2 sm:py-3 px-2 sm:px-4 text-xs sm:text-sm">Qualification</th>
-                      <th className="text-black font-bold py-2 sm:py-3 px-2 sm:px-4 text-xs sm:text-sm">Resume</th>
-                      <th className="text-black font-bold py-2 sm:py-3 px-2 sm:px-4 text-xs sm:text-sm">Date</th>
+                      <th className="text-black font-bold py-2 sm:py-3 px-0 sm:px-4 text-[10px] sm:text-sm">Name</th>
+                      <th className="text-black font-bold py-2 sm:py-3 px-0 sm:px-4 text-[10px] sm:text-sm">Email</th>
+                      <th className="text-black font-bold py-2 sm:py-3 px-0 sm:px-4 text-[10px] sm:text-sm">Position</th>
+                      <th className="text-black font-bold py-2 sm:py-3 px-0 sm:px-4 text-[10px] sm:text-sm">Experience</th>
+                      <th className="text-black font-bold py-2 sm:py-3 px-0 sm:px-4 text-[10px] sm:text-sm">Qualification</th>
+                      <th className="text-black font-bold py-2 sm:py-3 px-0 sm:px-4 text-[10px] sm:text-sm">Resume</th>
+                      <th className="text-black font-bold py-2 sm:py-3 px-0 sm:px-4 text-[10px] sm:text-sm">Date</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -404,42 +525,42 @@ const AdminDashboard = () => {
                             onChange={() => handleSelectApplication(app._id)}
                           />
                         </td>
-                        <td className="text-gray-700 py-2 sm:py-4 px-2 sm:px-4 text-xs sm:text-sm">
-                          <div className="max-w-[100px] sm:max-w-none truncate" title={app.fullName}>
+                        <td className="text-gray-700 py-2 sm:py-4 px-0 sm:px-4 text-[10px] sm:text-sm">
+                          <div className="max-w-[60px] sm:max-w-none truncate" title={app.fullName}>
                             {app.fullName}
                           </div>
                         </td>
-                        <td className="text-gray-700 py-2 sm:py-4 px-2 sm:px-4 text-xs sm:text-sm">
-                          <div className="max-w-[120px] sm:max-w-none truncate" title={app.email}>
+                        <td className="text-gray-700 py-2 sm:py-4 px-0 sm:px-4 text-[10px] sm:text-sm">
+                          <div className="max-w-[80px] sm:max-w-none truncate" title={app.email}>
                             {app.email}
                           </div>
                         </td>
-                        <td className="text-gray-700 py-2 sm:py-4 px-2 sm:px-4 text-xs sm:text-sm">
-                          <div className="max-w-[80px] sm:max-w-none truncate" title={app.position}>
+                        <td className="text-gray-700 py-2 sm:py-4 px-0 sm:px-4 text-[10px] sm:text-sm">
+                          <div className="max-w-[60px] sm:max-w-none truncate" title={app.position}>
                             {app.position}
                           </div>
                         </td>
-                        <td className="text-gray-700 py-2 sm:py-4 px-2 sm:px-4 text-xs sm:text-sm">{app.experience}</td>
-                        <td className="text-gray-700 py-2 sm:py-4 px-2 sm:px-4 text-xs sm:text-sm">
-                          <div className="max-w-[80px] sm:max-w-none truncate" title={app.qualification}>
+                        <td className="text-gray-700 py-2 sm:py-4 px-0 sm:px-4 text-[10px] sm:text-sm">{app.experience}</td>
+                        <td className="text-gray-700 py-2 sm:py-4 px-0 sm:px-4 text-[10px] sm:text-sm">
+                          <div className="max-w-[60px] sm:max-w-none truncate" title={app.qualification}>
                             {app.qualification}
                           </div>
                         </td>
-                        <td className="text-gray-700 py-2 sm:py-4 px-2 sm:px-4">
+                        <td className="text-gray-700 py-2 sm:py-4 px-0 sm:px-4">
                           {app.resumePath ? (
                             <a 
-                              href={`http://localhost:5000/api/careers/resume/${app.resumePath}`}
+                              href={`${process.env.REACT_APP_API_URL}/api/careers/resume/${app.resumePath}`}
                               target="_blank" 
                               rel="noopener noreferrer"
-                              className="text-blue-600 hover:text-blue-700 underline text-xs sm:text-sm"
+                              className="text-blue-600 hover:text-blue-700 underline text-[10px] sm:text-sm"
                             >
                               View
                             </a>
                           ) : (
-                            <span className="text-gray-400 text-xs sm:text-sm">No file</span>
+                            <span className="text-gray-400 text-[10px] sm:text-sm">No file</span>
                           )}
                         </td>
-                        <td className="text-gray-700 py-2 sm:py-4 px-2 sm:px-4 text-xs sm:text-sm">
+                        <td className="text-gray-700 py-2 sm:py-4 px-0 sm:px-4 text-[10px] sm:text-sm">
                           <div className="whitespace-nowrap">
                             {new Date(app.submittedAt).toLocaleDateString('en-US', {
                               month: 'short',
@@ -458,6 +579,114 @@ const AdminDashboard = () => {
                   </div>
                 )}
               </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {activeSection === 'promotions' && (
+        <div className="space-y-6">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+            <h3 className="text-lg font-semibold text-gray-900">Total Promotions: {filteredPromotions.length}</h3>
+            <button 
+              onClick={exportPromotionsToExcel}
+              className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition-colors"
+            >
+              Export to Excel
+            </button>
+          </div>
+          
+          {/* Filter Section */}
+          <div className="bg-white border border-gray-200 rounded-xl p-4 md:p-6 shadow-sm">
+            <h3 className="text-lg font-semibold text-blue-600 mb-4">Filters</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-gray-700 text-sm mb-2">Date</label>
+                <input
+                  type="date"
+                  value={promotionFilters.dateFrom}
+                  onChange={(e) => setPromotionFilters({...promotionFilters, dateFrom: e.target.value})}
+                  className="w-full bg-white border border-gray-300 rounded px-3 py-2 text-gray-900 focus:border-blue-600 outline-none text-sm"
+                />
+              </div>
+              <div>
+                <label className="block text-gray-700 text-sm mb-2">Position</label>
+                <input
+                  type="text"
+                  placeholder="e.g. Services Page CTA"
+                  value={promotionFilters.position}
+                  onChange={(e) => setPromotionFilters({...promotionFilters, position: e.target.value})}
+                  className="w-full bg-white border border-gray-300 rounded px-3 py-2 text-gray-900 focus:border-blue-600 outline-none text-sm"
+                />
+              </div>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 mt-4">
+              <button
+                onClick={applyPromotionFilters}
+                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition-colors text-sm"
+              >
+                Apply Filters
+              </button>
+              <button
+                onClick={clearPromotionFilters}
+                className="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded transition-colors text-sm"
+              >
+                Clear Filters
+              </button>
+              {selectedPromotions.length > 0 && (
+                <button
+                  onClick={deleteSelectedPromotions}
+                  className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded transition-colors text-sm"
+                >
+                  Delete Selected ({selectedPromotions.length})
+                </button>
+              )}
+            </div>
+          </div>
+          
+          <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+            <div className="overflow-x-auto">
+              <table className="w-full text-left">
+                <thead className="bg-gray-50">
+                  <tr className="border-b border-gray-200">
+                    <th className="text-black font-bold py-3 px-4">
+                      <input
+                        type="checkbox"
+                        checked={selectAllPromotions}
+                        onChange={handleSelectAllPromotions}
+                        className="mr-2"
+                      />
+                      Select All
+                    </th>
+                    <th className="text-black font-bold py-3 px-4">Email</th>
+                    <th className="text-black font-bold py-3 px-4">Position</th>
+                    <th className="text-black font-bold py-3 px-4">Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {filteredPromotions.map((promo, index) => (
+                    <tr key={promo._id} className="border-b border-gray-200 hover:bg-gray-50">
+                      <td className="text-gray-700 py-4 px-4">
+                        <input
+                          type="checkbox"
+                          checked={selectedPromotions.includes(promo._id)}
+                          onChange={() => handleSelectPromotion(promo._id)}
+                        />
+                      </td>
+                      <td className="text-gray-700 py-4 px-4">{promo.email}</td>
+                      <td className="text-gray-700 py-4 px-4">{promo.position || 'N/A'}</td>
+                      <td className="text-gray-700 py-4 px-4">
+                        {new Date(promo.subscribedAt).toLocaleDateString()}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              {filteredPromotions.length === 0 && (
+                <div className="text-center py-8">
+                  <p className="text-gray-600">No promotions found matching the filters.</p>
+                </div>
+              )}
             </div>
           </div>
         </div>

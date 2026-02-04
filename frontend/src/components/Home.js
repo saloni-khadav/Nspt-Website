@@ -16,9 +16,9 @@ const Home = () => {
               <div className="bg-purple-50 rounded-lg p-4 sm:p-8 shadow-md border border-gray-200 flex-1">
                 <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight">
                   Powering<br/>
-                  business<br/>
-                  with smart<br/>
-                  technology
+                  Businesses<br/>
+                  with Intelligent<br/>
+                  Technology
                 </h1>
               </div>
               
@@ -27,7 +27,7 @@ const Home = () => {
                 {/* Description Card with Contact Button */}
                 <div className="bg-purple-50 rounded-lg p-4 sm:p-8 shadow-md border border-gray-200 h-full flex flex-col justify-between">
                   <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                    Comprehensive digital solutions for seamless growth, efficiency, and innovation across every industry.
+                    Comprehensive digital solutions built for growth, efficiency, and innovation—across startups, enterprises, and future-ready industries.
                   </p>
                   <button 
                     onClick={() => window.location.href = '/contact'}
@@ -40,19 +40,27 @@ const Home = () => {
                 {/* Trusted by Card */}
                 <div className="bg-purple-50 rounded-lg p-4 sm:p-8 shadow-md border border-gray-200 h-full flex flex-col justify-between">
                   <p className="text-gray-500 text-sm mb-4 font-bold">Trusted by top enterprises</p>
-                  <div className="flex items-center space-x-2 sm:space-x-4">
-                    <div className="flex items-center space-x-1 sm:space-x-2">
-                      <div className="w-6 h-6 bg-gray-900 rounded-full flex items-center justify-center">
-                        <span className="text-lg font-bold text-white">L</span>
-                      </div>
-                      <span className="text-lg font-bold text-gray-900">LOGO</span>
-                    </div>
-                    <div className="flex items-center space-x-1 sm:space-x-2">
-                      <div className="w-6 h-6 bg-gray-900 rounded-full flex items-center justify-center">
-                        <span className="text-lg font-bold text-white">E</span>
-                      </div>
-                      <span className="text-lg font-bold text-gray-900">EGGS</span>
-                    </div>
+                  <div className="grid grid-cols-2 gap-4">
+                    <img 
+                      src="/Agritek_India.png" 
+                      alt="Agritek India" 
+                      className="h-16 w-auto object-contain -mt-2"
+                    />
+                    <img 
+                      src="/Amazon_Web_Services-Logo.wine.png" 
+                      alt="Amazon Web Services" 
+                      className="h-6 w-auto object-contain mt-4"
+                    />
+                    <img 
+                      src="/Mongodb-PNG-Free-Image.png" 
+                      alt="MongoDB" 
+                      className="h-12 w-auto object-contain"
+                    />
+                    <img 
+                      src="/iit-roorkee.png" 
+                      alt="IIT Roorkee" 
+                      className="h-10 w-auto object-contain"
+                    />
                   </div>
                 </div>
               </div>
@@ -78,69 +86,100 @@ const Home = () => {
             <div className="space-y-4 lg:ml-20">
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
                 Powering<br/>
-                business<br/>
-                with smart<br/>
-                solutions
+                Businesses<br/>
+                with Intelligent<br/>
+                Technology
               </h2>
               <p className="text-gray-600 text-base sm:text-lg leading-relaxed">
-                We deliver technology, AI, and<br className="hidden sm:block"/>
-                business applications for diverse<br className="hidden sm:block"/>
-                industries, trusted by companies<br className="hidden sm:block"/>
-                seeking reliable digital transformation.
+                From AI-driven platforms to<br/>
+                scalable business applications,<br/>
+                we help diverse industries innovate,<br/>
+                optimize, and grow with confidence.
               </p>
             </div>
             
             {/* Right Logos Grid */}
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 lg:mr-20">
-              <div className="bg-white border border-gray-200 rounded-xl p-6 sm:p-8 text-center shadow-md hover:shadow-lg transition-shadow h-20 sm:h-24 flex items-center justify-center">
-                <div className="flex items-center justify-center space-x-1 sm:space-x-2">
-                  <div className="w-4 h-4 sm:w-6 sm:h-6 bg-gray-900 rounded-full flex items-center justify-center">
-                    <span className="text-lg font-bold text-white">L</span>
+              <div className="h-20 sm:h-24 perspective-1000" style={{animation: 'cardFlip 8s infinite'}}>
+                <div className="relative w-full h-full transition-transform duration-700 transform-style-preserve-3d flip-card">
+                  <div className="absolute inset-0 w-full h-full backface-hidden bg-white border border-gray-200 rounded-xl p-2 text-center shadow-md hover:shadow-lg transition-shadow flex items-center justify-center">
+                    <img src="/logo01.png" alt="Logo 1" className="w-full h-full object-cover rounded-lg" />
                   </div>
-                  <span className="text-lg font-bold text-gray-900">LOGO</span>
+                  <div className="absolute inset-0 w-full h-full backface-hidden bg-white border border-gray-200 rounded-xl p-2 text-center shadow-md hover:shadow-lg transition-shadow flex items-center justify-center transform rotateY-180">
+                    <img src="/logo2.png" alt="Logo 1 Back" className="w-full h-full object-cover rounded-lg" />
+                  </div>
                 </div>
               </div>
-              <div className="bg-white border border-gray-200 rounded-xl p-6 sm:p-8 text-center shadow-md hover:shadow-lg transition-shadow h-20 sm:h-24 flex items-center justify-center">
-                <div className="flex items-center justify-center space-x-1 sm:space-x-2">
-                  <div className="w-4 h-4 sm:w-6 sm:h-6 bg-gray-900 rounded-full flex items-center justify-center">
-                    <span className="text-lg font-bold text-white">E</span>
+              <div className="h-20 sm:h-24 perspective-1000" style={{animation: 'cardFlip 8s infinite 1s'}}>
+                <div className="relative w-full h-full transition-transform duration-700 transform-style-preserve-3d flip-card">
+                  <div className="absolute inset-0 w-full h-full backface-hidden bg-white border border-gray-200 rounded-xl p-2 text-center shadow-md hover:shadow-lg transition-shadow flex items-center justify-center">
+                    <img src="/logo2.png" alt="Logo 2" className="w-full h-full object-cover rounded-lg" />
                   </div>
-                  <span className="text-lg font-bold text-gray-900">EGGS</span>
+                  <div className="absolute inset-0 w-full h-full backface-hidden bg-white border border-gray-200 rounded-xl p-2 text-center shadow-md hover:shadow-lg transition-shadow flex items-center justify-center transform rotateY-180">
+                    <img src="/logo3.png" alt="Logo 2 Back" className="w-full h-full object-cover rounded-lg" />
+                  </div>
                 </div>
               </div>
-              <div className="bg-white border border-gray-200 rounded-xl p-6 sm:p-8 text-center shadow-md hover:shadow-lg transition-shadow h-20 sm:h-24 flex items-center justify-center">
-                <div className="flex items-center justify-center space-x-1 sm:space-x-2">
-                  <div className="w-4 h-4 sm:w-6 sm:h-6 bg-gray-900 rounded-full flex items-center justify-center">
-                    <span className="text-lg font-bold text-white">P</span>
+              <div className="h-20 sm:h-24 perspective-1000" style={{animation: 'cardFlip 8s infinite 2s'}}>
+                <div className="relative w-full h-full transition-transform duration-700 transform-style-preserve-3d flip-card">
+                  <div className="absolute inset-0 w-full h-full backface-hidden bg-white border border-gray-200 rounded-xl p-2 text-center shadow-md hover:shadow-lg transition-shadow flex items-center justify-center">
+                    <img src="/logo3.png" alt="Logo 3" className="w-full h-full object-cover rounded-lg" />
                   </div>
-                  <span className="text-lg font-bold text-gray-900">THE PAAK</span>
+                  <div className="absolute inset-0 w-full h-full backface-hidden bg-white border border-gray-200 rounded-xl p-2 text-center shadow-md hover:shadow-lg transition-shadow flex items-center justify-center transform rotateY-180">
+                    <img src="/logo4.png" alt="Logo 3 Back" className="w-full h-full object-cover rounded-lg" />
+                  </div>
                 </div>
               </div>
-              <div className="bg-white border border-gray-200 rounded-xl p-6 sm:p-8 text-center shadow-md hover:shadow-lg transition-shadow h-20 sm:h-24 flex items-center justify-center">
-                <div className="flex items-center justify-center space-x-1 sm:space-x-2">
-                  <div className="w-4 h-4 sm:w-6 sm:h-6 bg-gray-900 rounded-full flex items-center justify-center">
-                    <span className="text-lg font-bold text-white">I</span>
+              <div className="h-20 sm:h-24 perspective-1000" style={{animation: 'cardFlip 8s infinite 3s'}}>
+                <div className="relative w-full h-full transition-transform duration-700 transform-style-preserve-3d flip-card">
+                  <div className="absolute inset-0 w-full h-full backface-hidden bg-white border border-gray-200 rounded-xl p-2 text-center shadow-md hover:shadow-lg transition-shadow flex items-center justify-center">
+                    <img src="/logo4.png" alt="Logo 4" className="w-full h-full object-cover rounded-lg" />
                   </div>
-                  <span className="text-lg font-bold text-gray-900">IDEA</span>
+                  <div className="absolute inset-0 w-full h-full backface-hidden bg-white border border-gray-200 rounded-xl p-2 text-center shadow-md hover:shadow-lg transition-shadow flex items-center justify-center transform rotateY-180">
+                    <img src="/logo5.png" alt="Logo 4 Back" className="w-full h-full object-cover rounded-lg" />
+                  </div>
                 </div>
               </div>
-              <div className="bg-white border border-gray-200 rounded-xl p-6 sm:p-8 text-center shadow-md hover:shadow-lg transition-shadow h-20 sm:h-24 flex items-center justify-center">
-                <div className="flex items-center justify-center space-x-1 sm:space-x-2">
-                  <div className="w-4 h-4 sm:w-6 sm:h-6 bg-gray-900 rounded-full flex items-center justify-center">
-                    <span className="text-lg font-bold text-white">T</span>
+              <div className="h-20 sm:h-24 perspective-1000" style={{animation: 'cardFlip 8s infinite 4s'}}>
+                <div className="relative w-full h-full transition-transform duration-700 transform-style-preserve-3d flip-card">
+                  <div className="absolute inset-0 w-full h-full backface-hidden bg-white border border-gray-200 rounded-xl p-2 text-center shadow-md hover:shadow-lg transition-shadow flex items-center justify-center">
+                    <img src="/logo5.png" alt="Logo 5" className="w-full h-full object-cover rounded-lg" />
                   </div>
-                  <span className="text-lg font-bold text-gray-900">TECHNO</span>
+                  <div className="absolute inset-0 w-full h-full backface-hidden bg-white border border-gray-200 rounded-xl p-2 text-center shadow-md hover:shadow-lg transition-shadow flex items-center justify-center transform rotateY-180">
+                    <img src="/logo6.png" alt="Logo 5 Back" className="w-full h-full object-cover rounded-lg" />
+                  </div>
                 </div>
               </div>
-              <div className="bg-white border border-gray-200 rounded-xl p-6 sm:p-8 text-center shadow-md hover:shadow-lg transition-shadow h-20 sm:h-24 flex items-center justify-center">
-                <div className="flex items-center justify-center space-x-1 sm:space-x-2">
-                  <div className="w-4 h-4 sm:w-6 sm:h-6 bg-gray-900 rounded-full flex items-center justify-center">
-                    <span className="text-lg font-bold text-white">E</span>
+              <div className="h-20 sm:h-24 perspective-1000" style={{animation: 'cardFlip 8s infinite 5s'}}>
+                <div className="relative w-full h-full transition-transform duration-700 transform-style-preserve-3d flip-card">
+                  <div className="absolute inset-0 w-full h-full backface-hidden bg-white border border-gray-200 rounded-xl p-2 text-center shadow-md hover:shadow-lg transition-shadow flex items-center justify-center">
+                    <img src="/logo6.png" alt="Logo 6" className="w-full h-full object-cover rounded-lg" />
                   </div>
-                  <span className="text-lg font-bold text-gray-900">ECHOES</span>
+                  <div className="absolute inset-0 w-full h-full backface-hidden bg-white border border-gray-200 rounded-xl p-2 text-center shadow-md hover:shadow-lg transition-shadow flex items-center justify-center transform rotateY-180">
+                    <img src="/logo7.png" alt="Logo 6 Back" className="w-full h-full object-cover rounded-lg" />
+                  </div>
                 </div>
               </div>
             </div>
+            <style jsx>{`
+              .perspective-1000 {
+                perspective: 1000px;
+              }
+              .transform-style-preserve-3d {
+                transform-style: preserve-3d;
+              }
+              .backface-hidden {
+                backface-visibility: hidden;
+              }
+              .rotateY-180 {
+                transform: rotateY(180deg);
+              }
+              @keyframes cardFlip {
+                0%, 45% { transform: rotateY(0deg); }
+                50%, 95% { transform: rotateY(180deg); }
+                100% { transform: rotateY(0deg); }
+              }
+            `}</style>
           </div>
         </div>
       </section>
@@ -150,39 +189,13 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 relative">
           <div className="text-center mb-8 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 leading-relaxed">
-              Powering business<br/>
-              with smart technology
+              Powering Businesses<br/>
+              with Intelligent Technology
             </h2>
             <p className="text-gray-300 text-sm sm:text-base max-w-4xl mx-auto">
-              Discover our key services to streamline your operations, drive efficiency, and support your digital growth.
+              Explore our core services that help organizations optimize processes, improve efficiency, and achieve scalable digital transformation.
             </p>
           </div>
-          
-          {/* Left Arrow */}
-          <button 
-            onClick={() => {
-              const container = document.getElementById('tech-cards-container');
-              container.scrollBy({ left: -320, behavior: 'smooth' });
-            }}
-            className="absolute -left-16 top-1/2 -translate-y-1/2 z-10 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full backdrop-blur-sm transition-all duration-300"
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
-          
-          {/* Right Arrow */}
-          <button 
-            onClick={() => {
-              const container = document.getElementById('tech-cards-container');
-              container.scrollBy({ left: 320, behavior: 'smooth' });
-            }}
-            className="absolute -right-16 top-1/2 -translate-y-1/2 z-10 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full backdrop-blur-sm transition-all duration-300"
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
           
           <div>
             
@@ -198,8 +211,8 @@ const Home = () => {
                   {
                     img: "/websiteandapp.jpg",
                     title: "Website & App Solutions",
-                    desc: "Build custom websites and applications for seamless user experiences and reliable performance.",
-                    btn: "View",
+                    desc: "We design and develop custom websites and applications focused on usability, performance, security, and long-term scalability—tailored to your business goals.",
+                    btn: "View Solutions",
                     width: "w-64 sm:w-80",
                     padding: "p-4 sm:p-6",
                     titleSize: "text-lg sm:text-xl",
@@ -208,8 +221,8 @@ const Home = () => {
                   {
                     img: "/Ai&automation.jpg",
                     title: "AI & Automation Tools",
-                    desc: "Enhance workflows and decision-making with intelligent automation and data-driven insights.",
-                    btn: "See More",
+                    desc: "Leverage AI-powered automation and data-driven insights to optimize processes, reduce manual effort, and enhance business decision-making.",
+                    btn: "Explore AI Tools",
                     width: "w-80",
                     padding: "p-6",
                     titleSize: "text-xl",
@@ -218,8 +231,8 @@ const Home = () => {
                   {
                     img: "/businessmanagement.jpg",
                     title: "Business Management Systems",
-                    desc: "Simplify operations with integrated ERP, HR, and accounting platforms for better accuracy and growth.",
-                    btn: "Details",
+                    desc: "Simplify and centralize your business operations with intelligent ERP, HR, and accounting platforms that improve accuracy, control, and growth.",
+                    btn: "View Systems",
                     width: "w-80",
                     padding: "p-6",
                     titleSize: "text-xl",
@@ -228,7 +241,7 @@ const Home = () => {
                   {
                     img: "/service-4-ERP-accou.png",
                     title: "ERP Solutions",
-                    desc: "Streamline your business operations with comprehensive enterprise resource planning systems for enhanced productivity and control.",
+                    desc: "Streamline finance, operations, inventory, and reporting using comprehensive ERP solutions designed to boost productivity and visibility.",
                     btn: "Learn More",
                     width: "w-80",
                     padding: "p-6",
@@ -238,7 +251,7 @@ const Home = () => {
                   {
                     img: "/hr-application-img.png",
                     title: "HR Applications",
-                    desc: "Manage your workforce efficiently with advanced HR tools for recruitment, payroll, performance tracking, and employee engagement.",
+                    desc: "Manage recruitment, payroll, performance, and employee engagement efficiently with secure and scalable HR applications.",
                     btn: "Learn More",
                     width: "w-80",
                     padding: "p-6",
@@ -248,8 +261,8 @@ const Home = () => {
                   {
                     img: "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=400&h=300&fit=crop&crop=center",
                     title: "Technology Consulting",
-                    desc: "Get expert guidance on digital transformation strategies, technology adoption, and business process optimization for sustainable growth.",
-                    btn: "Learn More",
+                    desc: "Get expert consulting on digital transformation, technology adoption, system architecture, and process optimization—built for sustainable growth.",
+                    btn: "Consult Experts",
                     width: "w-80",
                     padding: "p-6",
                     titleSize: "text-xl",
@@ -258,8 +271,8 @@ const Home = () => {
                   {
                     img: "/R-and-D.png",
                     title: "R&D Services",
-                    desc: "Drive innovation with cutting-edge research and development services, exploring emerging technologies and creating future-ready solutions.",
-                    btn: "Explore",
+                    desc: "We provide cutting-edge research and development services to explore emerging technologies and create future-ready digital solutions.",
+                    btn: "Explore R&D",
                     width: "w-80",
                     padding: "p-6",
                     titleSize: "text-xl",
@@ -268,7 +281,7 @@ const Home = () => {
                   {
                     img: "/service-cloud-service.jpg",
                     title: "Cloud Services",
-                    desc: "Leverage secure, scalable cloud infrastructure and services for improved flexibility, cost efficiency, and seamless remote collaboration.",
+                    desc: "Leverage flexible and cost-efficient cloud solutions to improve performance, enable remote collaboration, and ensure business continuity.",
                     btn: "Learn More",
                     width: "w-80",
                     padding: "p-6",
@@ -278,8 +291,8 @@ const Home = () => {
                   {
                     img: "/support.png",
                     title: "Technical Support",
-                    desc: "Receive comprehensive technical support and maintenance services to ensure optimal performance and minimize downtime for your systems.",
-                    btn: "Get Help",
+                    desc: "Receive comprehensive technical support and system maintenance to ensure optimal performance, security, and minimal downtime.",
+                    btn: "Get Support",
                     width: "w-80",
                     padding: "p-6",
                     titleSize: "text-xl",
@@ -318,6 +331,22 @@ const Home = () => {
         {/* Top border animation */}
         <div className="absolute top-0 left-0 w-full h-2 z-20 animated-border-top pointer-events-none"></div>
         
+        {/* Bottom border animation */}
+        <div className="absolute bottom-0 left-0 w-full h-2 z-20 animated-border-bottom pointer-events-none"></div>
+        
+        <style jsx>{`
+          .animated-border-top, .animated-border-bottom {
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899, #f59e0b);
+            background-size: 400% 100%;
+            animation: gradientShift 3s ease-in-out infinite;
+          }
+          
+          @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+          }
+        `}</style>
+        
         {/* Background Image with Overlay */}
         <div className="absolute inset-0">
           <img 
@@ -334,33 +363,35 @@ const Home = () => {
             {/* Left Content */}
             <div className="space-y-6">
               <h2 className="text-5xl lg:text-7xl font-bold leading-tight">
-                Metrics<br/>
-                that matter<br/>
-                most
+                Proven Metrics.<br/>
+                Real Impact.
               </h2>
               <p className="text-gray-300 text-lg leading-relaxed">
-                Performance data reflecting<br/>
-                our technology expertise.
+                Our performance metrics showcase<br/>
+                the stability, scalability, and trust<br/>
+                businesses place in our technology.
               </p>
             </div>
             
             {/* Center Metric Card */}
             <div className="backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl p-12 text-center">
               <div className="text-6xl font-bold text-white mb-4">99.9%</div>
-              <div className="text-gray-300 text-lg mb-6">System uptime reliability</div>
+              <div className="text-gray-300 text-lg mb-6">Uptime Assurance</div>
               <p className="text-gray-400 text-sm leading-relaxed">
-                Dependable infrastructure for<br/>
-                uninterrupted service.
+                Engineered for reliability with<br/>
+                minimal downtime and maximum<br/>
+                performance.
               </p>
             </div>
             
             {/* Right Metric Card */}
             <div className="backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl p-12 text-center">
               <div className="text-6xl font-bold text-white mb-4">1.2M</div>
-              <div className="text-gray-300 text-lg mb-6">Transactions handled monthly</div>
+              <div className="text-gray-300 text-lg mb-6">Monthly Transactions</div>
               <p className="text-gray-400 text-sm leading-relaxed">
-                Scalable solutions for growing<br/>
-                businesses.
+                Built to handle scale securely<br/>
+                and efficiently as your business<br/>
+                grows.
               </p>
             </div>
           </div>
@@ -373,10 +404,10 @@ const Home = () => {
           {/* Header */}
           <div className="text-center mb-16">
             <h2 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
-              What our clients say
+              What Our Clients Say
             </h2>
             <p className="text-gray-600 text-lg max-w-6xl mx-auto">
-              Discover how our technology solutions help businesses streamline operations and achieve measurable results.
+              Real experiences from organizations that trust us to deliver reliable and scalable technology solutions.
             </p>
           </div>
           
@@ -402,63 +433,66 @@ const Home = () => {
                 </div>
                 
                 <p className="text-gray-700 text-lg leading-relaxed font-bold" style={{fontFamily: 'Georgia, serif'}}>
-                  Delivered a robust platform on schedule. The process was efficient and the team's expertise ensured a smooth launch.
+                  "The team at Next Sphere built a reliable, high-performance platform that met our business requirements perfectly. The delivery was on time, and the collaboration was seamless."<br/>
+                  <span className="text-gray-500 font-normal">— Technology Manager, IDEA</span>
                 </p>
                 
                 <a href="#" className="text-blue-600 hover:text-blue-700 font-medium mt-4 inline-block">
-                  Learn more
+                  View success story
                 </a>
               </div>
             </div>
           </div>
           
           {/* Client Avatars */}
-          <div className="flex justify-center items-center space-x-6">
-            <div className="flex items-center space-x-3 bg-white p-6 rounded-lg shadow-md min-w-[250px]">
-              <img 
-                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=60&h=60&fit=crop&crop=center" 
-                alt="Alex Rivera" 
-                className="w-12 h-12 rounded-full object-cover"
-              />
-              <div>
-                <div className="font-semibold text-gray-900">Alex Rivera</div>
-                <div className="text-sm text-gray-500">COO, FinEdge Solutions</div>
+          <div className="overflow-x-auto pb-4">
+            <div className="flex justify-center items-center space-x-6 min-w-max px-4">
+              <div className="flex items-center space-x-3 bg-white p-6 rounded-lg shadow-md min-w-[250px] flex-shrink-0">
+                <img 
+                  src="/Sandeep Dutta.png" 
+                  alt="Sandeep Dutta" 
+                  className="w-12 h-12 rounded-full object-cover"
+                />
+                <div>
+                  <div className="font-semibold text-gray-900">Sandeep Dutta</div>
+                  <div className="text-sm text-gray-500">President of India & South Asia, AWS</div>
+                </div>
               </div>
-            </div>
-            
-            <div className="flex items-center space-x-3 bg-white p-6 rounded-lg shadow-md min-w-[250px]">
-              <img 
-                src="/boy.png" 
-                alt="Taylor Brooks" 
-                className="w-12 h-12 rounded-full object-cover"
-              />
-              <div>
-                <div className="font-semibold text-gray-900">Taylor Brooks</div>
-                <div className="text-sm text-gray-500">Head of Operations, BrightPath</div>
+              
+              <div className="flex items-center space-x-3 bg-white p-6 rounded-lg shadow-md min-w-[250px] flex-shrink-0">
+                <img 
+                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=60&h=60&fit=crop&crop=center" 
+                  alt="Akarsh Gupta" 
+                  className="w-12 h-12 rounded-full object-cover"
+                />
+                <div>
+                  <div className="font-semibold text-gray-900">Akarsh Gupta</div>
+                  <div className="text-sm text-gray-500">Tech Lead, Imagin XP</div>
+                </div>
               </div>
-            </div>
-            
-            <div className="flex items-center space-x-3 bg-white p-6 rounded-lg shadow-md min-w-[250px]">
-              <img 
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=center" 
-                alt="Morgan Ellis" 
-                className="w-12 h-12 rounded-full object-cover"
-              />
-              <div>
-                <div className="font-semibold text-gray-900">Morgan Ellis</div>
-                <div className="text-sm text-gray-500">CTO, Vertex Analytics</div>
+              
+              <div className="flex items-center space-x-3 bg-white p-6 rounded-lg shadow-md min-w-[250px] flex-shrink-0">
+                <img 
+                  src="/Sachin-Chawla.jpg" 
+                  alt="Sachin Chawla" 
+                  className="w-12 h-12 rounded-full object-cover"
+                />
+                <div>
+                  <div className="font-semibold text-gray-900">Sachin Chawla</div>
+                  <div className="text-sm text-gray-500">AVP – India and ASEAN, MongoDB</div>
+                </div>
               </div>
-            </div>
-            
-            <div className="flex items-center space-x-3 bg-white p-6 rounded-lg shadow-md min-w-[250px]">
-              <img 
-                src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=60&h=60&fit=crop&crop=center" 
-                alt="John Doe" 
-                className="w-12 h-12 rounded-full object-cover"
-              />
-              <div>
-                <div className="font-semibold text-gray-900">John Doe</div>
-                <div className="text-sm text-gray-500">CEO, TechCorp</div>
+              
+              <div className="flex items-center space-x-3 bg-white p-6 rounded-lg shadow-md min-w-[250px] flex-shrink-0">
+                <img 
+                  src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=60&h=60&fit=crop&crop=center" 
+                  alt="Durga Charan Jena" 
+                  className="w-12 h-12 rounded-full object-cover"
+                />
+                <div>
+                  <div className="font-semibold text-gray-900">Durga Charan Jena</div>
+                  <div className="text-sm text-gray-500">Founder, Agritek India</div>
+                </div>
               </div>
             </div>
           </div>
@@ -470,6 +504,8 @@ const Home = () => {
 
       {/* Contact Form Section */}
       <ContactForm />
+
+
     </Layout>
   );
 };

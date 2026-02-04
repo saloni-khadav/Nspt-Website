@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Layout from './Layout';
 
 const Services = () => {
@@ -7,6 +8,41 @@ const Services = () => {
   const [isHovered, setIsHovered] = useState(false);
   const [hoveredService, setHoveredService] = useState(null);
   const [lastHoveredService, setLastHoveredService] = useState(null);
+  const [showServicesPopup, setShowServicesPopup] = useState(false);
+  const [email, setEmail] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState('');
+  
+  const handleEmailSubmit = async (e) => {
+    e.preventDefault();
+    if (!email) return;
+    
+    setIsSubmitting(true);
+    try {
+      const response = await fetch('http://localhost:5000/api/promotion/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+      
+      const data = await response.json();
+      
+      if (response.ok) {
+        setSubmitMessage('Submitted successfully!');
+        setEmail('');
+        alert('Submitted successfully!');
+      } else {
+        setSubmitMessage(data.message || 'Error occurred');
+      }
+    } catch (error) {
+      setSubmitMessage('Error occurred. Please try again.');
+    }
+    
+    setIsSubmitting(false);
+    setTimeout(() => setSubmitMessage(''), 3000);
+  };
   
   const serviceKeys = ['web', 'ai', 'erp', 'hr', 'cloud', 'consulting', 'appdev'];
   
@@ -137,7 +173,10 @@ const Services = () => {
                 <button className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium">
                   Start now
                 </button>
-                <button className="border border-gray-300 text-gray-700 px-8 py-3 rounded-lg hover:bg-gray-50 transition-colors font-medium">
+                <button 
+                  onClick={() => setShowServicesPopup(true)}
+                  className="border border-gray-300 text-gray-700 px-8 py-3 rounded-lg hover:bg-gray-50 transition-colors font-medium"
+                >
                   Our services
                 </button>
               </div>
@@ -518,9 +557,9 @@ const Services = () => {
               <p className="text-lg text-gray-600 mb-8 leading-relaxed">
                 Get straightforward answers about our technology consulting, project timelines, and tailored solutions to help you make informed choices.
               </p>
-              <button className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium">
+              <Link to="/contact" className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium">
                 Get in touch
-              </button>
+              </Link>
             </div>
             
             {/* Right - FAQ Accordion */}
@@ -570,16 +609,29 @@ const Services = () => {
               </p>
               
               {/* Email Form */}
-              <div className="flex gap-4">
+              <form onSubmit={handleEmailSubmit} className="flex gap-4">
                 <input 
                   type="email" 
                   placeholder="Email" 
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className="flex-1 px-4 py-3 bg-gray-600 text-white placeholder-gray-400 rounded-lg border border-gray-500 focus:outline-none focus:border-blue-500"
+                  required
                 />
-                <button className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium">
-                  Submit
+                <button 
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium disabled:opacity-50"
+                >
+                  {isSubmitting ? 'Submitting...' : 'Submit'}
                 </button>
-              </div>
+              </form>
+              
+              {submitMessage && (
+                <div className={`mt-2 text-sm ${submitMessage.includes('successfully') ? 'text-green-400' : 'text-red-400'}`}>
+                  {submitMessage}
+                </div>
+              )}
             </div>
             
             {/* Right - Image */}
@@ -596,7 +648,127 @@ const Services = () => {
         </div>
       </div>
       
-     
+      {/* Services Popup Modal */}
+      {showServicesPopup && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-xl max-w-3xl w-full max-h-[70vh] overflow-y-auto">
+            {/* Header */}
+            <div className="flex justify-between items-center p-4 border-b">
+              <h2 className="text-xl font-bold text-gray-900">Our Services</h2>
+              <button 
+                onClick={() => setShowServicesPopup(false)}
+                className="text-gray-500 hover:text-gray-700 text-xl"
+              >
+                ×
+              </button>
+            </div>
+            
+            {/* Services Grid */}
+            <div className="p-4">
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                {/* Web Development */}
+                <div className="bg-gray-50 rounded-lg p-3 hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
+                  <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center mb-2 group-hover:bg-blue-100 transition-colors">
+                    <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                    </svg>
+                  </div>
+                  <h3 className="text-sm font-semibold text-gray-900 mb-1 group-hover:text-blue-600 transition-colors">Website Design</h3>
+                  <p className="text-gray-600 text-xs">Custom websites for your business needs.</p>
+                </div>
+                
+                {/* App Development */}
+                <div className="bg-gray-50 rounded-lg p-3 hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
+                  <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center mb-2 group-hover:bg-green-100 transition-colors">
+                    <svg className="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-sm font-semibold text-gray-900 mb-1 group-hover:text-blue-600 transition-colors">App Development</h3>
+                  <p className="text-gray-600 text-xs">Build scalable mobile and web apps.</p>
+                </div>
+                
+                {/* AI Integration */}
+                <div className="bg-gray-50 rounded-lg p-3 hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
+                  <div className="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center mb-2 group-hover:bg-purple-100 transition-colors">
+                    <svg className="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-sm font-semibold text-gray-900 mb-1 group-hover:text-blue-600 transition-colors">AI Integration</h3>
+                  <p className="text-gray-600 text-xs">Enhance workflows with smart automation.</p>
+                </div>
+                
+                {/* ERP Solutions */}
+                <div className="bg-gray-50 rounded-lg p-3 hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
+                  <div className="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center mb-2 group-hover:bg-orange-100 transition-colors">
+                    <svg className="w-4 h-4 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                    </svg>
+                  </div>
+                  <h3 className="text-sm font-semibold text-gray-900 mb-1 group-hover:text-blue-600 transition-colors">ERP Solutions</h3>
+                  <p className="text-gray-600 text-xs">Streamline accounting and operations.</p>
+                </div>
+                
+                {/* HR Applications */}
+                <div className="bg-gray-50 rounded-lg p-3 hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
+                  <div className="w-8 h-8 bg-teal-100 rounded-lg flex items-center justify-center mb-2 group-hover:bg-teal-100 transition-colors">
+                    <svg className="w-4 h-4 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-sm font-semibold text-gray-900 mb-1 group-hover:text-blue-600 transition-colors">HR Applications</h3>
+                  <p className="text-gray-600 text-xs">Manage teams and processes easily.</p>
+                </div>
+                
+                {/* R&D Services */}
+                <div className="bg-gray-50 rounded-lg p-3 hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
+                  <div className="w-8 h-8 bg-indigo-100 rounded-lg flex items-center justify-center mb-2 group-hover:bg-indigo-100 transition-colors">
+                    <svg className="w-4 h-4 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-sm font-semibold text-gray-900 mb-1 group-hover:text-blue-600 transition-colors">R&D Services</h3>
+                  <p className="text-gray-600 text-xs">Drive progress with new technologies.</p>
+                </div>
+                
+                {/* Cloud Services */}
+                <div className="bg-gray-50 rounded-lg p-3 hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
+                  <div className="w-8 h-8 bg-cyan-100 rounded-lg flex items-center justify-center mb-2 group-hover:bg-cyan-100 transition-colors">
+                    <svg className="w-4 h-4 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10" />
+                    </svg>
+                  </div>
+                  <h3 className="text-sm font-semibold text-gray-900 mb-1 group-hover:text-blue-600 transition-colors">Cloud Services</h3>
+                  <p className="text-gray-600 text-xs">Secure, scalable cloud solutions.</p>
+                </div>
+                
+                {/* Consulting */}
+                <div className="bg-gray-50 rounded-lg p-3 hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
+                  <div className="w-8 h-8 bg-red-100 rounded-lg flex items-center justify-center mb-2 group-hover:bg-red-100 transition-colors">
+                    <svg className="w-4 h-4 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-sm font-semibold text-gray-900 mb-1 group-hover:text-blue-600 transition-colors">Consulting</h3>
+                  <p className="text-gray-600 text-xs">Expert advice for digital growth.</p>
+                </div>
+                
+                {/* Support */}
+                <div className="bg-gray-50 rounded-lg p-3 hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
+                  <div className="w-8 h-8 bg-yellow-100 rounded-lg flex items-center justify-center mb-2 group-hover:bg-yellow-100 transition-colors">
+                    <svg className="w-4 h-4 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M12 2.25a9.75 9.75 0 100 19.5 9.75 9.75 0 000-19.5z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-sm font-semibold text-gray-900 mb-1 group-hover:text-blue-600 transition-colors">Support</h3>
+                  <p className="text-gray-600 text-xs">Ongoing help for your projects.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
      
     </Layout>
   );

@@ -6,8 +6,15 @@ import { toast } from 'react-toastify';
 const Careers = () => {
   const [selectedJob, setSelectedJob] = useState(null);
   const [showApplicationForm, setShowApplicationForm] = useState(false);
+  const [showTalentPoolForm, setShowTalentPoolForm] = useState(false);
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [selectedDepartment, setSelectedDepartment] = useState('All');
   const [selectedLocation, setSelectedLocation] = useState('All');
+  const [talentPoolData, setTalentPoolData] = useState({
+    email: '',
+    position: '',
+    customPosition: ''
+  });
   const [applicationData, setApplicationData] = useState({
     fullName: '',
     email: '',
@@ -34,6 +41,42 @@ const Careers = () => {
     }
   };
 
+  const submitTalentPool = async (e) => {
+    e.preventDefault();
+    
+    const finalPosition = talentPoolData.position === 'Other' ? talentPoolData.customPosition : talentPoolData.position;
+    
+    try {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/promotion/subscribe`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: talentPoolData.email,
+          position: finalPosition
+        })
+      });
+      const result = await response.json();
+      if (response.ok) {
+        setShowTalentPoolForm(false);
+        setShowSuccessMessage(true);
+        setTalentPoolData({ email: '', position: '', customPosition: '' });
+        setTimeout(() => setShowSuccessMessage(false), 4000);
+      } else {
+        toast.error(result.message, {
+          position: 'top-right',
+          autoClose: 3000,
+          theme: 'dark',
+        });
+      }
+    } catch (error) {
+      toast.error('Error joining talent pool. Please try again.', {
+        position: 'top-right',
+        autoClose: 3000,
+        theme: 'dark',
+      });
+    }
+  };
+
   const submitApplication = (e) => {
     e.preventDefault();
     
@@ -50,7 +93,7 @@ const Careers = () => {
     formData.append('coverLetter', applicationData.coverLetter);
     
     // Save application data to database
-    fetch('http://localhost:5000/api/careers/apply', {
+    fetch(`${process.env.REACT_APP_API_URL}/api/careers/apply`, {
       method: 'POST',
       body: formData
     })
@@ -72,6 +115,7 @@ const Careers = () => {
           theme: 'colored',
         });
         setShowApplicationForm(false);
+        setSelectedJob(null); // Close job details modal too
         setApplicationData({
           fullName: '',
           email: '',
@@ -403,10 +447,16 @@ const Careers = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
-              <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-semibold transition-all">
-                Submit Resume
+              <button 
+                onClick={() => window.open('https://www.linkedin.com/company/nsptai', '_blank')}
+                className="bg-blue-600 hover:bg-blue-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-semibold transition-all"
+              >
+                Subscribe
               </button>
-              <button className="border-2 border-blue-600 text-blue-600 hover:bg-blue-50 px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-semibold transition-all">
+              <button 
+                onClick={() => setShowTalentPoolForm(true)}
+                className="border-2 border-blue-600 text-blue-600 hover:bg-blue-50 px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-semibold transition-all"
+              >
                 Join Talent Pool
               </button>
             </div>
@@ -630,6 +680,107 @@ const Careers = () => {
                   </p>
                 </form>
               </div>
+            </div>
+          </div>
+        )}
+
+        {/* Talent Pool Form Modal */}
+        {showTalentPoolForm && (
+          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-[60] p-4">
+            <div className="bg-white border border-gray-200 rounded-2xl max-w-md w-full shadow-lg">
+              <div className="p-8">
+                <div className="flex justify-between items-start mb-6">
+                  <div>
+                    <h2 className="text-2xl font-bold text-gray-900 mb-2">Join Talent Pool</h2>
+                    <p className="text-gray-600">We'll reach out when roles open</p>
+                  </div>
+                  <button 
+                    onClick={() => setShowTalentPoolForm(false)}
+                    className="text-gray-400 hover:text-gray-600 text-2xl font-bold transition-colors"
+                  >
+                    ×
+                  </button>
+                </div>
+
+                <form onSubmit={submitTalentPool} className="space-y-6">
+                  <div>
+                    <label className="block text-gray-700 text-sm font-medium mb-2">Email *</label>
+                    <input 
+                      type="email" 
+                      value={talentPoolData.email}
+                      onChange={(e) => setTalentPoolData({...talentPoolData, email: e.target.value})}
+                      placeholder="Enter your email"
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
+                    />
+                  </div>
+                  
+                  <div>
+                    <label className="block text-gray-700 text-sm font-medium mb-2">Position *</label>
+                    <select 
+                      value={talentPoolData.position}
+                      onChange={(e) => setTalentPoolData({...talentPoolData, position: e.target.value, customPosition: ''})}
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
+                    >
+                      <option value="">Select Position</option>
+                      <option value="Software Engineer">Software Engineer</option>
+                      <option value="Frontend Developer">Frontend Developer</option>
+                      <option value="Backend Developer">Backend Developer</option>
+                      <option value="DevOps Engineer">DevOps Engineer</option>
+                      <option value="SEO Specialist">SEO Specialist</option>
+                      <option value="Sales Executive">Sales Executive</option>
+                      <option value="Financial Analyst">Financial Analyst</option>
+                      <option value="Operations Manager">Operations Manager</option>
+                      <option value="Other">Other</option>
+                    </select>
+                  </div>
+                  
+                  {talentPoolData.position === 'Other' && (
+                    <div>
+                      <label className="block text-gray-700 text-sm font-medium mb-2">Specify Position *</label>
+                      <input 
+                        type="text" 
+                        value={talentPoolData.customPosition}
+                        onChange={(e) => setTalentPoolData({...talentPoolData, customPosition: e.target.value})}
+                        placeholder="Enter your desired position"
+                        required
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
+                      />
+                    </div>
+                  )}
+                  
+                  <button 
+                    type="submit"
+                    className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-semibold transition-all duration-300"
+                  >
+                    Submit
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Success Message Popup */}
+        {showSuccessMessage && (
+          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-[70] p-4">
+            <div className="bg-white border border-gray-200 rounded-2xl max-w-md w-full shadow-lg text-center p-8">
+              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Thank You!</h3>
+              <p className="text-gray-600 mb-6 leading-relaxed">
+                Thank you for connecting! We'll reach out when suitable roles open.
+              </p>
+              <button 
+                onClick={() => setShowSuccessMessage(false)}
+                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300"
+              >
+                Close
+              </button>
             </div>
           </div>
         )}

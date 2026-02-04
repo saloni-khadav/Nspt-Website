@@ -12,8 +12,15 @@ const Footer = () => {
               Transform. Together.
             </h2>
             <p className="text-gray-400 text-base sm:text-lg mt-4 sm:mt-6">
-              info@nextsphere.co.in<br/>
-              +91 9078027948
+              <a 
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=info@nextsphere.co.in" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white transition-colors cursor-pointer"
+              >
+                info@nextsphere.co.in
+              </a><br/>
+              <a href="tel:+919078027948" className="hover:text-white transition-colors cursor-pointer">+91 9078027948</a>
             </p>
           </div>
           
@@ -29,6 +36,13 @@ const Footer = () => {
               LinkedIn
             </a>
           </div>
+        </div>
+        
+        {/* Copyright */}
+        <div className="text-center mt-8 pt-8 border-t border-gray-800">
+          <p className="text-gray-400 text-sm">
+            © 2026 NextSphere Product and Technology . All rights reserved.
+          </p>
         </div>
       </div>
     </footer>
