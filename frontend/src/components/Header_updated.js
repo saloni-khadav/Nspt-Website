@@ -1,12 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import './animated-border.css';
 
 const Header = () => {
   const [supportDropdown, setSupportDropdown] = useState(false);
   const [solutionsDropdown, setSolutionsDropdown] = useState(false);
-  const [mobileSolutionsDropdown, setMobileSolutionsDropdown] = useState(false);
-  const [mobileSupportDropdown, setMobileSupportDropdown] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const dropdownRef = useRef(null);
   const solutionsDropdownRef = useRef(null);
@@ -64,61 +61,44 @@ const Header = () => {
                 </svg>
               </div>
               {solutionsDropdown && (
-                <div className="absolute top-full left-1/2 transform -translate-x-1/2 lg:ml-60 mt-2 w-[95vw] lg:w-[1400px] max-w-[1400px] bg-white border border-gray-200 rounded-lg shadow-lg z-50 max-h-[650px] overflow-auto custom-scrollbar">
-                  <style jsx>{`
-                    .custom-scrollbar::-webkit-scrollbar {
-                      width: 8px;
-                      height: 8px;
-                    }
-                    .custom-scrollbar::-webkit-scrollbar-track {
-                      background: #f1f1f1;
-                    }
-                    .custom-scrollbar::-webkit-scrollbar-thumb {
-                      background: #ffffff;
-                      border-radius: 4px;
-                      border: 1px solid #e5e5e5;
-                    }
-                    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-                      background: #f5f5f5;
-                    }
-                  `}</style>
-                  <div className="flex min-w-[800px] lg:min-w-[1200px]">
+                <div className="absolute top-full left-1/2 transform -translate-x-1/2 ml-60 mt-2 w-[1400px] bg-white border border-gray-200 rounded-lg shadow-lg z-50">
+                  <div className="flex">
                     {/* Left side - Services Grid */}
-                    <div className="flex-1 p-4 lg:p-6 overflow-y-auto max-h-[600px] custom-scrollbar">
-                      <div className="grid grid-cols-3 lg:grid-cols-6 gap-2 lg:gap-3 min-w-[700px] lg:min-w-[1000px]">
+                    <div className="flex-1 p-6">
+                      <div className="grid grid-cols-6 gap-3">
                         {/* WEB & DIGITAL SOLUTIONS */}
                         <div>
                           <h3 className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-4">Web & Digital Solutions</h3>
                           <div className="space-y-3">
-                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
+                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 hover:border-l-2 hover:border-blue-600 transition-all duration-300 group cursor-pointer">
                               <div className="w-1 h-1 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
                               <div>
                                 <h4 className="font-medium text-gray-900 text-xs mb-1 group-hover:text-blue-600 transition-colors">Website Design & Development</h4>
                                 <p className="text-xs text-gray-600">Custom, responsive websites built for performance, security, and scalability.</p>
                               </div>
                             </div>
-                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
+                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 hover:border-l-2 hover:border-blue-600 transition-all duration-300 group cursor-pointer">
                               <div className="w-1 h-1 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
                               <div>
                                 <h4 className="font-medium text-gray-900 text-xs mb-1 group-hover:text-blue-600 transition-colors">UI/UX Design</h4>
                                 <p className="text-xs text-gray-600">User-centric interface and experience design that improves engagement and conversions.</p>
                               </div>
                             </div>
-                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
+                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 hover:border-l-2 hover:border-blue-600 transition-all duration-300 group cursor-pointer">
                               <div className="w-1 h-1 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
                               <div>
                                 <h4 className="font-medium text-gray-900 text-xs mb-1 group-hover:text-blue-600 transition-colors">App Development</h4>
                                 <p className="text-xs text-gray-600">Scalable mobile and web applications for modern business needs.</p>
                               </div>
                             </div>
-                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
+                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 hover:border-l-2 hover:border-blue-600 transition-all duration-300 group cursor-pointer">
                               <div className="w-1 h-1 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
                               <div>
                                 <h4 className="font-medium text-gray-900 text-xs mb-1 group-hover:text-blue-600 transition-colors">SEO (Search Engine Optimization)</h4>
                                 <p className="text-xs text-gray-600">Technical and content SEO to improve visibility, rankings, and organic growth.</p>
                               </div>
                             </div>
-                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
+                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 hover:border-l-2 hover:border-blue-600 transition-all duration-300 group cursor-pointer">
                               <div className="w-1 h-1 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
                               <div>
                                 <h4 className="font-medium text-gray-900 text-xs mb-1 group-hover:text-blue-600 transition-colors">Digital Marketing</h4>
@@ -132,28 +112,28 @@ const Header = () => {
                         <div>
                           <h3 className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-4">AI, Data & Automation</h3>
                           <div className="space-y-3">
-                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
+                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 hover:border-l-2 hover:border-blue-600 transition-all duration-300 group cursor-pointer">
                               <div className="w-1 h-1 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
                               <div>
                                 <h4 className="font-medium text-gray-900 text-xs mb-1 group-hover:text-blue-600 transition-colors">AI Integration</h4>
                                 <p className="text-xs text-gray-600">Intelligent automation, AI models, and smart workflows tailored to your business.</p>
                               </div>
                             </div>
-                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
+                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 hover:border-l-2 hover:border-blue-600 transition-all duration-300 group cursor-pointer">
                               <div className="w-1 h-1 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
                               <div>
                                 <h4 className="font-medium text-gray-900 text-xs mb-1 group-hover:text-blue-600 transition-colors">Data Analytics & Dashboards</h4>
                                 <p className="text-xs text-gray-600">Business intelligence dashboards and analytics for informed decision-making.</p>
                               </div>
                             </div>
-                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
+                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 hover:border-l-2 hover:border-blue-600 transition-all duration-300 group cursor-pointer">
                               <div className="w-1 h-1 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
                               <div>
                                 <h4 className="font-medium text-gray-900 text-xs mb-1 group-hover:text-blue-600 transition-colors">Process Automation</h4>
                                 <p className="text-xs text-gray-600">Automate repetitive tasks using AI, RPA, and workflow tools.</p>
                               </div>
                             </div>
-                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
+                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 hover:border-l-2 hover:border-blue-600 transition-all duration-300 group cursor-pointer">
                               <div className="w-1 h-1 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
                               <div>
                                 <h4 className="font-medium text-gray-900 text-xs mb-1 group-hover:text-blue-600 transition-colors">Chatbots & Virtual Assistants</h4>
@@ -167,28 +147,28 @@ const Header = () => {
                         <div>
                           <h3 className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-4">Business & Enterprise Solutions</h3>
                           <div className="space-y-3">
-                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
+                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 hover:border-l-2 hover:border-blue-600 transition-all duration-300 group cursor-pointer">
                               <div className="w-1 h-1 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
                               <div>
                                 <h4 className="font-medium text-gray-900 text-xs mb-1 group-hover:text-blue-600 transition-colors">ERP Solutions</h4>
                                 <p className="text-xs text-gray-600">Integrated ERP systems for finance, operations, inventory, and reporting.</p>
                               </div>
                             </div>
-                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
+                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 hover:border-l-2 hover:border-blue-600 transition-all duration-300 group cursor-pointer">
                               <div className="w-1 h-1 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
                               <div>
                                 <h4 className="font-medium text-gray-900 text-xs mb-1 group-hover:text-blue-600 transition-colors">HR Applications</h4>
                                 <p className="text-xs text-gray-600">Smart HR platforms for recruitment, payroll, performance, and employee management.</p>
                               </div>
                             </div>
-                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
+                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 hover:border-l-2 hover:border-blue-600 transition-all duration-300 group cursor-pointer">
                               <div className="w-1 h-1 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
                               <div>
                                 <h4 className="font-medium text-gray-900 text-xs mb-1 group-hover:text-blue-600 transition-colors">CRM Solutions</h4>
                                 <p className="text-xs text-gray-600">Customer relationship management systems to improve sales and customer engagement.</p>
                               </div>
                             </div>
-                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
+                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 hover:border-l-2 hover:border-blue-600 transition-all duration-300 group cursor-pointer">
                               <div className="w-1 h-1 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
                               <div>
                                 <h4 className="font-medium text-gray-900 text-xs mb-1 group-hover:text-blue-600 transition-colors">Accounting & Finance Systems</h4>
@@ -202,28 +182,28 @@ const Header = () => {
                         <div>
                           <h3 className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-4">Cloud & Infrastructure</h3>
                           <div className="space-y-3">
-                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
+                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 hover:border-l-2 hover:border-blue-600 transition-all duration-300 group cursor-pointer">
                               <div className="w-1 h-1 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
                               <div>
                                 <h4 className="font-medium text-gray-900 text-xs mb-1 group-hover:text-blue-600 transition-colors">Cloud Services</h4>
                                 <p className="text-xs text-gray-600">Secure and scalable cloud architecture, migration, and management.</p>
                               </div>
                             </div>
-                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
+                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 hover:border-l-2 hover:border-blue-600 transition-all duration-300 group cursor-pointer">
                               <div className="w-1 h-1 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
                               <div>
                                 <h4 className="font-medium text-gray-900 text-xs mb-1 group-hover:text-blue-600 transition-colors">Cloud Migration & Optimization</h4>
                                 <p className="text-xs text-gray-600">Move to the cloud with minimal risk and maximum performance.</p>
                               </div>
                             </div>
-                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
+                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 hover:border-l-2 hover:border-blue-600 transition-all duration-300 group cursor-pointer">
                               <div className="w-1 h-1 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
                               <div>
                                 <h4 className="font-medium text-gray-900 text-xs mb-1 group-hover:text-blue-600 transition-colors">DevOps Services</h4>
                                 <p className="text-xs text-gray-600">CI/CD pipelines, infrastructure automation, and system monitoring.</p>
                               </div>
                             </div>
-                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
+                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 hover:border-l-2 hover:border-blue-600 transition-all duration-300 group cursor-pointer">
                               <div className="w-1 h-1 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
                               <div>
                                 <h4 className="font-medium text-gray-900 text-xs mb-1 group-hover:text-blue-600 transition-colors">Cybersecurity Services</h4>
@@ -237,21 +217,21 @@ const Header = () => {
                         <div>
                           <h3 className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-4">Innovation & Engineering</h3>
                           <div className="space-y-3">
-                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
+                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 hover:border-l-2 hover:border-blue-600 transition-all duration-300 group cursor-pointer">
                               <div className="w-1 h-1 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
                               <div>
                                 <h4 className="font-medium text-gray-900 text-xs mb-1 group-hover:text-blue-600 transition-colors">R&D Services</h4>
                                 <p className="text-xs text-gray-600">Research, prototyping, and development of future-ready technology solutions.</p>
                               </div>
                             </div>
-                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
+                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 hover:border-l-2 hover:border-blue-600 transition-all duration-300 group cursor-pointer">
                               <div className="w-1 h-1 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
                               <div>
                                 <h4 className="font-medium text-gray-900 text-xs mb-1 group-hover:text-blue-600 transition-colors">Product Engineering</h4>
                                 <p className="text-xs text-gray-600">End-to-end product design, development, and scaling.</p>
                               </div>
                             </div>
-                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
+                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 hover:border-l-2 hover:border-blue-600 transition-all duration-300 group cursor-pointer">
                               <div className="w-1 h-1 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
                               <div>
                                 <h4 className="font-medium text-gray-900 text-xs mb-1 group-hover:text-blue-600 transition-colors">IoT Solutions</h4>
@@ -265,21 +245,21 @@ const Header = () => {
                         <div>
                           <h3 className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-4">Consulting & Support</h3>
                           <div className="space-y-3">
-                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
+                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 hover:border-l-2 hover:border-blue-600 transition-all duration-300 group cursor-pointer">
                               <div className="w-1 h-1 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
                               <div>
                                 <h4 className="font-medium text-gray-900 text-xs mb-1 group-hover:text-blue-600 transition-colors">Technology Consulting</h4>
                                 <p className="text-xs text-gray-600">Strategic guidance on digital transformation, architecture, and technology adoption.</p>
                               </div>
                             </div>
-                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
+                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 hover:border-l-2 hover:border-blue-600 transition-all duration-300 group cursor-pointer">
                               <div className="w-1 h-1 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
                               <div>
                                 <h4 className="font-medium text-gray-900 text-xs mb-1 group-hover:text-blue-600 transition-colors">IT Consulting</h4>
                                 <p className="text-xs text-gray-600">Infrastructure planning, system audits, and IT modernization.</p>
                               </div>
                             </div>
-                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
+                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 hover:border-l-2 hover:border-blue-600 transition-all duration-300 group cursor-pointer">
                               <div className="w-1 h-1 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
                               <div>
                                 <h4 className="font-medium text-gray-900 text-xs mb-1 group-hover:text-blue-600 transition-colors">Technical Support & Maintenance</h4>
@@ -300,12 +280,12 @@ const Header = () => {
                         <p className="text-gray-300 mb-5 leading-relaxed text-sm">
                           Discover tailored solutions for digital success.
                         </p>
-                        <Link to="/project-consultation" className="bg-white text-gray-900 px-4 py-2 rounded-lg font-medium hover:bg-gray-100 transition-colors flex items-center justify-between group">
+                        <button className="bg-white text-gray-900 px-4 py-2 rounded-lg font-medium hover:bg-gray-100 transition-colors flex items-center justify-between group">
                           <span>Contact</span>
                           <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                           </svg>
-                        </Link>
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -371,7 +351,7 @@ const Header = () => {
           <div className="px-6 py-4 space-y-4">
             <div>
               <button 
-                onClick={() => setMobileSolutionsDropdown(!mobileSolutionsDropdown)}
+                onClick={() => setSolutionsDropdown(!solutionsDropdown)}
                 className="flex items-center justify-between w-full text-gray-700 hover:text-blue-600 py-2"
               >
                 <span>Solutions</span>
@@ -379,61 +359,14 @@ const Header = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
-              {mobileSolutionsDropdown && (
-                <div className="pl-4 mt-2 space-y-3 max-h-64 overflow-y-auto">
-                  <div>
-                    <div className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2">Web & Digital Solutions</div>
-                    <div className="space-y-1 pl-2">
-                      <div className="text-sm text-gray-600">Website Design & Development</div>
-                      <div className="text-sm text-gray-600">UI/UX Design</div>
-                      <div className="text-sm text-gray-600">App Development</div>
-                      <div className="text-sm text-gray-600">SEO (Search Engine Optimization)</div>
-                      <div className="text-sm text-gray-600">Digital Marketing</div>
-                    </div>
-                  </div>
-                  <div>
-                    <div className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2">AI, Data & Automation</div>
-                    <div className="space-y-1 pl-2">
-                      <div className="text-sm text-gray-600">AI Integration</div>
-                      <div className="text-sm text-gray-600">Data Analytics & Dashboards</div>
-                      <div className="text-sm text-gray-600">Process Automation</div>
-                      <div className="text-sm text-gray-600">Chatbots & Virtual Assistants</div>
-                    </div>
-                  </div>
-                  <div>
-                    <div className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2">Business & Enterprise Solutions</div>
-                    <div className="space-y-1 pl-2">
-                      <div className="text-sm text-gray-600">ERP Solutions</div>
-                      <div className="text-sm text-gray-600">HR Applications</div>
-                      <div className="text-sm text-gray-600">CRM Solutions</div>
-                      <div className="text-sm text-gray-600">Accounting & Finance Systems</div>
-                    </div>
-                  </div>
-                  <div>
-                    <div className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2">Cloud & Infrastructure</div>
-                    <div className="space-y-1 pl-2">
-                      <div className="text-sm text-gray-600">Cloud Services</div>
-                      <div className="text-sm text-gray-600">Cloud Migration & Optimization</div>
-                      <div className="text-sm text-gray-600">DevOps Services</div>
-                      <div className="text-sm text-gray-600">Cybersecurity Services</div>
-                    </div>
-                  </div>
-                  <div>
-                    <div className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2">Innovation & Engineering</div>
-                    <div className="space-y-1 pl-2">
-                      <div className="text-sm text-gray-600">R&D Services</div>
-                      <div className="text-sm text-gray-600">Product Engineering</div>
-                      <div className="text-sm text-gray-600">IoT Solutions</div>
-                    </div>
-                  </div>
-                  <div>
-                    <div className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2">Consulting & Support</div>
-                    <div className="space-y-1 pl-2">
-                      <div className="text-sm text-gray-600">Technology Consulting</div>
-                      <div className="text-sm text-gray-600">IT Consulting</div>
-                      <div className="text-sm text-gray-600">Technical Support & Maintenance</div>
-                    </div>
-                  </div>
+              {solutionsDropdown && (
+                <div className="pl-4 mt-2 space-y-2">
+                  <div className="text-sm text-gray-600">Website Design & Development</div>
+                  <div className="text-sm text-gray-600">UI/UX Design</div>
+                  <div className="text-sm text-gray-600">App Development</div>
+                  <div className="text-sm text-gray-600">AI Integration</div>
+                  <div className="text-sm text-gray-600">ERP Solutions</div>
+                  <div className="text-sm text-gray-600">HR Applications</div>
                 </div>
               )}
             </div>
@@ -442,7 +375,7 @@ const Header = () => {
             <Link to="/careers" className="block text-gray-700 hover:text-blue-600 py-2">Careers</Link>
             <div>
               <button 
-                onClick={() => setMobileSupportDropdown(!mobileSupportDropdown)}
+                onClick={() => setSupportDropdown(!supportDropdown)}
                 className="flex items-center justify-between w-full text-gray-700 hover:text-blue-600 py-2"
               >
                 <span>Support</span>
@@ -450,7 +383,7 @@ const Header = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
-              {mobileSupportDropdown && (
+              {supportDropdown && (
                 <div className="pl-4 mt-2 space-y-2">
                   <Link to="/help-center" className="block text-sm text-gray-600 hover:text-blue-600">Help Center</Link>
                   <Link to="/contact" className="block text-sm text-gray-600 hover:text-blue-600">Contact Us</Link>

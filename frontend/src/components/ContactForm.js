@@ -141,7 +141,7 @@ const ContactForm = () => {
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      placeholder="9078027948"
+                      placeholder="123-456-7890"
                       required
                       className="w-full px-4 py-3 bg-gray-100 border-0 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none text-gray-900"
                     />

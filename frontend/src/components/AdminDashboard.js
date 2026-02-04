@@ -12,6 +12,10 @@ const AdminDashboard = () => {
   const [filteredInquiries, setFilteredInquiries] = useState([]);
   const [promotions, setPromotions] = useState([]);
   const [filteredPromotions, setFilteredPromotions] = useState([]);
+  const [projectConsultations, setProjectConsultations] = useState([]);
+  const [filteredProjectConsultations, setFilteredProjectConsultations] = useState([]);
+  const [selectedConsultations, setSelectedConsultations] = useState([]);
+  const [selectAllConsultations, setSelectAllConsultations] = useState(false);
   const [selectedPromotions, setSelectedPromotions] = useState([]);
   const [selectAllPromotions, setSelectAllPromotions] = useState(false);
   const [promotionFilters, setPromotionFilters] = useState({
@@ -22,6 +26,11 @@ const AdminDashboard = () => {
   const [inquiryFilters, setInquiryFilters] = useState({
     date: '',
     helpType: ''
+  });
+  const [consultationFilters, setConsultationFilters] = useState({
+    date: '',
+    projectType: '',
+    timeline: ''
   });
   const [filters, setFilters] = useState({
     dateFrom: '',
@@ -48,6 +57,9 @@ const AdminDashboard = () => {
     }
     if (activeSection === 'promotions') {
       fetchPromotions();
+    }
+    if (activeSection === 'project-consultations') {
+      fetchProjectConsultations();
     }
   }, [navigate, activeSection]);
 
@@ -217,6 +229,19 @@ const AdminDashboard = () => {
     }
   };
 
+  const fetchProjectConsultations = async () => {
+    try {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/project-consultation/all`);
+      const data = await response.json();
+      if (data.success) {
+        setProjectConsultations(data.data);
+        setFilteredProjectConsultations(data.data);
+      }
+    } catch (error) {
+      console.error('Error fetching project consultations:', error);
+    }
+  };
+
   const applyInquiryFilters = () => {
     let filtered = inquiries;
 
@@ -242,6 +267,115 @@ const AdminDashboard = () => {
       helpType: ''
     });
     setFilteredInquiries(inquiries);
+  };
+
+  const applyConsultationFilters = () => {
+    let filtered = projectConsultations;
+
+    if (consultationFilters.date) {
+      filtered = filtered.filter(consultation => {
+        const consultationDate = new Date(consultation.submittedAt).toDateString();
+        const filterDate = new Date(consultationFilters.date).toDateString();
+        return consultationDate === filterDate;
+      });
+    }
+    if (consultationFilters.projectType) {
+      filtered = filtered.filter(consultation => 
+        consultation.projectType && consultation.projectType.toLowerCase().includes(consultationFilters.projectType.toLowerCase())
+      );
+    }
+    if (consultationFilters.timeline) {
+      filtered = filtered.filter(consultation => 
+        consultation.expectedTimeline && consultation.expectedTimeline.toLowerCase().includes(consultationFilters.timeline.toLowerCase())
+      );
+    }
+
+    setFilteredProjectConsultations(filtered);
+  };
+
+  const clearConsultationFilters = () => {
+    setConsultationFilters({
+      date: '',
+      projectType: '',
+      timeline: ''
+    });
+    setFilteredProjectConsultations(projectConsultations);
+  };
+
+  const exportConsultationsToExcel = () => {
+    const headers = ['Name', 'Email', 'Company', 'Company Size', 'Project Type', 'Services', 'Timeline', 'Budget', 'Date'];
+    const csvContent = [
+      headers.join(','),
+      ...filteredProjectConsultations.map(consultation => [
+        `"${consultation.fullName}"`,
+        `"${consultation.email}"`,
+        `"${consultation.companyName}"`,
+        `"${consultation.companySize || 'N/A'}"`,
+        `"${consultation.projectType || 'N/A'}"`,
+        `"${consultation.requiredServices?.join(', ') || 'None'}"`,
+        `"${consultation.expectedTimeline || 'N/A'}"`,
+        `"${consultation.estimatedBudget || 'N/A'}"`,
+        `"${new Date(consultation.submittedAt).toLocaleDateString()}"`
+      ].join(','))
+    ].join('\n');
+
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    const url = URL.createObjectURL(blob);
+    link.setAttribute('href', url);
+    link.setAttribute('download', `project_consultations_${new Date().toISOString().split('T')[0]}.csv`);
+    link.style.visibility = 'hidden';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  const handleSelectAllConsultations = () => {
+    if (selectAllConsultations) {
+      setSelectedConsultations([]);
+    } else {
+      setSelectedConsultations(filteredProjectConsultations.map(consultation => consultation._id));
+    }
+    setSelectAllConsultations(!selectAllConsultations);
+  };
+
+  const handleSelectConsultation = (consultationId) => {
+    if (selectedConsultations.includes(consultationId)) {
+      setSelectedConsultations(selectedConsultations.filter(id => id !== consultationId));
+    } else {
+      setSelectedConsultations([...selectedConsultations, consultationId]);
+    }
+  };
+
+  const deleteSelectedConsultations = async () => {
+    if (selectedConsultations.length === 0) {
+      alert('Please select consultations to delete');
+      return;
+    }
+
+    if (window.confirm(`Are you sure you want to delete ${selectedConsultations.length} consultation(s)?`)) {
+      try {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/project-consultation/delete-multiple`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ ids: selectedConsultations }),
+        });
+
+        if (response.ok) {
+          fetchProjectConsultations();
+          setSelectedConsultations([]);
+          setSelectAllConsultations(false);
+          alert('Consultations deleted successfully');
+        } else {
+          alert('Error deleting consultations');
+        }
+      } catch (error) {
+        console.error('Error deleting consultations:', error);
+        alert('Error deleting consultations');
+      }
+    }
   };
 
   const handleViewInquiries = () => {
@@ -695,6 +829,172 @@ const AdminDashboard = () => {
       {activeSection === 'inquiries' && (
         <div>
           <ContactInquiries />
+        </div>
+      )}
+
+      {activeSection === 'project-consultations' && (
+        <div className="space-y-6">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+            <h3 className="text-lg font-semibold text-gray-900">Total Project Consultations: {filteredProjectConsultations.length}</h3>
+            <button 
+              onClick={exportConsultationsToExcel}
+              className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition-colors w-full sm:w-auto"
+            >
+              Export to Excel
+            </button>
+          </div>
+          
+          {/* Filter Section */}
+          <div className="bg-white border border-gray-200 rounded-xl p-4 md:p-6 shadow-sm">
+            <h3 className="text-lg font-semibold text-blue-600 mb-4">Filters</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div>
+                <label className="block text-gray-700 text-sm mb-2">Date</label>
+                <input
+                  type="date"
+                  value={consultationFilters.date}
+                  onChange={(e) => setConsultationFilters({...consultationFilters, date: e.target.value})}
+                  className="w-full bg-white border border-gray-300 rounded px-3 py-2 text-gray-900 focus:border-blue-600 outline-none text-sm"
+                />
+              </div>
+              <div>
+                <label className="block text-gray-700 text-sm mb-2">Project Type</label>
+                <input
+                  type="text"
+                  placeholder="e.g. Web Development"
+                  value={consultationFilters.projectType}
+                  onChange={(e) => setConsultationFilters({...consultationFilters, projectType: e.target.value})}
+                  className="w-full bg-white border border-gray-300 rounded px-3 py-2 text-gray-900 focus:border-blue-600 outline-none text-sm"
+                />
+              </div>
+              <div>
+                <label className="block text-gray-700 text-sm mb-2">Timeline</label>
+                <input
+                  type="text"
+                  placeholder="e.g. 3-6 months"
+                  value={consultationFilters.timeline}
+                  onChange={(e) => setConsultationFilters({...consultationFilters, timeline: e.target.value})}
+                  className="w-full bg-white border border-gray-300 rounded px-3 py-2 text-gray-900 focus:border-blue-600 outline-none text-sm"
+                />
+              </div>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 mt-4">
+              <button
+                onClick={applyConsultationFilters}
+                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition-colors text-sm"
+              >
+                Apply Filters
+              </button>
+              <button
+                onClick={clearConsultationFilters}
+                className="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded transition-colors text-sm"
+              >
+                Clear Filters
+              </button>
+              {selectedConsultations.length > 0 && (
+                <button
+                  onClick={deleteSelectedConsultations}
+                  className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded transition-colors text-sm"
+                >
+                  <span className="hidden sm:inline">Delete Selected</span>
+                  <span className="sm:hidden">Delete</span> ({selectedConsultations.length})
+                </button>
+              )}
+            </div>
+          </div>
+          
+          <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+            <div className="overflow-x-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
+              <div className="max-h-[400px] sm:max-h-[500px] lg:max-h-[600px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
+                <table className="w-full text-left min-w-[1000px]">
+                  <thead className="sticky top-0 bg-gray-50 z-10">
+                    <tr className="border-b border-gray-200">
+                      <th className="text-black font-bold py-2 sm:py-3 px-0 sm:px-4 text-[10px] sm:text-sm">
+                        <input
+                          type="checkbox"
+                          checked={selectAllConsultations}
+                          onChange={handleSelectAllConsultations}
+                          className="mr-0"
+                        />
+                        <span className="hidden sm:inline">Select All</span>
+                        <span className="sm:hidden">All</span>
+                      </th>
+                      <th className="text-black font-bold py-2 sm:py-3 px-2 sm:px-4 text-xs sm:text-sm">Name</th>
+                      <th className="text-black font-bold py-2 sm:py-3 px-2 sm:px-4 text-xs sm:text-sm">Email</th>
+                      <th className="text-black font-bold py-2 sm:py-3 px-2 sm:px-4 text-xs sm:text-sm">Company</th>
+                      <th className="text-black font-bold py-2 sm:py-3 px-2 sm:px-4 text-xs sm:text-sm">Company Size</th>
+                      <th className="text-black font-bold py-2 sm:py-3 px-2 sm:px-4 text-xs sm:text-sm">Project Type</th>
+                      <th className="text-black font-bold py-2 sm:py-3 px-2 sm:px-4 text-xs sm:text-sm">Services</th>
+                      <th className="text-black font-bold py-2 sm:py-3 px-2 sm:px-4 text-xs sm:text-sm">Timeline</th>
+                      <th className="text-black font-bold py-2 sm:py-3 px-2 sm:px-4 text-xs sm:text-sm">Budget</th>
+                      <th className="text-black font-bold py-2 sm:py-3 px-2 sm:px-4 text-xs sm:text-sm">Date</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {filteredProjectConsultations.map((consultation, index) => (
+                      <tr key={consultation._id} className="border-b border-gray-200 hover:bg-gray-50">
+                        <td className="text-gray-700 py-2 sm:py-4 px-2 sm:px-4">
+                          <input
+                            type="checkbox"
+                            checked={selectedConsultations.includes(consultation._id)}
+                            onChange={() => handleSelectConsultation(consultation._id)}
+                          />
+                        </td>
+                        <td className="text-gray-700 py-2 sm:py-4 px-2 sm:px-4 text-xs sm:text-sm">
+                          <div className="max-w-[100px] truncate" title={consultation.fullName}>
+                            {consultation.fullName}
+                          </div>
+                        </td>
+                        <td className="text-gray-700 py-2 sm:py-4 px-2 sm:px-4 text-xs sm:text-sm">
+                          <div className="max-w-[120px] truncate" title={consultation.email}>
+                            {consultation.email}
+                          </div>
+                        </td>
+                        <td className="text-gray-700 py-2 sm:py-4 px-2 sm:px-4 text-xs sm:text-sm">
+                          <div className="max-w-[100px] truncate" title={consultation.companyName}>
+                            {consultation.companyName}
+                          </div>
+                        </td>
+                        <td className="text-gray-700 py-2 sm:py-4 px-2 sm:px-4 text-xs sm:text-sm">
+                          {consultation.companySize || 'N/A'}
+                        </td>
+                        <td className="text-gray-700 py-2 sm:py-4 px-2 sm:px-4 text-xs sm:text-sm">
+                          <div className="max-w-[100px] truncate" title={consultation.projectType}>
+                            {consultation.projectType || 'N/A'}
+                          </div>
+                        </td>
+                        <td className="text-gray-700 py-2 sm:py-4 px-2 sm:px-4 text-xs sm:text-sm">
+                          <div className="max-w-[150px] truncate" title={consultation.requiredServices?.join(', ')}>
+                            {consultation.requiredServices?.length > 0 ? consultation.requiredServices.join(', ') : 'None'}
+                          </div>
+                        </td>
+                        <td className="text-gray-700 py-2 sm:py-4 px-2 sm:px-4 text-xs sm:text-sm">
+                          {consultation.expectedTimeline || 'N/A'}
+                        </td>
+                        <td className="text-gray-700 py-2 sm:py-4 px-2 sm:px-4 text-xs sm:text-sm">
+                          {consultation.estimatedBudget || 'N/A'}
+                        </td>
+                        <td className="text-gray-700 py-2 sm:py-4 px-2 sm:px-4 text-xs sm:text-sm">
+                          <div className="whitespace-nowrap">
+                            {new Date(consultation.submittedAt).toLocaleDateString('en-US', {
+                              month: 'short',
+                              day: 'numeric',
+                              year: window.innerWidth < 640 ? '2-digit' : 'numeric'
+                            })}
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+                {filteredProjectConsultations.length === 0 && (
+                  <div className="text-center py-8">
+                    <p className="text-gray-600 text-sm sm:text-lg">No project consultations found.</p>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
         </div>
       )}
 
