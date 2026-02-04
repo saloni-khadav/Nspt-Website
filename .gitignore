@@ -1,120 +1,33 @@
 # Dependencies
 node_modules/
 */node_modules/
+
+# Logs
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-package-lock.json
-*/package-lock.json
-
-# Environment variables
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-*/.env
-backend/.env
-frontend/.env
 
 # Production builds
 build/
 dist/
 */build/
 */dist/
-frontend/build/
-backend/dist/
-
-# Uploads and user generated content
-uploads/
-*/uploads/
-backend/uploads/
-
-# Logs
-logs/
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# Runtime data
-pids/
-*.pid
-*.seed
-*.pid.lock
-
-# Coverage directory
-coverage/
-*/coverage/
 
 # IDE files
 .vscode/
 .idea/
 *.swp
 *.swo
-*.sublime-project
-*.sublime-workspace
 
-# OS generated files
+# OS files
 .DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
 Thumbs.db
 
-# Service account keys and credentials
-config/service-account-key.json
-*.pem
-*.key
-!public.key
-
-# Database
-*.sqlite
-*.db
+# Cache
+.cache/
+.eslintcache
 
 # Temporary files
 tmp/
 temp/
-*.tmp
-*.temp
-
-# Cache
-.cache/
-.parcel-cache/
-.next/
-.nuxt/
-
-# ESLint cache
-.eslintcache
-
-# Optional npm cache directory
-.npm
-
-# Optional REPL history
-.node_repl_history
-
-# Output of 'npm pack'
-*.tgz
-
-# Yarn Integrity file
-.yarn-integrity
-
-# dotenv environment variables file
-.env.test
-
-# Stores VSCode versions used for testing VSCode extensions
-.vscode-test
-
-# Serverless directories
-.serverless/
-
-# FuseBox cache
-.fusebox/
-
-# DynamoDB Local files
-.dynamodb/
-
-# TernJS port file
-.tern-port
