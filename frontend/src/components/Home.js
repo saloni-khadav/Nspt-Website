@@ -474,7 +474,7 @@ const Home = () => {
                 />
                 <div>
                   <div className="font-semibold text-gray-900">Akarsh Gupta</div>
-                  <div className="text-sm text-gray-500">Tech Lead, Imagin XP</div>
+                  <div className="text-sm text-gray-500">Foundation Member, Agritek India</div>
                 </div>
               </div>
               

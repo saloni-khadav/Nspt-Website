@@ -47,13 +47,13 @@ const FAQ = () => {
                 onClick={() => toggleFAQ(index)}
                 className="w-full text-left py-6 flex justify-between items-center hover:text-gray-300 transition-colors"
               >
-                <span className="text-white text-2xl ml-auto">
+                <h3 className="text-xl font-semibold text-white">{faq.question}</h3>
+                <span className="text-white text-2xl">
                   {openIndex === index ? '−' : '+'}
                 </span>
               </button>
               {openIndex === index && (
                 <div className="pb-6">
-                  <h3 className="text-xl font-semibold text-white mb-3">{faq.question}</h3>
                   <p className="text-gray-400">{faq.answer}</p>
                 </div>
               )}
