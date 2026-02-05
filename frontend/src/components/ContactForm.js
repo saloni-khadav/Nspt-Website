@@ -288,7 +288,7 @@ const ContactForm = () => {
                       </svg>
                     </div>
                     <div>
-                      <div className="text-gray-700">Gurgaon, Haryana</div>
+                      <div className="text-gray-700">Gurugram, Haryana</div>
                     </div>
                   </div>
                 </div>
