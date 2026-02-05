@@ -442,11 +442,11 @@ const AboutUs = () => {
       {/* Trusted By Section */}
       <section className="py-16 px-6 bg-gray-50" style={{backgroundColor: '#faf9f2'}}>
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             {/* Left Content */}
-            <div>
-              <p className="text-gray-500 text-sm uppercase tracking-wide mb-4">TRUSTED BY 2.5M+ PROFESSIONALS</p>
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
+            <div className="text-center lg:text-left">
+              <p className="text-gray-500 text-xs sm:text-sm uppercase tracking-wide mb-4">TRUSTED BY 2.5M+ PROFESSIONALS</p>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
                 Leading
                 <br />
                 businesses
@@ -458,23 +458,23 @@ const AboutUs = () => {
             </div>
             
             {/* Right Logos Grid */}
-            <div className="space-y-8">
+            <div className="space-y-4 sm:space-y-6 lg:space-y-8">
               {/* First Row */}
-              <div className="flex items-center justify-between space-x-8">
-                <div className="text-gray-800 font-bold text-lg">© LOGO</div>
-                <div className="text-gray-800 font-bold text-lg"> EGGS</div>
-                <div className="text-gray-800 font-bold text-lg border border-gray-800 px-3 py-1">THE PAAK</div>
-                <div className="text-gray-800 font-bold text-lg border border-gray-800 px-3 py-1"> IDEA</div>
-                <div className="text-gray-800 font-bold text-lg">⊙ 360LAB</div>
+              <div className="flex items-center justify-between space-x-2 sm:space-x-4 lg:space-x-8">
+                <div className="text-gray-800 font-bold text-xs sm:text-sm lg:text-lg">© LOGO</div>
+                <div className="text-gray-800 font-bold text-xs sm:text-sm lg:text-lg">EGGS</div>
+                <div className="text-gray-800 font-bold text-xs sm:text-sm lg:text-lg border border-gray-800 px-1 sm:px-2 lg:px-3 py-1">THE PAAK</div>
+                <div className="text-gray-800 font-bold text-xs sm:text-sm lg:text-lg border border-gray-800 px-1 sm:px-2 lg:px-3 py-1">IDEA</div>
+                <div className="text-gray-800 font-bold text-xs sm:text-sm lg:text-lg">⊙ 360LAB</div>
               </div>
               
               {/* Second Row */}
-              <div className="flex items-center justify-between space-x-8">
-                <div className="text-gray-800 font-bold text-lg">© LOGO</div>
-                <div className="text-gray-800 font-bold text-lg"> EGGS</div>
-                <div className="text-gray-800 font-bold text-lg border border-gray-800 px-3 py-1">THE PAAK</div>
-                <div className="text-gray-800 font-bold text-lg border border-gray-800 px-3 py-1"> IDEA</div>
-                <div className="text-gray-800 font-bold text-lg">⊙ 360LAB</div>
+              <div className="flex items-center justify-between space-x-2 sm:space-x-4 lg:space-x-8">
+                <div className="text-gray-800 font-bold text-xs sm:text-sm lg:text-lg">© LOGO</div>
+                <div className="text-gray-800 font-bold text-xs sm:text-sm lg:text-lg">EGGS</div>
+                <div className="text-gray-800 font-bold text-xs sm:text-sm lg:text-lg border border-gray-800 px-1 sm:px-2 lg:px-3 py-1">THE PAAK</div>
+                <div className="text-gray-800 font-bold text-xs sm:text-sm lg:text-lg border border-gray-800 px-1 sm:px-2 lg:px-3 py-1">IDEA</div>
+                <div className="text-gray-800 font-bold text-xs sm:text-sm lg:text-lg">⊙ 360LAB</div>
               </div>
             </div>
           </div>
