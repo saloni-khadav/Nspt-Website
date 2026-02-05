@@ -633,7 +633,7 @@ const Services = () => {
         <div className="max-w-7xl mx-auto px-6 py-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left - CTA Content */}
-            <div className="rounded-2xl p-8 h-96" style={{backgroundColor: '#3a3a3a'}}>
+            <div className="rounded-2xl p-4 sm:p-8 h-auto sm:h-96" style={{backgroundColor: '#3a3a3a'}}>
               <p className="text-sm text-gray-400 uppercase tracking-wide mb-4">READY TO GET STARTED?</p>
               <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
                 Transform your business today
@@ -643,7 +643,7 @@ const Services = () => {
               </p>
               
               {/* Email Form */}
-              <form onSubmit={handleEmailSubmit} className="flex gap-4">
+              <form onSubmit={handleEmailSubmit} className="flex flex-col sm:flex-row gap-4">
                 <input 
                   type="email" 
                   placeholder="Email" 
@@ -655,7 +655,7 @@ const Services = () => {
                 <button 
                   type="submit"
                   disabled={isSubmitting}
-                  className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium disabled:opacity-50"
+                  className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium disabled:opacity-50 whitespace-nowrap"
                 >
                   {isSubmitting ? 'Submitting...' : 'Submit'}
                 </button>
