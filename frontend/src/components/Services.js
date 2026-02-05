@@ -247,7 +247,7 @@ const Services = () => {
           <div className="mt-16 overflow-hidden">
             {/* Service Sections with Top Lines */}
             <div 
-              className="flex space-x-6 animate-scroll" 
+              className="flex space-x-4 sm:space-x-6 animate-scroll" 
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => { 
                 setIsHovered(false); 
@@ -260,202 +260,236 @@ const Services = () => {
               style={{
                 animation: 'scroll 20s linear infinite',
                 animationPlayState: isHovered ? 'paused' : 'running',
-                width: 'calc(200% + 24px)',
+                width: window.innerWidth < 640 ? '700%' : 'calc(200% + 24px)',
                 transform: hoveredService ? `translateX(-${serviceKeys.indexOf(hoveredService) * (100 / serviceKeys.length)}%)` : undefined
               }}
             >
               {/* First set of services */}
-              <div className="flex-1 cursor-pointer min-w-0" onMouseEnter={() => setHoveredService('web')}>
+              <div className="flex-1 cursor-pointer min-w-0 px-2 sm:block hidden" onMouseEnter={() => setHoveredService('web')}>
                 <div className={`border-t-2 mb-4 transition-colors ${
                   hoveredService === 'web' || (!hoveredService && displayService === 'web') ? 'border-gray-900' : 'border-gray-300'
                 }`}></div>
-                <h4 className={`text-lg font-semibold mb-3 transition-colors ${
+                <h4 className={`text-base sm:text-lg font-semibold mb-2 sm:mb-3 transition-colors ${
                   hoveredService === 'web' || (!hoveredService && displayService === 'web') ? 'text-gray-900' : 'text-gray-400'
                 }`}>Web development</h4>
-                <p className={`text-sm transition-colors ${
+                <p className={`text-xs sm:text-sm transition-colors leading-relaxed ${
                   hoveredService === 'web' || (!hoveredService && displayService === 'web') ? 'text-gray-600' : 'text-gray-400'
                 }`}>
                   High-performance websites and apps tailored for your business needs.
                 </p>
               </div>
               
-              <div className="flex-1 cursor-pointer min-w-0" onMouseEnter={() => setHoveredService('ai')}>
+              {/* Mobile: Show all services continuously */}
+              {(() => {
+                const allServices = ['web', 'ai', 'erp', 'hr', 'cloud', 'consulting', 'appdev'];
+                
+                const serviceData = {
+                  web: { title: 'Web development', desc: 'High-performance websites and apps.' },
+                  ai: { title: 'AI & automation', desc: 'Automate processes efficiently.' },
+                  erp: { title: 'ERP & accounting', desc: 'Streamlined business control.' },
+                  hr: { title: 'HR & R&D', desc: 'Modern HR platforms.' },
+                  cloud: { title: 'Cloud services', desc: 'Scalable cloud infrastructure.' },
+                  consulting: { title: 'Technology consulting', desc: 'Expert technology guidance.' },
+                  appdev: { title: 'App development', desc: 'Custom mobile applications.' }
+                };
+                
+                // Show all services twice for seamless loop
+                const doubledServices = [...allServices, ...allServices];
+                
+                return doubledServices.map((serviceKey, index) => (
+                  <div key={`${serviceKey}-${index}`} className="flex-1 cursor-pointer min-w-0 px-1 sm:hidden block" onMouseEnter={() => setHoveredService(serviceKey)}>
+                    <div className={`border-t-2 mb-2 transition-colors ${
+                      displayService === serviceKey ? 'border-gray-900' : 'border-gray-300'
+                    }`}></div>
+                    <h4 className={`text-xs font-semibold mb-1 transition-colors ${
+                      displayService === serviceKey ? 'text-gray-900' : 'text-gray-400'
+                    }`}>{serviceData[serviceKey].title}</h4>
+                    <p className={`text-xs transition-colors leading-tight ${
+                      displayService === serviceKey ? 'text-gray-600' : 'text-gray-400'
+                    }`}>
+                      {serviceData[serviceKey].desc}
+                    </p>
+                  </div>
+                ));
+              })()}}}}}}
+              
+              <div className="flex-1 cursor-pointer min-w-0 px-2 sm:block hidden" onMouseEnter={() => setHoveredService('ai')}>
                 <div className={`border-t-2 mb-4 transition-colors ${
                   hoveredService === 'ai' || (!hoveredService && displayService === 'ai') ? 'border-gray-900' : 'border-gray-300'
                 }`}></div>
-                <h4 className={`text-lg font-semibold mb-3 transition-colors ${
+                <h4 className={`text-base sm:text-lg font-semibold mb-2 sm:mb-3 transition-colors ${
                   hoveredService === 'ai' || (!hoveredService && displayService === 'ai') ? 'text-gray-900' : 'text-gray-400'
                 }`}>AI & automation</h4>
-                <p className={`text-sm transition-colors ${
+                <p className={`text-xs sm:text-sm transition-colors leading-relaxed ${
                   hoveredService === 'ai' || (!hoveredService && displayService === 'ai') ? 'text-gray-600' : 'text-gray-400'
                 }`}>
                   Automate processes and enhance efficiency with intelligent solutions.
                 </p>
               </div>
               
-              <div className="flex-1 cursor-pointer min-w-0" onMouseEnter={() => setHoveredService('erp')}>
+              <div className="flex-1 cursor-pointer min-w-0 px-2 sm:block hidden" onMouseEnter={() => setHoveredService('erp')}>
                 <div className={`border-t-2 mb-4 transition-colors ${
                   hoveredService === 'erp' || (!hoveredService && displayService === 'erp') ? 'border-gray-900' : 'border-gray-300'
                 }`}></div>
-                <h4 className={`text-lg font-semibold mb-3 transition-colors ${
+                <h4 className={`text-base sm:text-lg font-semibold mb-2 sm:mb-3 transition-colors ${
                   hoveredService === 'erp' || (!hoveredService && displayService === 'erp') ? 'text-gray-900' : 'text-gray-400'
                 }`}>ERP & accounting</h4>
-                <p className={`text-sm transition-colors ${
+                <p className={`text-xs sm:text-sm transition-colors leading-relaxed ${
                   hoveredService === 'erp' || (!hoveredService && displayService === 'erp') ? 'text-gray-600' : 'text-gray-400'
                 }`}>
                   Streamlined ERP and accounting tools for better business control.
                 </p>
               </div>
               
-              <div className="flex-1 cursor-pointer min-w-0" onMouseEnter={() => setHoveredService('hr')}>
+              <div className="flex-1 cursor-pointer min-w-0 px-2 sm:block hidden" onMouseEnter={() => setHoveredService('hr')}>
                 <div className={`border-t-2 mb-4 transition-colors ${
                   hoveredService === 'hr' || (!hoveredService && displayService === 'hr') ? 'border-gray-900' : 'border-gray-300'
                 }`}></div>
-                <h4 className={`text-lg font-semibold mb-3 transition-colors ${
+                <h4 className={`text-base sm:text-lg font-semibold mb-2 sm:mb-3 transition-colors ${
                   hoveredService === 'hr' || (!hoveredService && displayService === 'hr') ? 'text-gray-900' : 'text-gray-400'
                 }`}>HR & R&D</h4>
-                <p className={`text-sm transition-colors ${
+                <p className={`text-xs sm:text-sm transition-colors leading-relaxed ${
                   hoveredService === 'hr' || (!hoveredService && displayService === 'hr') ? 'text-gray-600' : 'text-gray-400'
                 }`}>
                   Modern HR platforms and research-driven innovation for your team.
                 </p>
               </div>
               
-              <div className="flex-1 cursor-pointer min-w-0" onMouseEnter={() => setHoveredService('cloud')}>
+              <div className="flex-1 cursor-pointer min-w-0 px-2 sm:block hidden" onMouseEnter={() => setHoveredService('cloud')}>
                 <div className={`border-t-2 mb-4 transition-colors ${
                   hoveredService === 'cloud' || (!hoveredService && displayService === 'cloud') ? 'border-gray-900' : 'border-gray-300'
                 }`}></div>
-                <h4 className={`text-lg font-semibold mb-3 transition-colors ${
+                <h4 className={`text-base sm:text-lg font-semibold mb-2 sm:mb-3 transition-colors ${
                   hoveredService === 'cloud' || (!hoveredService && displayService === 'cloud') ? 'text-gray-900' : 'text-gray-400'
                 }`}>Cloud services</h4>
-                <p className={`text-sm transition-colors ${
+                <p className={`text-xs sm:text-sm transition-colors leading-relaxed ${
                   hoveredService === 'cloud' || (!hoveredService && displayService === 'cloud') ? 'text-gray-600' : 'text-gray-400'
                 }`}>
                   Scalable cloud infrastructure and migration services for modern businesses.
                 </p>
               </div>
               
-              <div className="flex-1 cursor-pointer min-w-0" onMouseEnter={() => setHoveredService('consulting')}>
+              <div className="flex-1 cursor-pointer min-w-0 px-2 sm:block hidden" onMouseEnter={() => setHoveredService('consulting')}>
                 <div className={`border-t-2 mb-4 transition-colors ${
                   hoveredService === 'consulting' || (!hoveredService && displayService === 'consulting') ? 'border-gray-900' : 'border-gray-300'
                 }`}></div>
-                <h4 className={`text-lg font-semibold mb-3 transition-colors ${
+                <h4 className={`text-base sm:text-lg font-semibold mb-2 sm:mb-3 transition-colors ${
                   hoveredService === 'consulting' || (!hoveredService && displayService === 'consulting') ? 'text-gray-900' : 'text-gray-400'
                 }`}>Technology consulting</h4>
-                <p className={`text-sm transition-colors ${
+                <p className={`text-xs sm:text-sm transition-colors leading-relaxed ${
                   hoveredService === 'consulting' || (!hoveredService && displayService === 'consulting') ? 'text-gray-600' : 'text-gray-400'
                 }`}>
                   Expert technology consulting and strategic guidance for business transformation.
                 </p>
               </div>
               
-              <div className="flex-1 cursor-pointer min-w-0" onMouseEnter={() => setHoveredService('appdev')}>
+              <div className="flex-1 cursor-pointer min-w-0 px-2 sm:block hidden" onMouseEnter={() => setHoveredService('appdev')}>
                 <div className={`border-t-2 mb-4 transition-colors ${
                   hoveredService === 'appdev' || (!hoveredService && displayService === 'appdev') ? 'border-gray-900' : 'border-gray-300'
                 }`}></div>
-                <h4 className={`text-lg font-semibold mb-3 transition-colors ${
+                <h4 className={`text-base sm:text-lg font-semibold mb-2 sm:mb-3 transition-colors ${
                   hoveredService === 'appdev' || (!hoveredService && displayService === 'appdev') ? 'text-gray-900' : 'text-gray-400'
                 }`}>App development</h4>
-                <p className={`text-sm transition-colors ${
+                <p className={`text-xs sm:text-sm transition-colors leading-relaxed ${
                   hoveredService === 'appdev' || (!hoveredService && displayService === 'appdev') ? 'text-gray-600' : 'text-gray-400'
                 }`}>
                   Custom mobile and desktop application development for your business needs.
                 </p>
               </div>
               
-              {/* Duplicate set for seamless loop */}
-              <div className="flex-1 cursor-pointer min-w-0" onMouseEnter={() => setHoveredService('web')}>
+              {/* Duplicate set for seamless loop - hidden on mobile */}
+              <div className="flex-1 cursor-pointer min-w-0 px-2 sm:block hidden" onMouseEnter={() => setHoveredService('web')}>
                 <div className={`border-t-2 mb-4 transition-colors ${
                   hoveredService === 'web' || (!hoveredService && displayService === 'web') ? 'border-gray-900' : 'border-gray-300'
                 }`}></div>
-                <h4 className={`text-lg font-semibold mb-3 transition-colors ${
+                <h4 className={`text-base sm:text-lg font-semibold mb-2 sm:mb-3 transition-colors ${
                   hoveredService === 'web' || (!hoveredService && displayService === 'web') ? 'text-gray-900' : 'text-gray-400'
                 }`}>Web development</h4>
-                <p className={`text-sm transition-colors ${
+                <p className={`text-xs sm:text-sm transition-colors leading-relaxed ${
                   hoveredService === 'web' || (!hoveredService && displayService === 'web') ? 'text-gray-600' : 'text-gray-400'
                 }`}>
                   High-performance websites and apps tailored for your business needs.
                 </p>
               </div>
               
-              <div className="flex-1 cursor-pointer min-w-0" onMouseEnter={() => setHoveredService('ai')}>
+              <div className="flex-1 cursor-pointer min-w-0 px-2 sm:block hidden" onMouseEnter={() => setHoveredService('ai')}>
                 <div className={`border-t-2 mb-4 transition-colors ${
                   hoveredService === 'ai' || (!hoveredService && displayService === 'ai') ? 'border-gray-900' : 'border-gray-300'
                 }`}></div>
-                <h4 className={`text-lg font-semibold mb-3 transition-colors ${
+                <h4 className={`text-base sm:text-lg font-semibold mb-2 sm:mb-3 transition-colors ${
                   hoveredService === 'ai' || (!hoveredService && displayService === 'ai') ? 'text-gray-900' : 'text-gray-400'
                 }`}>AI & automation</h4>
-                <p className={`text-sm transition-colors ${
+                <p className={`text-xs sm:text-sm transition-colors leading-relaxed ${
                   hoveredService === 'ai' || (!hoveredService && displayService === 'ai') ? 'text-gray-600' : 'text-gray-400'
                 }`}>
                   Automate processes and enhance efficiency with intelligent solutions.
                 </p>
               </div>
               
-              <div className="flex-1 cursor-pointer min-w-0" onMouseEnter={() => setHoveredService('erp')}>
+              <div className="flex-1 cursor-pointer min-w-0 px-2 sm:block hidden" onMouseEnter={() => setHoveredService('erp')}>
                 <div className={`border-t-2 mb-4 transition-colors ${
                   hoveredService === 'erp' || (!hoveredService && displayService === 'erp') ? 'border-gray-900' : 'border-gray-300'
                 }`}></div>
-                <h4 className={`text-lg font-semibold mb-3 transition-colors ${
+                <h4 className={`text-base sm:text-lg font-semibold mb-2 sm:mb-3 transition-colors ${
                   hoveredService === 'erp' || (!hoveredService && displayService === 'erp') ? 'text-gray-900' : 'text-gray-400'
                 }`}>ERP & accounting</h4>
-                <p className={`text-sm transition-colors ${
+                <p className={`text-xs sm:text-sm transition-colors leading-relaxed ${
                   hoveredService === 'erp' || (!hoveredService && displayService === 'erp') ? 'text-gray-600' : 'text-gray-400'
                 }`}>
                   Streamlined ERP and accounting tools for better business control.
                 </p>
               </div>
               
-              <div className="flex-1 cursor-pointer min-w-0" onMouseEnter={() => setHoveredService('hr')}>
+              <div className="flex-1 cursor-pointer min-w-0 px-2 sm:block hidden" onMouseEnter={() => setHoveredService('hr')}>
                 <div className={`border-t-2 mb-4 transition-colors ${
                   hoveredService === 'hr' || (!hoveredService && displayService === 'hr') ? 'border-gray-900' : 'border-gray-300'
                 }`}></div>
-                <h4 className={`text-lg font-semibold mb-3 transition-colors ${
+                <h4 className={`text-base sm:text-lg font-semibold mb-2 sm:mb-3 transition-colors ${
                   hoveredService === 'hr' || (!hoveredService && displayService === 'hr') ? 'text-gray-900' : 'text-gray-400'
                 }`}>HR & R&D</h4>
-                <p className={`text-sm transition-colors ${
+                <p className={`text-xs sm:text-sm transition-colors leading-relaxed ${
                   hoveredService === 'hr' || (!hoveredService && displayService === 'hr') ? 'text-gray-600' : 'text-gray-400'
                 }`}>
                   Modern HR platforms and research-driven innovation for your team.
                 </p>
               </div>
               
-              <div className="flex-1 cursor-pointer min-w-0" onMouseEnter={() => setHoveredService('cloud')}>
+              <div className="flex-1 cursor-pointer min-w-0 px-2 sm:block hidden" onMouseEnter={() => setHoveredService('cloud')}>
                 <div className={`border-t-2 mb-4 transition-colors ${
                   hoveredService === 'cloud' || (!hoveredService && displayService === 'cloud') ? 'border-gray-900' : 'border-gray-300'
                 }`}></div>
-                <h4 className={`text-lg font-semibold mb-3 transition-colors ${
+                <h4 className={`text-base sm:text-lg font-semibold mb-2 sm:mb-3 transition-colors ${
                   hoveredService === 'cloud' || (!hoveredService && displayService === 'cloud') ? 'text-gray-900' : 'text-gray-400'
                 }`}>Cloud services</h4>
-                <p className={`text-sm transition-colors ${
+                <p className={`text-xs sm:text-sm transition-colors leading-relaxed ${
                   hoveredService === 'cloud' || (!hoveredService && displayService === 'cloud') ? 'text-gray-600' : 'text-gray-400'
                 }`}>
                   Scalable cloud infrastructure and migration services for modern businesses.
                 </p>
               </div>
               
-              <div className="flex-1 cursor-pointer min-w-0" onMouseEnter={() => setHoveredService('consulting')}>
+              <div className="flex-1 cursor-pointer min-w-0 px-2 sm:block hidden" onMouseEnter={() => setHoveredService('consulting')}>
                 <div className={`border-t-2 mb-4 transition-colors ${
                   hoveredService === 'consulting' || (!hoveredService && displayService === 'consulting') ? 'border-gray-900' : 'border-gray-300'
                 }`}></div>
-                <h4 className={`text-lg font-semibold mb-3 transition-colors ${
+                <h4 className={`text-base sm:text-lg font-semibold mb-2 sm:mb-3 transition-colors ${
                   hoveredService === 'consulting' || (!hoveredService && displayService === 'consulting') ? 'text-gray-900' : 'text-gray-400'
                 }`}>Technology consulting</h4>
-                <p className={`text-sm transition-colors ${
+                <p className={`text-xs sm:text-sm transition-colors leading-relaxed ${
                   hoveredService === 'consulting' || (!hoveredService && displayService === 'consulting') ? 'text-gray-600' : 'text-gray-400'
                 }`}>
                   Expert technology consulting and strategic guidance for business transformation.
                 </p>
               </div>
               
-              <div className="flex-1 cursor-pointer min-w-0" onMouseEnter={() => setHoveredService('appdev')}>
+              <div className="flex-1 cursor-pointer min-w-0 px-2 sm:block hidden" onMouseEnter={() => setHoveredService('appdev')}>
                 <div className={`border-t-2 mb-4 transition-colors ${
                   hoveredService === 'appdev' || (!hoveredService && displayService === 'appdev') ? 'border-gray-900' : 'border-gray-300'
                 }`}></div>
-                <h4 className={`text-lg font-semibold mb-3 transition-colors ${
+                <h4 className={`text-base sm:text-lg font-semibold mb-2 sm:mb-3 transition-colors ${
                   hoveredService === 'appdev' || (!hoveredService && displayService === 'appdev') ? 'text-gray-900' : 'text-gray-400'
                 }`}>App development</h4>
-                <p className={`text-sm transition-colors ${
+                <p className={`text-xs sm:text-sm transition-colors leading-relaxed ${
                   hoveredService === 'appdev' || (!hoveredService && displayService === 'appdev') ? 'text-gray-600' : 'text-gray-400'
                 }`}>
                   Custom mobile and desktop application development for your business needs.
@@ -599,7 +633,7 @@ const Services = () => {
         <div className="max-w-7xl mx-auto px-6 py-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left - CTA Content */}
-            <div className="rounded-2xl p-8 h-96" style={{backgroundColor: '#3a3a3a'}}>
+            <div className="rounded-2xl p-4 sm:p-8 h-auto sm:h-96" style={{backgroundColor: '#3a3a3a'}}>
               <p className="text-sm text-gray-400 uppercase tracking-wide mb-4">READY TO GET STARTED?</p>
               <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
                 Transform your business today
@@ -609,7 +643,7 @@ const Services = () => {
               </p>
               
               {/* Email Form */}
-              <form onSubmit={handleEmailSubmit} className="flex gap-4">
+              <form onSubmit={handleEmailSubmit} className="flex flex-col sm:flex-row gap-4">
                 <input 
                   type="email" 
                   placeholder="Email" 
@@ -621,7 +655,7 @@ const Services = () => {
                 <button 
                   type="submit"
                   disabled={isSubmitting}
-                  className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium disabled:opacity-50"
+                  className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium disabled:opacity-50 whitespace-nowrap"
                 >
                   {isSubmitting ? 'Submitting...' : 'Submit'}
                 </button>
