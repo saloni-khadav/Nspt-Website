@@ -414,7 +414,16 @@ const Careers = () => {
                       job.color === 'orange' ? 'bg-orange-100 group-hover:bg-orange-200' :
                       'bg-gray-100 group-hover:bg-gray-200'
                     }`}>
-                      <img src={key === 'devops' ? '/setting.png' : key === 'accounts' || key === 'accountsIntern' ? '/account.png' : key === 'operations' ? '/operation.png' : '/circular.png'} alt={job.title} className="w-full h-full object-contain" />
+                      <img src={
+                        key === 'devops' ? '/setting.png' : 
+                        key === 'softwareEngineer' ? '/innovation.png' :
+                        key === 'frontendIntern' ? '/circular.png' :
+                        key === 'seo' ? '/innovation lab.png' :
+                        key === 'salesExecutive' ? '/partnership.png' :
+                        key === 'accounts' ? '/account.png' : 
+                        key === 'operations' ? '/operation.png' : 
+                        '/circular.png'
+                      } alt={job.title} className="w-full h-full object-contain" />
                     </div>
                     <h3 className="text-2xl font-bold text-gray-900 mb-3">{job.title}</h3>
                     <p className="text-gray-600 text-sm mb-6 leading-relaxed">

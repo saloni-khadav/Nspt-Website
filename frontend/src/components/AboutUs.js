@@ -349,7 +349,7 @@ const AboutUs = () => {
             <div className="text-center">
               <div className="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden">
                 <img 
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" 
+                  src="/diwakar-tiwari.jpg" 
                   alt="Diwakar Tiwari" 
                   className="w-full h-full object-cover"
                 />
@@ -362,7 +362,7 @@ const AboutUs = () => {
             <div className="text-center">
               <div className="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden">
                 <img 
-                  src="girl-img.png" 
+                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" 
                   alt="Soumya" 
                   className="w-full h-full object-cover"
                 />
@@ -375,7 +375,7 @@ const AboutUs = () => {
             <div className="text-center">
               <div className="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden">
                 <img 
-                  src="girl-img.png" 
+                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" 
                   alt="Aswini Kumar Nath" 
                   className="w-full h-full object-cover"
                 />
@@ -388,7 +388,7 @@ const AboutUs = () => {
             <div className="text-center">
               <div className="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden">
                 <img 
-                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" 
+                  src="/swati-jain.jpg" 
                   alt="Swati Jain" 
                   className="w-full h-full object-cover"
                 />
@@ -401,7 +401,7 @@ const AboutUs = () => {
             <div className="text-center">
               <div className="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden">
                 <img 
-                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" 
+                  src="/saloni-khadav.jpg" 
                   alt="Saloni Khadav" 
                   className="w-full h-full object-cover"
                 />
@@ -414,7 +414,7 @@ const AboutUs = () => {
             <div className="text-center">
               <div className="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden">
                 <img 
-                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" 
+                  src="/nikita-yadav.jpg" 
                   alt="Nikita Yadav" 
                   className="w-full h-full object-cover"
                 />
@@ -427,7 +427,7 @@ const AboutUs = () => {
             <div className="text-center">
               <div className="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden">
                 <img 
-                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" 
+                  src="/amisha-jat.jpg" 
                   alt="Amisha Jat" 
                   className="w-full h-full object-cover"
                 />
