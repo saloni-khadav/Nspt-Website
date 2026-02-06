@@ -395,12 +395,12 @@ const ProjectConsultation = () => {
                     </svg>
                   </div>
                   <a 
-                    href="https://mail.google.com/mail/?view=cm&fs=1&to=info@nextsphere.co.in" 
+                    href="https://mail.google.com/mail/?view=cm&fs=1&to=business@nextsphere.co.in"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gray-300 hover:text-white transition-colors"
                   >
-                    info@nextsphere.co.in
+                    business@nextsphere.co.in
                   </a>
                 </div>
                 <div className="flex items-center space-x-3">

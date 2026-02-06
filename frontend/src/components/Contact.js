@@ -62,12 +62,12 @@ const Contact = () => {
               <p className="text-gray-600 mb-2">Drop us a line anytime</p>
               <p className="text-blue-600 font-medium text-sm sm:text-base">
                 <a 
-                  href="https://mail.google.com/mail/?view=cm&fs=1&to=info@nextsphere.co.in" 
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=business@nextsphere.co.in"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-blue-700 transition-colors cursor-pointer"
                 >
-                  info@nextsphere.co.in
+                  business@nextsphere.co.in
                 </a>
               </p>
             </div>
@@ -160,12 +160,12 @@ const Contact = () => {
               </p>
               <p className="text-blue-600 font-medium text-sm sm:text-base">
                 <a 
-                  href="https://mail.google.com/mail/?view=cm&fs=1&to=info@nextsphere.co.in" 
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=business@nextsphere.co.in"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-blue-700 transition-colors cursor-pointer"
                 >
-                  info@nextsphere.co.in
+                  business@nextsphere.co.in
                 </a>
               </p>
             </div>
