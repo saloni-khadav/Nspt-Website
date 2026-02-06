@@ -13,12 +13,12 @@ const Footer = () => {
             </h2>
             <p className="text-gray-400 text-base sm:text-lg mt-4 sm:mt-6">
               <a 
-                href="https://mail.google.com/mail/?view=cm&fs=1&to=info@nextsphere.co.in" 
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=business@nextsphere.co.in"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-white transition-colors cursor-pointer"
               >
-                info@nextsphere.co.in
+                business@nextsphere.co.in
               </a><br/>
               <a href="tel:+919078027948" className="hover:text-white transition-colors cursor-pointer">+91 9078027948</a>
             </p>

@@ -271,12 +271,12 @@ const ContactForm = () => {
                       </svg>
                     </div>
                     <a 
-                      href="https://mail.google.com/mail/?view=cm&fs=1&to=info@nextsphere.co.in" 
+                      href="https://mail.google.com/mail/?view=cm&fs=1&to=business@nextsphere.co.in"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-gray-700 hover:text-blue-600 transition-colors cursor-pointer"
                     >
-                      info@nextsphere.co.in
+                      business@nextsphere.co.in
                     </a>
                   </div>
 
