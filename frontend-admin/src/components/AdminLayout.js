@@ -73,7 +73,7 @@ const AdminLayout = ({ children, activeSection, setActiveSection }) => {
           <div className="p-4 border-b border-gray-200">
             <div className="flex items-center justify-between">
               {sidebarOpen && (
-                <img src="/logo1.png" alt="NSPT" className="h-8" />
+                <h1 className="text-xl font-bold text-blue-600">NSPT Admin</h1>
               )}
               <button
                 onClick={() => setSidebarOpen(!sidebarOpen)}

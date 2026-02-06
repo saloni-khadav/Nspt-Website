@@ -11,9 +11,6 @@ import Services from './components/Services';
 import OurProjects from './components/OurProjects';
 import Contact from './components/Contact';
 import Careers from './components/Careers';
-import AdminLogin from './components/AdminLogin';
-import AdminDashboard from './components/AdminDashboard';
-import ContactInquiries from './components/ContactInquiries';
 import ProjectConsultation from './components/ProjectConsultation';
 import HelpCenter from './components/HelpCenter';
 
@@ -40,9 +37,6 @@ const AppRouter = () => {
         <Route path="/careers" element={<Careers />} />
         <Route path="/project-consultation" element={<ProjectConsultation />} />
         <Route path="/help-center" element={<HelpCenter />} />
-        <Route path="/admin-login" element={<AdminLogin />} />
-        <Route path="/admin" element={<AdminDashboard />} />
-        <Route path="/contact-inquiries" element={<ContactInquiries />} />
       </Routes>
       <ToastContainer />
     </Router>
