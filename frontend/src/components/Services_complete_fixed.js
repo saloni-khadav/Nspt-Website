@@ -96,7 +96,7 @@ const Services = () => {
     },
     {
       question: "How do I begin working with you?",
-      answer: "Contact us via form or email. We’ll arrange a call to discuss your needs and next steps."
+      answer: "Contact us via form or email. We'll arrange a call to discuss your needs and next steps."
     }
   ];
   
@@ -492,7 +492,7 @@ const Services = () => {
             <div className="flex items-center space-x-4">
               <div className="w-12 h-12 bg-gray-600 rounded-full overflow-hidden">
                 <img 
-                  src="/girl-img2.png" 
+                  src="/girl-img.png" 
                   alt="Jordan Ellis"
                   className="w-full h-full object-cover"
                 />
@@ -504,11 +504,10 @@ const Services = () => {
             </div>
             
             <div className="flex items-center space-x-2 lg:justify-start">
-              <img 
-                src="/agri-logo.png" 
-                alt="Agritek India"
-                className="h-12 w-auto object-contain"
-              />
+              <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center">
+                <span className="text-gray-900 font-bold text-sm">©</span>
+              </div>
+              <span className="text-white font-semibold">360LAB</span>
             </div>
           </div>
         </div>
@@ -808,19 +807,7 @@ const Services = () => {
                   <h3 className="text-sm font-semibold text-gray-900 mb-1 group-hover:text-blue-600 transition-colors">Accounting & Finance Systems</h3>
                   <p className="text-gray-600 text-xs">Custom accounting and billing solutions.</p>
                 </div>
-                
 
-                {/* Cloud Migration & Optimization */}
-                <div className="bg-gray-50 rounded-lg p-3 hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
-                  <div className="w-8 h-8 bg-violet-100 rounded-lg flex items-center justify-center mb-2 group-hover:bg-violet-100 transition-colors">
-                    <svg className="w-4 h-4 text-violet-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
-                    </svg>
-                  </div>
-                  <h3 className="text-sm font-semibold text-gray-900 mb-1 group-hover:text-blue-600 transition-colors">Cloud Migration & Optimization</h3>
-                  <p className="text-gray-600 text-xs">Move to cloud with minimal risk.</p>
-                </div>
-                
                 {/* DevOps Services */}
                 <div className="bg-gray-50 rounded-lg p-3 hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
                   <div className="w-8 h-8 bg-slate-100 rounded-lg flex items-center justify-center mb-2 group-hover:bg-slate-100 transition-colors">

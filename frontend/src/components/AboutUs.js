@@ -57,7 +57,7 @@ const AboutUs = () => {
       image: '/Sandeep Dutta.png',
       testimonial: 'NextSphere streamlined our operations with robust solutions and reliable support.',
       author: 'Sandeep Dutta',
-      position: 'Business Leader',
+      position: 'President of India & South Asia, AWS',
       backgroundImage: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
     },
     {
@@ -65,7 +65,7 @@ const AboutUs = () => {
       image: '/akarsh-gupta.jpg',
       testimonial: 'Clear guidance and efficient management from start to finish.',
       author: 'Akarsh Gupta',
-      position: 'Technology Consultant',
+      position: 'Foundation Member, Agritek India',
       backgroundImage: 'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
     },
     {
@@ -73,7 +73,7 @@ const AboutUs = () => {
       image: '/sachin-chawla.jpg',
       testimonial: 'Expert HR technology delivery with attention to detail and proactive communication.',
       author: 'Sachin Chawla',
-      position: 'HR Systems Director',
+      position: 'AVP – India and ASEAN, MongoDB',
       backgroundImage: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
     },
     {
@@ -337,38 +337,38 @@ const AboutUs = () => {
               <div className="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden">
                 <img 
                   src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" 
-                  alt="Avery Lin" 
+                  alt="Tusharkant Rout" 
                   className="w-full h-full object-cover"
                 />
               </div>
-              <h3 className="font-semibold text-gray-900 mb-1">Avery Lin</h3>
-              <p className="text-gray-600 text-sm">Lead Consultant</p>
+              <h3 className="font-semibold text-gray-900 mb-1">Tusharkant Rout</h3>
+              <p className="text-gray-600 text-sm">Founder</p>
             </div>
 
             {/* Team Member 2 */}
             <div className="text-center">
               <div className="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden">
                 <img 
-                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" 
-                  alt="Jordan Ellis" 
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" 
+                  alt="Diwakar Tiwari" 
                   className="w-full h-full object-cover"
                 />
               </div>
-              <h3 className="font-semibold text-gray-900 mb-1">Jordan Ellis</h3>
-              <p className="text-gray-600 text-sm">Project Manager</p>
+              <h3 className="font-semibold text-gray-900 mb-1">Diwakar Tiwari</h3>
+              <p className="text-gray-600 text-sm">Vice President</p>
             </div>
 
             {/* Team Member 3 */}
             <div className="text-center">
               <div className="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden">
                 <img 
-                  src="https://images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" 
-                  alt="Morgan Blake" 
+                  src="girl-img.png" 
+                  alt="Soumya" 
                   className="w-full h-full object-cover"
                 />
               </div>
-              <h3 className="font-semibold text-gray-900 mb-1">Morgan Blake</h3>
-              <p className="text-gray-600 text-sm">AI Specialist</p>
+              <h3 className="font-semibold text-gray-900 mb-1">Soumya</h3>
+              <p className="text-gray-600 text-sm">HR Head</p>
             </div>
 
             {/* Team Member 4 */}
@@ -376,25 +376,25 @@ const AboutUs = () => {
               <div className="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden">
                 <img 
                   src="girl-img.png" 
-                  alt="Sydney Rao" 
+                  alt="Aswini Kumar Nath" 
                   className="w-full h-full object-cover"
                 />
               </div>
-              <h3 className="font-semibold text-gray-900 mb-1">Sydney Rao</h3>
-              <p className="text-gray-600 text-sm">ERP Architect</p>
+              <h3 className="font-semibold text-gray-900 mb-1">Aswini Kumar Nath</h3>
+              <p className="text-gray-600 text-sm">R&D Head</p>
             </div>
 
             {/* Team Member 5 */}
             <div className="text-center">
               <div className="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden">
                 <img 
-                  src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" 
-                  alt="Quinn Foster" 
+                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" 
+                  alt="Swati Jain" 
                   className="w-full h-full object-cover"
                 />
               </div>
-              <h3 className="font-semibold text-gray-900 mb-1">Quinn Foster</h3>
-              <p className="text-gray-600 text-sm">HR Solutions Lead</p>
+              <h3 className="font-semibold text-gray-900 mb-1">Swati Jain</h3>
+              <p className="text-gray-600 text-sm">Team Lead</p>
             </div>
 
             {/* Team Member 6 */}
@@ -402,11 +402,11 @@ const AboutUs = () => {
               <div className="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden">
                 <img 
                   src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" 
-                  alt="Devon Cruz" 
+                  alt="Saloni Khadav" 
                   className="w-full h-full object-cover"
                 />
               </div>
-              <h3 className="font-semibold text-gray-900 mb-1">Devon Cruz</h3>
+              <h3 className="font-semibold text-gray-900 mb-1">Saloni Khadav</h3>
               <p className="text-gray-600 text-sm">Full Stack Developer</p>
             </div>
 
@@ -414,26 +414,26 @@ const AboutUs = () => {
             <div className="text-center">
               <div className="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden">
                 <img 
-                  src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" 
-                  alt="Reese Patel" 
+                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" 
+                  alt="Nikita Yadav" 
                   className="w-full h-full object-cover"
                 />
               </div>
-              <h3 className="font-semibold text-gray-900 mb-1">Reese Patel</h3>
-              <p className="text-gray-600 text-sm">Business Analyst</p>
+              <h3 className="font-semibold text-gray-900 mb-1">Nikita Yadav</h3>
+              <p className="text-gray-600 text-sm">Frontend Developer</p>
             </div>
 
             {/* Team Member 8 */}
             <div className="text-center">
               <div className="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden">
                 <img 
-                  src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" 
-                  alt="Skyler Hayes" 
+                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" 
+                  alt="Amisha Jat" 
                   className="w-full h-full object-cover"
                 />
               </div>
-              <h3 className="font-semibold text-gray-900 mb-1">Skyler Hayes</h3>
-              <p className="text-gray-600 text-sm">R&D Engineer</p>
+              <h3 className="font-semibold text-gray-900 mb-1">Amisha Jat</h3>
+              <p className="text-gray-600 text-sm">Full Stack Developer</p>
             </div>
           </div>
         </div>
@@ -458,23 +458,39 @@ const AboutUs = () => {
             </div>
             
             {/* Right Logos Grid */}
-            <div className="space-y-4 sm:space-y-6 lg:space-y-8">
+            <div className="space-y-2 sm:space-y-3 lg:space-y-4">
               {/* First Row */}
-              <div className="flex items-center justify-between space-x-2 sm:space-x-4 lg:space-x-8">
-                <div className="text-gray-800 font-bold text-xs sm:text-sm lg:text-lg">© LOGO</div>
-                <div className="text-gray-800 font-bold text-xs sm:text-sm lg:text-lg">EGGS</div>
-                <div className="text-gray-800 font-bold text-xs sm:text-sm lg:text-lg border border-gray-800 px-1 sm:px-2 lg:px-3 py-1">THE PAAK</div>
-                <div className="text-gray-800 font-bold text-xs sm:text-sm lg:text-lg border border-gray-800 px-1 sm:px-2 lg:px-3 py-1">IDEA</div>
-                <div className="text-gray-800 font-bold text-xs sm:text-sm lg:text-lg">⊙ 360LAB</div>
+              <div className="grid grid-cols-5 gap-4 sm:gap-6 lg:gap-8 items-center">
+                <img 
+                  src="/agri-logo.png" 
+                  alt="Agritek India" 
+                  className="h-20 sm:h-24 lg:h-32 xl:h-40 w-auto object-contain justify-self-center"
+                />
+                <img 
+                  src="/Amazon_Web_Services-Logo.wine.png" 
+                  alt="Amazon Web Services" 
+                  className="h-4 sm:h-6 lg:h-8 w-auto object-contain justify-self-center"
+                />
+                <div className="text-gray-800 font-bold text-xs sm:text-sm lg:text-lg border border-gray-800 px-1 sm:px-2 lg:px-3 py-1 text-center">THE PAAK</div>
+                <div className="text-gray-800 font-bold text-xs sm:text-sm lg:text-lg border border-gray-800 px-1 sm:px-2 lg:px-3 py-1 text-center">IDEA</div>
+                <div className="text-gray-800 font-bold text-xs sm:text-sm lg:text-lg text-center">⊙ 360LAB</div>
               </div>
               
               {/* Second Row */}
-              <div className="flex items-center justify-between space-x-2 sm:space-x-4 lg:space-x-8">
-                <div className="text-gray-800 font-bold text-xs sm:text-sm lg:text-lg">© LOGO</div>
-                <div className="text-gray-800 font-bold text-xs sm:text-sm lg:text-lg">EGGS</div>
-                <div className="text-gray-800 font-bold text-xs sm:text-sm lg:text-lg border border-gray-800 px-1 sm:px-2 lg:px-3 py-1">THE PAAK</div>
-                <div className="text-gray-800 font-bold text-xs sm:text-sm lg:text-lg border border-gray-800 px-1 sm:px-2 lg:px-3 py-1">IDEA</div>
-                <div className="text-gray-800 font-bold text-xs sm:text-sm lg:text-lg">⊙ 360LAB</div>
+              <div className="grid grid-cols-5 gap-4 sm:gap-6 lg:gap-8 items-center">
+                <img 
+                  src="/mongo-logo.png" 
+                  alt="MongoDB" 
+                  className="h-18 sm:h-22 lg:h-30 xl:h-36 w-auto object-contain justify-self-center"
+                />
+                <img 
+                  src="/iit-roorkee.png" 
+                  alt="IIT Roorkee" 
+                  className="h-8 sm:h-10 lg:h-12 w-auto object-contain justify-self-center"
+                />
+                <div className="text-gray-800 font-bold text-xs sm:text-sm lg:text-lg border border-gray-800 px-1 sm:px-2 lg:px-3 py-1 text-center">THE PAAK</div>
+                <div className="text-gray-800 font-bold text-xs sm:text-sm lg:text-lg border border-gray-800 px-1 sm:px-2 lg:px-3 py-1 text-center">IDEA</div>
+                <div className="text-gray-800 font-bold text-xs sm:text-sm lg:text-lg text-center">⊙ 360LAB</div>
               </div>
             </div>
           </div>

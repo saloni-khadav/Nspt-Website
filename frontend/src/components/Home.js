@@ -279,16 +279,6 @@ const Home = () => {
                     margin: "mt-6"
                   },
                   {
-                    img: "/service-cloud-service.jpg",
-                    title: "Cloud Services",
-                    desc: "Leverage flexible and cost-efficient cloud solutions to improve performance, enable remote collaboration, and ensure business continuity.",
-                    btn: "Learn More",
-                    width: "w-80",
-                    padding: "p-6",
-                    titleSize: "text-xl",
-                    margin: "mt-6"
-                  },
-                  {
                     img: "/support.png",
                     title: "Technical Support",
                     desc: "Receive comprehensive technical support and system maintenance to ensure optimal performance, security, and minimal downtime.",
@@ -424,7 +414,7 @@ const Home = () => {
               {/* Left - Image */}
               <div className="w-1/3 overflow-hidden">
                 <img 
-                  src="/girl-img.png" 
+                  src="/girl-img2.png" 
                   alt="Client testimonial" 
                   className="w-full h-80 object-contain object-left rounded-none"
                 />
