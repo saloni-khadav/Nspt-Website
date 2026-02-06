@@ -1,6 +1,12 @@
 # Dependencies
 node_modules/
 
+# Environment variables
+.env
+
+# Uploads
+uploads/
+
 # Logs
 *.log
 npm-debug.log*
