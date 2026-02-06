@@ -64,7 +64,7 @@ const Header = () => {
                 </svg>
               </div>
               {solutionsDropdown && (
-                <div className="absolute top-full left-1/2 transform -translate-x-1/2 lg:ml-40 mt-2 w-[85vw] lg:w-[1200px] max-w-[1200px] bg-white border border-gray-200 rounded-lg shadow-lg z-50 max-h-[650px] overflow-auto custom-scrollbar">
+                <div className="absolute top-full -right-80 mt-2 w-[85vw] lg:w-[1200px] max-w-[1200px] bg-white border border-gray-200 rounded-lg shadow-lg z-50 max-h-[650px] overflow-auto custom-scrollbar">
                   <style jsx>{`
                     .custom-scrollbar::-webkit-scrollbar {
                       width: 8px;
@@ -312,16 +312,11 @@ const Header = () => {
             </div>
           </div>
           
-          {/* Get Started Button */}
-          <div className="flex items-center space-x-4">
-            <Link to="/admin-login" className="hidden sm:block bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors">
-              Get started
-            </Link>
-            
-            {/* Mobile Menu Button */}
+          {/* Mobile Menu Button */}
+          <div className="md:hidden">
             <button 
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden text-gray-700 hover:text-blue-600 transition-colors"
+              className="text-gray-700 hover:text-blue-600 transition-colors"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={mobileMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} />
@@ -415,9 +410,6 @@ const Header = () => {
                 </div>
               )}
             </div>
-            <Link to="/admin-login" className="block bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors text-center mt-4">
-              Get started
-            </Link>
           </div>
         </div>
       )}

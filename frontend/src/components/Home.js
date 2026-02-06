@@ -344,13 +344,17 @@ const Home = () => {
           }
         `}</style>
         
-        {/* Background Image with Overlay */}
+        {/* Background Video with Overlay */}
         <div className="absolute inset-0">
-          <img 
-            src="/marks-section.jpg" 
-            alt="Modern office workspace background" 
+          <video 
+            autoPlay 
+            loop 
+            muted 
+            playsInline
             className="w-full h-full object-cover"
-          />
+          >
+            <source src="/video.mp4" type="video/mp4" />
+          </video>
           <div className="absolute inset-0 bg-black/50"></div>
         </div>
         
