@@ -178,41 +178,7 @@ const Header = () => {
                           </div>
                         </div>
                         
-                        {/* CLOUD & INFRASTRUCTURE */}
-                        <div>
-                          <h3 className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-4">Cloud & Infrastructure</h3>
-                          <div className="space-y-3">
-                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 hover:border-l-2 hover:border-blue-600 transition-all duration-300 group cursor-pointer">
-                              <div className="w-1 h-1 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
-                              <div>
-                                <h4 className="font-medium text-gray-900 text-xs mb-1 group-hover:text-blue-600 transition-colors">Cloud Services</h4>
-                                <p className="text-xs text-gray-600">Secure and scalable cloud architecture, migration, and management.</p>
-                              </div>
-                            </div>
-                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 hover:border-l-2 hover:border-blue-600 transition-all duration-300 group cursor-pointer">
-                              <div className="w-1 h-1 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
-                              <div>
-                                <h4 className="font-medium text-gray-900 text-xs mb-1 group-hover:text-blue-600 transition-colors">Cloud Migration & Optimization</h4>
-                                <p className="text-xs text-gray-600">Move to the cloud with minimal risk and maximum performance.</p>
-                              </div>
-                            </div>
-                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 hover:border-l-2 hover:border-blue-600 transition-all duration-300 group cursor-pointer">
-                              <div className="w-1 h-1 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
-                              <div>
-                                <h4 className="font-medium text-gray-900 text-xs mb-1 group-hover:text-blue-600 transition-colors">DevOps Services</h4>
-                                <p className="text-xs text-gray-600">CI/CD pipelines, infrastructure automation, and system monitoring.</p>
-                              </div>
-                            </div>
-                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 hover:border-l-2 hover:border-blue-600 transition-all duration-300 group cursor-pointer">
-                              <div className="w-1 h-1 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
-                              <div>
-                                <h4 className="font-medium text-gray-900 text-xs mb-1 group-hover:text-blue-600 transition-colors">Cybersecurity Services</h4>
-                                <p className="text-xs text-gray-600">Application security, data protection, and compliance solutions.</p>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        
+
                         {/* INNOVATION & ENGINEERING */}
                         <div>
                           <h3 className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-4">Innovation & Engineering</h3>

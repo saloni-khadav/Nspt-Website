@@ -15,6 +15,7 @@ import AdminLogin from './components/AdminLogin';
 import AdminDashboard from './components/AdminDashboard';
 import ContactInquiries from './components/ContactInquiries';
 import ProjectConsultation from './components/ProjectConsultation';
+import HelpCenter from './components/HelpCenter';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -38,6 +39,7 @@ const AppRouter = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/careers" element={<Careers />} />
         <Route path="/project-consultation" element={<ProjectConsultation />} />
+        <Route path="/help-center" element={<HelpCenter />} />
         <Route path="/admin-login" element={<AdminLogin />} />
         <Route path="/admin" element={<AdminDashboard />} />
         <Route path="/contact-inquiries" element={<ContactInquiries />} />

@@ -64,7 +64,7 @@ const Header = () => {
                 </svg>
               </div>
               {solutionsDropdown && (
-                <div className="absolute top-full left-1/2 transform -translate-x-1/2 lg:ml-60 mt-2 w-[95vw] lg:w-[1400px] max-w-[1400px] bg-white border border-gray-200 rounded-lg shadow-lg z-50 max-h-[650px] overflow-auto custom-scrollbar">
+                <div className="absolute top-full left-1/2 transform -translate-x-1/2 lg:ml-40 mt-2 w-[85vw] lg:w-[1200px] max-w-[1200px] bg-white border border-gray-200 rounded-lg shadow-lg z-50 max-h-[650px] overflow-auto custom-scrollbar">
                   <style jsx>{`
                     .custom-scrollbar::-webkit-scrollbar {
                       width: 8px;
@@ -82,10 +82,10 @@ const Header = () => {
                       background: #f5f5f5;
                     }
                   `}</style>
-                  <div className="flex min-w-[800px] lg:min-w-[1200px]">
+                  <div className="flex min-w-[700px] lg:min-w-[1000px]">
                     {/* Left side - Services Grid */}
                     <div className="flex-1 p-4 lg:p-6 overflow-y-auto max-h-[600px] custom-scrollbar">
-                      <div className="grid grid-cols-3 lg:grid-cols-6 gap-2 lg:gap-3 min-w-[700px] lg:min-w-[1000px]">
+                      <div className="grid grid-cols-3 lg:grid-cols-5 gap-2 lg:gap-3 min-w-[600px] lg:min-w-[800px]">
                         {/* WEB & DIGITAL SOLUTIONS */}
                         <div>
                           <h3 className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-4">Web & Digital Solutions</h3>
@@ -198,41 +198,7 @@ const Header = () => {
                           </div>
                         </div>
                         
-                        {/* CLOUD & INFRASTRUCTURE */}
-                        <div>
-                          <h3 className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-4">Cloud & Infrastructure</h3>
-                          <div className="space-y-3">
-                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
-                              <div className="w-1 h-1 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
-                              <div>
-                                <h4 className="font-medium text-gray-900 text-xs mb-1 group-hover:text-blue-600 transition-colors">Cloud Services</h4>
-                                <p className="text-xs text-gray-600">Secure and scalable cloud architecture, migration, and management.</p>
-                              </div>
-                            </div>
-                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
-                              <div className="w-1 h-1 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
-                              <div>
-                                <h4 className="font-medium text-gray-900 text-xs mb-1 group-hover:text-blue-600 transition-colors">Cloud Migration & Optimization</h4>
-                                <p className="text-xs text-gray-600">Move to the cloud with minimal risk and maximum performance.</p>
-                              </div>
-                            </div>
-                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
-                              <div className="w-1 h-1 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
-                              <div>
-                                <h4 className="font-medium text-gray-900 text-xs mb-1 group-hover:text-blue-600 transition-colors">DevOps Services</h4>
-                                <p className="text-xs text-gray-600">CI/CD pipelines, infrastructure automation, and system monitoring.</p>
-                              </div>
-                            </div>
-                            <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-purple-50 transition-all duration-300 group cursor-pointer animated-border-hover">
-                              <div className="w-1 h-1 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
-                              <div>
-                                <h4 className="font-medium text-gray-900 text-xs mb-1 group-hover:text-blue-600 transition-colors">Cybersecurity Services</h4>
-                                <p className="text-xs text-gray-600">Application security, data protection, and compliance solutions.</p>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        
+
                         {/* INNOVATION & ENGINEERING */}
                         <div>
                           <h3 className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-4">Innovation & Engineering</h3>
@@ -409,15 +375,7 @@ const Header = () => {
                       <div className="text-sm text-gray-600">Accounting & Finance Systems</div>
                     </div>
                   </div>
-                  <div>
-                    <div className="text-xs font-bold text-black uppercase tracking-wider mb-2 pl-2">Cloud & Infrastructure</div>
-                    <div className="space-y-1 pl-2">
-                      <div className="text-sm text-gray-600">Cloud Services</div>
-                      <div className="text-sm text-gray-600">Cloud Migration & Optimization</div>
-                      <div className="text-sm text-gray-600">DevOps Services</div>
-                      <div className="text-sm text-gray-600">Cybersecurity Services</div>
-                    </div>
-                  </div>
+
                   <div>
                     <div className="text-xs font-bold text-black uppercase tracking-wider mb-2 pl-2">Innovation & Engineering</div>
                     <div className="space-y-1 pl-2">
