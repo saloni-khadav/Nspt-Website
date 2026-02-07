@@ -12,14 +12,17 @@ const Home = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
             {/* Left Content */}
             <div className="space-y-6 h-full flex flex-col justify-between">
-              {/* Main Heading Card */}
-              <div className="bg-purple-50 rounded-lg p-4 sm:p-8 shadow-md border border-gray-200 flex-1">
-                <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight">
-                  Powering<br/>
-                  Businesses<br/>
-                  with Intelligent<br/>
-                  Technology
-                </h1>
+              {/* Video Card */}
+              <div className="bg-purple-50 rounded-lg shadow-md border border-gray-200 flex-1 overflow-hidden">
+                <video 
+                  autoPlay 
+                  loop 
+                  muted 
+                  playsInline
+                  className="w-full h-full object-cover"
+                >
+                  <source src="/Home.mp4" type="video/mp4" />
+                </video>
               </div>
               
               {/* Cards Side by Side */}

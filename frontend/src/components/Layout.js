@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from './Header';
 import Footer from './Footer';
 
 const Layout = ({ children, activePage = 'Home' }) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="min-h-screen text-white overflow-x-hidden" style={{
       background: `radial-gradient(circle at 50% 0%, #0e2a47 0%, #071a2d 35%, #050d18 65%, #02070e 100%)`
