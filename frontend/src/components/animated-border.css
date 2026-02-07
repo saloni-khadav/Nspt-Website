@@ -26,5 +26,5 @@
 }
 
 .animated-border-hover:hover {
-  animation: borderAnimation 0.6s ease-in-out forwards;
+  /* border animation disabled */
 }
