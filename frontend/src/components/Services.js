@@ -178,13 +178,14 @@ const Services = () => {
             
             {/* Right Image */}
             <div className="relative">
-              <div className="bg-gray-100 rounded-2xl overflow-hidden h-96">
+              <div className="bg-gray-100 rounded-2xl overflow-hidden" style={{height: '500px', width: '100%'}}>
                 <video 
                   autoPlay 
                   loop 
                   muted 
                   playsInline
-                  className="w-full h-full object-cover"
+                  className="w-full h-full"
+                  style={{objectFit: 'fill'}}
                 >
                   <source src="/Service 1.mp4" type="video/mp4" />
                 </video>
@@ -640,13 +641,14 @@ const Services = () => {
             
             {/* Right - Video */}
             <div className="relative">
-              <div className="rounded-2xl overflow-hidden h-96">
+              <div className="rounded-2xl overflow-hidden" style={{height: '500px', width: '100%'}}>
                 <video 
                   autoPlay 
                   loop 
                   muted 
                   playsInline
-                  className="w-full h-full object-cover"
+                  className="w-full h-full"
+                  style={{objectFit: 'fill'}}
                 >
                   <source src="/Service 2.mp4" type="video/mp4" />
                 </video>
