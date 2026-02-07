@@ -602,7 +602,7 @@ const Services = () => {
       {/* CTA Section */}
       <div className="relative z-10 bg-black">
         <div className="max-w-7xl mx-auto px-6 py-20">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             {/* Left - CTA Content */}
             <div className="rounded-2xl p-4 sm:p-6 h-auto sm:h-96" style={{backgroundColor: '#3a3a3a'}}>
               <p className="text-sm text-gray-400 uppercase tracking-wide mb-4">READY TO GET STARTED?</p>
@@ -640,8 +640,8 @@ const Services = () => {
             </div>
             
             {/* Right - Video */}
-            <div className="relative" style={{marginLeft: '-3rem'}}>
-              <div className="rounded-2xl overflow-hidden" style={{height: '500px', width: 'calc(100% + 3rem)'}}>
+            <div className="relative">
+              <div className="rounded-2xl overflow-hidden" style={{height: '500px', width: '100%'}}>
                 <video 
                   autoPlay 
                   loop 
