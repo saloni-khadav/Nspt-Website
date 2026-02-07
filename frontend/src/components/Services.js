@@ -147,9 +147,9 @@ const Services = () => {
       {/* Main Content */}
       <div className="relative z-10 flex items-center min-h-screen">
         <div className="w-full max-w-7xl mx-auto px-6 py-12 mt-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 items-center">
             {/* Left Content */}
-            <div className="space-y-8">
+            <div className="space-y-8 lg:pr-2">
               <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
                 Powering<br />
                 business<br />
@@ -216,7 +216,7 @@ const Services = () => {
           </div>
           
           {/* Services Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-start">
             {/* Left - Main Image */}
             <div className="relative">
               <div className="bg-gray-200 rounded-2xl overflow-hidden h-80 lg:h-96">
@@ -602,9 +602,9 @@ const Services = () => {
       {/* CTA Section */}
       <div className="relative z-10 bg-black">
         <div className="max-w-7xl mx-auto px-6 py-20">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-center">
             {/* Left - CTA Content */}
-            <div className="rounded-2xl p-4 sm:p-8 h-auto sm:h-96" style={{backgroundColor: '#3a3a3a'}}>
+            <div className="rounded-2xl p-4 sm:p-6 h-auto sm:h-96" style={{backgroundColor: '#3a3a3a'}}>
               <p className="text-sm text-gray-400 uppercase tracking-wide mb-4">READY TO GET STARTED?</p>
               <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
                 Transform your business today
@@ -640,8 +640,8 @@ const Services = () => {
             </div>
             
             {/* Right - Video */}
-            <div className="relative">
-              <div className="rounded-2xl overflow-hidden" style={{height: '500px', width: '100%'}}>
+            <div className="relative" style={{marginLeft: '-3rem'}}>
+              <div className="rounded-2xl overflow-hidden" style={{height: '500px', width: 'calc(100% + 3rem)'}}>
                 <video 
                   autoPlay 
                   loop 
