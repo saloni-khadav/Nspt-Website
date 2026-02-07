@@ -280,7 +280,7 @@ const Careers = () => {
         "Travel allowance and incentives",
         "Leadership development opportunities"
       ],
-      color: "red"
+      color: "blue"
     },
     accounts: {
       title: "Financial Analyst",
@@ -419,7 +419,7 @@ const Careers = () => {
                         key === 'softwareEngineer' ? '/innovation.png' :
                         key === 'frontendIntern' ? '/circular.png' :
                         key === 'seo' ? '/innovation lab.png' :
-                        key === 'salesExecutive' ? '/partnership.png' :
+                        key === 'salesExecutive' ? '/sales-executive-logo.png' :
                         key === 'accounts' ? '/account.png' : 
                         key === 'operations' ? '/operation.png' : 
                         '/circular.png'

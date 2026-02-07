@@ -378,10 +378,10 @@ const Home = () => {
             </div>
             
             {/* Center Metric Card */}
-            <div className="backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl p-12 text-center">
-              <div className="text-6xl font-bold text-white mb-4">99.9%</div>
-              <div className="text-gray-300 text-lg mb-6">Uptime Assurance</div>
-              <p className="text-gray-400 text-sm leading-relaxed">
+            <div className="backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl p-8 text-center">
+              <div className="text-5xl font-bold text-white mb-3">99.9%</div>
+              <div className="text-gray-300 text-base mb-4">Uptime Assurance</div>
+              <p className="text-gray-400 text-xs leading-relaxed">
                 Engineered for reliability with<br/>
                 minimal downtime and maximum<br/>
                 performance.
@@ -389,10 +389,10 @@ const Home = () => {
             </div>
             
             {/* Right Metric Card */}
-            <div className="backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl p-12 text-center">
-              <div className="text-6xl font-bold text-white mb-4">1.2M</div>
-              <div className="text-gray-300 text-lg mb-6">Monthly Transactions</div>
-              <p className="text-gray-400 text-sm leading-relaxed">
+            <div className="backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl p-8 text-center">
+              <div className="text-5xl font-bold text-white mb-3">1.2M</div>
+              <div className="text-gray-300 text-base mb-4">Monthly Transactions</div>
+              <p className="text-gray-400 text-xs leading-relaxed">
                 Built to handle scale securely<br/>
                 and efficiently as your business<br/>
                 grows.

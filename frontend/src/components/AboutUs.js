@@ -498,35 +498,35 @@ const AboutUs = () => {
       </section>
 
       {/* What Our Partners Say Section */}
-      <section className="py-24 px-6" style={{backgroundColor: '#1a1a1a'}}>
+      <section className="py-12 sm:py-24 px-4 sm:px-6" style={{backgroundColor: '#1a1a1a'}}>
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-24">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-20">
+          <div className="text-center mb-12 sm:mb-24">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-12 sm:mb-20">
               What our partners say
             </h2>
             
             {/* Company Logos */}
-            <div className="flex items-center justify-between gap-4 mb-2">
+            <div className="grid grid-cols-2 sm:flex sm:flex-wrap sm:items-center sm:justify-between gap-3 sm:gap-4 mb-2">
               {testimonials.map((item, index) => (
                 <div 
                   key={index}
-                  className={`text-center pb-4 flex-1 cursor-pointer transition-all duration-300 ${
+                  className={`text-center pb-3 sm:pb-4 sm:flex-1 sm:min-w-0 cursor-pointer transition-all duration-300 ${
                     selectedTestimonial === index 
                       ? 'border-b-2 border-white' 
                       : 'border-b border-gray-600'
                   }`}
                   onClick={() => setSelectedTestimonial(index)}
                 >
-                  <div className="w-20 h-20 mx-auto mb-3 rounded-full overflow-hidden">
+                  <div className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 mx-auto mb-2 sm:mb-3 rounded-full overflow-hidden">
                     <img 
                       src={item.image}
                       alt={item.company}
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <div className="h-6 flex items-center justify-center">
-                    <p className="text-sm font-semibold text-white">
+                  <div className="h-auto sm:h-6 flex items-center justify-center">
+                    <p className="text-xs sm:text-sm font-semibold text-white">
                       {item.company}
                     </p>
                   </div>
@@ -536,20 +536,20 @@ const AboutUs = () => {
           </div>
           
           {/* Testimonial Card */}
-          <div className="relative rounded-2xl overflow-hidden -mt-20">
+          <div className="relative rounded-2xl overflow-hidden -mt-8 sm:-mt-20">
             <img 
               src={testimonials[selectedTestimonial].backgroundImage}
               alt="Business meeting" 
-              className="w-full h-[700px] object-cover"
+              className="w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] object-cover"
             />
             <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-between">
-              <div className="p-8 text-white mt-2">
-                <p className="text-3xl mb-4 leading-snug max-w-3xl font-semibold" style={{fontFamily: 'Georgia, serif'}}>
+              <div className="p-4 sm:p-6 md:p-8 text-white mt-2">
+                <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl mb-3 sm:mb-4 leading-snug max-w-3xl font-semibold" style={{fontFamily: 'Georgia, serif'}}>
                   {testimonials[selectedTestimonial].testimonial}
                 </p>
-                <div className="mt-4">
-                  <h4 className="font-semibold text-lg">{testimonials[selectedTestimonial].author}</h4>
-                  <p className="text-gray-300 text-sm">{testimonials[selectedTestimonial].position}</p>
+                <div className="mt-3 sm:mt-4">
+                  <h4 className="font-semibold text-base sm:text-lg">{testimonials[selectedTestimonial].author}</h4>
+                  <p className="text-gray-300 text-xs sm:text-sm">{testimonials[selectedTestimonial].position}</p>
                 </div>
               </div>
             </div>
@@ -619,15 +619,15 @@ const AboutUs = () => {
                 submitButton.disabled = false;
                 submitButton.textContent = 'Submit';
               }}>
-                <div className="flex gap-4">
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                   <input 
                     type="email" 
                     name="email"
                     placeholder="Email" 
                     required
-                    className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black"
+                    className="flex-1 px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black"
                   />
-                  <button type="submit" className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium">
+                  <button type="submit" className="bg-blue-600 text-white px-6 sm:px-8 py-2 sm:py-3 text-sm sm:text-base rounded-lg hover:bg-blue-700 transition-colors font-medium whitespace-nowrap">
                     Submit
                   </button>
                 </div>
