@@ -292,7 +292,7 @@ const Header = () => {
                 </svg>
               </div>
               {supportDropdown && (
-                <div className="absolute top-full left-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg z-50">
+                <div className="absolute top-full right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg z-50">
                   <Link 
                     to="/help-center" 
                     className="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-blue-600"

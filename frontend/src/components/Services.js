@@ -179,11 +179,15 @@ const Services = () => {
             {/* Right Image */}
             <div className="relative">
               <div className="bg-gray-100 rounded-2xl overflow-hidden h-96">
-                <img 
-                  src="/service-1.png" 
-                  alt="Business meeting with professionals discussing solutions"
+                <video 
+                  autoPlay 
+                  loop 
+                  muted 
+                  playsInline
                   className="w-full h-full object-cover"
-                />
+                >
+                  <source src="/Service 1.mp4" type="video/mp4" />
+                </video>
               </div>
               {/* Decorative elements */}
               <div className="absolute -top-4 -left-4 w-8 h-8 bg-green-100 rounded-full opacity-60"></div>
@@ -634,14 +638,18 @@ const Services = () => {
               )}
             </div>
             
-            {/* Right - Image */}
+            {/* Right - Video */}
             <div className="relative">
-              <div className="rounded-2xl overflow-hidden h-96" style={{backgroundColor: '#3a3a3a'}}>
-                <img 
-                  src="/service-2-web-dev.png" 
-                  alt="Team collaboration meeting with business planning"
+              <div className="rounded-2xl overflow-hidden h-96">
+                <video 
+                  autoPlay 
+                  loop 
+                  muted 
+                  playsInline
                   className="w-full h-full object-cover"
-                />
+                >
+                  <source src="/Service 2.mp4" type="video/mp4" />
+                </video>
               </div>
             </div>
           </div>
