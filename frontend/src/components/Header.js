@@ -64,7 +64,7 @@ const Header = () => {
                 </svg>
               </div>
               {solutionsDropdown && (
-                <div className="absolute top-full -right-80 mt-2 w-[85vw] lg:w-[1200px] max-w-[1200px] bg-white border border-gray-200 rounded-lg shadow-lg z-50 max-h-[750px] overflow-auto custom-scrollbar">
+                <div className="absolute top-full -right-80 mt-2 w-[85vw] lg:w-[1200px] max-w-[1200px] bg-purple-50 border border-gray-200 rounded-lg shadow-lg z-50 max-h-[750px] overflow-auto custom-scrollbar">
                   <style jsx>{`
                     .custom-scrollbar::-webkit-scrollbar {
                       width: 8px;
