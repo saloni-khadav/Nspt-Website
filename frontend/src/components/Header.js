@@ -42,7 +42,7 @@ const Header = () => {
   
   return (
     <nav className="fixed top-0 w-full z-50 bg-white shadow-sm">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-full mx-auto px-16">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
@@ -64,7 +64,7 @@ const Header = () => {
                 </svg>
               </div>
               {solutionsDropdown && (
-                <div className="absolute top-full -right-80 mt-2 w-[85vw] lg:w-[1200px] max-w-[1200px] bg-gradient-to-br from-gray-50 to-purple-50 border border-gray-200 rounded-lg shadow-lg z-50 max-h-[750px] overflow-auto custom-scrollbar">
+                <div className="absolute top-full -right-80 mt-2 w-[85vw] lg:w-[1200px] max-w-[1200px] bg-white border border-gray-200 rounded-lg shadow-lg z-50 max-h-[750px] overflow-auto custom-scrollbar">
                   <style jsx>{`
                     .custom-scrollbar::-webkit-scrollbar {
                       width: 8px;

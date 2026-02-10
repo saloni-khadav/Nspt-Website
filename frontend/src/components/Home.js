@@ -116,7 +116,7 @@ const Home = () => {
             </div>
             
             {/* Right Logos Grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 lg:mr-8">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 lg:mr-8 home-flip-cards">
               <div className="h-36 sm:h-40 group cursor-pointer" style={{perspective: '1000px'}}>
                 <div className="relative w-full h-full transition-transform duration-700" style={{transformStyle: 'preserve-3d'}}>
                   <div className="absolute inset-0 w-full h-full bg-white border border-gray-200 rounded-xl p-2 text-center shadow-md hover:shadow-lg transition-shadow flex items-center justify-center" style={{backfaceVisibility: 'hidden'}}>
@@ -178,8 +178,8 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            <style jsx>{`
-              .group:hover > div {
+            <style>{`
+              .home-flip-cards .group:hover > div {
                 transform: rotateY(180deg);
               }
             `}</style>

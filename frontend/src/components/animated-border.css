@@ -26,5 +26,5 @@
 }
 
 .animated-border-hover:hover {
-  /* border animation disabled */
+  background-color: rgba(243, 232, 255, 0.5) !important;
 }
