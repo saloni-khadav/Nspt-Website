@@ -64,7 +64,7 @@ const Header = () => {
                 </svg>
               </div>
               {solutionsDropdown && (
-                <div className="absolute top-full -right-80 mt-2 w-[85vw] lg:w-[1200px] max-w-[1200px] bg-white border border-gray-200 rounded-lg shadow-lg z-50 max-h-[650px] overflow-auto custom-scrollbar">
+                <div className="absolute top-full -right-80 mt-2 w-[85vw] lg:w-[1200px] max-w-[1200px] bg-gradient-to-br from-gray-50 to-purple-50 border border-gray-200 rounded-lg shadow-lg z-50 max-h-[750px] overflow-auto custom-scrollbar">
                   <style jsx>{`
                     .custom-scrollbar::-webkit-scrollbar {
                       width: 8px;
@@ -84,7 +84,7 @@ const Header = () => {
                   `}</style>
                   <div className="flex min-w-[700px] lg:min-w-[1000px]">
                     {/* Left side - Services Grid */}
-                    <div className="flex-1 p-4 lg:p-6 overflow-y-auto max-h-[600px] custom-scrollbar">
+                    <div className="flex-1 p-4 lg:p-6 overflow-y-auto max-h-[700px] custom-scrollbar">
                       <div className="grid grid-cols-3 lg:grid-cols-5 gap-2 lg:gap-3 min-w-[600px] lg:min-w-[800px]">
                         {/* WEB & DIGITAL SOLUTIONS */}
                         <div>

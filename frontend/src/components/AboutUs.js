@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Layout from './Layout';
+import SEO from './SEO';
 
 const AboutUs = () => {
   const [selectedTestimonial, setSelectedTestimonial] = useState(0);
@@ -74,7 +75,7 @@ const AboutUs = () => {
       testimonial: 'Expert HR technology delivery with attention to detail and proactive communication.',
       author: 'Sachin Chawla',
       position: 'AVP – India and ASEAN, MongoDB',
-      backgroundImage: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
+      backgroundImage: '/business-people.jpg'
     },
     {
       company: 'Durga Charan Jena',
@@ -82,21 +83,26 @@ const AboutUs = () => {
       testimonial: 'Professional delivery with strong industry insight. Highly recommended.',
       author: 'Durga Charan Jena',
       position: 'Founder, Agritek India',
-      backgroundImage: 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
+      backgroundImage: '/about-1.png'
     }
   ];
   return (
     <Layout>
+      <SEO 
+        title="About Us | NextSphere Technologies - Our Story & Mission"
+        description="Learn about NextSphere Technologies' mission to deliver innovative AI, ERP, HR, and web development solutions. Meet our expert team driving business transformation."
+        keywords="about nextsphere, technology company, AI experts, ERP consultants, HR solutions team, web development company"
+      />
       {/* Image Grid Section with Center Text */}
-      <section className="pt-20 pb-20 px-6 bg-gray-50 relative overflow-hidden">
+      <section className="pt-20 pb-12 px-6 bg-gray-50 relative overflow-hidden">
         <div className="max-w-7xl mx-auto relative">
           {/* Desktop Layout - Images positioned absolutely */}
           <div className="hidden lg:block" style={{minHeight: 'calc(100vh + 20rem)'}}>
             {/* Left Images */}
-            <div className="left-images absolute -left-16 top-8 w-[32rem] space-y-6 transition-all duration-1000 ease-in-out z-20">
+            <div className="left-images absolute -left-8 top-8 w-[26rem] space-y-6 transition-all duration-1000 ease-in-out z-10">
               {imageSets[currentImageSet].left.map((src, index) => (
                 <div key={index} className={`rounded-lg overflow-hidden shadow-lg transition-transform duration-700 ease-in-out ${
-                  index === 1 ? 'middle-left-image' : ''
+                  index === 1 ? 'middle-left-image -translate-x-12' : ''
                 }`}>
                   <img 
                     src={src}
@@ -108,10 +114,10 @@ const AboutUs = () => {
             </div>
 
             {/* Right Images */}
-            <div className="right-images absolute -right-16 top-8 w-[32rem] space-y-6 transition-all duration-1000 ease-in-out z-20">
+            <div className="right-images absolute -right-8 top-8 w-[26rem] space-y-6 transition-all duration-1000 ease-in-out z-10">
               {imageSets[currentImageSet].right.map((src, index) => (
                 <div key={index} className={`rounded-lg overflow-hidden shadow-lg transition-transform duration-700 ease-in-out ${
-                  index === 1 ? 'middle-right-image' : ''
+                  index === 1 ? 'middle-right-image translate-x-12' : ''
                 }`}>
                   <img 
                     src={src}
@@ -123,16 +129,8 @@ const AboutUs = () => {
             </div>
 
             {/* Desktop Center Text Content */}
-            <div className="absolute left-0 right-0 z-10 flex items-center justify-center" style={{top: 'calc(2rem + 20rem + 1.5rem + 10rem)', transform: 'translateY(-50%)'}}>
-              <div className="text-center px-8 hover:cursor-pointer bg-white/90 backdrop-blur-sm rounded-lg p-8" 
-                   onMouseEnter={() => {
-                     document.querySelector('.middle-left-image')?.style.setProperty('transform', 'translateX(-12rem)');
-                     document.querySelector('.middle-right-image')?.style.setProperty('transform', 'translateX(12rem)');
-                   }}
-                   onMouseLeave={() => {
-                     document.querySelector('.middle-left-image')?.style.setProperty('transform', 'translateX(0)');
-                     document.querySelector('.middle-right-image')?.style.setProperty('transform', 'translateX(0)');
-                   }}>
+            <div className="absolute left-0 right-0 z-50 flex items-center justify-center" style={{top: 'calc(2rem + 20rem + 1.5rem + 10rem)', transform: 'translateY(-50%)'}}>
+              <div className="text-center px-6 bg-white/95 backdrop-blur-sm rounded-lg p-6 shadow-xl max-w-lg">
                 <p className="text-xs text-gray-500 uppercase tracking-wide mb-3">OUR STORY AND MISSION</p>
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">
                   Technology that drives
@@ -186,7 +184,7 @@ const AboutUs = () => {
       </section>
 
       {/* Mission, Values, Work Section */}
-      <section className="py-32 px-6 bg-amber-25" style={{backgroundColor: '#faf9f2'}}>
+      <section className="py-16 px-6 bg-amber-25" style={{backgroundColor: '#faf9f2'}}>
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-12">
@@ -375,7 +373,7 @@ const AboutUs = () => {
             <div className="text-center">
               <div className="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden">
                 <img 
-                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" 
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" 
                   alt="Aswini Kumar Nath" 
                   className="w-full h-full object-cover"
                 />

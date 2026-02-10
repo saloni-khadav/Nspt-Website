@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Layout from './Layout';
+import SEO from './SEO';
 
 const Services = () => {
   const [activeService, setActiveService] = useState('web');
@@ -141,13 +142,18 @@ const Services = () => {
 
   return (
     <Layout activePage="Services" hideFooter={true}>
+      <SEO 
+        title="Our Services | Web Development, AI, ERP, HR Solutions | NextSphere"
+        description="Explore NextSphere's comprehensive technology services: web development, AI automation, ERP systems, HR applications, and expert consulting for business growth."
+        keywords="web development services, AI automation, ERP implementation, HR software, technology consulting, app development, digital marketing, SEO services"
+      />
       {/* White background overlay for this page */}
       <div className="absolute inset-0 bg-white z-0"></div>
       
       {/* Main Content */}
       <div className="relative z-10 flex items-center min-h-screen">
         <div className="w-full max-w-7xl mx-auto px-6 py-12 mt-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 items-center">
             {/* Left Content */}
             <div className="space-y-8 lg:pr-2">
               <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
@@ -158,9 +164,10 @@ const Services = () => {
               </h1>
               
               <p className="text-lg text-gray-600 leading-relaxed max-w-lg">
-                Expert technology consulting and services for web, AI, 
-                ERP, and HR. We deliver scalable, efficient solutions 
-                to optimize your business and support growth.
+                Expert technology consulting and services for<br />
+                web, AI, ERP, and HR. We deliver scalable,<br />
+                efficient solutions to optimize your<br />
+                business and support growth.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4">
@@ -177,7 +184,7 @@ const Services = () => {
             </div>
             
             {/* Right Image */}
-            <div className="relative">
+            <div className="relative w-full lg:w-[50vw] lg:-ml-40 mt-8 lg:mt-0">
               <div className="bg-gray-100 rounded-2xl overflow-hidden" style={{height: '500px', width: '100%'}}>
                 <video 
                   autoPlay 
@@ -510,7 +517,7 @@ const Services = () => {
             
             <div className="flex items-center space-x-2 lg:justify-start">
               <img 
-                src="/agri-logo.png" 
+                src="/agritek2-logo.png" 
                 alt="Agritek India"
                 className="h-12 w-auto object-contain"
               />
@@ -547,7 +554,7 @@ const Services = () => {
       </div>
       
       {/* FAQ Section */}
-      <div className="relative z-10 py-48 " style={{backgroundColor: '#faf9f2'}}>
+      <div className="relative z-10 py-20 " style={{backgroundColor: '#faf9f2'}}>
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             {/* Left - FAQ Header */}
@@ -604,12 +611,12 @@ const Services = () => {
         <div className="max-w-7xl mx-auto px-6 py-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             {/* Left - CTA Content */}
-            <div className="rounded-2xl p-4 sm:p-6 h-auto sm:h-96" style={{backgroundColor: '#3a3a3a'}}>
+            <div className="rounded-2xl p-4 sm:p-6 h-auto sm:h-[500px] lg:w-[70%]" style={{backgroundColor: '#3a3a3a'}}>
               <p className="text-sm text-gray-400 uppercase tracking-wide mb-4">READY TO GET STARTED?</p>
               <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
                 Transform your business today
               </h2>
-              <p className="text-gray-300 mb-8 leading-relaxed">
+              <p className="text-gray-300 mb-12 leading-relaxed">
                 Connect with our experts to discover tailored technology solutions for your business. Let's discuss how we can help you achieve your goals.
               </p>
               
@@ -637,10 +644,14 @@ const Services = () => {
                   {submitMessage}
                 </div>
               )}
+              
+              <p className="text-gray-400 text-sm mt-4">
+                Join thousands of businesses transforming with our solutions.
+              </p>
             </div>
             
             {/* Right - Video */}
-            <div className="relative">
+            <div className="relative w-full lg:w-[50vw] lg:-ml-40">
               <div className="rounded-2xl overflow-hidden" style={{height: '500px', width: '100%'}}>
                 <video 
                   autoPlay 

@@ -1,0 +1,26 @@
+name: Deploy NSPT Frontend
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy to EC2
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            cd /home/ubuntu/NSPT-frontend-admin
+            git pull origin main
+            npm install
+            npm run build
+            pm2 restart nspt-frontend || pm2 start "npm start" --name nspt-frontend

@@ -2,27 +2,30 @@ import React from 'react';
 import Layout from './Layout';
 import FAQ from './FAQ';
 import ContactForm from './ContactForm';
+import SEO from './SEO';
 
 const Home = () => {
   return (
     <Layout>
+      <SEO 
+        title="NextSphere Technologies | AI, ERP, HR & Web Development Solutions"
+        description="Leading provider of AI solutions, ERP systems, HR applications, web development, and technology consulting. Transform your business with intelligent solutions."
+        keywords="web development, AI integration, ERP solutions, HR applications, technology consulting, digital transformation, business automation, app development"
+      />
       {/* Hero Section */}
       <section className="bg-white pt-32 pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
-            <div className="space-y-6 h-full flex flex-col justify-between">
-              {/* Video Card */}
-              <div className="bg-purple-50 rounded-lg shadow-md border border-gray-200 flex-1 overflow-hidden">
-                <video 
-                  autoPlay 
-                  loop 
-                  muted 
-                  playsInline
-                  className="w-full h-full object-cover"
-                >
-                  <source src="/Home.mp4" type="video/mp4" />
-                </video>
+            <div className="space-y-6 h-full flex flex-col justify-between lg:max-w-lg lg:-ml-8">
+              {/* Text Card */}
+              <div className="bg-purple-50 rounded-lg shadow-md border border-gray-200 flex-1 overflow-hidden flex items-center justify-start p-8">
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight text-left">
+                  Powering<br/>
+                  Businesses<br/>
+                  with Intelligent<br/>
+                  Technology
+                </h2>
               </div>
               
               {/* Cards Side by Side */}
@@ -69,13 +72,24 @@ const Home = () => {
               </div>
             </div>
             
-            {/* Right Image */}
-            <div className="relative h-64 sm:h-96 lg:h-full flex items-stretch">
-              <img 
-                src="/hero-section.png" 
-                alt="Business meeting" 
-                className="w-full h-full object-cover rounded-none shadow-lg"
-              />
+            {/* Right Video */}
+            <div className="relative w-full lg:w-[50vw] lg:-ml-32 mt-8 lg:mt-0">
+              <div className="bg-gray-100 rounded-2xl overflow-hidden" style={{height: '500px', width: '100%'}}>
+                <video 
+                  autoPlay 
+                  loop 
+                  muted 
+                  playsInline
+                  className="w-full h-full"
+                  style={{objectFit: 'fill'}}
+                >
+                  <source src="/Home.mp4" type="video/mp4" />
+                </video>
+              </div>
+              {/* Decorative elements */}
+              <div className="absolute -top-4 -left-4 w-8 h-8 bg-green-100 rounded-full opacity-60"></div>
+              <div className="absolute top-1/4 -right-6 w-12 h-12 bg-blue-100 rounded-full opacity-40"></div>
+              <div className="absolute bottom-1/4 -left-8 w-6 h-6 bg-yellow-100 rounded-full opacity-50"></div>
             </div>
           </div>
         </div>
@@ -84,16 +98,16 @@ const Home = () => {
       {/* Solutions Section */}
       <section className="bg-purple-50 py-12 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-4 items-start">
             {/* Left Content */}
-            <div className="space-y-4 lg:ml-20">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+            <div className="space-y-4 lg:ml-8">
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
                 Powering<br/>
                 Businesses<br/>
                 with Intelligent<br/>
                 Technology
               </h2>
-              <p className="text-gray-600 text-base sm:text-lg leading-relaxed">
+              <p className="text-gray-600 text-lg sm:text-xl leading-relaxed">
                 From AI-driven platforms to<br/>
                 scalable business applications,<br/>
                 we help diverse industries innovate,<br/>
@@ -102,85 +116,71 @@ const Home = () => {
             </div>
             
             {/* Right Logos Grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 lg:mr-20">
-              <div className="h-28 sm:h-32 perspective-1000" style={{animation: 'cardFlip 8s infinite'}}>
-                <div className="relative w-full h-full transition-transform duration-700 transform-style-preserve-3d flip-card">
-                  <div className="absolute inset-0 w-full h-full backface-hidden bg-white border border-gray-200 rounded-xl p-2 text-center shadow-md hover:shadow-lg transition-shadow flex items-center justify-center">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 lg:mr-8">
+              <div className="h-36 sm:h-40 group cursor-pointer" style={{perspective: '1000px'}}>
+                <div className="relative w-full h-full transition-transform duration-700" style={{transformStyle: 'preserve-3d'}}>
+                  <div className="absolute inset-0 w-full h-full bg-white border border-gray-200 rounded-xl p-2 text-center shadow-md hover:shadow-lg transition-shadow flex items-center justify-center" style={{backfaceVisibility: 'hidden'}}>
                     <img src="/logo01.png" alt="Logo 1" className="w-full h-full object-cover rounded-lg" />
                   </div>
-                  <div className="absolute inset-0 w-full h-full backface-hidden bg-white border border-gray-200 rounded-xl p-2 text-center shadow-md hover:shadow-lg transition-shadow flex items-center justify-center transform rotateY-180">
+                  <div className="absolute inset-0 w-full h-full bg-white border border-gray-200 rounded-xl p-2 text-center shadow-md hover:shadow-lg transition-shadow flex items-center justify-center" style={{backfaceVisibility: 'hidden', transform: 'rotateY(180deg)'}}>
                     <img src="/logo2.png" alt="Logo 1 Back" className="w-full h-full object-cover rounded-lg" />
                   </div>
                 </div>
               </div>
-              <div className="h-28 sm:h-32 perspective-1000" style={{animation: 'cardFlip 8s infinite 1s'}}>
-                <div className="relative w-full h-full transition-transform duration-700 transform-style-preserve-3d flip-card">
-                  <div className="absolute inset-0 w-full h-full backface-hidden bg-white border border-gray-200 rounded-xl p-2 text-center shadow-md hover:shadow-lg transition-shadow flex items-center justify-center">
+              <div className="h-36 sm:h-40 group cursor-pointer" style={{perspective: '1000px'}}>
+                <div className="relative w-full h-full transition-transform duration-700" style={{transformStyle: 'preserve-3d'}}>
+                  <div className="absolute inset-0 w-full h-full bg-white border border-gray-200 rounded-xl p-2 text-center shadow-md hover:shadow-lg transition-shadow flex items-center justify-center" style={{backfaceVisibility: 'hidden'}}>
                     <img src="/logo2.png" alt="Logo 2" className="w-full h-full object-cover rounded-lg" />
                   </div>
-                  <div className="absolute inset-0 w-full h-full backface-hidden bg-white border border-gray-200 rounded-xl p-2 text-center shadow-md hover:shadow-lg transition-shadow flex items-center justify-center transform rotateY-180">
+                  <div className="absolute inset-0 w-full h-full bg-white border border-gray-200 rounded-xl p-2 text-center shadow-md hover:shadow-lg transition-shadow flex items-center justify-center" style={{backfaceVisibility: 'hidden', transform: 'rotateY(180deg)'}}>
                     <img src="/logo3.png" alt="Logo 2 Back" className="w-full h-full object-cover rounded-lg" />
                   </div>
                 </div>
               </div>
-              <div className="h-28 sm:h-32 perspective-1000" style={{animation: 'cardFlip 8s infinite 2s'}}>
-                <div className="relative w-full h-full transition-transform duration-700 transform-style-preserve-3d flip-card">
-                  <div className="absolute inset-0 w-full h-full backface-hidden bg-white border border-gray-200 rounded-xl p-2 text-center shadow-md hover:shadow-lg transition-shadow flex items-center justify-center">
+              <div className="h-36 sm:h-40 group cursor-pointer" style={{perspective: '1000px'}}>
+                <div className="relative w-full h-full transition-transform duration-700" style={{transformStyle: 'preserve-3d'}}>
+                  <div className="absolute inset-0 w-full h-full bg-white border border-gray-200 rounded-xl p-2 text-center shadow-md hover:shadow-lg transition-shadow flex items-center justify-center" style={{backfaceVisibility: 'hidden'}}>
                     <img src="/logo3.png" alt="Logo 3" className="w-full h-full object-cover rounded-lg" />
                   </div>
-                  <div className="absolute inset-0 w-full h-full backface-hidden bg-white border border-gray-200 rounded-xl p-2 text-center shadow-md hover:shadow-lg transition-shadow flex items-center justify-center transform rotateY-180">
+                  <div className="absolute inset-0 w-full h-full bg-white border border-gray-200 rounded-xl p-2 text-center shadow-md hover:shadow-lg transition-shadow flex items-center justify-center" style={{backfaceVisibility: 'hidden', transform: 'rotateY(180deg)'}}>
                     <img src="/logo4.png" alt="Logo 3 Back" className="w-full h-full object-cover rounded-lg" />
                   </div>
                 </div>
               </div>
-              <div className="h-28 sm:h-32 perspective-1000" style={{animation: 'cardFlip 8s infinite 3s'}}>
-                <div className="relative w-full h-full transition-transform duration-700 transform-style-preserve-3d flip-card">
-                  <div className="absolute inset-0 w-full h-full backface-hidden bg-white border border-gray-200 rounded-xl p-2 text-center shadow-md hover:shadow-lg transition-shadow flex items-center justify-center">
+              <div className="h-36 sm:h-40 group cursor-pointer" style={{perspective: '1000px'}}>
+                <div className="relative w-full h-full transition-transform duration-700" style={{transformStyle: 'preserve-3d'}}>
+                  <div className="absolute inset-0 w-full h-full bg-white border border-gray-200 rounded-xl p-2 text-center shadow-md hover:shadow-lg transition-shadow flex items-center justify-center" style={{backfaceVisibility: 'hidden'}}>
                     <img src="/logo4.png" alt="Logo 4" className="w-full h-full object-cover rounded-lg" />
                   </div>
-                  <div className="absolute inset-0 w-full h-full backface-hidden bg-white border border-gray-200 rounded-xl p-2 text-center shadow-md hover:shadow-lg transition-shadow flex items-center justify-center transform rotateY-180">
+                  <div className="absolute inset-0 w-full h-full bg-white border border-gray-200 rounded-xl p-2 text-center shadow-md hover:shadow-lg transition-shadow flex items-center justify-center" style={{backfaceVisibility: 'hidden', transform: 'rotateY(180deg)'}}>
                     <img src="/logo5.png" alt="Logo 4 Back" className="w-full h-full object-cover rounded-lg" />
                   </div>
                 </div>
               </div>
-              <div className="h-28 sm:h-32 perspective-1000" style={{animation: 'cardFlip 8s infinite 4s'}}>
-                <div className="relative w-full h-full transition-transform duration-700 transform-style-preserve-3d flip-card">
-                  <div className="absolute inset-0 w-full h-full backface-hidden bg-white border border-gray-200 rounded-xl p-2 text-center shadow-md hover:shadow-lg transition-shadow flex items-center justify-center">
+              <div className="h-36 sm:h-40 group cursor-pointer" style={{perspective: '1000px'}}>
+                <div className="relative w-full h-full transition-transform duration-700" style={{transformStyle: 'preserve-3d'}}>
+                  <div className="absolute inset-0 w-full h-full bg-white border border-gray-200 rounded-xl p-2 text-center shadow-md hover:shadow-lg transition-shadow flex items-center justify-center" style={{backfaceVisibility: 'hidden'}}>
                     <img src="/logo5.png" alt="Logo 5" className="w-full h-full object-cover rounded-lg" />
                   </div>
-                  <div className="absolute inset-0 w-full h-full backface-hidden bg-white border border-gray-200 rounded-xl p-2 text-center shadow-md hover:shadow-lg transition-shadow flex items-center justify-center transform rotateY-180">
+                  <div className="absolute inset-0 w-full h-full bg-white border border-gray-200 rounded-xl p-2 text-center shadow-md hover:shadow-lg transition-shadow flex items-center justify-center" style={{backfaceVisibility: 'hidden', transform: 'rotateY(180deg)'}}>
                     <img src="/logo6.png" alt="Logo 5 Back" className="w-full h-full object-cover rounded-lg" />
                   </div>
                 </div>
               </div>
-              <div className="h-28 sm:h-32 perspective-1000" style={{animation: 'cardFlip 8s infinite 5s'}}>
-                <div className="relative w-full h-full transition-transform duration-700 transform-style-preserve-3d flip-card">
-                  <div className="absolute inset-0 w-full h-full backface-hidden bg-white border border-gray-200 rounded-xl p-2 text-center shadow-md hover:shadow-lg transition-shadow flex items-center justify-center">
+              <div className="h-36 sm:h-40 group cursor-pointer" style={{perspective: '1000px'}}>
+                <div className="relative w-full h-full transition-transform duration-700" style={{transformStyle: 'preserve-3d'}}>
+                  <div className="absolute inset-0 w-full h-full bg-white border border-gray-200 rounded-xl p-2 text-center shadow-md hover:shadow-lg transition-shadow flex items-center justify-center" style={{backfaceVisibility: 'hidden'}}>
                     <img src="/logo6.png" alt="Logo 6" className="w-full h-full object-cover rounded-lg" />
                   </div>
-                  <div className="absolute inset-0 w-full h-full backface-hidden bg-white border border-gray-200 rounded-xl p-2 text-center shadow-md hover:shadow-lg transition-shadow flex items-center justify-center transform rotateY-180">
+                  <div className="absolute inset-0 w-full h-full bg-white border border-gray-200 rounded-xl p-2 text-center shadow-md hover:shadow-lg transition-shadow flex items-center justify-center" style={{backfaceVisibility: 'hidden', transform: 'rotateY(180deg)'}}>
                     <img src="/logo7.png" alt="Logo 6 Back" className="w-full h-full object-cover rounded-lg" />
                   </div>
                 </div>
               </div>
             </div>
             <style jsx>{`
-              .perspective-1000 {
-                perspective: 1000px;
-              }
-              .transform-style-preserve-3d {
-                transform-style: preserve-3d;
-              }
-              .backface-hidden {
-                backface-visibility: hidden;
-              }
-              .rotateY-180 {
+              .group:hover > div {
                 transform: rotateY(180deg);
-              }
-              @keyframes cardFlip {
-                0%, 45% { transform: rotateY(0deg); }
-                50%, 95% { transform: rotateY(180deg); }
-                100% { transform: rotateY(0deg); }
               }
             `}</style>
           </div>
@@ -320,19 +320,14 @@ const Home = () => {
       </section>
 
       {/* Metrics Section */}
-      <section className="relative min-h-screen bg-gray-900 text-white overflow-hidden animated-border">
+      <section className="relative bg-gray-900 text-white overflow-hidden py-40">
         {/* Top border animation */}
-        <div className="absolute top-0 left-0 w-full h-2 z-20 animated-border-top pointer-events-none"></div>
+        <div className="absolute top-0 left-0 w-full h-2 z-20 pointer-events-none" style={{background: '#fbbf24', animation: 'colorCycle 10s infinite'}}></div>
         
         {/* Bottom border animation */}
-        <div className="absolute bottom-0 left-0 w-full h-2 z-20 animated-border-bottom pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 w-full h-2 z-20 pointer-events-none" style={{background: '#fbbf24', animation: 'colorCycle 10s infinite'}}></div>
         
-        <style jsx>{`
-          .animated-border-top, .animated-border-bottom {
-            background: #fbbf24;
-            animation: colorCycle 10s infinite;
-          }
-          
+        <style>{`
           @keyframes colorCycle {
             0%, 10% { background: #fbbf24; }
             10%, 20% { background: transparent; }
@@ -362,8 +357,8 @@ const Home = () => {
         </div>
         
         {/* Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-6 py-20">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center min-h-[80vh]">
+        <div className="relative z-10 max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
             {/* Left Content */}
             <div className="space-y-6">
               <h2 className="text-5xl lg:text-7xl font-bold leading-tight">
@@ -379,9 +374,9 @@ const Home = () => {
             
             {/* Center Metric Card */}
             <div className="backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl p-8 text-center">
-              <div className="text-5xl font-bold text-white mb-3">99.9%</div>
-              <div className="text-gray-300 text-base mb-4">Uptime Assurance</div>
-              <p className="text-gray-400 text-xs leading-relaxed">
+              <div className="text-6xl font-bold text-white mb-3">99.9%</div>
+              <div className="text-gray-300 text-lg mb-4">Uptime Assurance</div>
+              <p className="text-gray-400 text-sm leading-relaxed">
                 Engineered for reliability with<br/>
                 minimal downtime and maximum<br/>
                 performance.
@@ -390,9 +385,9 @@ const Home = () => {
             
             {/* Right Metric Card */}
             <div className="backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl p-8 text-center">
-              <div className="text-5xl font-bold text-white mb-3">1.2M</div>
-              <div className="text-gray-300 text-base mb-4">Monthly Transactions</div>
-              <p className="text-gray-400 text-xs leading-relaxed">
+              <div className="text-6xl font-bold text-white mb-3">1.2M</div>
+              <div className="text-gray-300 text-lg mb-4">Monthly Transactions</div>
+              <p className="text-gray-400 text-sm leading-relaxed">
                 Built to handle scale securely<br/>
                 and efficiently as your business<br/>
                 grows.
@@ -403,10 +398,10 @@ const Home = () => {
       </section>
 
       {/* Testimonials Section */}
-      <section className="bg-purple-50 py-32">
+      <section className="bg-purple-50 py-12">
         <div className="max-w-7xl mx-auto px-6">
           {/* Header */}
-          <div className="text-center mb-16">
+          <div className="text-center mb-6">
             <h2 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
               What Our Clients Say
             </h2>
@@ -430,15 +425,16 @@ const Home = () => {
               {/* Right - Content */}
               <div className="w-2/3 space-y-6 p-8 mt-0">
                 <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 bg-gray-900 rounded-full flex items-center justify-center">
-                    <span className="text-lg font-bold text-white">I</span>
-                  </div>
-                  <span className="text-lg font-bold text-gray-900">IDEA</span>
+                  <img 
+                    src="/Agritek_India.png" 
+                    alt="Agritek India" 
+                    className="h-16 w-auto object-contain"
+                  />
                 </div>
                 
                 <p className="text-gray-700 text-lg leading-relaxed font-bold" style={{fontFamily: 'Georgia, serif'}}>
                   "The team at Next Sphere built a reliable, high-performance platform that met our business requirements perfectly. The delivery was on time, and the collaboration was seamless."<br/>
-                  <span className="text-gray-500 font-normal">— Technology Manager, IDEA</span>
+                  <span className="text-gray-500 font-normal">— Technology Manager, Agritek India</span>
                 </p>
                 
                 <a href="#" className="text-blue-600 hover:text-blue-700 font-medium mt-4 inline-block">
@@ -449,53 +445,53 @@ const Home = () => {
           </div>
           
           {/* Client Avatars */}
-          <div className="overflow-x-auto pb-4">
-            <div className="flex justify-center items-center space-x-6 min-w-max px-4">
-              <div className="flex items-center space-x-3 bg-white p-6 rounded-lg shadow-md min-w-[250px] flex-shrink-0">
+          <div className="overflow-x-auto pb-4 mt-6">
+            <div className="flex justify-center items-center space-x-4 min-w-max">
+              <div className="flex items-center space-x-3 bg-white p-4 rounded-lg shadow-md min-w-[220px] flex-shrink-0">
                 <img 
                   src="/Sandeep Dutta.png" 
                   alt="Sandeep Dutta" 
-                  className="w-12 h-12 rounded-full object-cover"
+                  className="w-20 h-20 rounded-full object-cover object-top"
                 />
                 <div>
-                  <div className="font-semibold text-gray-900">Sandeep Dutta</div>
-                  <div className="text-sm text-gray-500">President of India & South Asia, AWS</div>
+                  <div className="font-semibold text-gray-900 text-sm">Sandeep Dutta</div>
+                  <div className="text-xs text-gray-500">President of India & South Asia, AWS</div>
                 </div>
               </div>
               
-              <div className="flex items-center space-x-3 bg-white p-6 rounded-lg shadow-md min-w-[250px] flex-shrink-0">
+              <div className="flex items-center space-x-3 bg-white p-4 rounded-lg shadow-md min-w-[220px] flex-shrink-0">
                 <img 
                   src="/akarsh-gupta.jpg" 
                   alt="Akarsh Gupta" 
-                  className="w-12 h-12 rounded-full object-cover"
+                  className="w-20 h-20 rounded-full object-cover"
                 />
                 <div>
-                  <div className="font-semibold text-gray-900">Akarsh Gupta</div>
-                  <div className="text-sm text-gray-500">Foundation Member, Agritek India</div>
+                  <div className="font-semibold text-gray-900 text-sm">Akarsh Gupta</div>
+                  <div className="text-xs text-gray-500">Foundation Member, Agritek India</div>
                 </div>
               </div>
               
-              <div className="flex items-center space-x-3 bg-white p-6 rounded-lg shadow-md min-w-[250px] flex-shrink-0">
+              <div className="flex items-center space-x-3 bg-white p-4 rounded-lg shadow-md min-w-[220px] flex-shrink-0">
                 <img 
                   src="/Sachin-Chawla.jpg" 
                   alt="Sachin Chawla" 
-                  className="w-12 h-12 rounded-full object-cover"
+                  className="w-20 h-20 rounded-full object-cover"
                 />
                 <div>
-                  <div className="font-semibold text-gray-900">Sachin Chawla</div>
-                  <div className="text-sm text-gray-500">AVP – India and ASEAN, MongoDB</div>
+                  <div className="font-semibold text-gray-900 text-sm">Sachin Chawla</div>
+                  <div className="text-xs text-gray-500">AVP – India and ASEAN, MongoDB</div>
                 </div>
               </div>
               
-              <div className="flex items-center space-x-3 bg-white p-6 rounded-lg shadow-md min-w-[250px] flex-shrink-0">
+              <div className="flex items-center space-x-3 bg-white p-4 rounded-lg shadow-md min-w-[220px] flex-shrink-0">
                 <img 
                   src="/durga-charan-jena.jpg" 
                   alt="Durga Charan Jena" 
-                  className="w-12 h-12 rounded-full object-cover"
+                  className="w-20 h-20 rounded-full object-cover object-top"
                 />
                 <div>
-                  <div className="font-semibold text-gray-900">Durga Charan Jena</div>
-                  <div className="text-sm text-gray-500">Founder, Agritek India</div>
+                  <div className="font-semibold text-gray-900 text-sm">Durga Charan Jena</div>
+                  <div className="text-xs text-gray-500">Founder, Agritek India</div>
                 </div>
               </div>
             </div>
