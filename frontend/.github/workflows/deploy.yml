@@ -1,0 +1,39 @@
+name: Deploy Frontend
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install & Build
+        run: |
+          npm install
+          CI=false npm run build
+
+      - name: Deploy to EC2 Server
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /home/ubuntu/NSPT-frontend
+            git pull origin main
+            npm install
+            CI=false npm run build
+            sudo rm -rf /var/www/html/*
+            sudo cp -r build/* /var/www/html/
+            sudo systemctl reload nginx
