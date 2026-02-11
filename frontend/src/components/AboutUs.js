@@ -71,7 +71,7 @@ const AboutUs = () => {
     },
     {
       company: 'Sachin Chawla',
-      image: '/sachin-chawla.jpg',
+      image: '/Sachin-Chawla.jpg',
       testimonial: 'Expert HR technology delivery with attention to detail and proactive communication.',
       author: 'Sachin Chawla',
       position: 'AVP – India and ASEAN, MongoDB',
